@@ -26,7 +26,7 @@ void InputManager::Update(){
 		mouseUp[i] = 0;
 	}
 
-	teclado = SDL_GetKeyState(NULL);
+	keyboard = SDL_GetKeyState(NULL);
 	mouse = SDL_GetMouseState(&mouseX,&mouseY);
 
 	SDL_Event event;
@@ -91,7 +91,7 @@ bool InputManager::isMouseUp(int key){
 }
 
 bool InputManager::isKeyPressed(int key){
-	if(teclado[key])
+	if(keyboard[key])
 		return true;
 
 	return false;

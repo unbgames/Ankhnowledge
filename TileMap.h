@@ -11,8 +11,8 @@ class TileMap {
 public:
 
 	TileMap(int mapWidth, int mapHeight, int tileSize, int layers = 1, TileSet * tileSet = NULL);
-	TileMap(std::string mapa, TileSet * tileSet = NULL);
-	TileMap(std::string mapa, int tileSize, TileSet* tileSet);
+	TileMap(std::string map, TileSet * tileSet = NULL);
+	TileMap(std::string map, int tileSize, TileSet* tileSet);
 	virtual ~TileMap();
 	void load(std::string mapPath);
 	void setTileSet(TileSet * tileset);

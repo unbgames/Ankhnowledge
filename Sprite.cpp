@@ -3,9 +3,9 @@
 /*
  * Construtor da Classe, que seta o surface do sprite como NULL e carrega a imagem nela
  */
-Sprite::Sprite(std::string arquivo) {
+Sprite::Sprite(std::string file) {
 	surface = NULL;
-	load(arquivo);
+	load(file);
 }
 
 /*
@@ -20,11 +20,11 @@ Sprite::~Sprite() {
 /*
  * Metodo que carrega a imagem na surface e adequa o clipRect para essa surface
  */
-void Sprite::load(std::string arquivo){
+void Sprite::load(std::string file){
 	if(surface){
 		SDL_FreeSurface(surface);
 	}
-		surface = SDLBase::loadImage(arquivo);
+		surface = SDLBase::loadImage(file);
 		clipRect.x = 0;
 		clipRect.y = 0;
 		clipRect.w = surface->w;

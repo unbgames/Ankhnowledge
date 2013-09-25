@@ -5,9 +5,9 @@
 #include <string>
 class Sprite {
 public:
-	Sprite(std::string arquivo);
+	Sprite(std::string file);
 	virtual ~Sprite();
-	void load(std::string arquivo);
+	void load(std::string file);
 	void clip(int x, int y, int w, int h);
 	SDL_Rect getClip();
 	int getWidth();

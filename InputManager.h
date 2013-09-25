@@ -21,7 +21,7 @@ public:
 
 private:
 	InputManager();
-	Uint8 mouse, *teclado;
+	Uint8 mouse, *keyboard;
 	Uint8 keyDown[256], keyUp[256];
 	bool quitGame;
 	Uint8 mouseDown[256], mouseUp[256];

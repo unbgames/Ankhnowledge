@@ -10,26 +10,26 @@ TileMap::TileMap(int mapWidth, int mapHeight, int tileSize, int layers, TileSet 
 	this->tileMatrix = new std::vector< std::vector< std::vector<int> > >(tileSize, std::vector< std::vector<int> >(tileSize, std::vector<int>(tileSize,-1 ) ) );
 }
 
-TileMap::TileMap(std::string mapa, TileSet * tileSet) {
+TileMap::TileMap(std::string map, TileSet * tileSet) {
 	this->tileSet =  tileSet;
 	this->mapWidth = 0;
 	this->mapHeight = 0;
 	this->mapLayers = 0;
 
-	load(mapa);
+	load(map);
 
 	/*
 	 * Metodo Load
 	 */
 }
 
-TileMap::TileMap(std::string mapa, int tileSize, TileSet * tileSet){
+TileMap::TileMap(std::string map, int tileSize, TileSet * tileSet){
 	this->tileSet =  tileSet;
 	this->mapWidth = 0;
 	this->mapHeight = 0;
 	this->mapLayers = 0;
 	this->tileMatrix = new std::vector< std::vector< std::vector<int> > >(tileSize, std::vector< std::vector<int> >(tileSize, std::vector<int>(tileSize,-1 ) ) );
-	load(mapa);
+	load(map);
 }
 
 

@@ -12,37 +12,8 @@ using namespace std;
  */
 GameManager::GameManager() {
 	srand ( time(NULL) );
-	SDLBase::inicilizaSDL();
-	this->bg = new Sprite("resources/fundo.png");
-	this->planetSprite = new Sprite("resources/PlanetaVermelho.png");
-	this->earthSprite = new Sprite("resources/PlanetaTerra.png");
-	this->moonSprite = new Sprite("resources/Lua.png");
-
-	this->ufo = new Sprite("resources/ufo.png");
-
-	this->tileSet = new TileSet(75, 75, "resources/Tileset.png");
-
-	this->tileMap = new TileMap("resources/tileMap.txt", 16, tileSet);
-
-	this->SCROLL = 0.1;
-	cameraX1 = 0;
-	cameraY1 = 0;
-	cameraX2 = 0;
-	cameraY2 = 0;
-	cameraSpeedX = 0;
-	cameraSpeedY = 0;
-	fatorParallaxScrolling = 1.1;
-
-	input = InputManager::getInstance();
-
-	dt = 0;
-	frameStart = 0;
-	frameEnd = 0;
-
-	earth = new Earth( earthSprite, 50,50, 100);
-	moon = new Moon(moonSprite,earth,100);
-
-	fo = new FollowerObject(ufo,100,100);
+	SDLBase::initializeSDL();
+	initResources();
 
 }
 
@@ -53,29 +24,30 @@ GameManager::~GameManager() {
 	delete (bg);
 }
 
-/*
- * Metodo que realiza o game loop
- */
+//Metodo que inicializa os objetos (recursos) do jogo
+void GameManager::initResources(){
+	this->bg = new Sprite("resources/images/fundo.png");
+	this->tileSet = new TileSet(75, 75, "resources/images/Tileset.png");
+	this->tileMap = new TileMap("resources/images/tileMap.txt", 16, tileSet);
+	input = InputManager::getInstance();
+	audio = AudioHandler::getInstance();
+	network = Network::getInstance();
 
-void GameManager::addPlanet(){
-
-	int hitpoints = rand()%20 + 1;
-	int x = rand()%(800 - planetSprite->getWidth());
-	int y = rand()%(600 - planetSprite->getHeight());
-	Planeta* planet = new PlanetRed(planetSprite, x,y,hitpoints);
-	this->planetArray.push_back(planet);
+	this->SCROLL = 0.1;
+	cameraX1 = 0;
+	cameraY1 = 0;
+	cameraX2 = 0;
+	cameraY2 = 0;
+	cameraSpeedX = 0;
+	cameraSpeedY = 0;
+	fatorParallaxScrolling = 1.1;
+	dt = 0;
+	frameStart = 0;
+	frameEnd = 0;
 }
 
-void GameManager::checkPlanets(){
-	Planeta* planet = NULL;
-	for(vector<Planeta*>::iterator it = planetArray.end() - 1;
-		                                        it != planetArray.begin() - 1; --it) {
-		planet = *it;
-				if(planet->hitPoints <= 0){
-					planetArray.erase(it);
-				}
-	}
-}
+
+// Metodo que realiza o game loop
 
 void GameManager::processEvents(){
 	// procura um event
@@ -93,9 +65,6 @@ void GameManager::processEvents(){
 	    SDL_PushEvent( &quit );
 	}
 
-	if(input->isMousePressed(3)){
-		fo->enqueueCommand(input->mousePosX(), input->mousePosY());
-	}
 
 	if( input->isKeyDown(SDLK_UP) )
 		cameraSpeedY -= SCROLL;
@@ -105,10 +74,6 @@ void GameManager::processEvents(){
 		cameraSpeedX -= SCROLL;
 	if( input->isKeyDown(SDLK_RIGHT) )
 		cameraSpeedX += SCROLL;
-	if( input->isKeyDown(SDLK_SPACE) ){
-		addPlanet();
-	}
-
 
 	if( input->isKeyUp(SDLK_UP) )
 		cameraSpeedY += SCROLL;
@@ -122,42 +87,15 @@ void GameManager::processEvents(){
 }
 
 void GameManager::update(int dt){
-	Planeta* planet = NULL;
-
-	for(vector<Planeta*>::iterator it = planetArray.end() - 1;
-			                                        it != planetArray.begin() - 1; --it) {
-			planet = *it;
-					planet->update(dt);
-		}
-
+	audio->update();
 	cameraX1 += cameraSpeedX;
 	cameraY1 += cameraSpeedY;
-
-	earth->update(dt);
-	moon->update(dt);
-
-	fo->update(dt);
-	checkPlanets();
-
 }
 
 void GameManager::render(float cameraX, float cameraY){
 	bg->render(0,0);
 	this->tileMap->renderLayer(cameraX, cameraY, 0);
 	this->tileMap->renderLayer(cameraX*fatorParallaxScrolling, cameraY*fatorParallaxScrolling, 1);
-
-
-	for (std::vector<Planeta*>::iterator it = planetArray.begin(); it!=planetArray.end(); ++it) {
-		Planeta *planet = NULL;
-			planet = *it;
-			planet->render();
-		}
-	earth->render();
-	moon->render();
-
-	fo->render(cameraX,cameraY);
-	fo->renderQueueLines(cameraX, cameraY);
-
 }
 
 void GameManager::run(){
@@ -176,7 +114,9 @@ void GameManager::run(){
 			render(cameraX1, cameraY1);
 
 			/*Atualizar a tela*/
-			SDLBase::atualizarTela();
+			SDLBase::updateScreen();
+			network->sendMessage();
+			network->receiveMessage();
 			frameEnd = SDL_GetTicks();
 		}else{
 			SDL_Delay(1000/30 -dt);

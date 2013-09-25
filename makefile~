@@ -34,13 +34,13 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: Ankhnowledge
+all: Test
 
 # Tool invocations
-Ankhnowledge: $(OBJS) $(USER_OBJS)
+Test: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "Ankhnowledge" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "Test" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
