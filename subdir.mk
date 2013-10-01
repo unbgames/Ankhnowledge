@@ -6,6 +6,7 @@ CPP_SRCS += \
 ../InputManager.cpp \
 ../Network.cpp \
 ../SDLBase.cpp \
+../Shape.cpp \
 ../Sprite.cpp \
 ../TileMap.cpp \
 ../TileSet.cpp \
@@ -18,6 +19,7 @@ OBJS += \
 ./InputManager.o \
 ./Network.o \
 ./SDLBase.o \
+./Shape.o \
 ./Sprite.o \
 ./TileMap.o \
 ./TileSet.o \
@@ -30,6 +32,7 @@ CPP_DEPS += \
 ./InputManager.d \
 ./Network.d \
 ./SDLBase.d \
+./Shape.d \
 ./Sprite.d \
 ./TileMap.d \
 ./TileSet.d \

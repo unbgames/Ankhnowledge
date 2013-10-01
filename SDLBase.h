@@ -16,6 +16,10 @@ public:
 	static SDL_Surface* loadImage(std::string arquivo);
 	static void renderSurface(SDL_Surface* surface, SDL_Rect* clip = NULL, SDL_Rect* dst = NULL);
 	static void updateScreen();
+	static void fillRectangle(SDL_Rect* rect, Uint32 color);
+	static void drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing);
+	static void putpixel(SDL_Surface* screen, int x, int y,int r,int g,int b);
+	static void drawCircle(float size, int x,int y,int r, int g, int b);
 
 private:
 	static SDL_Surface* screen;

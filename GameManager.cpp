@@ -27,20 +27,13 @@ GameManager::~GameManager() {
 //Metodo que inicializa os objetos (recursos) do jogo
 void GameManager::initResources(){
 	this->bg = new Sprite("resources/images/fundo.png");
-	this->tileSet = new TileSet(75, 75, "resources/images/Tileset.png");
-	this->tileMap = new TileMap("resources/images/tileMap.txt", 16, tileSet);
+	this->charOne = new Sprite("resources/images/charac.png");
+	this->charTwo = new Sprite("resources/images/charac.png");
+	this->shape = new Shape();
 	input = InputManager::getInstance();
 	audio = AudioHandler::getInstance();
 	network = Network::getInstance();
 
-	this->SCROLL = 0.1;
-	cameraX1 = 0;
-	cameraY1 = 0;
-	cameraX2 = 0;
-	cameraY2 = 0;
-	cameraSpeedX = 0;
-	cameraSpeedY = 0;
-	fatorParallaxScrolling = 1.1;
 	dt = 0;
 	frameStart = 0;
 	frameEnd = 0;
@@ -94,8 +87,54 @@ void GameManager::update(int dt){
 
 void GameManager::render(float cameraX, float cameraY){
 	bg->render(0,0);
-	this->tileMap->renderLayer(cameraX, cameraY, 0);
-	this->tileMap->renderLayer(cameraX*fatorParallaxScrolling, cameraY*fatorParallaxScrolling, 1);
+	charOne->render(0,66);
+	charOne->render(704,66);
+	//Draw blocks
+	shape->fillRect(528,531,88,66,0xBDB76B);
+	shape->fillRect(528,465,88,66,0xBDB76B);
+	shape->fillRect(528,399,88,66,0xBDB76B);
+	shape->fillRect(440,399,88,66,0xBDB76B);
+	shape->fillRect(176,531,88,66,0xBDB76B);
+	shape->fillRect(176,465,88,66,0xBDB76B);
+	shape->fillRect(176,399,88,66,0xBDB76B);
+	shape->fillRect(264,399,88,66,0xBDB76B);
+	shape->fillRect(352,399,88,66,0xBDB76B);
+	shape->fillRect(352,333,88,66,0xBDB76B);
+	shape->fillRect(352,267,88,66,0xBDB76B);
+	shape->fillRect(352,201,88,66,0xBDB76B);
+	shape->fillRect(264,201,88,66,0xBDB76B);
+	shape->fillRect(176,201,88,66,0xBDB76B);
+	shape->fillRect(88,201,88,66,0xBDB76B);
+	shape->fillRect(440,201,88,66,0xBDB76B);
+	shape->fillRect(528,201,88,66,0xBDB76B);
+	shape->fillRect(616,201,88,66,0xBDB76B);
+	shape->fillRect(616,135,88,66,0xBDB76B);
+	shape->fillRect(616,69,88,66,0xBDB76B);
+	shape->fillRect(616,3,88,66,0xBDB76B);
+	shape->fillRect(88,135,88,66,0xBDB76B);
+	shape->fillRect(88,69,88,66,0xBDB76B);
+	shape->fillRect(88,3,88,66,0xBDB76B);
+	//Draw grid
+	shape->drawLine(88,0,88,600,0x00,0);
+	shape->drawLine(176,0,176,600,0x00,0);
+	shape->drawLine(264,0,264,600,0x00,0);
+	shape->drawLine(352,0,352,600,0x00,0);
+	shape->drawLine(440,0,440,600,0x00,0);
+	shape->drawLine(528,0,528,600,0x00,0);
+	shape->drawLine(616,0,616,600,0x00,0);
+	shape->drawLine(704,0,704,600,0x00,0);
+	shape->drawLine(0,66,800,66,0x00,0);
+	shape->drawLine(0,132,800,132,0x00,0);
+	shape->drawLine(0,198,800,198,0x00,0);
+	shape->drawLine(0,264,800,264,0x00,0);
+	shape->drawLine(0,330,800,330,0x00,0);
+	shape->drawLine(0,396,800,396,0x00,0);
+	shape->drawLine(0,66,800,66,0x00,0);
+	shape->drawLine(0,462,800,462,0x00,0);
+	shape->drawLine(0,528,800,528,0x00,0);
+	//Draw circle
+	shape->drawCircle(20,400,570,139,0,0);
+
 }
 
 void GameManager::run(){

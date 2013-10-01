@@ -13,6 +13,7 @@
 #include "GameObject.h"
 #include "TileSet.h"
 #include "TileMap.h"
+#include "Shape.h"
 
 class GameManager {
 public:
@@ -25,12 +26,11 @@ public:
 	void initResources();
 
 private:
-	Sprite* bg;
+	Sprite* bg,*charOne,*charTwo;
 	InputManager * input;
 	AudioHandler * audio;
 	Network * network;
-	TileSet * tileSet;
-	TileMap * tileMap;
+	Shape* shape;
 	std::vector<GameObject*> gameObjects;
 	float SCROLL;
 	float cameraX1;

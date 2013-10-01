@@ -1,4 +1,3 @@
-
 -include ../makefile.init
 
 RM := rm -rf
@@ -40,13 +39,13 @@ all: Ankhnowledge
 Ankhnowledge: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "Ankhnowledge.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "Ankhnowledge" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) Ankhnowledge.exe
+	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) Test
 	-@echo ' '
 
 .PHONY: all clean dependents
