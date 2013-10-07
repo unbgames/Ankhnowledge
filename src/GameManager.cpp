@@ -26,9 +26,9 @@ GameManager::~GameManager() {
 
 //Metodo que inicializa os objetos (recursos) do jogo
 void GameManager::initResources(){
-	this->bg = new Sprite("resources/images/fundo.png");
-	this->charOne = new Sprite("resources/images/charac.png");
-	this->charTwo = new Sprite("resources/images/charac.png");
+	this->bg = new Sprite("../Ankhnowledge/resources/images/background.png");
+	this->charOne = new Sprite("../Ankhnowledge/resources/images/charac.png");
+	this->charTwo = new Sprite("../Ankhnowledge/resources/images/charac.png");
 	this->shape = new Shape();
 	input = InputManager::getInstance();
 	audio = AudioHandler::getInstance();
@@ -88,7 +88,7 @@ void GameManager::update(int dt){
 void GameManager::render(float cameraX, float cameraY){
 	bg->render(0,0);
 	charOne->render(0,66);
-	charOne->render(704,66);
+	charTwo->render(704,66);
 	//Draw blocks
 	shape->fillRect(528,531,88,66,0xBDB76B);
 	shape->fillRect(528,465,88,66,0xBDB76B);
