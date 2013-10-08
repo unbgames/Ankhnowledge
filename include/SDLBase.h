@@ -20,6 +20,7 @@ public:
 	static void drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing);
 	static void putpixel(SDL_Surface* screen, int x, int y,int r,int g,int b);
 	static void drawCircle(float size, int x,int y,int r, int g, int b);
+	static void setAlpha(SDL_Surface * surface, int alpha);
 
 private:
 	static SDL_Surface* screen;

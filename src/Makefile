@@ -100,9 +100,9 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(Ankhnowledgedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libitem_la_DEPENDENCIES =
-am_libitem_la_OBJECTS = GameManager.lo AudioHandler.lo GameObject.lo \
-	InputManager.lo Network.lo SDLBase.lo Shape.lo Sprite.lo \
-	TileMap.lo TileSet.lo
+am_libitem_la_OBJECTS = GameManager.lo AudioHandler.lo Character.lo \
+	FadeHandler.lo FadeScreen.lo GameObject.lo InputManager.lo \
+	Network.lo SDLBase.lo Shape.lo Sprite.lo TileMap.lo TileSet.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -135,12 +135,12 @@ DATA = $(dist_Ankhnowledge_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/al/Desktop/Ankhnowledge/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/al/Desktop/Ankhnowledge/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/al/Desktop/Ankhnowledge/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/al/Desktop/Ankhnowledge/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -180,7 +180,7 @@ LTLIBOBJS =
 LT_CURRENT = 0
 LT_RELEASE = 0.0.1
 LT_REVISION = 0
-MAKEINFO = ${SHELL} /home/al/Desktop/Ankhnowledge/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -203,10 +203,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.0.1
-abs_builddir = /home/al/Desktop/Ankhnowledge/src
-abs_srcdir = /home/al/Desktop/Ankhnowledge/src
-abs_top_builddir = /home/al/Desktop/Ankhnowledge
-abs_top_srcdir = /home/al/Desktop/Ankhnowledge
+abs_builddir = /home/al/IJE/Ankhnowledge/src
+abs_srcdir = /home/al/IJE/Ankhnowledge/src
+abs_top_builddir = /home/al/IJE/Ankhnowledge
+abs_top_srcdir = /home/al/IJE/Ankhnowledge
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -237,7 +237,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/al/Desktop/Ankhnowledge/config/install-sh
+install_sh = ${SHELL} /home/al/IJE/Ankhnowledge/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -269,14 +269,14 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp GameObject.cpp InputManager.cpp Network.cpp SDLBase.cpp Shape.cpp Sprite.cpp TileMap.cpp TileSet.cpp
+libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Network.cpp SDLBase.cpp Shape.cpp Sprite.cpp TileMap.cpp TileSet.cpp
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image
 
 # Program description
 Ankhnowledge_SOURCES = main.cpp
-dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/charac.png ../$(PACKAGE)/resources/images/background.png
+dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/charac.png ../$(PACKAGE)/resources/images/background.png ../$(PACKAGE)/resources/images/Black.bmp
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program
@@ -409,6 +409,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/AudioHandler.Plo
+include ./$(DEPDIR)/Character.Plo
+include ./$(DEPDIR)/FadeHandler.Plo
+include ./$(DEPDIR)/FadeScreen.Plo
 include ./$(DEPDIR)/GameManager.Plo
 include ./$(DEPDIR)/GameObject.Plo
 include ./$(DEPDIR)/InputManager.Plo

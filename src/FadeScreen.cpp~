@@ -1,0 +1,34 @@
+/*
+ * FadeScreen.cpp
+ *
+ *  Created on: Oct 3, 2013
+ *      Author: makoto
+ */
+
+#include "FadeScreen.h"
+
+FadeScreen::FadeScreen(float x, float y) : GameObject (x,y) {
+	this->sprite = 0;
+	this->sprite = new Sprite("resources/images/Black.bmp");
+	fadeHandler = new FadeHandler(sprite);
+	fadeHandler->fadeOut(0, 2);
+}
+
+FadeScreen::~FadeScreen() {
+	delete fadeHandler;
+	delete sprite;
+}
+
+int FadeScreen::update(int dt){
+	fadeHandler->update(dt);
+	return 0;
+}
+
+void FadeScreen::render(float cameraX, float cameraY){
+	if(sprite)
+		this->sprite->render(0,0);
+
+		//Mudar isso quando tiver uma imagem com as dimensoes certas
+		//this->sprite->render((this->x - sprite->getWidth()/2 - cameraX), (this->y - sprite->getHeight()/2 - cameraY));
+}
+

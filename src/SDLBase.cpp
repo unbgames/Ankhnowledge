@@ -57,6 +57,7 @@ SDL_Surface* SDLBase::loadImage(std::string arquivo){
 }
 
 void SDLBase::fillRectangle(SDL_Rect* rect, Uint32 color) {
+
 	SDL_FillRect(screen, rect, color);
 }
 
@@ -65,7 +66,7 @@ void SDLBase::fillRectangle(SDL_Rect* rect, Uint32 color) {
  * do double buffering
  */
 void SDLBase::renderSurface(SDL_Surface* surface, SDL_Rect* clip, SDL_Rect* dst){
-	 SDL_BlitSurface(surface, clip, screen, dst);
+	SDL_BlitSurface(surface, clip, screen, dst);
 }
 
 void SDLBase::drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing){
@@ -171,4 +172,9 @@ void SDLBase::drawCircle(float size, int x,int y,int r, int g, int b)
  */
 void SDLBase::updateScreen(){
 	SDL_Flip(screen);
+}
+
+void SDLBase::setAlpha(SDL_Surface * surface, int alpha)
+{
+	SDL_SetAlpha(surface ,SDL_RLEACCEL | SDL_SRCALPHA,(Uint8)alpha);
 }

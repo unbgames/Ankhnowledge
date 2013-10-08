@@ -13,11 +13,19 @@ public:
 	int getWidth();
 	int getHeight();
 	void render(float x, float y);
+	int getAlpha();
+	void setAlpha(int alpha);
+	void incNumRef();
+	void decNumRef();
+	int getNumRef();
 
 private:
 
 	SDL_Rect clipRect;
 	SDL_Surface* surface;
+	int currentAlpha;
+	int numberRef;
+
 };
 
 #endif /* SPRITE_H_ */

@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include <iostream>
 #include <sstream>
+#include <memory>
 using namespace std;
 
 /*
@@ -11,7 +12,7 @@ using namespace std;
  * funcoes SDL_DisplayFormat e SDL_DisplayFormaAlpha. Funcoes estas que precisam
  */
 GameManager::GameManager() {
-	srand ( time(NULL) );
+	//srand ( time(NULL) );
 	SDLBase::initializeSDL();
 	initResources();
 
@@ -26,17 +27,20 @@ GameManager::~GameManager() {
 
 //Metodo que inicializa os objetos (recursos) do jogo
 void GameManager::initResources(){
-	this->bg = new Sprite("usr/local/Ankhnowledge/resources/background.png");
-	this->charOne = new Sprite("usr/local/Ankhnowledge/resources/images/charac.png");
-	this->charTwo = new Sprite("usr/local/Ankhnowledge/resources/images/charac.png");
+	this->bg = new Sprite("Ankhnowledge/resources/images/background.png");
+	this->fade = new Sprite("Ankhnowledge/resources/images/Black.bmp");
+	this->charSprite = new Sprite("Ankhnowledge/resources/images/charac.png");
+	this->charOne= new Character(charSprite,0,66);
+	this->charTwo= new Character(charSprite,704,66);
 	this->shape = new Shape();
+	this->fadeScreen = new FadeScreen(fade,SDLBase::getScreen()->w, SDLBase::getScreen()->h);
 	input = InputManager::getInstance();
 	audio = AudioHandler::getInstance();
 	network = Network::getInstance();
-
 	dt = 0;
 	frameStart = 0;
 	frameEnd = 0;
+
 }
 
 
@@ -80,6 +84,8 @@ void GameManager::processEvents(){
 }
 
 void GameManager::update(int dt){
+	fadeScreen->update(dt);
+	charOne->update(dt);
 	audio->update();
 	cameraX1 += cameraSpeedX;
 	cameraY1 += cameraSpeedY;
@@ -87,8 +93,7 @@ void GameManager::update(int dt){
 
 void GameManager::render(float cameraX, float cameraY){
 	bg->render(0,0);
-	charOne->render(0,66);
-	charTwo->render(704,66);
+
 	//Draw blocks
 	shape->fillRect(528,531,88,66,0xBDB76B);
 	shape->fillRect(528,465,88,66,0xBDB76B);
@@ -134,7 +139,11 @@ void GameManager::render(float cameraX, float cameraY){
 	shape->drawLine(0,528,800,528,0x00,0);
 	//Draw circle
 	shape->drawCircle(20,400,570,139,0,0);
+	//Characters
+	charOne->render(0,0);
+	charTwo->render(0,0);
 
+	fadeScreen->render(0,0);
 }
 
 void GameManager::run(){

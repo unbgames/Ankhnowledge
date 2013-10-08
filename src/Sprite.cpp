@@ -6,6 +6,8 @@
 Sprite::Sprite(std::string file) {
 	surface = NULL;
 	load(file);
+	currentAlpha = 255;
+	this->numberRef = 0;
 }
 
 /*
@@ -76,4 +78,30 @@ int Sprite::getHeight(){
 	return surface->h;
 }
 
+int Sprite::getAlpha()
+{
+	return currentAlpha;
+}
+void Sprite::setAlpha(int alpha)
+{
+	if(alpha < 0)
+		alpha = 0;
+	else if(alpha > 255)
+		alpha = 255;
+
+	currentAlpha = alpha;
+	SDLBase::setAlpha(surface, currentAlpha);
+}
+
+void Sprite::incNumRef(){
+	this->numberRef++;
+}
+
+void Sprite::decNumRef(){
+	this->numberRef--;
+}
+
+int Sprite::getNumRef(){
+	return this->numberRef;
+}
 

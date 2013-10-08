@@ -14,6 +14,8 @@
 #include "TileSet.h"
 #include "TileMap.h"
 #include "Shape.h"
+#include "FadeScreen.h"
+#include "Character.h"
 
 class GameManager {
 public:
@@ -26,12 +28,14 @@ public:
 	void initResources();
 
 private:
-	Sprite* bg,*charOne,*charTwo;
+	Sprite* bg,*charSprite,*fade;
+	Character* charOne,*charTwo;
 	InputManager * input;
 	AudioHandler * audio;
 	Network * network;
 	Shape* shape;
 	std::vector<GameObject*> gameObjects;
+	FadeScreen * fadeScreen;
 	float SCROLL;
 	float cameraX1;
 	float cameraX2;
