@@ -7,8 +7,9 @@
 
 #include "Character.h"
 #include <iostream>
+using namespace std;
 
-Character::Character(Sprite* sprite, float x, float y):GameObject(getSprite(),getX(),getY()) {
+Character::Character(Sprite* sprite, float x, float y):GameObject(getX(),getY()) {
 	this->sprite = sprite;
 	sprite->incNumRef();
 	this->x = x;
@@ -17,6 +18,8 @@ Character::Character(Sprite* sprite, float x, float y):GameObject(getSprite(),ge
 }
 
 Character::~Character() {
+	this->sprite->decNumRef();
+	sprite = 0;
 	// TODO Auto-generated destructor stub
 }
 
@@ -45,13 +48,10 @@ int Character::update(int dt){
 	//incrementa a ṕosição y da terra de forma linear
 	this->y += vy;
 
-	if(this->x > 100){
-		if(sprite){
-			this->sprite->decNumRef();
-			if(this->sprite->getNumRef() == 0){
-				this->sprite = 0;
-			}
-		}
+
+	if(this->y > 500){
+		GameManager::currentScene->destroyGameObject(this);
 	}
+
 	return 0;
 }

@@ -7,7 +7,7 @@ Sprite::Sprite(std::string file) {
 	surface = NULL;
 	load(file);
 	currentAlpha = 255;
-	this->numberRef = 0;
+	numberRef = 0;
 }
 
 /*

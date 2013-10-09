@@ -178,3 +178,8 @@ void SDLBase::setAlpha(SDL_Surface * surface, int alpha)
 {
 	SDL_SetAlpha(surface ,SDL_RLEACCEL | SDL_SRCALPHA,(Uint8)alpha);
 }
+
+int SDLBase::getTime()
+{
+	return SDL_GetTicks();
+}

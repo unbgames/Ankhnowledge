@@ -1,14 +1,13 @@
 #include "GameObject.h"
 
-GameObject::GameObject(Sprite* sprite, float x, float y) {
-	this->sprite = sprite;
+GameObject::GameObject(float x, float y) {
 	this->x = x;
 	this->y = y;
 
 }
 
 GameObject::~GameObject() {
-	// TODO Auto-generated destructor stub
+
 }
 
 float GameObject::getX(){
@@ -17,9 +16,5 @@ float GameObject::getX(){
 
 float GameObject::getY(){
 	return this->y;
-}
-
-Sprite* GameObject::getSprite(){
-	return this->sprite;
 }
 

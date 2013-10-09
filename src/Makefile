@@ -102,7 +102,10 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libitem_la_DEPENDENCIES =
 am_libitem_la_OBJECTS = GameManager.lo AudioHandler.lo Character.lo \
 	FadeHandler.lo FadeScreen.lo GameObject.lo InputManager.lo \
-	Network.lo SDLBase.lo Shape.lo Sprite.lo TileMap.lo TileSet.lo
+	Map.lo Network.lo SDLBase.lo Scene.lo SceneLegal.lo \
+	SceneLogo.lo SceneMainMenu.lo ScenePhaseOne.lo \
+	SceneTechnology.lo SceneThirdParty.lo Shape.lo SplashScreen.lo \
+	Sprite.lo Tile.lo TileMap.lo TileSet.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -269,14 +272,14 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Network.cpp SDLBase.cpp Shape.cpp Sprite.cpp TileMap.cpp TileSet.cpp
+libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp TileMap.cpp TileSet.cpp
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image
 
 # Program description
 Ankhnowledge_SOURCES = main.cpp
-dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/charac.png ../$(PACKAGE)/resources/images/background.png ../$(PACKAGE)/resources/images/Black.bmp
+dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png ../$(PACKAGE)/resources/images/background.png ../$(PACKAGE)/resources/images/Black.bmp ../$(PACKAGE)/resources/images/block.png ../$(PACKAGE)/resources/images/splashlegal.png ../$(PACKAGE)/resources/images/splashlogo.png ../$(PACKAGE)/resources/images/splashmainmenu.png ../$(PACKAGE)/resources/images/splashtechnology.png ../$(PACKAGE)/resources/images/splashthirdparty.png ../$(PACKAGE)/resources/images/suti.png ../$(PACKAGE)/resources/images/tile.png 
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program
@@ -415,10 +418,20 @@ include ./$(DEPDIR)/FadeScreen.Plo
 include ./$(DEPDIR)/GameManager.Plo
 include ./$(DEPDIR)/GameObject.Plo
 include ./$(DEPDIR)/InputManager.Plo
+include ./$(DEPDIR)/Map.Plo
 include ./$(DEPDIR)/Network.Plo
 include ./$(DEPDIR)/SDLBase.Plo
+include ./$(DEPDIR)/Scene.Plo
+include ./$(DEPDIR)/SceneLegal.Plo
+include ./$(DEPDIR)/SceneLogo.Plo
+include ./$(DEPDIR)/SceneMainMenu.Plo
+include ./$(DEPDIR)/ScenePhaseOne.Plo
+include ./$(DEPDIR)/SceneTechnology.Plo
+include ./$(DEPDIR)/SceneThirdParty.Plo
 include ./$(DEPDIR)/Shape.Plo
+include ./$(DEPDIR)/SplashScreen.Plo
 include ./$(DEPDIR)/Sprite.Plo
+include ./$(DEPDIR)/Tile.Plo
 include ./$(DEPDIR)/TileMap.Plo
 include ./$(DEPDIR)/TileSet.Plo
 include ./$(DEPDIR)/main.Po

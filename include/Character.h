@@ -10,6 +10,7 @@
 #include "GameObject.h"
 #include "Sprite.h"
 #include "InputManager.h"
+#include "GameManager.h"
 
 class Character:public GameObject {
 public:

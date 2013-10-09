@@ -25,7 +25,6 @@ private:
 	SDL_Surface* surface;
 	int currentAlpha;
 	int numberRef;
-
 };
 
 #endif /* SPRITE_H_ */

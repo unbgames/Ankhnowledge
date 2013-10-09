@@ -15,7 +15,14 @@
 #include "TileMap.h"
 #include "Shape.h"
 #include "FadeScreen.h"
-#include "Character.h"
+#include "Scene.h"
+#include "SceneLogo.h"
+#include "SceneTechnology.h"
+#include "SceneThirdParty.h"
+#include "SceneLegal.h"
+#include "SceneMainMenu.h"
+#include "ScenePhaseOne.h"
+
 
 class GameManager {
 public:
@@ -26,16 +33,23 @@ public:
 	void update(int dt);
 	void render(float cameraX, float cameraY);
 	void initResources();
+	static FadeScreen * fadeScreen;
+	static Scene * currentScene;
 
 private:
-	Sprite* bg,*charSprite,*fade;
-	Character* charOne,*charTwo;
+	Sprite* bg/*,*charOne,*charTwo*/;
+	Scene * splashLogo;
+	Scene * splashTechnology;
+	Scene * splashThirdParty;
+	Scene * splashLegal;
+	Scene * splashMainMenu;
+	Scene * splashPhaseOne;
+
 	InputManager * input;
 	AudioHandler * audio;
 	Network * network;
 	Shape* shape;
 	std::vector<GameObject*> gameObjects;
-	FadeScreen * fadeScreen;
 	float SCROLL;
 	float cameraX1;
 	float cameraX2;

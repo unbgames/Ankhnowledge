@@ -95,7 +95,14 @@ main.o: main.cpp ../include/GameManager.h ../include/Sprite.h \
  /usr/include/c++/4.7/bits/vector.tcc ../include/InputManager.h \
  ../include/AudioHandler.h ../include/Network.h ../include/GameObject.h \
  ../include/TileSet.h ../include/TileMap.h ../include/Shape.h \
- ../include/FadeScreen.h ../include/FadeHandler.h ../include/Character.h
+ ../include/FadeScreen.h ../include/FadeHandler.h ../include/Scene.h \
+ /usr/include/c++/4.7/list /usr/include/c++/4.7/bits/stl_list.h \
+ /usr/include/c++/4.7/bits/list.tcc ../include/SceneLogo.h \
+ ../include/SplashScreen.h ../include/GameManager.h \
+ ../include/SceneTechnology.h ../include/SceneThirdParty.h \
+ ../include/SceneLegal.h ../include/SceneMainMenu.h \
+ ../include/ScenePhaseOne.h ../include/Character.h ../include/Map.h \
+ ../include/Tile.h
 
 ../include/GameManager.h:
 
@@ -383,4 +390,32 @@ main.o: main.cpp ../include/GameManager.h ../include/Sprite.h \
 
 ../include/FadeHandler.h:
 
+../include/Scene.h:
+
+/usr/include/c++/4.7/list:
+
+/usr/include/c++/4.7/bits/stl_list.h:
+
+/usr/include/c++/4.7/bits/list.tcc:
+
+../include/SceneLogo.h:
+
+../include/SplashScreen.h:
+
+../include/GameManager.h:
+
+../include/SceneTechnology.h:
+
+../include/SceneThirdParty.h:
+
+../include/SceneLegal.h:
+
+../include/SceneMainMenu.h:
+
+../include/ScenePhaseOne.h:
+
 ../include/Character.h:
+
+../include/Map.h:
+
+../include/Tile.h:

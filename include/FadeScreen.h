@@ -1,9 +1,4 @@
-/*
- * FadeScreen.h
- *
- *  Created on: Oct 3, 2013
- *      Author: makoto
- */
+
 
 #ifndef FADESCREEN_H_
 #define FADESCREEN_H_
@@ -13,10 +8,13 @@
 
 class FadeScreen : GameObject {
 public:
-	FadeScreen(Sprite* sprite, float x, float y);
+	FadeScreen(float x, float y);
 	virtual ~FadeScreen();
 	int update(int dt);
 	void render(float cameraX, float cameraY);
+	bool isFaded();
+	void fadeOut(float percentage, float time);
+	void fadeIn(float percentage, float time);
 
 private:
 	Sprite * sprite;

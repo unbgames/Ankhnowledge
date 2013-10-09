@@ -1,9 +1,4 @@
-/*
- * FadeHandler.h
- *
- *  Created on: Oct 3, 2013
- *      Author: makoto
- */
+
 
 #ifndef FADEHANDLER_H_
 #define FADEHANDLER_H_
@@ -17,7 +12,7 @@ public:
 	void fadeIn(float percentage, float time);
 	void fadeOut(float percentage, float time);
 	void update(float dt);
-
+	float getCurrentPercentage();
 private:
 	bool shouldFadeIn;
 	bool shouldFadeOut;

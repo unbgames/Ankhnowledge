@@ -1,9 +1,3 @@
-/*
- * FadeHandler.cpp
- *
- *  Created on: Oct 3, 2013
- *      Author: makoto
- */
 
 #include "FadeHandler.h"
 #include <iostream>
@@ -44,7 +38,11 @@ void FadeHandler::update(float dt)
 {
 	if(!this->sprite)
 		return;
-
+	/*cout << "currentPercentage: " << this->currentPercentage << endl;
+	cout << "shouldFadeIn: " << this->shouldFadeIn << endl;
+	cout << "shouldFadeOut: " << this->shouldFadeOut << endl;
+	cout << "rate: " << this->rate << endl;
+	cout << "dt : " << dt << endl;*/
 	if(shouldFadeIn)
 	{
 		if(currentPercentage < percentageOfStop)
@@ -71,9 +69,13 @@ void FadeHandler::update(float dt)
 			shouldFadeOut = false;
 			currentPercentage = percentageOfStop;
 			sprite->setAlpha(255*currentPercentage);
-			fadeIn(1,2);
 		}
 	}
 
+}
+
+float FadeHandler::getCurrentPercentage()
+{
+	return this->currentPercentage;
 }
 
