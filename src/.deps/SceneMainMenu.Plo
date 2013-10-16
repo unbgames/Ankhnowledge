@@ -102,7 +102,22 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
  ../include/ScenePhaseOne.h ../include/Character.h ../include/Map.h \
- ../include/Tile.h
+ ../include/Tile.h ../include/MainMenuButHandler.h ../include/Button.h \
+ /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
+ /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ /usr/include/c++/4.7/bits/locale_classes.h \
+ /usr/include/c++/4.7/bits/locale_classes.tcc \
+ /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
+ /usr/include/c++/4.7/bits/basic_ios.h \
+ /usr/include/c++/4.7/bits/locale_facets.h /usr/include/c++/4.7/cwctype \
+ /usr/include/wctype.h \
+ /usr/include/c++/4.7/i686-linux-gnu/bits/ctype_base.h \
+ /usr/include/c++/4.7/bits/streambuf_iterator.h \
+ /usr/include/c++/4.7/i686-linux-gnu/bits/ctype_inline.h \
+ /usr/include/c++/4.7/bits/locale_facets.tcc \
+ /usr/include/c++/4.7/bits/basic_ios.tcc \
+ /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
+ /usr/include/c++/4.7/bits/istream.tcc
 
 ../include/SceneMainMenu.h:
 
@@ -419,3 +434,47 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 ../include/Map.h:
 
 ../include/Tile.h:
+
+../include/MainMenuButHandler.h:
+
+../include/Button.h:
+
+/usr/include/c++/4.7/iostream:
+
+/usr/include/c++/4.7/ostream:
+
+/usr/include/c++/4.7/ios:
+
+/usr/include/c++/4.7/bits/ios_base.h:
+
+/usr/include/c++/4.7/bits/locale_classes.h:
+
+/usr/include/c++/4.7/bits/locale_classes.tcc:
+
+/usr/include/c++/4.7/streambuf:
+
+/usr/include/c++/4.7/bits/streambuf.tcc:
+
+/usr/include/c++/4.7/bits/basic_ios.h:
+
+/usr/include/c++/4.7/bits/locale_facets.h:
+
+/usr/include/c++/4.7/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/include/c++/4.7/i686-linux-gnu/bits/ctype_base.h:
+
+/usr/include/c++/4.7/bits/streambuf_iterator.h:
+
+/usr/include/c++/4.7/i686-linux-gnu/bits/ctype_inline.h:
+
+/usr/include/c++/4.7/bits/locale_facets.tcc:
+
+/usr/include/c++/4.7/bits/basic_ios.tcc:
+
+/usr/include/c++/4.7/bits/ostream.tcc:
+
+/usr/include/c++/4.7/istream:
+
+/usr/include/c++/4.7/bits/istream.tcc:

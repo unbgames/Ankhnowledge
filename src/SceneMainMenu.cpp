@@ -16,11 +16,12 @@ SceneMainMenu::~SceneMainMenu() {
 
 void SceneMainMenu::Enter()
 {
-	this->splashSprite = new Sprite("../Ankhnowledge/resources/images/splashmainmenu.png");
+
 	string nextScene = "ScenePhaseOne" ;
-	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
-	this->addGameObject(splashScreen);
-	GameManager::fadeScreen->fadeOut(0,2);
+	//SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
+	buttons = new MainMenuButHandler();
+	this->addGameObject(buttons);
+	GameManager::fadeScreen->fadeOut(0,0.001);
 }
 
 void SceneMainMenu::Exit()

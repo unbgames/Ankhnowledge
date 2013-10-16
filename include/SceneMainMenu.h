@@ -10,6 +10,8 @@
 #include "Scene.h"
 #include "Sprite.h"
 #include "SplashScreen.h"
+#include "MainMenuButHandler.h"
+#include "GameObject.h"
 #include <string>
 
 class SceneMainMenu : public Scene{
@@ -21,6 +23,7 @@ public:
 
 private:
 	Sprite * splashSprite;
+	GameObject* buttons,*bg;
 };
 
 #endif /* SCENEMAINMENU_H_ */

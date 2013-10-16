@@ -102,10 +102,9 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
  ../include/SplashScreen.h ../include/GameManager.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/ScenePhaseOne.h ../include/Character.h ../include/Map.h \
- ../include/Tile.h /usr/include/c++/4.7/iostream \
- /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
- /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/MainMenuButHandler.h ../include/Button.h \
+ /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
+ /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -118,8 +117,9 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
  /usr/include/c++/4.7/bits/locale_facets.tcc \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
- /usr/include/c++/4.7/bits/istream.tcc /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc
+ /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
+ ../include/Character.h ../include/Map.h ../include/Tile.h \
+ /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc
 
 ../include/GameManager.h:
 
@@ -429,13 +429,9 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
 
 ../include/SceneMainMenu.h:
 
-../include/ScenePhaseOne.h:
+../include/MainMenuButHandler.h:
 
-../include/Character.h:
-
-../include/Map.h:
-
-../include/Tile.h:
+../include/Button.h:
 
 /usr/include/c++/4.7/iostream:
 
@@ -476,6 +472,14 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
 /usr/include/c++/4.7/istream:
 
 /usr/include/c++/4.7/bits/istream.tcc:
+
+../include/ScenePhaseOne.h:
+
+../include/Character.h:
+
+../include/Map.h:
+
+../include/Tile.h:
 
 /usr/include/c++/4.7/sstream:
 

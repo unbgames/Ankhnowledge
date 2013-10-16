@@ -1,9 +1,9 @@
-SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
- ../include/GameObject.h ../include/Sprite.h ../include/SDLBase.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/i386-linux-gnu/sys/types.h \
- /usr/include/features.h /usr/include/i386-linux-gnu/bits/predefs.h \
+Button.lo: Button.cpp ../include/Button.h ../include/GameObject.h \
+ ../include/Sprite.h ../include/SDLBase.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
+ /usr/include/i386-linux-gnu/sys/types.h /usr/include/features.h \
+ /usr/include/i386-linux-gnu/bits/predefs.h \
  /usr/include/i386-linux-gnu/sys/cdefs.h \
  /usr/include/i386-linux-gnu/bits/wordsize.h \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
@@ -87,39 +87,9 @@ SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
  /usr/include/i386-linux-gnu/bits/timex.h \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/atomic_word.h \
- /usr/include/c++/4.7/bits/basic_string.tcc ../include/GameManager.h \
- /usr/include/c++/4.7/vector /usr/include/c++/4.7/bits/stl_construct.h \
- /usr/include/c++/4.7/ext/alloc_traits.h \
- /usr/include/c++/4.7/bits/stl_uninitialized.h \
- /usr/include/c++/4.7/bits/stl_vector.h \
- /usr/include/c++/4.7/bits/stl_bvector.h \
- /usr/include/c++/4.7/bits/vector.tcc ../include/InputManager.h \
- ../include/AudioHandler.h ../include/Network.h ../include/TileSet.h \
- ../include/TileMap.h ../include/Shape.h ../include/FadeScreen.h \
- ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
- /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
- ../include/SceneLogo.h ../include/SplashScreen.h \
- ../include/SceneTechnology.h ../include/SceneThirdParty.h \
- ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h ../include/Button.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
- /usr/include/c++/4.7/bits/locale_classes.h \
- /usr/include/c++/4.7/bits/locale_classes.tcc \
- /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
- /usr/include/c++/4.7/bits/basic_ios.h \
- /usr/include/c++/4.7/bits/locale_facets.h /usr/include/c++/4.7/cwctype \
- /usr/include/wctype.h \
- /usr/include/c++/4.7/i686-linux-gnu/bits/ctype_base.h \
- /usr/include/c++/4.7/bits/streambuf_iterator.h \
- /usr/include/c++/4.7/i686-linux-gnu/bits/ctype_inline.h \
- /usr/include/c++/4.7/bits/locale_facets.tcc \
- /usr/include/c++/4.7/bits/basic_ios.tcc \
- /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
- /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Map.h ../include/Tile.h
+ /usr/include/c++/4.7/bits/basic_string.tcc
 
-../include/SplashScreen.h:
+../include/Button.h:
 
 ../include/GameObject.h:
 
@@ -374,107 +344,3 @@ SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
 /usr/include/c++/4.7/i686-linux-gnu/bits/atomic_word.h:
 
 /usr/include/c++/4.7/bits/basic_string.tcc:
-
-../include/GameManager.h:
-
-/usr/include/c++/4.7/vector:
-
-/usr/include/c++/4.7/bits/stl_construct.h:
-
-/usr/include/c++/4.7/ext/alloc_traits.h:
-
-/usr/include/c++/4.7/bits/stl_uninitialized.h:
-
-/usr/include/c++/4.7/bits/stl_vector.h:
-
-/usr/include/c++/4.7/bits/stl_bvector.h:
-
-/usr/include/c++/4.7/bits/vector.tcc:
-
-../include/InputManager.h:
-
-../include/AudioHandler.h:
-
-../include/Network.h:
-
-../include/TileSet.h:
-
-../include/TileMap.h:
-
-../include/Shape.h:
-
-../include/FadeScreen.h:
-
-../include/FadeHandler.h:
-
-../include/Scene.h:
-
-/usr/include/c++/4.7/list:
-
-/usr/include/c++/4.7/bits/stl_list.h:
-
-/usr/include/c++/4.7/bits/list.tcc:
-
-../include/SceneLogo.h:
-
-../include/SplashScreen.h:
-
-../include/SceneTechnology.h:
-
-../include/SceneThirdParty.h:
-
-../include/SceneLegal.h:
-
-../include/SceneMainMenu.h:
-
-../include/MainMenuButHandler.h:
-
-../include/Button.h:
-
-/usr/include/c++/4.7/iostream:
-
-/usr/include/c++/4.7/ostream:
-
-/usr/include/c++/4.7/ios:
-
-/usr/include/c++/4.7/bits/ios_base.h:
-
-/usr/include/c++/4.7/bits/locale_classes.h:
-
-/usr/include/c++/4.7/bits/locale_classes.tcc:
-
-/usr/include/c++/4.7/streambuf:
-
-/usr/include/c++/4.7/bits/streambuf.tcc:
-
-/usr/include/c++/4.7/bits/basic_ios.h:
-
-/usr/include/c++/4.7/bits/locale_facets.h:
-
-/usr/include/c++/4.7/cwctype:
-
-/usr/include/wctype.h:
-
-/usr/include/c++/4.7/i686-linux-gnu/bits/ctype_base.h:
-
-/usr/include/c++/4.7/bits/streambuf_iterator.h:
-
-/usr/include/c++/4.7/i686-linux-gnu/bits/ctype_inline.h:
-
-/usr/include/c++/4.7/bits/locale_facets.tcc:
-
-/usr/include/c++/4.7/bits/basic_ios.tcc:
-
-/usr/include/c++/4.7/bits/ostream.tcc:
-
-/usr/include/c++/4.7/istream:
-
-/usr/include/c++/4.7/bits/istream.tcc:
-
-../include/ScenePhaseOne.h:
-
-../include/Character.h:
-
-../include/Map.h:
-
-../include/Tile.h:
