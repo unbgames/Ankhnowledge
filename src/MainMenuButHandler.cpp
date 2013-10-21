@@ -8,20 +8,20 @@
 #include "MainMenuButHandler.h"
 
 MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
-	this->bt1_1 = new Sprite("../Ankhnowledge/resources/images/host_1.png");
-	this->bt1_2 = new Sprite("../Ankhnowledge/resources/images/host_2.png");
+	this->bt1_1 = new Sprite("../Ankhnowledge/resources/images/host_2.png");
+	this->bt1_2 = new Sprite("../Ankhnowledge/resources/images/host_1.png");
 	this->bt1_3 = new Sprite("../Ankhnowledge/resources/images/host_3.png");
-	this->bt2_1 = new Sprite("../Ankhnowledge/resources/images/connect_1.png");
-	this->bt2_2 = new Sprite("../Ankhnowledge/resources/images/connect_2.png");
+	this->bt2_1 = new Sprite("../Ankhnowledge/resources/images/connect_2.png");
+	this->bt2_2 = new Sprite("../Ankhnowledge/resources/images/connect_1.png");
 	this->bt2_3 = new Sprite("../Ankhnowledge/resources/images/connect_3.png");
-	this->bt3_1 = new Sprite("../Ankhnowledge/resources/images/options_1.png");
-	this->bt3_2 = new Sprite("../Ankhnowledge/resources/images/options_2.png");
+	this->bt3_1 = new Sprite("../Ankhnowledge/resources/images/options_2.png");
+	this->bt3_2 = new Sprite("../Ankhnowledge/resources/images/options_1.png");
 	this->bt3_3 = new Sprite("../Ankhnowledge/resources/images/options_3.png");
-	this->bt4_1 = new Sprite("../Ankhnowledge/resources/images/credits_1.png");
-	this->bt4_2 = new Sprite("../Ankhnowledge/resources/images/credits_2.png");
+	this->bt4_1 = new Sprite("../Ankhnowledge/resources/images/credits_2.png");
+	this->bt4_2 = new Sprite("../Ankhnowledge/resources/images/credits_1.png");
 	this->bt4_3 = new Sprite("../Ankhnowledge/resources/images/credits_3.png");
-	this->bt5_1 = new Sprite("../Ankhnowledge/resources/images/quit_1.png");
-	this->bt5_2 = new Sprite("../Ankhnowledge/resources/images/quit_2.png");
+	this->bt5_1 = new Sprite("../Ankhnowledge/resources/images/quit_2.png");
+	this->bt5_2 = new Sprite("../Ankhnowledge/resources/images/quit_1.png");
 	this->bt5_3 = new Sprite("../Ankhnowledge/resources/images/quit_3.png");
 
 
