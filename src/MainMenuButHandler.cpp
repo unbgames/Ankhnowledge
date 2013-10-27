@@ -8,21 +8,21 @@
 #include "MainMenuButHandler.h"
 
 MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
-	this->bt1_1 = new Sprite("../Ankhnowledge/resources/images/host_2.png");
-	this->bt1_2 = new Sprite("../Ankhnowledge/resources/images/host_1.png");
-	this->bt1_3 = new Sprite("../Ankhnowledge/resources/images/host_3.png");
-	this->bt2_1 = new Sprite("../Ankhnowledge/resources/images/connect_2.png");
-	this->bt2_2 = new Sprite("../Ankhnowledge/resources/images/connect_1.png");
-	this->bt2_3 = new Sprite("../Ankhnowledge/resources/images/connect_3.png");
-	this->bt3_1 = new Sprite("../Ankhnowledge/resources/images/options_2.png");
-	this->bt3_2 = new Sprite("../Ankhnowledge/resources/images/options_1.png");
-	this->bt3_3 = new Sprite("../Ankhnowledge/resources/images/options_3.png");
-	this->bt4_1 = new Sprite("../Ankhnowledge/resources/images/credits_2.png");
-	this->bt4_2 = new Sprite("../Ankhnowledge/resources/images/credits_1.png");
-	this->bt4_3 = new Sprite("../Ankhnowledge/resources/images/credits_3.png");
-	this->bt5_1 = new Sprite("../Ankhnowledge/resources/images/quit_2.png");
-	this->bt5_2 = new Sprite("../Ankhnowledge/resources/images/quit_1.png");
-	this->bt5_3 = new Sprite("../Ankhnowledge/resources/images/quit_3.png");
+	this->bt1_1 = new Sprite(SDLBase::imagePath + "host_1.png");
+	this->bt1_2 = new Sprite(SDLBase::imagePath + "host_2.png");
+	this->bt1_3 = new Sprite(SDLBase::imagePath + "host_3.png");
+	this->bt2_1 = new Sprite(SDLBase::imagePath + "connect_1.png");
+	this->bt2_2 = new Sprite(SDLBase::imagePath + "connect_2.png");
+	this->bt2_3 = new Sprite(SDLBase::imagePath + "connect_3.png");
+	this->bt3_1 = new Sprite(SDLBase::imagePath + "options_1.png");
+	this->bt3_2 = new Sprite(SDLBase::imagePath + "options_2.png");
+	this->bt3_3 = new Sprite(SDLBase::imagePath + "options_3.png");
+	this->bt4_1 = new Sprite(SDLBase::imagePath + "credits_1.png");
+	this->bt4_2 = new Sprite(SDLBase::imagePath + "credits_2.png");
+	this->bt4_3 = new Sprite(SDLBase::imagePath + "credits_3.png");
+	this->bt5_1 = new Sprite(SDLBase::imagePath + "quit_1.png");
+	this->bt5_2 = new Sprite(SDLBase::imagePath + "quit_2.png");
+	this->bt5_3 = new Sprite(SDLBase::imagePath + "quit_3.png");
 
 
 	this->bt1 = new Button(bt1_1,bt1_2,bt1_3,500,300);
@@ -30,7 +30,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt3 = new Button(bt3_1,bt3_2,bt3_3,500,400);
 	this->bt4 = new Button(bt4_1,bt4_2,bt4_3,500,450);
 	this->bt5 = new Button(bt5_1,bt5_2,bt5_3,500,500);
-	this->splashSprite = new Sprite("../Ankhnowledge/resources/images/titlebg.png");
+	this->splashSprite = new Sprite(SDLBase::imagePath + "titlebg.png");
 	input = InputManager::getInstance();
 
 }

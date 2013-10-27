@@ -18,7 +18,6 @@ void SceneMainMenu::Enter()
 {
 
 	string nextScene = "ScenePhaseOne" ;
-	//SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 	buttons = new MainMenuButHandler();
 	this->addGameObject(buttons);
 	GameManager::fadeScreen->fadeOut(0,0.001);

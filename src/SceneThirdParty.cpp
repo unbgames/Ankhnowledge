@@ -16,7 +16,7 @@ SceneThirdParty::~SceneThirdParty() {
 
 void SceneThirdParty::Enter()
 {
-	this->splashSprite = new Sprite("../Ankhnowledge/resources/images/splashthirdparty.png");
+	this->splashSprite = new Sprite(SDLBase::imagePath + "splashthirdparty.png");
 	string nextScene = "SceneLegal" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 	this->addGameObject(splashScreen);

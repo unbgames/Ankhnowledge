@@ -10,7 +10,7 @@ SceneLogo::~SceneLogo() {
 
 void SceneLogo::Enter()
 {
-	this->splashSprite = new Sprite("Ankhnowledge/resources/images/splashlogo.png");
+	this->splashSprite = new Sprite("../Ankhnowledge/resources/images/splashlogo.png");
 	string nextScene = "SceneTechnology";
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 

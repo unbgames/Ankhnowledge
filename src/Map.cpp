@@ -17,8 +17,8 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	this->tile->incNumRef();
 	this->block = block;
 	this->block->incNumRef();
-	this->char1 = new Sprite("../Ankhnowledge/resources/images/adam.png");
-	this->char2 = new Sprite("../Ankhnowledge/resources/images/suti.png");
+	this->char1 = new Sprite(SDLBase::imagePath + "adam.png");
+	this->char2 = new Sprite(SDLBase::imagePath + "suti.png");
 
 	srand (time(NULL));
 

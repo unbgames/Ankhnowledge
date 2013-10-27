@@ -128,20 +128,12 @@ void SDLBase::drawLine(int x1, int y1, int x2, int y2, int rgb, int spacing){
 	{
 		if (spacing == 0)
 		{
-			SDL_Rect pixel;
-			pixel.x = x;
-			pixel.y = y;
-			pixel.w = 4;
-			pixel.h = 4;
+			SDL_Rect pixel = {x,y,4,4};
 			SDL_FillRect(screen,&pixel,rgb);
 		}
 		else if (curpixel % spacing >= spacing/2)
 		{
-			SDL_Rect pixel;
-			pixel.x = x;
-			pixel.y = y;
-			pixel.w = 1;
-			pixel.h = 1;
+			SDL_Rect pixel = {x,y,1,1};
 			SDL_FillRect(screen,&pixel,rgb);
 		}
 

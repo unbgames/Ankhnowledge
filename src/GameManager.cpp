@@ -7,6 +7,8 @@ using namespace std;
 
 FadeScreen * GameManager::fadeScreen = 0;
 Scene * GameManager::currentScene = 0;
+string SDLBase::imagePath = getenv("HOME"); 
+
 /*
  * Construtor da Classe
  * Antes de carregar a imagem e necessario inicialiar o SDL, uma vez que o construtor
@@ -14,7 +16,7 @@ Scene * GameManager::currentScene = 0;
  * funcoes SDL_DisplayFormat e SDL_DisplayFormaAlpha. Funcoes estas que precisam
  */
 GameManager::GameManager() {
-	//srand ( time(NULL) );
+	SDLBase::imagePath = SDLBase::imagePath + "/../../usr/local/Ankhnowledge/resources/images/";
 	SDLBase::initializeSDL();
 	initResources();
 
@@ -79,6 +81,17 @@ void GameManager::processEvents(){
 	    SDL_PushEvent( &quit );
 	}
 
+
+	//Skip
+
+	if((input->isKeyDown(SDLK_SPACE)) 
+	&& ((currentScene->getSceneName() == "SceneLogo")
+	|| (currentScene->getSceneName() == "SceneTechnology")
+	|| (currentScene->getSceneName() == "SceneThirdParty")
+	|| (currentScene->getSceneName() == "SceneLegal"))){
+	    currentScene = splashMainMenu;
+	    currentScene->Enter();
+	}
 
 	if( input->isKeyDown(SDLK_UP) )
 		cameraSpeedY -= SCROLL;

@@ -19,10 +19,7 @@ Shape::~Shape() {
 }
 
 void Shape::fillRect(int x, int y, int w, int h, int color){
-	this->clipRect.x = x;
-	this->clipRect.y = y;
-	this->clipRect.w = w;
-	this->clipRect.h = h;
+	clipRect = {x,y,w,h};
 	SDLBase::fillRectangle(&clipRect, color);
 }
 

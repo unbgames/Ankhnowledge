@@ -16,7 +16,7 @@ SceneTechnology::~SceneTechnology() {
 
 void SceneTechnology::Enter()
 {
-	this->splashSprite = new Sprite("../Ankhnowledge/resources/images/splashtechnology.png");
+	this->splashSprite = new Sprite(SDLBase::imagePath + "splashtechnology.png");
 	string nextScene = "SceneThirdParty" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 	this->addGameObject(splashScreen);

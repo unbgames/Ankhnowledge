@@ -81,10 +81,6 @@ Scene * Scene::getNextScene()
 	return this->nextScene;
 }
 
-string Scene::getSceneName(){
-	return this->sceneName;
-}
-
 void Scene::destroyGameObject(GameObject * gameObject)
 {
 	this->garbage.push_back(gameObject);

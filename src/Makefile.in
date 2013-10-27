@@ -105,8 +105,7 @@ am_libitem_la_OBJECTS = GameManager.lo AudioHandler.lo Button.lo \
 	InputManager.lo Map.lo MainMenuButHandler.lo Network.lo \
 	SDLBase.lo Scene.lo SceneLegal.lo SceneLogo.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
-	SceneThirdParty.lo Shape.lo SplashScreen.lo Sprite.lo Tile.lo \
-	TileMap.lo TileSet.lo
+	SceneThirdParty.lo Shape.lo SplashScreen.lo Sprite.lo Tile.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -273,7 +272,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp TileMap.cpp TileSet.cpp
+libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp 
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image
@@ -461,8 +460,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SplashScreen.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sprite.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Tile.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TileMap.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TileSet.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 
 .cpp.o:

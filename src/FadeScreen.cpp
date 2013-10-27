@@ -4,7 +4,7 @@
 
 FadeScreen::FadeScreen(float x, float y) : GameObject (x,y) {
 	this->sprite = 0;
-	this->sprite = new Sprite("../Ankhnowledge/resources/images/Black.bmp");
+	this->sprite = new Sprite(SDLBase::imagePath + "Black.bmp");
 	fadeHandler = new FadeHandler(sprite);
 }
 

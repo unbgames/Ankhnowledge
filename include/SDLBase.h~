@@ -24,7 +24,7 @@ public:
 	static void drawCircle(float size, int x,int y,int r, int g, int b);
 	static void setAlpha(SDL_Surface * surface, int alpha);
 	static int getTime();
-	static string imagePath;
+
 private:
 	static SDL_Surface* screen;
 };

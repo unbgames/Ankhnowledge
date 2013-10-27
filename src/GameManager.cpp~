@@ -7,6 +7,8 @@ using namespace std;
 
 FadeScreen * GameManager::fadeScreen = 0;
 Scene * GameManager::currentScene = 0;
+string SDLBase::imagePath = getenv("HOME"); 
+
 /*
  * Construtor da Classe
  * Antes de carregar a imagem e necessario inicialiar o SDL, uma vez que o construtor
@@ -14,7 +16,7 @@ Scene * GameManager::currentScene = 0;
  * funcoes SDL_DisplayFormat e SDL_DisplayFormaAlpha. Funcoes estas que precisam
  */
 GameManager::GameManager() {
-	//srand ( time(NULL) );
+	
 	SDLBase::initializeSDL();
 	initResources();
 
@@ -24,7 +26,6 @@ GameManager::GameManager() {
  * Destrutor da Clase
  */
 GameManager::~GameManager() {
-	delete (bg);
 	delete splashLogo;
 	delete splashTechnology;
 	delete splashThirdParty;
@@ -34,7 +35,6 @@ GameManager::~GameManager() {
 
 //Metodo que inicializa os objetos (recursos) do jogo
 void GameManager::initResources(){
-	this->bg = new Sprite("Ankhnowledge/resources/images/fundo.png");
 
 	this->splashLogo = new SceneLogo("SceneLogo");
 	this->splashTechnology = new SceneTechnology("SceneTechnology");
@@ -81,6 +81,17 @@ void GameManager::processEvents(){
 	    SDL_PushEvent( &quit );
 	}
 
+
+	//Skip
+
+	if((input->isKeyDown(SDLK_SPACE)) 
+	&& ((currentScene->getSceneName() == "SceneLogo")
+	|| (currentScene->getSceneName() == "SceneTechnology")
+	|| (currentScene->getSceneName() == "SceneThirdParty")
+	|| (currentScene->getSceneName() == "SceneLegal"))){
+	    currentScene = splashMainMenu;
+	    currentScene->Enter();
+	}
 
 	if( input->isKeyDown(SDLK_UP) )
 		cameraSpeedY -= SCROLL;

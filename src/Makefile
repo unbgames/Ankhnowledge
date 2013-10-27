@@ -54,9 +54,9 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = x86_64-unknown-linux-gnu
-target_triplet = x86_64-unknown-linux-gnu
+build_triplet = i686-pc-linux-gnu
+host_triplet = i686-pc-linux-gnu
+target_triplet = i686-pc-linux-gnu
 bin_PROGRAMS = Ankhnowledge$(EXEEXT)
 subdir = src
 DIST_COMMON = $(dist_Ankhnowledge_DATA) $(srcdir)/Makefile.am \
@@ -105,8 +105,7 @@ am_libitem_la_OBJECTS = GameManager.lo AudioHandler.lo Button.lo \
 	InputManager.lo Map.lo MainMenuButHandler.lo Network.lo \
 	SDLBase.lo Scene.lo SceneLegal.lo SceneLogo.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
-	SceneThirdParty.lo Shape.lo SplashScreen.lo Sprite.lo Tile.lo \
-	TileMap.lo TileSet.lo
+	SceneThirdParty.lo Shape.lo SplashScreen.lo Sprite.lo Tile.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -139,12 +138,12 @@ DATA = $(dist_Ankhnowledge_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/atilla/Ankhnowledge/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/atilla/Ankhnowledge/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/atilla/Ankhnowledge/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/atilla/Ankhnowledge/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -173,7 +172,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld -m elf_x86_64
+LD = /usr/bin/ld
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lSDL_image 
@@ -184,7 +183,7 @@ LTLIBOBJS =
 LT_CURRENT = 0
 LT_RELEASE = 0.0.1
 LT_REVISION = 0
-MAKEINFO = ${SHELL} /home/atilla/Ankhnowledge/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -207,10 +206,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.0.1
-abs_builddir = /home/atilla/Ankhnowledge/src
-abs_srcdir = /home/atilla/Ankhnowledge/src
-abs_top_builddir = /home/atilla/Ankhnowledge
-abs_top_srcdir = /home/atilla/Ankhnowledge
+abs_builddir = /home/al/IJE/Ankhnowledge/src
+abs_srcdir = /home/al/IJE/Ankhnowledge/src
+abs_top_builddir = /home/al/IJE/Ankhnowledge
+abs_top_srcdir = /home/al/IJE/Ankhnowledge
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -222,26 +221,26 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
+build = i686-pc-linux-gnu
 build_alias = 
-build_cpu = x86_64
+build_cpu = i686
 build_os = linux-gnu
-build_vendor = unknown
+build_vendor = pc
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-unknown-linux-gnu
+host = i686-pc-linux-gnu
 host_alias = 
-host_cpu = x86_64
+host_cpu = i686
 host_os = linux-gnu
-host_vendor = unknown
+host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/atilla/Ankhnowledge/config/install-sh
+install_sh = ${SHELL} /home/al/IJE/Ankhnowledge/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -257,11 +256,11 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = x86_64-unknown-linux-gnu
+target = i686-pc-linux-gnu
 target_alias = 
-target_cpu = x86_64
+target_cpu = i686
 target_os = linux-gnu
-target_vendor = unknown
+target_vendor = pc
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
@@ -273,7 +272,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp TileMap.cpp TileSet.cpp
+libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp 
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image
@@ -461,8 +460,6 @@ include ./$(DEPDIR)/Shape.Plo
 include ./$(DEPDIR)/SplashScreen.Plo
 include ./$(DEPDIR)/Sprite.Plo
 include ./$(DEPDIR)/Tile.Plo
-include ./$(DEPDIR)/TileMap.Plo
-include ./$(DEPDIR)/TileSet.Plo
 include ./$(DEPDIR)/main.Po
 
 .cpp.o:

@@ -12,7 +12,7 @@ bin_PROGRAMS = Ankhnowledge
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp TileMap.cpp TileSet.cpp
+libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp 
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image
