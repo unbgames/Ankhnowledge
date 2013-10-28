@@ -1,0 +1,30 @@
+/*
+ * Slider.h
+ *
+ *  Created on: Oct 28, 2013
+ *      Author: al
+ */
+
+#ifndef SLIDER_H_
+#define SLIDER_H_
+#include "GameObject.h"
+#include "Sprite.h"
+#include "InputManager.h"
+#include <iostream>
+
+class Slider:public GameObject {
+public:
+	Slider(Sprite* button, Sprite* slider, float x, float y);
+	virtual ~Slider();
+	void render(float cameraX, float cameraY);
+	int update(int dt);
+	bool onButton();
+	void slide();
+private:
+	Sprite* button,*bar;
+	InputManager* input;
+	float xBar,xButton,yBar,yButton;
+	bool slideButton;
+};
+
+#endif /* SLIDER_H_ */

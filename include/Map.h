@@ -13,8 +13,12 @@
 #include "InputManager.h"
 #include <vector>
 #include "GameObject.h"
+#include "Character.h"
+#include "Animation.h"
+
 using namespace std;
 
+class Character;
 class Map : public GameObject {
 public:
 	Map(Sprite * tile, Sprite * block, float x, float y);
@@ -25,9 +29,13 @@ public:
 private:
 	Sprite* tile;
 	Sprite* block;
-	Sprite* char1;
-	Sprite* char2;
+	Sprite* char1_spr;
+	Sprite* char2_spr;
+	Character * player1;
+	Character * player2;
+	Character * currentPlayer;
 	vector<Tile* > tiles;
+	bool changePlayer;
 };
 
 #endif /* MAP_H_ */

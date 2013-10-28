@@ -11,6 +11,8 @@
 #include "AudioHandler.h"
 #include "Network.h"
 #include "GameObject.h"
+#include "TileSet.h"
+#include "TileMap.h"
 #include "Shape.h"
 #include "FadeScreen.h"
 #include "Scene.h"

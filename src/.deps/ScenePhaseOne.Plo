@@ -97,13 +97,13 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
  ../include/SplashScreen.h ../include/GameManager.h \
  ../include/InputManager.h ../include/AudioHandler.h ../include/Network.h \
- ../include/TileSet.h ../include/TileMap.h ../include/Shape.h \
- ../include/FadeScreen.h ../include/FadeHandler.h ../include/SceneLogo.h \
- ../include/SceneTechnology.h ../include/SceneThirdParty.h \
- ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h ../include/Button.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/Shape.h ../include/FadeScreen.h ../include/FadeHandler.h \
+ ../include/SceneLogo.h ../include/SceneTechnology.h \
+ ../include/SceneThirdParty.h ../include/SceneLegal.h \
+ ../include/SceneMainMenu.h ../include/MainMenuButHandler.h \
+ ../include/Button.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -117,7 +117,9 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Map.h ../include/Tile.h
+ ../include/SceneGameOver.h ../include/SceneCredits.h \
+ ../include/SceneOptions.h ../include/Slider.h ../include/Character.h \
+ ../include/Animation.h ../include/Map.h ../include/Tile.h
 
 ../include/ScenePhaseOne.h:
 
@@ -407,10 +409,6 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
 
 ../include/Network.h:
 
-../include/TileSet.h:
-
-../include/TileMap.h:
-
 ../include/Shape.h:
 
 ../include/FadeScreen.h:
@@ -473,7 +471,17 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
 
 ../include/ScenePhaseOne.h:
 
+../include/SceneGameOver.h:
+
+../include/SceneCredits.h:
+
+../include/SceneOptions.h:
+
+../include/Slider.h:
+
 ../include/Character.h:
+
+../include/Animation.h:
 
 ../include/Map.h:
 

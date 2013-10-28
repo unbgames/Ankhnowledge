@@ -1,4 +1,4 @@
-GameManager.lo: GameManager.cpp ../include/GameManager.h \
+Slider.lo: Slider.cpp ../include/Slider.h ../include/GameObject.h \
  ../include/Sprite.h ../include/SDLBase.h /usr/include/SDL/SDL.h \
  /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
  /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
@@ -87,24 +87,9 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
  /usr/include/i386-linux-gnu/bits/timex.h \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/atomic_word.h \
- /usr/include/c++/4.7/bits/basic_string.tcc /usr/include/c++/4.7/vector \
- /usr/include/c++/4.7/bits/stl_construct.h \
- /usr/include/c++/4.7/ext/alloc_traits.h \
- /usr/include/c++/4.7/bits/stl_uninitialized.h \
- /usr/include/c++/4.7/bits/stl_vector.h \
- /usr/include/c++/4.7/bits/stl_bvector.h \
- /usr/include/c++/4.7/bits/vector.tcc ../include/InputManager.h \
- ../include/AudioHandler.h ../include/Network.h ../include/GameObject.h \
- ../include/Shape.h ../include/FadeScreen.h ../include/FadeHandler.h \
- ../include/Scene.h /usr/include/c++/4.7/list \
- /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
- ../include/SceneLogo.h ../include/SplashScreen.h \
- ../include/GameManager.h ../include/SceneTechnology.h \
- ../include/SceneThirdParty.h ../include/SceneLegal.h \
- ../include/SceneMainMenu.h ../include/MainMenuButHandler.h \
- ../include/Button.h /usr/include/c++/4.7/iostream \
- /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
- /usr/include/c++/4.7/bits/ios_base.h \
+ /usr/include/c++/4.7/bits/basic_string.tcc ../include/InputManager.h \
+ /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
+ /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -117,13 +102,11 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
  /usr/include/c++/4.7/bits/locale_facets.tcc \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
- /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Animation.h ../include/Map.h \
- ../include/Tile.h ../include/SceneGameOver.h ../include/SceneCredits.h \
- ../include/SceneOptions.h ../include/Slider.h \
- /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc
+ /usr/include/c++/4.7/bits/istream.tcc
 
-../include/GameManager.h:
+../include/Slider.h:
+
+../include/GameObject.h:
 
 ../include/Sprite.h:
 
@@ -377,59 +360,7 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
 
 /usr/include/c++/4.7/bits/basic_string.tcc:
 
-/usr/include/c++/4.7/vector:
-
-/usr/include/c++/4.7/bits/stl_construct.h:
-
-/usr/include/c++/4.7/ext/alloc_traits.h:
-
-/usr/include/c++/4.7/bits/stl_uninitialized.h:
-
-/usr/include/c++/4.7/bits/stl_vector.h:
-
-/usr/include/c++/4.7/bits/stl_bvector.h:
-
-/usr/include/c++/4.7/bits/vector.tcc:
-
 ../include/InputManager.h:
-
-../include/AudioHandler.h:
-
-../include/Network.h:
-
-../include/GameObject.h:
-
-../include/Shape.h:
-
-../include/FadeScreen.h:
-
-../include/FadeHandler.h:
-
-../include/Scene.h:
-
-/usr/include/c++/4.7/list:
-
-/usr/include/c++/4.7/bits/stl_list.h:
-
-/usr/include/c++/4.7/bits/list.tcc:
-
-../include/SceneLogo.h:
-
-../include/SplashScreen.h:
-
-../include/GameManager.h:
-
-../include/SceneTechnology.h:
-
-../include/SceneThirdParty.h:
-
-../include/SceneLegal.h:
-
-../include/SceneMainMenu.h:
-
-../include/MainMenuButHandler.h:
-
-../include/Button.h:
 
 /usr/include/c++/4.7/iostream:
 
@@ -470,25 +401,3 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
 /usr/include/c++/4.7/istream:
 
 /usr/include/c++/4.7/bits/istream.tcc:
-
-../include/ScenePhaseOne.h:
-
-../include/Character.h:
-
-../include/Animation.h:
-
-../include/Map.h:
-
-../include/Tile.h:
-
-../include/SceneGameOver.h:
-
-../include/SceneCredits.h:
-
-../include/SceneOptions.h:
-
-../include/Slider.h:
-
-/usr/include/c++/4.7/sstream:
-
-/usr/include/c++/4.7/bits/sstream.tcc:

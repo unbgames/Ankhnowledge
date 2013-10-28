@@ -53,11 +53,11 @@ int MainMenuButHandler::update(int dt){
 	mouseOver(bt1);
 	mousePressed(bt1,"ScenePhaseOne");
 	mouseOver(bt2);
-	mousePressed(bt2,"ScenePhaseOne");
+	mousePressed(bt2,"SceneGameOver");
 	mouseOver(bt3);
-	mousePressed(bt3,"ScenePhaseOne");
+	mousePressed(bt3,"SceneOptions");
 	mouseOver(bt4);
-	mousePressed(bt4,"ScenePhaseOne");
+	mousePressed(bt4,"SceneCredits");
 	mouseOver(bt5);
 	mousePressed(bt5,"Quit");
 	this->bt1->update(dt);
@@ -96,5 +96,5 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 
 void MainMenuButHandler::changeScene(string nextScene){
 	if(GameManager::currentScene->changeScene(nextScene) == 1)
-		GameManager::fadeScreen->fadeIn(1,2);
+		GameManager::fadeScreen->fadeIn(1,0.2);
 }

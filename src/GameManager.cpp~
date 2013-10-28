@@ -7,7 +7,7 @@ using namespace std;
 
 FadeScreen * GameManager::fadeScreen = 0;
 Scene * GameManager::currentScene = 0;
-string SDLBase::imagePath = getenv("HOME"); 
+string SDLBase::imagePath = getenv("HOME");
 
 /*
  * Construtor da Classe
@@ -16,7 +16,7 @@ string SDLBase::imagePath = getenv("HOME");
  * funcoes SDL_DisplayFormat e SDL_DisplayFormaAlpha. Funcoes estas que precisam
  */
 GameManager::GameManager() {
-	
+	SDLBase::imagePath = SDLBase::imagePath + "/../../usr/local/Ankhnowledge/resources/images/";
 	SDLBase::initializeSDL();
 	initResources();
 
@@ -31,6 +31,7 @@ GameManager::~GameManager() {
 	delete splashThirdParty;
 	delete splashLegal;
 	delete splashMainMenu;
+	delete splashPhaseOne;
 }
 
 //Metodo que inicializa os objetos (recursos) do jogo
@@ -42,12 +43,18 @@ void GameManager::initResources(){
 	this->splashLegal = new SceneLegal("SceneLegal");
 	this->splashMainMenu = new SceneMainMenu("SceneMainMenu");
 	this->splashPhaseOne = new ScenePhaseOne("ScenePhaseOne");
+	this->splashGameOver = new SceneGameOver("SceneGameOver");
+	this->splashCredits = new SceneCredits("SceneCredits");
+	this->splashOptions = new SceneOptions("SceneOptions");
 
 	this->splashLogo->addScenes(splashTechnology);
 	this->splashTechnology->addScenes(splashThirdParty);
 	this->splashThirdParty->addScenes(splashLegal);
 	this->splashLegal->addScenes(splashMainMenu);
 	this->splashMainMenu->addScenes(splashPhaseOne);
+	this->splashMainMenu->addScenes(splashGameOver);
+	this->splashMainMenu->addScenes(splashCredits);
+	this->splashMainMenu->addScenes(splashOptions);
 	fadeScreen = new FadeScreen(SDLBase::getScreen()->w, SDLBase::getScreen()->h);
 	fadeScreen->fadeOut(0,2);
 	currentScene = splashLogo;
@@ -89,7 +96,7 @@ void GameManager::processEvents(){
 	|| (currentScene->getSceneName() == "SceneTechnology")
 	|| (currentScene->getSceneName() == "SceneThirdParty")
 	|| (currentScene->getSceneName() == "SceneLegal"))){
-	    currentScene = splashMainMenu;
+	    currentScene = splashOptions;
 	    currentScene->Enter();
 	}
 

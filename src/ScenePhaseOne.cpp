@@ -21,7 +21,6 @@ void ScenePhaseOne::Enter()
 	this->splashSprite = new Sprite(SDLBase::imagePath + "background.png");
 	this->tile = new Sprite(SDLBase::imagePath + "tile.png");
 	this->block = new Sprite(SDLBase::imagePath + "block.png");
-
 	this->map = new Map(tile, block, 200, 100);
 	string nextScene = "ScenePhaseOne" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);

@@ -20,7 +20,7 @@ void SceneMainMenu::Enter()
 	string nextScene = "ScenePhaseOne" ;
 	buttons = new MainMenuButHandler();
 	this->addGameObject(buttons);
-	GameManager::fadeScreen->fadeOut(0,0.001);
+	GameManager::fadeScreen->fadeOut(0,2);
 }
 
 void SceneMainMenu::Exit()

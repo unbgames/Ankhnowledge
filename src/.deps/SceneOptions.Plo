@@ -1,4 +1,4 @@
-SceneThirdParty.lo: SceneThirdParty.cpp ../include/SceneThirdParty.h \
+SceneOptions.lo: SceneOptions.cpp ../include/SceneOptions.h \
  ../include/Scene.h /usr/include/c++/4.7/string \
  /usr/include/c++/4.7/i686-linux-gnu/bits/c++config.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/os_defines.h \
@@ -121,7 +121,7 @@ SceneThirdParty.lo: SceneThirdParty.cpp ../include/SceneThirdParty.h \
  ../include/Tile.h ../include/SceneGameOver.h ../include/SceneCredits.h \
  ../include/SceneOptions.h ../include/Slider.h
 
-../include/SceneThirdParty.h:
+../include/SceneOptions.h:
 
 ../include/Scene.h:
 

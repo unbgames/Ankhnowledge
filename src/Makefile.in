@@ -100,12 +100,14 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 	"$(DESTDIR)$(Ankhnowledgedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libitem_la_DEPENDENCIES =
-am_libitem_la_OBJECTS = GameManager.lo AudioHandler.lo Button.lo \
-	Character.lo FadeHandler.lo FadeScreen.lo GameObject.lo \
-	InputManager.lo Map.lo MainMenuButHandler.lo Network.lo \
-	SDLBase.lo Scene.lo SceneLegal.lo SceneLogo.lo \
+am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
+	Button.lo Character.lo FadeHandler.lo FadeScreen.lo \
+	GameObject.lo InputManager.lo Map.lo MainMenuButHandler.lo \
+	Network.lo SDLBase.lo Scene.lo SceneLegal.lo SceneLogo.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
-	SceneThirdParty.lo Shape.lo SplashScreen.lo Sprite.lo Tile.lo
+	SceneThirdParty.lo SceneGameOver.lo SceneCredits.lo \
+	SceneOptions.lo Shape.lo SplashScreen.lo Sprite.lo Slider.lo \
+	Tile.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -272,7 +274,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Tile.cpp 
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Character.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Tile.cpp 
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image
@@ -305,7 +307,11 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png \
 	../$(PACKAGE)/resources/images/options_3.png \
 	../$(PACKAGE)/resources/images/quit_1.png \
 	../$(PACKAGE)/resources/images/quit_2.png \
-	../$(PACKAGE)/resources/images/quit_3.png
+	../$(PACKAGE)/resources/images/quit_3.png \
+	../$(PACKAGE)/resources/images/adam_spr.png \
+	../$(PACKAGE)/resources/images/suti_spr.png \
+	../$(PACKAGE)/resources/images/slider_button.png \
+	../$(PACKAGE)/resources/images/slider_bar.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program
@@ -437,6 +443,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Animation.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AudioHandler.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Button.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Character.Plo@am__quote@
@@ -450,13 +457,17 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Network.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SDLBase.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Scene.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneCredits.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneGameOver.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneLegal.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneLogo.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneMainMenu.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneOptions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ScenePhaseOne.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneTechnology.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SceneThirdParty.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Shape.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Slider.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SplashScreen.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sprite.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Tile.Plo@am__quote@

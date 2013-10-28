@@ -97,7 +97,7 @@ void Scene::cleanDestroyedGameObjects()
 	if(!this->garbage.empty())
 	{
 
-	for(int i = 0; i < this->garbage.size(); i++)
+	for(unsigned int i = 0; i < this->garbage.size(); i++)
 	{
 		gameObjects.remove(this->garbage.at(i));
 		delete garbage.at(i);
