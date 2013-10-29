@@ -45,7 +45,7 @@ Character.lo: Character.cpp ../include/Character.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
- /usr/include/c++/4.7/string \
+ /usr/include/SDL/SDL_ttf.h /usr/include/c++/4.7/string \
  /usr/include/c++/4.7/i686-linux-gnu/bits/c++config.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/os_defines.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/cpu_defines.h \
@@ -118,8 +118,9 @@ Character.lo: Character.cpp ../include/Character.h \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
  ../include/Character.h ../include/Map.h ../include/Tile.h \
- ../include/Animation.h ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h
+ ../include/Block.h ../include/Animation.h ../include/SceneGameOver.h \
+ ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/OptionsController.h
 
 ../include/Character.h:
 
@@ -274,6 +275,8 @@ Character.lo: Character.cpp ../include/Character.h \
 /usr/include/SDL/SDL_image.h:
 
 /usr/include/SDL/SDL.h:
+
+/usr/include/SDL/SDL_ttf.h:
 
 /usr/include/c++/4.7/string:
 
@@ -477,6 +480,8 @@ Character.lo: Character.cpp ../include/Character.h \
 
 ../include/Tile.h:
 
+../include/Block.h:
+
 ../include/Animation.h:
 
 ../include/SceneGameOver.h:
@@ -486,3 +491,5 @@ Character.lo: Character.cpp ../include/Character.h \
 ../include/SceneOptions.h:
 
 ../include/Slider.h:
+
+../include/OptionsController.h:

@@ -20,10 +20,11 @@ public:
 	int update(int dt);
 	bool onButton();
 	void slide();
+	float calculateValue();
 private:
 	Sprite* button,*bar;
 	InputManager* input;
-	float xBar,xButton,yBar,yButton;
+	float xBar,xButton,yBar,yButton,pastXButton;
 	bool slideButton;
 };
 

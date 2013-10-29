@@ -57,6 +57,7 @@ void Scene::addGameObject(GameObject * gameObject)
 void Scene::cleanGameObjects()
 {
 	gameObjects.clear();
+	sChangeScene = false;
 }
 
 int Scene::update(int dt)

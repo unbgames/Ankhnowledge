@@ -11,8 +11,10 @@
 #include "Sprite.h"
 #include "SplashScreen.h"
 #include "Slider.h"
+#include "OptionsController.h"
 #include <string>
 
+class OptionsController;
 
 class SceneOptions : public Scene {
 public:
@@ -22,8 +24,7 @@ public:
 	void Exit();
 
 private:
-	Sprite * splashSprite,*sliderBar,*sliderButton;
-	Slider * soundVolume;
+	OptionsController* oc;
 };
 
 #endif /* SCENEOPTIONS_H_ */

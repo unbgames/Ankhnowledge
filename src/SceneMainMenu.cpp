@@ -17,7 +17,6 @@ SceneMainMenu::~SceneMainMenu() {
 void SceneMainMenu::Enter()
 {
 
-	string nextScene = "ScenePhaseOne" ;
 	buttons = new MainMenuButHandler();
 	this->addGameObject(buttons);
 	GameManager::fadeScreen->fadeOut(0,2);

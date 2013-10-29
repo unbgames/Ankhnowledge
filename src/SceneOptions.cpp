@@ -18,14 +18,8 @@ SceneOptions::~SceneOptions() {
 
 void SceneOptions::Enter()
 {
-	this->splashSprite = new Sprite(SDLBase::imagePath + "splashtechnology.png");
-	this->sliderBar = new Sprite(SDLBase::imagePath + "slider_bar.png");
-	this->sliderButton = new Sprite(SDLBase::imagePath + "slider_button.png");
-	string nextScene = "SceneGameOver" ;
-	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
-	soundVolume = new Slider(sliderButton,sliderBar,100,100);
-	this->addGameObject(splashScreen);
-	this->addGameObject(soundVolume);
+	this->oc = new OptionsController();
+	this->addGameObject(oc);
 
 	GameManager::fadeScreen->fadeOut(0,2);
 }

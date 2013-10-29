@@ -30,7 +30,7 @@ void Slider::render(float cameraX, float cameraY){
 	if((this->button) && (this->bar))
 	{
 		this->bar->render(this->xBar - cameraX,this->yBar - cameraY);
-		this->button->render(this->xButton - cameraX,this->yButton + (bar->getHeight()/8) - cameraY);
+		this->button->render(this->xButton - cameraX,this->yButton + bar->getHeight()/2 - button->getHeight()/2 - cameraY);
 	}
 
 }
@@ -51,10 +51,20 @@ int Slider::update(int dt){
 }
 
 void Slider::slide(){
-	if((this->slideButton)&& (xButton < this->xBar + bar->getWidth()))
+	if(this->slideButton)
 	{
+		pastXButton = xButton;
 		xButton = input->mousePosX();
+		if((xButton + button->getWidth()/2 > this->xBar + bar->getWidth()) || (xButton + button->getWidth()/2 < this->xBar))
+		{
+			xButton = pastXButton;
+		}
+
 	}
+}
+
+float Slider::calculateValue(){
+	return ((xButton + button->getWidth()/2 - xBar)/bar->getWidth());
 }
 
 bool Slider::onButton(){

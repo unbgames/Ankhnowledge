@@ -1,6 +1,7 @@
 #include "SDLBase.h"
 #include "math.h"
 #include <iostream>
+
 using namespace std;
 SDL_Surface* SDLBase::screen;
 
@@ -190,4 +191,46 @@ void SDLBase::setAlpha(SDL_Surface * surface, int alpha)
 int SDLBase::getTime()
 {
 	return SDL_GetTicks();
+}
+
+void SDLBase::initializeSDLTTF(){
+	int rc = TTF_Init();
+
+	if (rc != 0)
+	{
+	fprintf(stderr, "Erro na inicializacao da SDL_ttf: %s\n",TTF_GetError());
+	}
+	atexit(TTF_Quit);
+}
+
+TTF_Font* SDLBase::loadFont(const char* fontName,int size){
+	TTF_Font *font;
+	font = TTF_OpenFont(fontName, size);
+
+	if (!font) {
+		fprintf(stderr, "Nao foi possivel carregar a font: %s\n",TTF_GetError());
+	}
+
+	return font;
+
+}
+
+void SDLBase::renderText(TTF_Font*font, string text,SDL_Color color,float x,float y){
+	SDL_Surface * renderedText = TTF_RenderText_Solid(font, text.c_str(), color);
+
+	if (!renderedText) {
+		fprintf(stderr, "Falha na renderizacao do texto: %s\n",
+			TTF_GetError());
+		TTF_CloseFont(font);
+	}
+
+	SDL_Rect dst;
+
+	dst.x = x;
+	dst.y = y;
+	dst.w = 0;
+	dst.h = 0;
+
+	renderSurface(renderedText, NULL, &dst);
+
 }

@@ -3,7 +3,8 @@
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
-
+#include <SDL/SDL_ttf.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string>
 
@@ -25,6 +26,9 @@ public:
 	static void setAlpha(SDL_Surface * surface, int alpha);
 	static int getTime();
 	static string imagePath;
+	static void initializeSDLTTF();
+	static TTF_Font* loadFont(const char* fontName,int size);
+	static void renderText(TTF_Font*font,string text,SDL_Color color,float x,float y);
 private:
 	static SDL_Surface* screen;
 };

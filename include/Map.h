@@ -15,10 +15,13 @@
 #include "GameObject.h"
 #include "Character.h"
 #include "Animation.h"
+#include "Block.h"
 
 using namespace std;
 
+class Block;
 class Character;
+class Tile;
 class Map : public GameObject {
 public:
 	Map(Sprite * tile, Sprite * block, float x, float y);
@@ -27,6 +30,8 @@ public:
 	virtual ~Map();
 
 private:
+	int columns;
+	int rows;
 	Sprite* tile;
 	Sprite* block;
 	Sprite* char1_spr;
@@ -36,6 +41,11 @@ private:
 	Character * currentPlayer;
 	vector<Tile* > tiles;
 	bool changePlayer;
+
+	bool isFirstRow(int index);
+	bool isFirstColumn(int index);
+	bool isLastRow(int index);
+	bool isLastColumn(int index);
 };
 
 #endif /* MAP_H_ */

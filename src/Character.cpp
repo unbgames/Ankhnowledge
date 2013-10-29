@@ -9,21 +9,23 @@
 #include <iostream>
 using namespace std;
 
-Character::Character(Sprite* sprite, float x, float y, int id):GameObject(getX(),getY()) {
+Character::Character(Sprite* sprite, Tile * tile, int id):GameObject(tile->getX(),tile->getY()) {
 	this->sprite = sprite;
 	sprite->incNumRef();
-	this->x = x;
-	this->y = y;
+	this->currentTile = tile;
+	tile->setCharacter(this);
+	this->x = tile->getX();
+	this->y = tile->getY();
 	this->currentAnimation = new Animation(20,40,sprite,0);
 	this->moving = false;
 	this->stamina = 10;
 	this->turn = false;
 	this->id = id;
 	this->direction = 0;
-
 }
 
 Character::~Character() {
+	this->currentTile = 0;
 	this->sprite->decNumRef();
 	sprite = 0;
 }
@@ -38,32 +40,44 @@ int Character::update(int dt){
 	InputManager* input;
 	input = InputManager::getInstance();
 
-	if(turn)
+	if(turn && !moving)
 	{
 		Direction dir = none;
 
-		if (input->isKeyPressed(SDLK_d))
+		/*if(currentTile->getRightTile())
+			cout<<"dir: "<<currentTile->getRightTile()->getCharacter()<<endl;
+		if(currentTile->getLeftTile())
+			cout<<"esq: "<<currentTile->getLeftTile()->getCharacter()<<endl;
+		if(currentTile->getUpTile())
+			cout<<"cim: "<<currentTile->getUpTile()->getCharacter()<<endl;
+		if(currentTile->getDownTile())
+			cout<<"bai: "<<currentTile->getDownTile()->getCharacter()<<endl;
+		*/
+		if (input->isKeyPressed(SDLK_d) && canChangeTile(currentTile->getRightTile()))
 		{
 			dir = right;
 			direction = 2;
-		}
-
-		if (input->isKeyPressed(SDLK_a))
+			changeCurrentTile(currentTile->getRightTile());
+		}else
+		if (input->isKeyPressed(SDLK_a) && canChangeTile(currentTile->getLeftTile()))
 		{
 			dir = left;
 			direction = 1;
-		}
-
-		if (input->isKeyPressed(SDLK_s))
+			changeCurrentTile(currentTile->getLeftTile());
+		}else
+		if (input->isKeyPressed(SDLK_s)  && canChangeTile(currentTile->getDownTile()))
 		{
 			dir = down;
 			direction = 0;
-		}
-		if (input->isKeyPressed(SDLK_w))
+			changeCurrentTile(currentTile->getDownTile());
+		}else
+		if (input->isKeyPressed(SDLK_w)  && canChangeTile(currentTile->getUpTile()))
 		{
 			dir = up;
 			direction = 3;
+			changeCurrentTile(currentTile->getUpTile());
 		}
+
 		if(dir != none && !moving)
 			move(dir);
 
@@ -154,4 +168,35 @@ int Character::getId()
 bool Character::isMoving()
 {
 	return this->moving;
+}
+
+void Character::setCurrentTile(Tile * tile)
+{
+	this->currentTile = tile;
+}
+
+Tile * Character::getCurrentTile()
+{
+	return this->currentTile;
+}
+
+void Character::changeCurrentTile(Tile * tile)
+{
+	currentTile->setCharacter(0);
+	currentTile = tile;
+	currentTile->setCharacter(this);
+}
+
+bool Character::canChangeTile(Tile * tile)
+{
+	if(tile == 0)
+		return false;
+
+	if(tile->getCharacter() != 0)
+		return false;
+
+	if(tile->getBlock())
+		return false;
+
+	return true;
 }

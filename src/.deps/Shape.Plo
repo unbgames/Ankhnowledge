@@ -44,7 +44,7 @@ Shape.lo: Shape.cpp ../include/Shape.h ../include/SDLBase.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
- /usr/include/c++/4.7/string \
+ /usr/include/SDL/SDL_ttf.h /usr/include/c++/4.7/string \
  /usr/include/c++/4.7/i686-linux-gnu/bits/c++config.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/os_defines.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/cpu_defines.h \
@@ -237,6 +237,8 @@ Shape.lo: Shape.cpp ../include/Shape.h ../include/SDLBase.h \
 /usr/include/SDL/SDL_image.h:
 
 /usr/include/SDL/SDL.h:
+
+/usr/include/SDL/SDL_ttf.h:
 
 /usr/include/c++/4.7/string:
 

@@ -95,13 +95,13 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
  /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
- ../include/SplashScreen.h ../include/GameManager.h \
- ../include/InputManager.h ../include/AudioHandler.h ../include/Network.h \
- ../include/Shape.h ../include/FadeScreen.h ../include/FadeHandler.h \
- ../include/SceneLogo.h ../include/SceneTechnology.h \
- ../include/SceneThirdParty.h ../include/SceneLegal.h \
- ../include/SceneMainMenu.h ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Animation.h \
+ /usr/include/SDL/SDL_ttf.h ../include/SplashScreen.h \
+ ../include/GameManager.h ../include/InputManager.h \
+ ../include/AudioHandler.h ../include/Network.h ../include/Shape.h \
+ ../include/FadeScreen.h ../include/FadeHandler.h ../include/SceneLogo.h \
+ ../include/SceneTechnology.h ../include/SceneThirdParty.h \
+ ../include/SceneLegal.h ../include/SceneMainMenu.h \
+ ../include/ScenePhaseOne.h ../include/Character.h ../include/Animation.h \
  /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
  /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
@@ -116,10 +116,11 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  /usr/include/c++/4.7/bits/locale_facets.tcc \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
- /usr/include/c++/4.7/bits/istream.tcc ../include/Map.h ../include/Tile.h \
- ../include/SceneGameOver.h ../include/SceneCredits.h \
- ../include/SceneOptions.h ../include/Slider.h \
- ../include/MainMenuButHandler.h ../include/Button.h
+ /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
+ ../include/Block.h ../include/Map.h ../include/SceneGameOver.h \
+ ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/OptionsController.h ../include/Button.h \
+ ../include/MainMenuButHandler.h
 
 ../include/SceneMainMenu.h:
 
@@ -399,6 +400,8 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 
 /usr/include/SDL/SDL.h:
 
+/usr/include/SDL/SDL_ttf.h:
+
 ../include/SplashScreen.h:
 
 ../include/GameManager.h:
@@ -471,9 +474,11 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 
 /usr/include/c++/4.7/bits/istream.tcc:
 
-../include/Map.h:
-
 ../include/Tile.h:
+
+../include/Block.h:
+
+../include/Map.h:
 
 ../include/SceneGameOver.h:
 
@@ -483,6 +488,8 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 
 ../include/Slider.h:
 
-../include/MainMenuButHandler.h:
+../include/OptionsController.h:
 
 ../include/Button.h:
+
+../include/MainMenuButHandler.h:

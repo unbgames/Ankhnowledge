@@ -12,10 +12,12 @@
 #include "InputManager.h"
 #include "GameManager.h"
 #include "Animation.h"
+#include "Tile.h"
 
+class Tile;
 class Character:public GameObject {
 public:
-	Character(Sprite* sprite, float x, float y, int id);
+	Character(Sprite* sprite, Tile * tile, int id);
 	void render(float cameraX, float cameraY);
 	int update(int dt);
 	virtual ~Character();
@@ -28,6 +30,8 @@ public:
 	bool getStamina();
 	void setStamina(int stamina);
 	int getId();
+	void setCurrentTile(Tile * tile);
+	Tile * getCurrentTile();
 
 private:
 	Sprite* sprite;
@@ -42,6 +46,9 @@ private:
 	bool turn;
 	int id;
 	int direction;
+	Tile * currentTile;
+	void changeCurrentTile(Tile * tile);
+	bool canChangeTile(Tile * tile);
 };
 
 #endif /* CHARACTER_H_ */
