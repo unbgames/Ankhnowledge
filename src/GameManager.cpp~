@@ -97,7 +97,7 @@ void GameManager::processEvents(){
 	|| (currentScene->getSceneName() == "SceneTechnology")
 	|| (currentScene->getSceneName() == "SceneThirdParty")
 	|| (currentScene->getSceneName() == "SceneLegal"))){
-	    currentScene = splashOptions;
+	    currentScene = splashMainMenu;
 	    currentScene->Enter();
 	}
 

@@ -120,7 +120,8 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
  ../include/Block.h ../include/Map.h ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h
 
 ../include/MainMenuButHandler.h:
@@ -488,6 +489,8 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 ../include/SceneGameOver.h:
 
 ../include/SceneCredits.h:
+
+../include/CreditsController.h:
 
 ../include/SceneOptions.h:
 

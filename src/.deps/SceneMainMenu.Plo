@@ -118,9 +118,9 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
  ../include/Block.h ../include/Map.h ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h ../include/Button.h \
- ../include/MainMenuButHandler.h
+ ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/Button.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/OptionsController.h ../include/MainMenuButHandler.h
 
 ../include/SceneMainMenu.h:
 
@@ -484,12 +484,14 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 
 ../include/SceneCredits.h:
 
+../include/CreditsController.h:
+
+../include/Button.h:
+
 ../include/SceneOptions.h:
 
 ../include/Slider.h:
 
 ../include/OptionsController.h:
-
-../include/Button.h:
 
 ../include/MainMenuButHandler.h:

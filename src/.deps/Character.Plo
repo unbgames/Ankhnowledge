@@ -119,7 +119,8 @@ Character.lo: Character.cpp ../include/Character.h \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
  ../include/Character.h ../include/Map.h ../include/Tile.h \
  ../include/Block.h ../include/Animation.h ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h
 
 ../include/Character.h:
@@ -487,6 +488,8 @@ Character.lo: Character.cpp ../include/Character.h \
 ../include/SceneGameOver.h:
 
 ../include/SceneCredits.h:
+
+../include/CreditsController.h:
 
 ../include/SceneOptions.h:
 

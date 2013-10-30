@@ -56,6 +56,7 @@ void GameManager::initResources(){
 	this->splashMainMenu->addScenes(splashCredits);
 	this->splashMainMenu->addScenes(splashOptions);
 	this->splashOptions->addScenes(splashMainMenu);
+	this->splashCredits->addScenes(splashMainMenu);
 	fadeScreen = new FadeScreen(SDLBase::getScreen()->w, SDLBase::getScreen()->h);
 	fadeScreen->fadeOut(0,2);
 	currentScene = splashLogo;

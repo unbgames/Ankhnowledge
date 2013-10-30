@@ -119,7 +119,8 @@ SceneLogo.lo: SceneLogo.cpp ../include/SceneLogo.h ../include/Scene.h \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
  ../include/Character.h ../include/Animation.h ../include/Tile.h \
  ../include/Block.h ../include/Map.h ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h
 
 ../include/SceneLogo.h:
@@ -487,6 +488,8 @@ SceneLogo.lo: SceneLogo.cpp ../include/SceneLogo.h ../include/Scene.h \
 ../include/SceneGameOver.h:
 
 ../include/SceneCredits.h:
+
+../include/CreditsController.h:
 
 ../include/SceneOptions.h:
 

@@ -19,6 +19,7 @@ public:
 	void render(int index, float posX, float posY);
 	void animate(int frameRate,float posX, float posY);
 	void update(int dt,bool onLoop,int direction);
+	bool needToMove();
 
 private:
 	Sprite* animation;
@@ -26,6 +27,7 @@ private:
 	int currentFrame,startFrame,dt,frameRate;
 	bool animateSprite;
 	int  prevDirection;
+	bool move;
 };
 
 #endif /* ANIMATION_H_ */

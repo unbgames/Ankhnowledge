@@ -13,8 +13,6 @@
 #include "CreditsController.h"
 #include <string>
 
-class CreditsController;
-
 
 class SceneCredits : public Scene {
 public:

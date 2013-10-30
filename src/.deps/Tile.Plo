@@ -119,8 +119,8 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
  ../include/Map.h ../include/Tile.h ../include/Animation.h \
  ../include/Block.h ../include/SceneGameOver.h ../include/SceneCredits.h \
- ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h
+ ../include/CreditsController.h ../include/SceneOptions.h \
+ ../include/Slider.h ../include/OptionsController.h
 
 ../include/Tile.h:
 
@@ -487,6 +487,8 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
 ../include/SceneGameOver.h:
 
 ../include/SceneCredits.h:
+
+../include/CreditsController.h:
 
 ../include/SceneOptions.h:
 

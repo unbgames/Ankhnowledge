@@ -18,7 +18,7 @@ SceneGameOver::~SceneGameOver() {
 
 void SceneGameOver::Enter()
 {
-	this->splashSprite = new Sprite(SDLBase::imagePath + "lost.png");
+	this->splashSprite = new Sprite(SDLBase::imagePath + "splashlegal.png");
 	string nextScene = "SceneGameOver" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 	this->addGameObject(splashScreen);

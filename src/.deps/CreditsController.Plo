@@ -1,5 +1,6 @@
-Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
- ../include/Character.h ../include/Sprite.h ../include/SDLBase.h \
+CreditsController.lo: CreditsController.cpp \
+ ../include/CreditsController.h ../include/GameObject.h \
+ ../include/Button.h ../include/Sprite.h ../include/SDLBase.h \
  /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
  /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
  /usr/include/SDL/SDL_platform.h /usr/include/i386-linux-gnu/sys/types.h \
@@ -101,9 +102,9 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
  ../include/SceneLogo.h ../include/SplashScreen.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h ../include/Button.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/MainMenuButHandler.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -117,17 +118,17 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
- ../include/Map.h ../include/Tile.h ../include/Block.h \
- ../include/Animation.h ../include/SceneGameOver.h \
+ ../include/Character.h ../include/Animation.h ../include/Tile.h \
+ ../include/Block.h ../include/Map.h ../include/SceneGameOver.h \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h
 
-../include/Block.h:
+../include/CreditsController.h:
 
 ../include/GameObject.h:
 
-../include/Character.h:
+../include/Button.h:
 
 ../include/Sprite.h:
 
@@ -433,8 +434,6 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
 
 ../include/MainMenuButHandler.h:
 
-../include/Button.h:
-
 /usr/include/c++/4.7/iostream:
 
 /usr/include/c++/4.7/ostream:
@@ -477,13 +476,15 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
 
 ../include/ScenePhaseOne.h:
 
-../include/Map.h:
+../include/Character.h:
+
+../include/Animation.h:
 
 ../include/Tile.h:
 
 ../include/Block.h:
 
-../include/Animation.h:
+../include/Map.h:
 
 ../include/SceneGameOver.h:
 

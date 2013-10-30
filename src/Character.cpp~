@@ -21,7 +21,7 @@ Character::Character(Sprite* sprite, Tile * tile, int id):GameObject(tile->getX(
 	this->stamina = 10;
 	this->turn = false;
 	this->id = id;
-	this->direction = 4;
+	this->direction = 0;
 }
 
 Character::~Character() {
@@ -122,7 +122,7 @@ void Character::interpolateMovement(float dt)
 		if(!lerp(beginX, beginY, endX, endY, 10, dt))
 		{
 			this->moving = false;
-			direction = 4;
+			direction = 0;
 		}
 	}
 
