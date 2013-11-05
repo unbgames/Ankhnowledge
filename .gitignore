@@ -4,3 +4,7 @@
 *.exe
 *.o
 *.lo
+*~
+*.la
+*.lai
+*.Plo
