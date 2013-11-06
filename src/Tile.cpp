@@ -19,6 +19,9 @@ Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y
 	this->downTile = 0;
 	this->id = id;
 	this->character = 0;
+
+	if(block)
+		block->setTile(this);
 }
 
 Tile::~Tile() {
@@ -32,9 +35,6 @@ Tile::~Tile() {
 void Tile::render(float cameraX, float cameraY){
 	if(tile)
 		tile->render(getX(), getY());
-
-	if(block)
-		block->render(getX(), getY());
 }
 
 
@@ -42,6 +42,7 @@ int Tile::update(int dt){
 
 	if(block)
 		block->update(dt);
+
 	return 0;
 }
 
@@ -107,3 +108,15 @@ Block * Tile::getBlock()
 {
 	return this->block;
 }
+
+void Tile::setBlock(Block * block)
+{
+	this->block = block;
+}
+
+float Tile::getWidth()
+{
+	return tile->getWidth();
+}
+
+

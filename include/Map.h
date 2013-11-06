@@ -16,6 +16,8 @@
 #include "Character.h"
 #include "Animation.h"
 #include "Block.h"
+#include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -46,6 +48,8 @@ private:
 	bool isFirstColumn(int index);
 	bool isLastRow(int index);
 	bool isLastColumn(int index);
+	SDL_Color color;
+	TTF_Font *font;
 };
 
 #endif /* MAP_H_ */

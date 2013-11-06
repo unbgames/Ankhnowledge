@@ -6,6 +6,8 @@
  */
 
 #include "Map.h"
+#include "BlockWater.h"
+#include "BlockMovable.h"
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -19,6 +21,13 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	this->block->incNumRef();
 	this->columns = 20;
 	this->rows = 20;
+
+	SDLBase::initializeSDLTTF();
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+	string font_path = SDLBase::imagePath + "aeolus.ttf";
+	font = SDLBase::loadFont(font_path.c_str(),40);
 
 
 
@@ -37,7 +46,7 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 		else
 		{
 			tiles.push_back(new Tile(tile
-									, new Block(block,getX()+ tile->getWidth()*((int)(i%20)), getY() + tile->getHeight()*((int)(i/20)))
+									, new BlockMovable(block,getX()+ tile->getWidth()*((int)(i%20)), getY() + tile->getHeight()*((int)(i/20)))
 									, getX()+ tile->getWidth()*((int)(i%20))
 									, getY() + tile->getHeight()*((int)(i/20))
 									, i));
@@ -100,6 +109,12 @@ void Map::render(float cameraX, float cameraY){
 	{
 		tiles.at(i)->render(0,0);
 	}
+	for(unsigned int i = 0; i < tiles.size(); i++)
+	{
+		if(tiles.at(i)->getBlock())
+			tiles.at(i)->getBlock()->render(getX(), getY());
+	}
+
 
 	if(player1->getY() > player2->getY())
 	{
@@ -112,9 +127,18 @@ void Map::render(float cameraX, float cameraY){
 		player2->render(0,0);
 	}
 
+	stringstream st;
+	st << ((int)(currentPlayer->getStamina()));
+	SDLBase::renderText(font, "Stamina: " + st.str(),color,500,50);
+
 }
 
 int Map::update(int dt){
+
+	for(unsigned int i = 0; i < tiles.size(); i++)
+	{
+		tiles.at(i)->update(dt);
+	}
 	player1->update(dt);
 	player2->update(dt);
 
@@ -123,7 +147,7 @@ int Map::update(int dt){
 		changePlayer = true;
 	}
 
-	if(changePlayer && !currentPlayer->isMoving())
+	if(changePlayer && !currentPlayer->isPerformingAction())
 	{
 		changePlayer = false;
 		if(currentPlayer->getId() == 1)

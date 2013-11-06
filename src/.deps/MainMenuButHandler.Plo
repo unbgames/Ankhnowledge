@@ -119,10 +119,12 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
- ../include/Block.h ../include/Map.h ../include/SceneGameOver.h \
+ ../include/Block.h ../include/Map.h /usr/include/c++/4.7/sstream \
+ /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h
+ ../include/OptionsController.h ../include/SceneConnect.h \
+ ../include/ConnectController.h
 
 ../include/MainMenuButHandler.h:
 
@@ -486,6 +488,10 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 
 ../include/Map.h:
 
+/usr/include/c++/4.7/sstream:
+
+/usr/include/c++/4.7/bits/sstream.tcc:
+
 ../include/SceneGameOver.h:
 
 ../include/SceneCredits.h:
@@ -497,3 +503,7 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 ../include/Slider.h:
 
 ../include/OptionsController.h:
+
+../include/SceneConnect.h:
+
+../include/ConnectController.h:

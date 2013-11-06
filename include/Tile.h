@@ -32,6 +32,8 @@ public:
 	void setCharacter(Character * character);
 	Character* getCharacter();
 	Block* getBlock();
+	void setBlock(Block * block);
+	float getWidth();
 	int id;
 
 private:

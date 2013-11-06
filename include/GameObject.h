@@ -3,7 +3,6 @@
 
 class GameObject {
 public:
-	GameObject(float x, float y);
 	virtual ~GameObject();
 	virtual int update(int dt) = 0;
 	virtual void render(float cameraX, float cameraY) = 0;
@@ -12,6 +11,7 @@ public:
 	bool lerp(float beginX, float beginY, float endX, float endY, float time, float  dt);
 
 protected:
+	GameObject(float x, float y);
 	float x;
 	float y;
 

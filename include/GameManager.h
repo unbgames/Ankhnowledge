@@ -23,6 +23,7 @@
 #include "SceneGameOver.h"
 #include "SceneCredits.h"
 #include "SceneOptions.h"
+#include "SceneConnect.h"
 
 class GameManager {
 public:
@@ -47,6 +48,7 @@ private:
 	Scene * splashGameOver;
 	Scene * splashCredits;
 	Scene * splashOptions;
+	Scene * splashConnect;
 
 	InputManager * input;
 	AudioHandler * audio;

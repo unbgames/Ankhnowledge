@@ -21,23 +21,29 @@ public:
 	void render(float cameraX, float cameraY);
 	int update(int dt);
 	virtual ~Character();
-	bool isMoving();
+	bool isPerformingAction();
 	enum Direction { up, down, right, left, none };
+	void pushUpdate(InputManager * input);
+	void moveUpdate(InputManager * input);
 	void move(Direction dir);
+	void push(Direction dir);
 	void interpolateMovement(float dt);
 	void setTurn(bool on);
 	void toogleTurn();
-	bool getStamina();
+	int getStamina();
 	void setStamina(int stamina);
 	int getId();
 	void setCurrentTile(Tile * tile);
 	Tile * getCurrentTile();
+	void incrementDiscountStamina(int value);
+	void resetDiscountStamina();
+	bool hasEnoughStamina();
 
 private:
 	Sprite* sprite;
 	Animation *currentAnimation;
 	float vx,vy;
-	bool moving;
+	bool performingAction;
 	float endX;
 	float endY;
 	float beginX;
@@ -47,8 +53,10 @@ private:
 	int id;
 	int direction;
 	Tile * currentTile;
+	int discountStamina;
 	void changeCurrentTile(Tile * tile);
 	bool canChangeTile(Tile * tile);
+
 };
 
 #endif /* CHARACTER_H_ */

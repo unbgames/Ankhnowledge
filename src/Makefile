@@ -101,14 +101,15 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libitem_la_DEPENDENCIES =
 am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
-	Button.lo Block.lo Character.lo CreditsController.lo \
-	FadeHandler.lo FadeScreen.lo GameObject.lo InputManager.lo \
-	Map.lo MainMenuButHandler.lo Network.lo OptionsController.lo \
+	Button.lo Block.lo BlockMovable.lo BlockWater.lo Character.lo \
+	ConnectController.lo CreditsController.lo FadeHandler.lo \
+	FadeScreen.lo GameObject.lo InputManager.lo Map.lo \
+	MainMenuButHandler.lo Network.lo OptionsController.lo \
 	SDLBase.lo Scene.lo SceneLegal.lo SceneLogo.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
 	SceneThirdParty.lo SceneGameOver.lo SceneCredits.lo \
-	SceneOptions.lo Shape.lo SplashScreen.lo Sprite.lo Slider.lo \
-	Tile.lo
+	SceneConnect.lo SceneOptions.lo Shape.lo SplashScreen.lo \
+	Sprite.lo Slider.lo Tile.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -275,7 +276,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Tile.cpp 
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp Character.cpp ConnectController.cpp  CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneConnect.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Tile.cpp 
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf
@@ -318,7 +319,10 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png \
 	../$(PACKAGE)/resources/images/back_2.png \
 	../$(PACKAGE)/resources/images/back_3.png \
 	../$(PACKAGE)/resources/images/options.png \
-	../$(PACKAGE)/resources/images/lost.png
+	../$(PACKAGE)/resources/images/lost.png \
+	../$(PACKAGE)/resources/images/box.png \
+	../$(PACKAGE)/resources/images/box_input.png \
+	../$(PACKAGE)/resources/images/cursor.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program
@@ -453,8 +457,11 @@ distclean-compile:
 include ./$(DEPDIR)/Animation.Plo
 include ./$(DEPDIR)/AudioHandler.Plo
 include ./$(DEPDIR)/Block.Plo
+include ./$(DEPDIR)/BlockMovable.Plo
+include ./$(DEPDIR)/BlockWater.Plo
 include ./$(DEPDIR)/Button.Plo
 include ./$(DEPDIR)/Character.Plo
+include ./$(DEPDIR)/ConnectController.Plo
 include ./$(DEPDIR)/CreditsController.Plo
 include ./$(DEPDIR)/FadeHandler.Plo
 include ./$(DEPDIR)/FadeScreen.Plo
@@ -467,6 +474,7 @@ include ./$(DEPDIR)/Network.Plo
 include ./$(DEPDIR)/OptionsController.Plo
 include ./$(DEPDIR)/SDLBase.Plo
 include ./$(DEPDIR)/Scene.Plo
+include ./$(DEPDIR)/SceneConnect.Plo
 include ./$(DEPDIR)/SceneCredits.Plo
 include ./$(DEPDIR)/SceneGameOver.Plo
 include ./$(DEPDIR)/SceneLegal.Plo

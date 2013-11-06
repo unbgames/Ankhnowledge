@@ -53,7 +53,7 @@ int MainMenuButHandler::update(int dt){
 	mouseOver(bt1);
 	mousePressed(bt1,"ScenePhaseOne");
 	mouseOver(bt2);
-	mousePressed(bt2,"SceneGameOver");
+	mousePressed(bt2,"SceneConnect");
 	mouseOver(bt3);
 	mousePressed(bt3,"SceneOptions");
 	mouseOver(bt4);
