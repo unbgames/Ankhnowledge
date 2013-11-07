@@ -102,9 +102,9 @@ OptionsController.lo: OptionsController.cpp \
  ../include/SceneLogo.h ../include/SplashScreen.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h /usr/include/c++/4.7/iostream \
- /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
- /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/MainMenuButHandler.h ../include/Animation.h \
+ /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
+ /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -118,13 +118,12 @@ OptionsController.lo: OptionsController.cpp \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Animation.h ../include/Tile.h \
- ../include/Block.h ../include/Map.h /usr/include/c++/4.7/sstream \
+ ../include/Character.h ../include/Tile.h ../include/Block.h \
+ ../include/Map.h /usr/include/c++/4.7/sstream \
  /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h ../include/SceneConnect.h \
- ../include/ConnectController.h
+ ../include/OptionsController.h
 
 ../include/OptionsController.h:
 
@@ -436,6 +435,8 @@ OptionsController.lo: OptionsController.cpp \
 
 ../include/MainMenuButHandler.h:
 
+../include/Animation.h:
+
 /usr/include/c++/4.7/iostream:
 
 /usr/include/c++/4.7/ostream:
@@ -480,8 +481,6 @@ OptionsController.lo: OptionsController.cpp \
 
 ../include/Character.h:
 
-../include/Animation.h:
-
 ../include/Tile.h:
 
 ../include/Block.h:
@@ -503,7 +502,3 @@ OptionsController.lo: OptionsController.cpp \
 ../include/Slider.h:
 
 ../include/OptionsController.h:
-
-../include/SceneConnect.h:
-
-../include/ConnectController.h:

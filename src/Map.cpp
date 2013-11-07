@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "BlockWater.h"
 #include "BlockMovable.h"
+#include "BlockTreasure.h"
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -23,10 +24,10 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	this->rows = 20;
 
 	SDLBase::initializeSDLTTF();
-	color.r = 0;
-	color.g = 0;
-	color.b = 0;
-	string font_path = SDLBase::imagePath + "aeolus.ttf";
+	color.r = 255;
+	color.g = 255;
+	color.b = 255;
+	string font_path = SDLBase::imagePath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
 
 
@@ -75,7 +76,8 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
 
-	tiles.at(0)->setRightTile(tiles.at(1));
+	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::imagePath + "Bau.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
+	//tiles.at(0)->setRightTile(tiles.at(1));
 	player1 = new Character(new Sprite(SDLBase::imagePath + "adam_spr.png"),tiles.at(0),1);
 	player2 = new Character(new Sprite(SDLBase::imagePath + "suti_spr.png"),tiles.at(columns-1),2);
 	currentPlayer = player1;
@@ -129,7 +131,7 @@ void Map::render(float cameraX, float cameraY){
 
 	stringstream st;
 	st << ((int)(currentPlayer->getStamina()));
-	SDLBase::renderText(font, "Stamina: " + st.str(),color,500,50);
+	SDLBase::renderText(font, st.str(),color,720,60);
 
 }
 

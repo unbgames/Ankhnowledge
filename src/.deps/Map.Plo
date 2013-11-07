@@ -102,8 +102,9 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
  ../include/MainMenuButHandler.h ../include/Button.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/Animation.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -119,11 +120,10 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
  ../include/Map.h ../include/SceneGameOver.h ../include/SceneCredits.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
- ../include/Slider.h ../include/OptionsController.h \
- ../include/SceneConnect.h ../include/ConnectController.h \
- ../include/Animation.h ../include/Block.h /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc ../include/BlockWater.h \
- ../include/BlockMovable.h
+ ../include/Slider.h ../include/OptionsController.h ../include/Block.h \
+ /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
+ ../include/BlockWater.h ../include/BlockMovable.h \
+ ../include/BlockTreasure.h
 
 ../include/Map.h:
 
@@ -439,6 +439,8 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 
 ../include/Button.h:
 
+../include/Animation.h:
+
 /usr/include/c++/4.7/iostream:
 
 /usr/include/c++/4.7/ostream:
@@ -495,12 +497,6 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 
 ../include/OptionsController.h:
 
-../include/SceneConnect.h:
-
-../include/ConnectController.h:
-
-../include/Animation.h:
-
 ../include/Block.h:
 
 /usr/include/c++/4.7/sstream:
@@ -510,3 +506,5 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 ../include/BlockWater.h:
 
 ../include/BlockMovable.h:
+
+../include/BlockTreasure.h:

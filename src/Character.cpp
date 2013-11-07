@@ -64,20 +64,24 @@ void Character::push(Direction dir)
 	    case up:
 	    	endX = getX();
 	    	endY = getY() - 20;
+	    	direction = 3;
 	    break;
 
 	    case down:
 	    	endX = getX();
 			endY = getY() + 20;
+			direction = 0;
 	    break;
 	    case right:
 	    	endX = getX() + 20;
 			endY = getY();
+			direction = 2;
 	    break;
 
 	    case left:
 	    	endX = getX() - 20;
 			endY = getY();
+			direction = 1;
 
 	    break;
 
@@ -199,7 +203,10 @@ bool Character::canChangeTile(Tile * tile)
 		return false;
 
 	if(tile->getBlock())
-		return false;
+	{
+		if(tile->getBlock()->getType() == "BlockMovable")
+			return false;
+	}
 
 	return true;
 }
@@ -227,25 +234,21 @@ void Character::pushUpdate(InputManager * input)
 	if (input->isKeyPressed(SDLK_d))
 	{
 		dir = right;
-		direction = 2;
 		nextTile = currentTile->getRightTile();
 	}else
 	if (input->isKeyPressed(SDLK_a))
 	{
 		dir = left;
-		direction = 1;
 		nextTile = currentTile->getLeftTile();
 	}else
 	if (input->isKeyPressed(SDLK_s))
 	{
 		dir = down;
-		direction = 0;
 		nextTile = currentTile->getDownTile();
 	}else
 	if (input->isKeyPressed(SDLK_w))
 	{
 		dir = up;
-		direction = 3;
 		nextTile = currentTile->getUpTile();
 	}
 
@@ -283,31 +286,52 @@ void Character::moveUpdate(InputManager * input)
 {
 	Direction dir = none;
 
+	Tile * nextTile = 0;
 	if (input->isKeyPressed(SDLK_d) && canChangeTile(currentTile->getRightTile()))
 	{
 		dir = right;
 		direction = 2;
-		changeCurrentTile(currentTile->getRightTile());
+		nextTile = currentTile->getRightTile();
 	}else
 	if (input->isKeyPressed(SDLK_a) && canChangeTile(currentTile->getLeftTile()))
 	{
 		dir = left;
 		direction = 1;
-		changeCurrentTile(currentTile->getLeftTile());
+		nextTile = currentTile->getLeftTile();
 	}else
 	if (input->isKeyPressed(SDLK_s)  && canChangeTile(currentTile->getDownTile()))
 	{
 		dir = down;
 		direction = 0;
-		changeCurrentTile(currentTile->getDownTile());
+		nextTile = currentTile->getDownTile();
 	}else
 	if (input->isKeyPressed(SDLK_w)  && canChangeTile(currentTile->getUpTile()))
 	{
 		dir = up;
 		direction = 3;
-		changeCurrentTile(currentTile->getUpTile());
+		nextTile = currentTile->getUpTile();
 	}
 
-	if(dir != none && !performingAction)
-		move(dir);
+	if(nextTile)
+	{
+		Block * block = 0;
+		block = nextTile->getBlock();
+
+		if(block)
+		{
+			if(block->getType() == "BlockTreasure")
+			{
+				block->reaction(this);
+			}
+		}else
+		{
+		changeCurrentTile(nextTile);
+		if(dir != none && !performingAction)
+			move(dir);
+		}
+
+		block = 0;
+	}
+
+	nextTile = 0;
 }

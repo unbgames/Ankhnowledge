@@ -1,0 +1,23 @@
+/*
+ * BlockTreasure.h
+ *
+ *  Created on: Nov 7, 2013
+ *      Author: makoto
+ */
+
+#ifndef BLOCKTREASURE_H_
+#define BLOCKTREASURE_H_
+#include "Character.h"
+#include "Block.h"
+
+class BlockTreasure: public Block
+{
+public:
+	BlockTreasure(Sprite * block, float x, float y);
+	int update(int dt);
+	virtual void reaction(Character * character);
+	virtual ~BlockTreasure();
+
+};
+
+#endif /* BLOCKTREASURE_H_ */

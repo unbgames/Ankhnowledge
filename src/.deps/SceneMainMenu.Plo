@@ -121,8 +121,7 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/Button.h ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h ../include/SceneConnect.h \
- ../include/ConnectController.h ../include/MainMenuButHandler.h
+ ../include/OptionsController.h ../include/MainMenuButHandler.h
 
 ../include/SceneMainMenu.h:
 
@@ -499,9 +498,5 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 ../include/Slider.h:
 
 ../include/OptionsController.h:
-
-../include/SceneConnect.h:
-
-../include/ConnectController.h:
 
 ../include/MainMenuButHandler.h:

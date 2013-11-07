@@ -22,7 +22,7 @@ OptionsController::OptionsController():GameObject(getX(),getY()) {
 	input = InputManager::getInstance();
 	SDLBase::initializeSDLTTF();
 	color = {0, 0, 0, 255};
-	string font_path = SDLBase::imagePath + "aeolus.ttf";
+	string font_path = SDLBase::imagePath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
 
 }

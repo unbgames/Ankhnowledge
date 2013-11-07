@@ -11,6 +11,10 @@ Scene::Scene(string sceneName) {
 }
 
 Scene::~Scene() {
+	for (list<GameObject *>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+	{
+		delete (*it);
+	}
 	gameObjects.clear();
 }
 
@@ -56,6 +60,10 @@ void Scene::addGameObject(GameObject * gameObject)
 
 void Scene::cleanGameObjects()
 {
+	for (list<GameObject *>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+	{
+		delete (*it);
+	}
 	gameObjects.clear();
 	sChangeScene = false;
 }

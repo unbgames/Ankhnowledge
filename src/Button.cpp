@@ -21,6 +21,7 @@ Button::Button(Sprite* sprite1,Sprite* sprite2,Sprite* sprite3, float x, float y
 	this->mouseY = 0;
 	this->isPressed = false;
 	this->changeScene = false;
+	this->changeSprite = true;
 
 }
 
@@ -41,11 +42,11 @@ void Button::render(float cameraX, float cameraY){
 
 int Button::update(int dt){
 
-	if( (insideButton() == true) && (isPressed == false))
+	if( (insideButton() == true) && (isPressed == false) && (changeSprite == true))
 	{
 		this->currentSprite = sprite2;
 	}
-	else if ((insideButton() == true) && (isPressed == true))
+	else if ((insideButton() == true) && (isPressed == true) && (changeSprite == true))
 	{
 		this->currentSprite = sprite3;
 		this->changeScene = true;
@@ -68,6 +69,10 @@ void Button::setMouseCoord(float coordinateX, float coordinateY) {
     this->mouseX = coordinateX;
     this->mouseY = coordinateY;
 
+}
+
+void Button::setChangeSprite(bool changeSprite){
+	this->changeSprite = changeSprite;
 }
 
 void Button::mousePressed(bool isPressed){

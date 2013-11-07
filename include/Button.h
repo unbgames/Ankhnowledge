@@ -20,11 +20,14 @@ public:
 	bool insideButton();
 	bool getChangeScene();
 	virtual ~Button();
+	void setChangeSprite(bool changeSprite);
+
 private:
 	Sprite* sprite1,*sprite2,*sprite3,*currentSprite;
 	float x,y,mouseX,mouseY;
 	bool isPressed;
 	bool changeScene;
+	bool changeSprite;
 
 };
 

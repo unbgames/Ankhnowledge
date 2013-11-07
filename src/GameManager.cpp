@@ -46,14 +46,12 @@ void GameManager::initResources(){
 	this->splashGameOver = new SceneGameOver("SceneGameOver");
 	this->splashCredits = new SceneCredits("SceneCredits");
 	this->splashOptions = new SceneOptions("SceneOptions");
-	this->splashConnect = new SceneConnect("SceneConnect");
 
 	this->splashLogo->addScenes(splashTechnology);
 	this->splashTechnology->addScenes(splashThirdParty);
 	this->splashThirdParty->addScenes(splashLegal);
 	this->splashLegal->addScenes(splashMainMenu);
 	this->splashMainMenu->addScenes(splashPhaseOne);
-	this->splashMainMenu->addScenes(splashConnect);
 	this->splashMainMenu->addScenes(splashCredits);
 	this->splashMainMenu->addScenes(splashOptions);
 	this->splashOptions->addScenes(splashMainMenu);

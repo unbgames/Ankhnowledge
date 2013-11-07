@@ -38,10 +38,10 @@ void OptionsController::render(float cameraX, float cameraY){
 	this->soundEffect->render(0,0);
 	stringstream ssbgvolume;
 	ssbgvolume << ((int)(100*bgVolume->calculateValue()));
-	SDLBase::renderText(font, ssbgvolume.str() + "%" ,color,720,230);
+	SDLBase::renderText(font, ssbgvolume.str() + "%" ,color,720,220);
 	stringstream sssoundeffect;
 	sssoundeffect << ((int)(100*soundEffect->calculateValue()));
-	SDLBase::renderText(font, sssoundeffect.str() + "%" ,color,720,310);
+	SDLBase::renderText(font, sssoundeffect.str() + "%" ,color,720,300);
 
 
 }

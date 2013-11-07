@@ -102,8 +102,9 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
  ../include/MainMenuButHandler.h ../include/Button.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/Animation.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -117,13 +118,11 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
- ../include/Map.h ../include/Tile.h ../include/Animation.h \
- ../include/Block.h /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/CreditsController.h \
- ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h ../include/SceneConnect.h \
- ../include/ConnectController.h
+ ../include/Map.h ../include/Tile.h ../include/Block.h \
+ /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
+ ../include/SceneGameOver.h ../include/SceneCredits.h \
+ ../include/CreditsController.h ../include/SceneOptions.h \
+ ../include/Slider.h ../include/OptionsController.h
 
 ../include/Tile.h:
 
@@ -437,6 +436,8 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
 
 ../include/Button.h:
 
+../include/Animation.h:
+
 /usr/include/c++/4.7/iostream:
 
 /usr/include/c++/4.7/ostream:
@@ -483,8 +484,6 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
 
 ../include/Tile.h:
 
-../include/Animation.h:
-
 ../include/Block.h:
 
 /usr/include/c++/4.7/sstream:
@@ -502,7 +501,3 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
 ../include/Slider.h:
 
 ../include/OptionsController.h:
-
-../include/SceneConnect.h:
-
-../include/ConnectController.h:

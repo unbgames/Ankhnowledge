@@ -102,8 +102,9 @@ Character.lo: Character.cpp ../include/Character.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
  ../include/SceneLegal.h ../include/SceneMainMenu.h \
  ../include/MainMenuButHandler.h ../include/Button.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ ../include/Animation.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -118,12 +119,11 @@ Character.lo: Character.cpp ../include/Character.h \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/ScenePhaseOne.h \
  ../include/Character.h ../include/Map.h ../include/Tile.h \
- ../include/Block.h ../include/Animation.h /usr/include/c++/4.7/sstream \
+ ../include/Block.h /usr/include/c++/4.7/sstream \
  /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h ../include/SceneConnect.h \
- ../include/ConnectController.h
+ ../include/OptionsController.h
 
 ../include/Character.h:
 
@@ -435,6 +435,8 @@ Character.lo: Character.cpp ../include/Character.h \
 
 ../include/Button.h:
 
+../include/Animation.h:
+
 /usr/include/c++/4.7/iostream:
 
 /usr/include/c++/4.7/ostream:
@@ -485,8 +487,6 @@ Character.lo: Character.cpp ../include/Character.h \
 
 ../include/Block.h:
 
-../include/Animation.h:
-
 /usr/include/c++/4.7/sstream:
 
 /usr/include/c++/4.7/bits/sstream.tcc:
@@ -502,7 +502,3 @@ Character.lo: Character.cpp ../include/Character.h \
 ../include/Slider.h:
 
 ../include/OptionsController.h:
-
-../include/SceneConnect.h:
-
-../include/ConnectController.h:
