@@ -117,10 +117,11 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
- ../include/Block.h ../include/Map.h /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/CreditsController.h \
- ../include/Button.h ../include/SceneOptions.h ../include/Slider.h \
+ ../include/Block.h ../include/Skill.h ../include/Map.h \
+ /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
+ ../include/SceneGameOver.h ../include/SceneCredits.h \
+ ../include/CreditsController.h ../include/Button.h \
+ ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/MainMenuButHandler.h
 
 ../include/SceneMainMenu.h:
@@ -478,6 +479,8 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 ../include/Tile.h:
 
 ../include/Block.h:
+
+../include/Skill.h:
 
 ../include/Map.h:
 

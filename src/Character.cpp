@@ -5,41 +5,94 @@
  *      Author: al
  */
 
-#include "Character.h"
 #include <iostream>
+
+#include "Character.h"
+#include "Skill.h"
+
+#define DT 50
+
 using namespace std;
 
-Character::Character(Sprite* sprite, Tile * tile, int id):GameObject(tile->getX(),tile->getY()) {
+Character::Character(Sprite* sprite, Tile* tile, Skill* skill, int id):GameObject(tile->getX(),tile->getY()) {
 	this->sprite = sprite;
 	sprite->incNumRef();
 	this->currentTile = tile;
 	tile->setCharacter(this);
 	this->x = tile->getX();
 	this->y = tile->getY();
+	this->skill = skill;
 	this->currentAnimation = new Animation(20,40,sprite,0);
+	this->actived_skill = false;
 	this->performingAction = false;
-	this->stamina = 10;
+	this->stamina = 100;
 	this->turn = false;
 	this->id = id;
 	this->direction = 4;
+	this->skillDestTile = 0;
+	this->dt = 0;
 	discountStamina = 0;
 }
 
 Character::~Character() {
 	this->currentTile = 0;
 	this->sprite->decNumRef();
+	this->skill = 0;
+	this->skillDestTile = 0;
 	sprite = 0;
 }
 
-void Character::render(float cameraX, float cameraY){
-
+void Character::render(float cameraX, float cameraY)
+{
 	currentAnimation->animate(50, this->x - cameraX,this->y - cameraY - 40/2);
-
 }
 
-int Character::update(int dt){
+int Character::update(int dt)
+{
 	InputManager* input;
 	input = InputManager::getInstance();
+
+	this->dt = this->dt + dt;
+
+	if(this->actived_skill)
+	{
+		if(this->dt > DT)
+		{
+			if (input->isKeyPressed(SDLK_y))
+			{
+				actived_skill = false;
+				setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false); 		
+			}
+			else if(this->skillDestTile)
+			{	
+				this->stamina -= skill->getRequiredStamina();
+				setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
+				skill->execute(this->currentTile, this->skillDestTile);
+				this->actived_skill = false;
+				this->skillDestTile = 0;
+			}
+			
+			this->dt = 0;
+		}
+	}
+
+	if(turn && !performingAction)
+	{
+		if (input->isKeyPressed(SDLK_y))
+		{
+			if(this->dt > DT)
+			{
+				if((this->skill) && (this->stamina >= this->skill->getRequiredStamina()))
+				{
+					actived_skill = true;
+					setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), true); 
+				}
+
+				this->dt = 0;
+			}
+		}
+	}
+
 
 	if(turn && !performingAction && input->isKeyPressed(SDLK_u))
 	{
@@ -52,7 +105,7 @@ int Character::update(int dt){
 	}
 
 	interpolateMovement(dt);
-	currentAnimation->update(dt, true,direction);
+	currentAnimation->update(dt, true, direction);
 	return 0;
 }
 
@@ -61,33 +114,33 @@ void Character::push(Direction dir)
 	this->performingAction = true;
 	switch(dir)
 	{
-	    case up:
-	    	endX = getX();
-	    	endY = getY() - 20;
-	    	direction = 3;
-	    break;
+		case up:
+			endX = getX();
+			endY = getY() - currentTile->getWidth();
+			direction = 3;
+		break;
 
-	    case down:
-	    	endX = getX();
-			endY = getY() + 20;
+		case down:
+			endX = getX();
+			endY = getY() + currentTile->getWidth();
 			direction = 0;
-	    break;
-	    case right:
-	    	endX = getX() + 20;
+		break;
+		case right:
+			endX = getX() + currentTile->getWidth();
 			endY = getY();
 			direction = 2;
-	    break;
+		break;
 
-	    case left:
-	    	endX = getX() - 20;
+		case left:
+			endX = getX() - currentTile->getWidth();
 			endY = getY();
 			direction = 1;
 
-	    break;
+		break;
 
-	    case none:
+		case none:
 
-	    break;
+		break;
 
 	}
 
@@ -112,13 +165,12 @@ void Character::move(Direction dir)
 	    break;
 	    case right:
 	    	endX = getX() + currentTile->getWidth();
-			endY = getY();
+	    	endY = getY();
 	    break;
 
 	    case left:
 	    	endX = getX() - currentTile->getWidth();
 			endY = getY();
-
 	    break;
 
 	    case none:
@@ -154,6 +206,11 @@ void Character::setStamina(int stamina)
 	this->stamina = stamina;
 }
 
+void Character::setSkill(Skill * skill)
+{
+	this->skill = skill;
+}
+
 void Character::setTurn(bool on)
 {
 	turn = on;
@@ -175,6 +232,11 @@ int Character::getId()
 bool Character::isPerformingAction()
 {
 	return this->performingAction;
+}
+
+bool Character::isUsingSkill()
+{
+	return this->actived_skill;
 }
 
 void Character::setCurrentTile(Tile * tile)
@@ -205,10 +267,69 @@ bool Character::canChangeTile(Tile * tile)
 	if(tile->getBlock())
 	{
 		if(tile->getBlock()->getType() == "BlockMovable")
-			return false;
+		return false;
 	}
 
+
 	return true;
+}
+
+void Character::setSkillDestTile(Tile * tile)
+{
+	this->skillDestTile = tile;
+}
+
+
+void Character::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable)
+{
+	int i = 1;
+	Tile *tile = origin;
+
+	if(i <= reach && tile->getUpTile())
+	{
+		tile = tile->getUpTile();
+		
+		if(!(!considerBlock && tile->getBlock()))
+			tile->setClickable(clickable);
+
+		setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
+
+	tile = origin;
+
+	if(i <= reach && tile->getDownTile())
+	{
+		tile = tile->getDownTile();
+		
+		if(!(!considerBlock && tile->getBlock()))
+			tile->setClickable(clickable);
+
+		setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
+
+	tile = origin;
+
+	if(i <= reach && tile->getLeftTile())
+	{
+		tile = tile->getLeftTile();
+		
+		if(!(!considerBlock && tile->getBlock()))
+			tile->setClickable(clickable);
+
+		setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
+
+	tile = origin;
+
+	if(i <= reach && tile->getRightTile())
+	{
+		tile = tile->getRightTile();
+		
+		if(!(!considerBlock && tile->getBlock()))
+			tile->setClickable(clickable);
+
+		setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
 }
 
 void Character::incrementDiscountStamina(int value)
@@ -282,6 +403,7 @@ void Character::pushUpdate(InputManager * input)
 	block = 0;
 	nextTile = 0;
 }
+
 void Character::moveUpdate(InputManager * input)
 {
 	Direction dir = none;

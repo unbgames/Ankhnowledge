@@ -32,6 +32,9 @@ public:
 	void setCharacter(Character * character);
 	Character* getCharacter();
 	Block* getBlock();
+	bool insideTile();
+	bool isClickable();
+	void setClickable(bool click);
 	void setBlock(Block * block);
 	float getWidth();
 	int id;
@@ -41,6 +44,7 @@ private:
 	Block* block;
 	Tile *leftTile, *rightTile, *upTile, *downTile;
 	Character * character;
+	bool clickable;
 
 };
 

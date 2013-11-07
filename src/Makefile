@@ -109,7 +109,7 @@ am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
 	SceneThirdParty.lo SceneGameOver.lo SceneCredits.lo \
 	SceneOptions.lo Shape.lo SplashScreen.lo Sprite.lo Slider.lo \
-	Tile.lo
+	Skill.lo SkillDig.lo Tile.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -276,7 +276,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Tile.cpp 
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp 
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf
@@ -324,7 +324,11 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png \
 	../$(PACKAGE)/resources/images/box_input.png \
 	../$(PACKAGE)/resources/images/cursor.png \
 	../$(PACKAGE)/resources/images/interface.png \
-	../$(PACKAGE)/resources/images/quicksandbold.ttf
+	../$(PACKAGE)/resources/images/quicksandbold.ttf \
+	../$(PACKAGE)/resources/images/ok_1.png \
+	../$(PACKAGE)/resources/images/ok_2.png \
+	../$(PACKAGE)/resources/images/ok_3.png \
+	../$(PACKAGE)/resources/images/Bau.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program
@@ -486,6 +490,8 @@ include ./$(DEPDIR)/ScenePhaseOne.Plo
 include ./$(DEPDIR)/SceneTechnology.Plo
 include ./$(DEPDIR)/SceneThirdParty.Plo
 include ./$(DEPDIR)/Shape.Plo
+include ./$(DEPDIR)/Skill.Plo
+include ./$(DEPDIR)/SkillDig.Plo
 include ./$(DEPDIR)/Slider.Plo
 include ./$(DEPDIR)/SplashScreen.Plo
 include ./$(DEPDIR)/Sprite.Plo

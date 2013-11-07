@@ -81,3 +81,9 @@ bool GameObject::lerp(float beginX, float beginY, float endX, float endY, float 
 	return stillInterpolating;
 }
 
+void GameObject::setPosition(float x, float y)
+{
+	this->x = x;
+	this->y = y;
+}
+

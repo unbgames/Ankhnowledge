@@ -5,4 +5,4 @@
 libitemincludedir = $(includedir)/
 
 # Include files
-include_HEADERS = Animation.h AudioHandler.h Block.h BlockMovable.h BlockWater.h Button.h BlockTreasure.h Character.h CreditsController.h FadeHandler.h FadeScreen.h GameManager.h GameObject.h InputManager.h Map.h MainMenuButHandler.h Network.h OptionsController.h SDLBase.h Scene.h SceneLegal.h SceneLogo.h SceneMainMenu.h ScenePhaseOne.h SceneTechnology.h SceneThirdParty.h SceneGameOver.h SceneCredits.h SceneOptions.h SplashScreen.h Tile.h Shape.h Sprite.h Slider.h
+include_HEADERS = Animation.h AudioHandler.h Block.h BlockMovable.h BlockWater.h Button.h BlockTreasure.h Character.h CreditsController.h FadeHandler.h FadeScreen.h GameManager.h GameObject.h InputManager.h Map.h MainMenuButHandler.h Network.h OptionsController.h SDLBase.h Scene.h SceneLegal.h SceneLogo.h SceneMainMenu.h ScenePhaseOne.h SceneTechnology.h SceneThirdParty.h SceneGameOver.h SceneCredits.h SceneOptions.h SplashScreen.h Tile.h Shape.h Sprite.h Slider.h SkillDig.h Skill.h

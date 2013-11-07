@@ -122,7 +122,7 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
  /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
  ../include/SceneGameOver.h ../include/SceneCredits.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
- ../include/Slider.h ../include/OptionsController.h
+ ../include/Slider.h ../include/OptionsController.h ../include/Skill.h
 
 ../include/Block.h:
 
@@ -501,3 +501,5 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
 ../include/Slider.h:
 
 ../include/OptionsController.h:
+
+../include/Skill.h:
