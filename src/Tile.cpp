@@ -6,7 +6,8 @@
  */
 
 #include "Tile.h"
-
+#include "SDLBase.h"
+#include <sstream>
 using namespace std;
 
 Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y) {
@@ -19,6 +20,7 @@ Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y
 	this->downTile = 0;
 	this->id = id;
 	this->character = 0;
+	this->clickable = false;
 
 	if(block)
 		block->setTile(this);
@@ -42,9 +44,19 @@ int Tile::update(int dt){
 
 	if(block)
 		block->update(dt);
-
 	return 0;
 }
+
+bool Tile::insideTile()
+{
+	InputManager* input;
+	input = InputManager::getInstance();
+
+	return ((input->mousePosX() > this->x) && (input->mousePosX() < (this->x + this->tile->getWidth())) &&
+			(input->mousePosY() > this->y) && (input->mousePosY() < (this->y + this->tile->getHeight())));
+
+}
+
 
 void Tile::setLeftTile(Tile * tile)
 {
@@ -109,6 +121,16 @@ Block * Tile::getBlock()
 	return this->block;
 }
 
+bool Tile::isClickable()
+{
+	return this->clickable;
+}
+
+void Tile::setClickable(bool click)
+{
+	this->clickable = click;
+}
+
 void Tile::setBlock(Block * block)
 {
 	this->block = block;
@@ -118,5 +140,3 @@ float Tile::getWidth()
 {
 	return tile->getWidth();
 }
-
-

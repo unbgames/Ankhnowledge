@@ -45,7 +45,7 @@ void BlockMovable::reaction(Character * character)
 		nextTile = getTile()->getDownTile();
 	}
 
-	if(nextTile && character->hasEnoughStamina())
+	if(nextTile && character->hasEnoughStamina() && !nextTile->getCharacter())
 	{
 		if(!nextTile->getBlock())
 		{
@@ -99,7 +99,7 @@ bool BlockMovable::checkNextTile(Character * character, BlockMovable * lastBlock
 		nextTile = getTile()->getDownTile();
 	}
 
-	if(nextTile && character->hasEnoughStamina())
+	if(nextTile && character->hasEnoughStamina() && !nextTile->getCharacter())
 	{
 		if(!nextTile->getBlock())
 		{

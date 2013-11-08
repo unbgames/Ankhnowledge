@@ -109,7 +109,7 @@ am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
 	SceneThirdParty.lo SceneGameOver.lo SceneCredits.lo \
 	SceneOptions.lo Shape.lo SplashScreen.lo Sprite.lo Slider.lo \
-	Tile.lo
+	Skill.lo SkillDig.lo Tile.lo BlockSand.lo SkillSand.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -142,12 +142,12 @@ DATA = $(dist_Ankhnowledge_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/al/Desktop/cod2/Ankhnowledge/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/al/Desktop/cod2/Ankhnowledge/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/al/Desktop/cod2/Ankhnowledge/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/al/Desktop/cod2/Ankhnowledge/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -187,7 +187,7 @@ LTLIBOBJS =
 LT_CURRENT = 0
 LT_RELEASE = 0.0.1
 LT_REVISION = 0
-MAKEINFO = ${SHELL} /home/al/IJE/Ankhnowledge/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/al/Desktop/cod2/Ankhnowledge/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -210,10 +210,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.0.1
-abs_builddir = /home/al/IJE/Ankhnowledge/src
-abs_srcdir = /home/al/IJE/Ankhnowledge/src
-abs_top_builddir = /home/al/IJE/Ankhnowledge
-abs_top_srcdir = /home/al/IJE/Ankhnowledge
+abs_builddir = /home/al/Desktop/cod2/Ankhnowledge/src
+abs_srcdir = /home/al/Desktop/cod2/Ankhnowledge/src
+abs_top_builddir = /home/al/Desktop/cod2/Ankhnowledge
+abs_top_srcdir = /home/al/Desktop/cod2/Ankhnowledge
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -244,7 +244,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/al/IJE/Ankhnowledge/config/install-sh
+install_sh = ${SHELL} /home/al/Desktop/cod2/Ankhnowledge/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -276,7 +276,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Tile.cpp 
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp BlockSand.cpp SkillSand.cpp
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf
@@ -324,7 +324,12 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png \
 	../$(PACKAGE)/resources/images/box_input.png \
 	../$(PACKAGE)/resources/images/cursor.png \
 	../$(PACKAGE)/resources/images/interface.png \
-	../$(PACKAGE)/resources/images/quicksandbold.ttf
+	../$(PACKAGE)/resources/images/quicksandbold.ttf \
+	../$(PACKAGE)/resources/images/ok_1.png \
+	../$(PACKAGE)/resources/images/ok_2.png \
+	../$(PACKAGE)/resources/images/ok_3.png \
+	../$(PACKAGE)/resources/images/Bau.png \
+	../$(PACKAGE)/resources/images/Tilecomareia.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program
@@ -460,6 +465,7 @@ include ./$(DEPDIR)/Animation.Plo
 include ./$(DEPDIR)/AudioHandler.Plo
 include ./$(DEPDIR)/Block.Plo
 include ./$(DEPDIR)/BlockMovable.Plo
+include ./$(DEPDIR)/BlockSand.Plo
 include ./$(DEPDIR)/BlockTreasure.Plo
 include ./$(DEPDIR)/BlockWater.Plo
 include ./$(DEPDIR)/Button.Plo
@@ -486,6 +492,9 @@ include ./$(DEPDIR)/ScenePhaseOne.Plo
 include ./$(DEPDIR)/SceneTechnology.Plo
 include ./$(DEPDIR)/SceneThirdParty.Plo
 include ./$(DEPDIR)/Shape.Plo
+include ./$(DEPDIR)/Skill.Plo
+include ./$(DEPDIR)/SkillDig.Plo
+include ./$(DEPDIR)/SkillSand.Plo
 include ./$(DEPDIR)/Slider.Plo
 include ./$(DEPDIR)/SplashScreen.Plo
 include ./$(DEPDIR)/Sprite.Plo

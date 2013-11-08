@@ -1,7 +1,6 @@
-MainMenuButHandler.lo: MainMenuButHandler.cpp \
- ../include/MainMenuButHandler.h ../include/GameObject.h \
- ../include/Button.h ../include/Sprite.h ../include/SDLBase.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
+MainMenuButHandler.lo: MainMenuButHandler.cpp MainMenuButHandler.h \
+ ../include/GameObject.h Button.h ../include/Sprite.h \
+ ../include/SDLBase.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
  /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
  /usr/include/SDL/SDL_platform.h /usr/include/i386-linux-gnu/sys/types.h \
  /usr/include/features.h /usr/include/i386-linux-gnu/bits/predefs.h \
@@ -89,21 +88,22 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/atomic_word.h \
  /usr/include/c++/4.7/bits/basic_string.tcc ../include/InputManager.h \
- ../include/GameManager.h /usr/include/c++/4.7/vector \
+ ../include/GameManager.h ../include/Sprite.h /usr/include/c++/4.7/vector \
  /usr/include/c++/4.7/bits/stl_construct.h \
  /usr/include/c++/4.7/ext/alloc_traits.h \
  /usr/include/c++/4.7/bits/stl_uninitialized.h \
  /usr/include/c++/4.7/bits/stl_vector.h \
  /usr/include/c++/4.7/bits/stl_bvector.h \
- /usr/include/c++/4.7/bits/vector.tcc ../include/AudioHandler.h \
- ../include/Network.h ../include/Shape.h ../include/FadeScreen.h \
- ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
+ /usr/include/c++/4.7/bits/vector.tcc ../include/InputManager.h \
+ ../include/AudioHandler.h ../include/Network.h ../include/GameObject.h \
+ ../include/Shape.h ../include/FadeScreen.h ../include/FadeHandler.h \
+ ../include/Scene.h /usr/include/c++/4.7/list \
  /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
  ../include/SceneLogo.h ../include/SplashScreen.h \
- ../include/SceneTechnology.h ../include/SceneThirdParty.h \
- ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Animation.h \
+ ../include/GameManager.h ../include/SceneTechnology.h \
+ ../include/SceneThirdParty.h ../include/SceneLegal.h \
+ ../include/SceneMainMenu.h ../include/MainMenuButHandler.h \
+ ../include/ScenePhaseOne.h ../include/Character.h ../include/Animation.h \
  /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
  /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
@@ -119,17 +119,18 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
- ../include/Block.h ../include/Map.h /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
- ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/Block.h ../include/Skill.h ../include/Map.h \
+ /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
+ ../include/SceneGameOver.h ../include/SceneCredits.h \
+ ../include/CreditsController.h ../include/Button.h \
  ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h
+ ../include/OptionsController.h ../include/Animation.h
 
-../include/MainMenuButHandler.h:
+MainMenuButHandler.h:
 
 ../include/GameObject.h:
 
-../include/Button.h:
+Button.h:
 
 ../include/Sprite.h:
 
@@ -389,6 +390,8 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 
 ../include/GameManager.h:
 
+../include/Sprite.h:
+
 /usr/include/c++/4.7/vector:
 
 /usr/include/c++/4.7/bits/stl_construct.h:
@@ -403,9 +406,13 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 
 /usr/include/c++/4.7/bits/vector.tcc:
 
+../include/InputManager.h:
+
 ../include/AudioHandler.h:
 
 ../include/Network.h:
+
+../include/GameObject.h:
 
 ../include/Shape.h:
 
@@ -424,6 +431,8 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 ../include/SceneLogo.h:
 
 ../include/SplashScreen.h:
+
+../include/GameManager.h:
 
 ../include/SceneTechnology.h:
 
@@ -485,6 +494,8 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 
 ../include/Block.h:
 
+../include/Skill.h:
+
 ../include/Map.h:
 
 /usr/include/c++/4.7/sstream:
@@ -497,8 +508,12 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 
 ../include/CreditsController.h:
 
+../include/Button.h:
+
 ../include/SceneOptions.h:
 
 ../include/Slider.h:
 
 ../include/OptionsController.h:
+
+../include/Animation.h:

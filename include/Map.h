@@ -48,6 +48,7 @@ private:
 	bool isFirstColumn(int index);
 	bool isLastRow(int index);
 	bool isLastColumn(int index);
+	Tile * getPressedTile();
 	SDL_Color color;
 	TTF_Font *font;
 };

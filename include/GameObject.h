@@ -9,6 +9,7 @@ public:
 	float getX();
 	float getY();
 	bool lerp(float beginX, float beginY, float endX, float endY, float time, float  dt);
+	void setPosition(float x, float y);
 
 protected:
 	GameObject(float x, float y);

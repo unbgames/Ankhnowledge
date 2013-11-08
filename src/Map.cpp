@@ -12,6 +12,8 @@
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include "SkillDig.h"
+#include "SkillSand.h"
 
 using namespace std;
 
@@ -77,9 +79,11 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	}
 
 	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::imagePath + "Bau.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
-	//tiles.at(0)->setRightTile(tiles.at(1));
-	player1 = new Character(new Sprite(SDLBase::imagePath + "adam_spr.png"),tiles.at(0),1);
-	player2 = new Character(new Sprite(SDLBase::imagePath + "suti_spr.png"),tiles.at(columns-1),2);
+	tiles.at(0)->setRightTile(tiles.at(1));
+	Skill *alanSkill = new SkillDig();
+	Skill *sutiSkill = new SkillSand();
+	player1 = new Character(new Sprite(SDLBase::imagePath + "adam_spr.png"), tiles.at(0), alanSkill, 1);
+	player2 = new Character(new Sprite(SDLBase::imagePath + "suti_spr.png"), tiles.at(columns-1), sutiSkill, 2);
 	currentPlayer = player1;
 	currentPlayer->setTurn(true);
 	changePlayer = false;
@@ -135,16 +139,29 @@ void Map::render(float cameraX, float cameraY){
 
 }
 
-int Map::update(int dt){
+int Map::update(int dt)
+{
+	InputManager* input;
+	input = InputManager::getInstance();
 
 	for(unsigned int i = 0; i < tiles.size(); i++)
 	{
 		tiles.at(i)->update(dt);
 	}
+	
+	if(currentPlayer->isUsingSkill())
+	{
+		if(input->isMousePressed(1))
+		{
+			Tile* currentTile = getPressedTile();
+			currentPlayer->setSkillDestTile(currentTile);
+		}		
+	}
+
 	player1->update(dt);
 	player2->update(dt);
 
-	if(currentPlayer->getStamina() == 0 && !changePlayer)
+	if(currentPlayer->getStamina() <= 0 && !changePlayer)
 	{
 		changePlayer = true;
 	}
@@ -164,6 +181,23 @@ int Map::update(int dt){
 	}
 	return 0;
 }
+
+Tile * Map::getPressedTile()
+{
+	for(unsigned int i = 0; i < tiles.size(); i++)
+	{
+		if(tiles.at(i)->isClickable())
+		{
+			if(tiles.at(i)->insideTile())
+			{
+				return tiles.at(i);
+			}
+		}
+	}
+
+	return 0;
+}
+
 
 bool Map::isFirstRow(int index)
 {
