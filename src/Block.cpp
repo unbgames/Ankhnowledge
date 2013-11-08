@@ -10,6 +10,8 @@
 Block::Block(Sprite * block, float x, float y):GameObject(x,y) {
 	this->block = block;
 	this->block->incNumRef();
+	this->animDestroyed = false;
+	this->finalDestroyed = false;
 }
 
 Block::~Block() {
@@ -26,6 +28,18 @@ int Block::update(int dt)
 void Block::render(float cameraX, float cameraY)
 {
 	this->block->render(getX(),getY());
+}
+
+void Block::setDestroyedAnimBlock(bool destroyed){
+	this->animDestroyed = destroyed;
+}
+
+void Block::setDestroyedFinalBlock(bool destroyed){
+	this->finalDestroyed = destroyed;
+}
+
+bool Block::getDestroyedFinalBlock(){
+	return this->finalDestroyed;
 }
 
 string Block::getType()

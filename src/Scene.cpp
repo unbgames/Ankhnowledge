@@ -11,10 +11,6 @@ Scene::Scene(string sceneName) {
 }
 
 Scene::~Scene() {
-	for (list<GameObject *>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
-	{
-		delete (*it);
-	}
 	gameObjects.clear();
 }
 

@@ -17,19 +17,23 @@ class Character;
 class Block: public GameObject 
 {
 public:
-	void render(float cameraX, float cameraY);
+	virtual void render(float cameraX, float cameraY);
 	virtual int update(int dt) = 0;
 	string getType();
 	virtual void reaction(Character * character) = 0;
 	virtual ~Block();
 	void setTile(Tile * tile);
 	Tile * getTile();
+	void setDestroyedAnimBlock(bool destroyed);
+	void setDestroyedFinalBlock(bool destroyed);
+	bool getDestroyedFinalBlock();
 
 protected:
 	Block(Sprite * block, float x, float y);
 	Sprite* block;
 	string type;
 	Tile * tile;
+	bool animDestroyed, finalDestroyed;
 };
 
 #endif /* BLOCK_H_ */

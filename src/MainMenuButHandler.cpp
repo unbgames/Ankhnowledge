@@ -9,23 +9,41 @@
 
 MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt1_1 = new Sprite(SDLBase::imagePath + "host_1.png");
+	this->bt1_1->incNumRef();
 	this->bt1_2 = new Sprite(SDLBase::imagePath + "host_2.png");
+	this->bt1_2->incNumRef();
 	this->bt1_3 = new Sprite(SDLBase::imagePath + "host_3.png");
+	this->bt1_3->incNumRef();
 	this->bt2_1 = new Sprite(SDLBase::imagePath + "connect_1.png");
+	this->bt2_1->incNumRef();
 	this->bt2_2 = new Sprite(SDLBase::imagePath + "connect_2.png");
+	this->bt2_2->incNumRef();
 	this->bt2_3 = new Sprite(SDLBase::imagePath + "connect_3.png");
+	this->bt2_3->incNumRef();
 	this->bt3_1 = new Sprite(SDLBase::imagePath + "options_1.png");
+	this->bt3_1->incNumRef();
 	this->bt3_2 = new Sprite(SDLBase::imagePath + "options_2.png");
+	this->bt3_2->incNumRef();
 	this->bt3_3 = new Sprite(SDLBase::imagePath + "options_3.png");
+	this->bt3_3->incNumRef();
 	this->bt4_1 = new Sprite(SDLBase::imagePath + "credits_1.png");
+	this->bt4_1->incNumRef();
 	this->bt4_2 = new Sprite(SDLBase::imagePath + "credits_2.png");
+	this->bt4_2->incNumRef();
 	this->bt4_3 = new Sprite(SDLBase::imagePath + "credits_3.png");
+	this->bt4_3->incNumRef();
 	this->bt5_1 = new Sprite(SDLBase::imagePath + "quit_1.png");
+	this->bt5_1->incNumRef();
 	this->bt5_2 = new Sprite(SDLBase::imagePath + "quit_2.png");
+	this->bt5_2->incNumRef();
 	this->bt5_3 = new Sprite(SDLBase::imagePath + "quit_3.png");
+	this->bt5_3->incNumRef();
 	this->bt6_1 = new Sprite(SDLBase::imagePath + "ok_1.png");
+	this->bt6_1->incNumRef();
 	this->bt6_2 = new Sprite(SDLBase::imagePath + "ok_2.png");
+	this->bt6_2->incNumRef();
 	this->bt6_3 = new Sprite(SDLBase::imagePath + "ok_3.png");
+	this->bt6_3->incNumRef();
 
 	this->bt1 = new Button(bt1_1,bt1_2,bt1_3,500,300);
 	this->bt2 = new Button(bt2_1,bt2_2,bt2_3,500,350);
@@ -35,12 +53,17 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt6 = new Button(bt6_1,bt6_2,bt6_3,500,300);
 
 	this->splashSprite = new Sprite(SDLBase::imagePath + "titlebg.png");
+	this->splashSprite->incNumRef();
 	input = InputManager::getInstance();
 
 	box = new Sprite(SDLBase::imagePath + "box.png");
+	this->box->incNumRef();
 	boxInput = new Sprite(SDLBase::imagePath + "box_input.png");
+	this->boxInput->incNumRef();
 	bg = new Sprite(SDLBase::imagePath + "background.png");
+	this->bg->incNumRef();
 	cursor = new Sprite(SDLBase::imagePath + "cursor.png");
+	this->cursor->incNumRef();
 	this->animation = new Animation(18,45,cursor,0);
 	input = InputManager::getInstance();
 	this->boxX = 250;
@@ -63,7 +86,52 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 }
 
 MainMenuButHandler::~MainMenuButHandler() {
-	// TODO Auto-generated destructor stub
+	this->bt1_1->decNumRef();
+	this->bt1_1 = 0;
+	this->bt1_2->decNumRef();
+	this->bt1_2 = 0;
+	this->bt1_3->decNumRef();
+	this->bt1_3 = 0;
+	this->bt2_1->decNumRef();
+	this->bt2_1 = 0;
+	this->bt2_2->decNumRef();
+	this->bt2_2 = 0;
+	this->bt2_3->decNumRef();
+	this->bt2_3 = 0;
+	this->bt3_1->decNumRef();
+	this->bt3_1 = 0;
+	this->bt3_2->decNumRef();
+	this->bt3_2;
+	this->bt3_3->decNumRef();
+	this->bt3_3 = 0;
+	this->bt4_1->decNumRef();
+	this->bt4_1 = 0;
+	this->bt4_2->decNumRef();
+	this->bt4_2 = 0;
+	this->bt4_3->decNumRef();
+	this->bt4_3 = 0;
+	this->bt5_1->decNumRef();
+	this->bt5_1 = 0;
+	this->bt5_2->decNumRef();
+	this->bt5_2 = 0;
+	this->bt5_3->decNumRef();
+	this->bt5_3 = 0;
+	this->bt6_1->decNumRef();
+	this->bt6_1 = 0;
+	this->bt6_2->decNumRef();
+	this->bt6_2 = 0;
+	this->bt6_3->decNumRef();
+	this->bt6_3 = 0;
+	this->splashSprite->decNumRef();
+	this->splashSprite = 0;
+	this->box->decNumRef();
+	this->box = 0;
+	this->boxInput->decNumRef();
+	this->boxInput = 0;
+	this->bg->decNumRef();
+	this->bg = 0;
+	this->cursor->decNumRef();
+	this->cursor = 0;
 }
 
 void MainMenuButHandler::render(float cameraX, float cameraY){
@@ -191,7 +259,7 @@ void MainMenuButHandler::updateConnect(int dt){
 		bt6->mousePressed(true);
 	}
 
-	animation->update(dt, true,0);
+	animation->update(dt, true,0,0);
 
 }
 

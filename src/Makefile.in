@@ -62,10 +62,7 @@ subdir = src
 DIST_COMMON = $(dist_Ankhnowledge_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
-	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
-	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
-	$(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -332,7 +329,10 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png \
 	../$(PACKAGE)/resources/images/ok_2.png \
 	../$(PACKAGE)/resources/images/ok_3.png \
 	../$(PACKAGE)/resources/images/Bau.png \
-	../$(PACKAGE)/resources/images/Tilecomareia.png
+	../$(PACKAGE)/resources/images/Tilecomareia.png \
+	../$(PACKAGE)/resources/images/bauanimacao.png \
+	../$(PACKAGE)/resources/images/areiamovedicabloco.png \
+	../$(PACKAGE)/resources/images/areiamovedica.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program

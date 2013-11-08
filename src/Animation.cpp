@@ -18,6 +18,7 @@ Animation::Animation(int spriteWidth, int spriteHeight, Sprite* sprite,int direc
     this->prevDirection = direction;
     this->currentFrame = startFrame;
     this->animateSprite = true;
+    this->finishedAnimation = false;
 
 }
 
@@ -44,25 +45,34 @@ void Animation::animate(int frameRate,float posX, float posY){
 
 }
 
-void Animation::update(int dt,bool oneShot, int direction){
+void Animation::update(int dt,bool onLoop, int direction,bool singleFrame){
 	this->dt = this->dt + dt;
+	int lastFrame = columns;
 
 	if(prevDirection != direction)
 	{
 		this->startFrame = direction * columns;
 		this->currentFrame = startFrame;
 		this->prevDirection = direction;
+		this->finishedAnimation = false;
+
+	}
+
+	if(singleFrame){
+		lastFrame = 1;
+		this->finishedAnimation = false;
 	}
 
 	if((this->dt > frameRate))
 	{
-		if((currentFrame == startFrame + columns -1) && (oneShot == true))
+		if((currentFrame == startFrame + lastFrame -1) && (onLoop == true))
 		{
-			currentFrame = startFrame;
+			resetStartFrame();
+			finishedAnimation = false;
 		}
-		else if((currentFrame == startFrame + columns -1) && (oneShot == false))
+		else if((currentFrame == startFrame + lastFrame -1) && (onLoop == false))
 		{
-			//Do nothing
+			this->finishedAnimation = true;
 		}
 		else {
 			currentFrame++;
@@ -70,6 +80,15 @@ void Animation::update(int dt,bool oneShot, int direction){
 		}
 	}
 
+}
+
+void Animation::resetStartFrame(){
+	this->currentFrame = startFrame;
+}
+
+bool Animation::getFinishedAnimation(){
+
+	return this->finishedAnimation;
 }
 
 

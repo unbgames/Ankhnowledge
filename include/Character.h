@@ -44,19 +44,23 @@ public:
 	void incrementDiscountStamina(int value);
 	void resetDiscountStamina();
 	bool hasEnoughStamina();
+	bool getWin();
+	void setWin(bool win);
+	bool getTurn();
 
 private:
 	Sprite* sprite;
 	Animation *currentAnimation;
 	Skill* skill;
 	float vx,vy;
-	bool actived_skill;
-	bool performingAction;
+	bool activatedSkill;
+	bool performingAction,onLoop;
 	float endX;
 	float endY;
 	float beginX;
 	float beginY;
 	int stamina;
+	bool win;
 	bool turn;
 	int id;
 	int dt;

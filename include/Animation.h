@@ -18,13 +18,15 @@ public:
 	virtual ~Animation();
 	void render(int index, float posX, float posY);
 	void animate(int frameRate,float posX, float posY);
-	void update(int dt,bool onLoop,int direction);
+	void update(int dt,bool onLoop,int direction, bool singleFrame);
+	bool getFinishedAnimation();
+	void resetStartFrame();
 
 private:
 	Sprite* animation;
 	int spriteWidth, spriteHeight,columns;
 	int currentFrame,startFrame,dt,frameRate;
-	bool animateSprite;
+	bool animateSprite,finishedAnimation;
 	int  prevDirection;
 };
 

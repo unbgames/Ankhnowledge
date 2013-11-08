@@ -15,15 +15,17 @@ SkillSand::~SkillSand() {}
 
 void SkillSand::execute(Tile * origin, Tile * dest)
 {
+
 	Block *oldBlock = dest->getBlock();
+
 	if(oldBlock)
-	{	
-		dest->setBlock(0);
-		delete oldBlock;
+	{
+		oldBlock->setDestroyedAnimBlock(true);
+
 	}
 	else
 	{
-		Block *newBlock = new BlockSand(new Sprite(SDLBase::imagePath + "tile.png"), dest->getX(), dest->getY());
+		Block *newBlock = new BlockSand(new Sprite(SDLBase::imagePath + "areiamovedica.png"), dest->getX(), dest->getY());
 		dest->setBlock(newBlock);
 	}
 }

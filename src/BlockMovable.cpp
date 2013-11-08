@@ -11,14 +11,32 @@ using namespace std;
 BlockMovable::BlockMovable(Sprite * block, float x, float y):Block(block,x,y) {
 	type = "BlockMovable";
 	moving = 0;
+	animation = new Animation(20,20,block,0);
+
 }
 
 BlockMovable::~BlockMovable() {
 
 }
+
+void BlockMovable::render(float camerax, float cameray){
+	animation->animate(150,this->x,this->y);
+}
+
 int BlockMovable::update(int dt)
 {
 	interpolateMovement(dt);
+
+	if(this->animDestroyed)
+	{
+		animation->update(dt,false,0,false);
+		if(animation->getFinishedAnimation())
+		{
+			this->finalDestroyed = true;
+		}
+	}
+	else
+		animation->update(dt,true,0,true);
 	return 0;
 }
 void BlockMovable::reaction(Character * character)

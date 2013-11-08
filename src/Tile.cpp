@@ -21,6 +21,9 @@ Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y
 	this->id = id;
 	this->character = 0;
 	this->clickable = false;
+	this->clickableTile = new Sprite(SDLBase::imagePath + "whitesquare.png");
+	this->clickableTile->incNumRef();
+	this->animation = new Animation(20,20,clickableTile,0);
 
 	if(block)
 		block->setTile(this);
@@ -29,8 +32,10 @@ Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y
 Tile::~Tile() {
 	this->tile->decNumRef();
 	this->tile = 0;
-
+	this->clickableTile->decNumRef();
+	this->clickableTile = 0;
 	delete block;
+
 	// TODO Auto-generated destructor stub
 }
 
@@ -44,7 +49,16 @@ int Tile::update(int dt){
 
 	if(block)
 		block->update(dt);
+
 	return 0;
+}
+
+void Tile::renderClickableTiles(){
+	animation->animate(50,getX(),getY());
+}
+
+void Tile::animateClickableTiles(int dt){
+	animation->update(dt,true,0,0);
 }
 
 bool Tile::insideTile()
@@ -128,6 +142,8 @@ bool Tile::isClickable()
 
 void Tile::setClickable(bool click)
 {
+	if(click)
+		animation->resetStartFrame();
 	this->clickable = click;
 }
 

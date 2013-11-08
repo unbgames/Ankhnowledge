@@ -9,6 +9,7 @@
 #define BLOCKTREASURE_H_
 #include "Character.h"
 #include "Block.h"
+#include "Animation.h"
 
 class BlockTreasure: public Block
 {
@@ -17,6 +18,12 @@ public:
 	int update(int dt);
 	virtual void reaction(Character * character);
 	virtual ~BlockTreasure();
+	void render(float cameraX, float cameray);
+
+private:
+	bool open;
+	bool activated;
+	Animation* animation;
 
 };
 

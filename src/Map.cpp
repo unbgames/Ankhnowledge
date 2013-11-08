@@ -78,7 +78,7 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
 
-	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::imagePath + "Bau.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
+	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::imagePath + "bauanimacao.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
 	tiles.at(0)->setRightTile(tiles.at(1));
 	Skill *alanSkill = new SkillDig();
 	Skill *sutiSkill = new SkillSand();
@@ -119,7 +119,11 @@ void Map::render(float cameraX, float cameraY){
 	{
 		if(tiles.at(i)->getBlock())
 			tiles.at(i)->getBlock()->render(getX(), getY());
+		if(tiles.at(i)->isClickable())
+			tiles.at(i)->renderClickableTiles();
 	}
+
+
 
 
 	if(player1->getY() > player2->getY())
@@ -147,6 +151,8 @@ int Map::update(int dt)
 	for(unsigned int i = 0; i < tiles.size(); i++)
 	{
 		tiles.at(i)->update(dt);
+		if(tiles.at(i)->isClickable())
+			tiles.at(i)->animateClickableTiles(dt);
 	}
 	
 	if(currentPlayer->isUsingSkill())
@@ -161,24 +167,44 @@ int Map::update(int dt)
 	player1->update(dt);
 	player2->update(dt);
 
-	if(currentPlayer->getStamina() <= 0 && !changePlayer)
+	if(!currentPlayer->getWin())
 	{
-		changePlayer = true;
+		if(currentPlayer->getStamina() <= 0 && !changePlayer)
+		{
+			changePlayer = true;
+		}
+
+		if(changePlayer && !currentPlayer->isPerformingAction())
+		{
+			changePlayer = false;
+			if(currentPlayer->getId() == 1)
+				currentPlayer = player2;
+			else
+				currentPlayer = player1;
+
+			player1->setStamina(10);
+			player2->setStamina(10);
+			player1->toogleTurn();
+			player2->toogleTurn();
+		}
+	}else
+	{
+		currentPlayer->setTurn(false);
 	}
 
-	if(changePlayer && !currentPlayer->isPerformingAction())
+	for(unsigned int i = 0; i < tiles.size(); i++)
 	{
-		changePlayer = false;
-		if(currentPlayer->getId() == 1)
-			currentPlayer = player2;
-		else
-			currentPlayer = player1;
-
-		player1->setStamina(10);
-		player2->setStamina(10);
-		player1->toogleTurn();
-		player2->toogleTurn();
+		if(tiles.at(i)->getBlock())
+		{
+			if (tiles.at(i)->getBlock()->getDestroyedFinalBlock())
+			{
+			Block* tempBlock = tiles.at(i)->getBlock();
+			tiles.at(i)->setBlock(0);
+			delete tempBlock;
+			}
+		}
 	}
+
 	return 0;
 }
 

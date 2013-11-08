@@ -11,6 +11,7 @@
 #include "Sprite.h"
 #include "Character.h"
 #include "Block.h"
+#include "Animation.h"
 
 class Block;
 class Character;
@@ -37,13 +38,16 @@ public:
 	void setClickable(bool click);
 	void setBlock(Block * block);
 	float getWidth();
+	void animateClickableTiles(int dt);
+	void renderClickableTiles();
 	int id;
 
 private:
-	Sprite* tile;
+	Sprite* tile,*clickableTile;
 	Block* block;
 	Tile *leftTile, *rightTile, *upTile, *downTile;
 	Character * character;
+	Animation * animation;
 	bool clickable;
 
 };
