@@ -4,7 +4,10 @@
 *.exe
 *.o
 *.lo
-*~
 *.la
 *.lai
 *.Plo
+*.plo
+*~
+
+Thumbs.db
