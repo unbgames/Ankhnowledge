@@ -20,7 +20,7 @@ class Skill;
 
 class Character:public GameObject {
 public:
-	Character(Sprite* sprite, Tile* tile, Skill * skill, int id);
+	Character(Sprite* sprite, Sprite* hud, Tile* tile, Skill * skill, int id);
 	void render(float cameraX, float cameraY);
 	int update(int dt);
 	virtual ~Character();
@@ -47,9 +47,10 @@ public:
 	bool getWin();
 	void setWin(bool win);
 	bool getTurn();
+	Sprite * getHud();
 
 private:
-	Sprite* sprite;
+	Sprite* sprite, *hud;
 	Animation *currentAnimation;
 	Skill* skill;
 	float vx,vy;

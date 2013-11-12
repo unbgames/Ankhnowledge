@@ -332,7 +332,12 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/images/adam.png \
 	../$(PACKAGE)/resources/images/Tilecomareia.png \
 	../$(PACKAGE)/resources/images/bauanimacao.png \
 	../$(PACKAGE)/resources/images/areiamovedicabloco.png \
-	../$(PACKAGE)/resources/images/areiamovedica.png
+	../$(PACKAGE)/resources/images/areiamovedica.png \
+	../$(PACKAGE)/resources/images/alanhud.png \
+	../$(PACKAGE)/resources/images/sutihud.png \
+	../$(PACKAGE)/resources/images/endturn_1.png \
+	../$(PACKAGE)/resources/images/endturn_2.png \
+	../$(PACKAGE)/resources/images/endturn_3.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources/images
 
 # Libraries needed to build program

@@ -14,9 +14,11 @@
 
 using namespace std;
 
-Character::Character(Sprite* sprite, Tile* tile, Skill* skill, int id):GameObject(tile->getX(),tile->getY()) {
+Character::Character(Sprite* sprite, Sprite* hud, Tile* tile, Skill* skill, int id):GameObject(tile->getX(),tile->getY()) {
 	this->sprite = sprite;
 	sprite->incNumRef();
+	this->hud = hud;
+	hud->incNumRef();
 	this->currentTile = tile;
 	tile->setCharacter(this);
 	this->x = tile->getX();
@@ -39,9 +41,11 @@ Character::Character(Sprite* sprite, Tile* tile, Skill* skill, int id):GameObjec
 Character::~Character() {
 	this->currentTile = 0;
 	this->sprite->decNumRef();
+	this->hud->decNumRef();
 	this->skill = 0;
 	this->skillDestTile = 0;
 	sprite = 0;
+	this->hud = 0;
 }
 
 void Character::render(float cameraX, float cameraY)
@@ -517,5 +521,10 @@ void Character::setWin(bool win)
 bool Character::getTurn()
 {
 	return this->turn;
+}
+
+Sprite * Character::getHud()
+{
+	return this->hud;
 }
 

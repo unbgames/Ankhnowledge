@@ -17,7 +17,7 @@ old_library='libitem.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -lSDL -lSDLmain -lSDL_image'
+dependency_libs=' -lSDL -lSDLmain -lSDL_ttf -lSDL_image'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''

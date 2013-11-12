@@ -18,6 +18,7 @@
 #include "Block.h"
 #include <sstream>
 #include <string>
+#include "Button.h"
 
 using namespace std;
 
@@ -30,6 +31,9 @@ public:
 	void render(float cameraX, float cameraY);
 	int update(int dt);
 	virtual ~Map();
+	void mousePressed(Button *bt, InputManager* input);
+	void mouseOver(Button *bt, InputManager * input);
+	void changeCurrentPlayer();
 
 private:
 	int columns;
@@ -51,6 +55,8 @@ private:
 	Tile * getPressedTile();
 	SDL_Color color;
 	TTF_Font *font;
+	Button* endButton;
+	int deltaEnd;
 };
 
 #endif /* MAP_H_ */

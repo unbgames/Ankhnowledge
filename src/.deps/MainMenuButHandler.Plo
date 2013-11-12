@@ -121,10 +121,10 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp MainMenuButHandler.h \
  /usr/include/c++/4.7/bits/istream.tcc ../include/Tile.h \
  ../include/Block.h ../include/Skill.h ../include/Map.h \
  /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
- ../include/SceneGameOver.h ../include/SceneCredits.h \
- ../include/CreditsController.h ../include/Button.h \
- ../include/SceneOptions.h ../include/Slider.h \
- ../include/OptionsController.h ../include/Animation.h
+ ../include/Button.h ../include/SceneGameOver.h ../include/SceneCredits.h \
+ ../include/CreditsController.h ../include/SceneOptions.h \
+ ../include/Slider.h ../include/OptionsController.h \
+ ../include/Animation.h
 
 MainMenuButHandler.h:
 
@@ -502,13 +502,13 @@ Button.h:
 
 /usr/include/c++/4.7/bits/sstream.tcc:
 
+../include/Button.h:
+
 ../include/SceneGameOver.h:
 
 ../include/SceneCredits.h:
 
 ../include/CreditsController.h:
-
-../include/Button.h:
 
 ../include/SceneOptions.h:
 

@@ -15,6 +15,7 @@
 #include "SkillDig.h"
 #include "SkillSand.h"
 
+
 using namespace std;
 
 Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
@@ -82,11 +83,18 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	tiles.at(0)->setRightTile(tiles.at(1));
 	Skill *alanSkill = new SkillDig();
 	Skill *sutiSkill = new SkillSand();
-	player1 = new Character(new Sprite(SDLBase::imagePath + "adam_spr.png"), tiles.at(0), alanSkill, 1);
-	player2 = new Character(new Sprite(SDLBase::imagePath + "suti_spr.png"), tiles.at(columns-1), sutiSkill, 2);
+	player1 = new Character(new Sprite(SDLBase::imagePath + "adam_spr.png"),new Sprite(SDLBase::imagePath + "alanhud.png"), tiles.at(0), alanSkill, 1);
+	player2 = new Character(new Sprite(SDLBase::imagePath + "suti_spr.png"), new Sprite(SDLBase::imagePath + "sutihud.png"),tiles.at(columns-1), sutiSkill, 2);
 	currentPlayer = player1;
 	currentPlayer->setTurn(true);
 	changePlayer = false;
+	this->endButton = new Button(
+									new Sprite(SDLBase::imagePath + "endturn_2.png"),
+									new Sprite(SDLBase::imagePath + "endturn_1.png"),
+									new Sprite(SDLBase::imagePath + "endturn_3.png"),
+									660,
+									460);
+	deltaEnd = 0;
 }
 
 Map::~Map() {
@@ -137,9 +145,13 @@ void Map::render(float cameraX, float cameraY){
 		player2->render(0,0);
 	}
 
+	if(currentPlayer)
+		currentPlayer->getHud()->render(0,0);
 	stringstream st;
 	st << ((int)(currentPlayer->getStamina()));
 	SDLBase::renderText(font, st.str(),color,720,60);
+
+	endButton->render(0,0);
 
 }
 
@@ -167,6 +179,11 @@ int Map::update(int dt)
 	player1->update(dt);
 	player2->update(dt);
 
+	deltaEnd += dt;
+	mouseOver(endButton, input);
+	mousePressed(endButton, input);
+	this->endButton->update(dt);
+
 	if(!currentPlayer->getWin())
 	{
 		if(currentPlayer->getStamina() <= 0 && !changePlayer)
@@ -174,18 +191,9 @@ int Map::update(int dt)
 			changePlayer = true;
 		}
 
-		if(changePlayer && !currentPlayer->isPerformingAction())
+		if(changePlayer)
 		{
-			changePlayer = false;
-			if(currentPlayer->getId() == 1)
-				currentPlayer = player2;
-			else
-				currentPlayer = player1;
-
-			player1->setStamina(10);
-			player2->setStamina(10);
-			player1->toogleTurn();
-			player2->toogleTurn();
+			changeCurrentPlayer();
 		}
 	}else
 	{
@@ -243,5 +251,44 @@ bool Map::isLastRow(int index)
 bool Map::isLastColumn(int index)
 {
 	return ((index % columns) == (columns - 1));
+}
+
+void Map::mousePressed(Button *bt, InputManager* input){
+
+	if((input->isMousePressed(1)) && (bt->insideButton()) == 1)
+	{
+		bt->mousePressed(true);
+		if(deltaEnd > 1000)
+		{
+			deltaEnd = 0;
+			changeCurrentPlayer();
+		}
+
+	}
+	else
+	{
+		bt->mousePressed(false);
+	}
+}
+
+void Map::mouseOver(Button *bt, InputManager * input){
+	bt->setMouseCoord(input->mousePosX(),input->mousePosY());
+}
+
+void Map::changeCurrentPlayer()
+{
+	if(!currentPlayer->isPerformingAction())
+	{
+		changePlayer = false;
+		if(currentPlayer->getId() == 1)
+			currentPlayer = player2;
+		else
+			currentPlayer = player1;
+
+		player1->setStamina(10);
+		player2->setStamina(10);
+		player1->toogleTurn();
+		player2->toogleTurn();
+	}
 }
 
