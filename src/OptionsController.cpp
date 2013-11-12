@@ -6,6 +6,7 @@
  */
 
 #include "OptionsController.h"
+#include "AudioHandler.h"
 #include <iostream>
 #include <sstream>
 
@@ -24,6 +25,8 @@ OptionsController::OptionsController():GameObject(getX(),getY()) {
 	color = {0, 0, 0, 255};
 	string font_path = SDLBase::imagePath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
+	this->musicVolume = ((int)(100*bgVolume->calculateValue()));
+	this->effectVolume = ((int)(100*soundEffect->calculateValue()));
 
 }
 
@@ -36,11 +39,35 @@ void OptionsController::render(float cameraX, float cameraY){
 	this->back->render(0,0);
 	this->bgVolume->render(0,0);
 	this->soundEffect->render(0,0);
+
+	int currentMusicVolume = ((int)(100*bgVolume->calculateValue()));
+	if(currentMusicVolume != this->musicVolume)
+	{
+		AudioHandler * audio = AudioHandler::getInstance();
+		audio->setEffectVolume(currentMusicVolume);
+		audio->setEffect("sand_action.wav");
+		audio->playEffect(0);
+		audio->setMusicVolume(currentMusicVolume);
+		this->musicVolume = currentMusicVolume;
+		//audio->setEffectVolume(this->effectVolume);
+	}
+
+	int currentEffectVolume = ((int)(100*soundEffect->calculateValue()));
+	if(currentEffectVolume != this->effectVolume)
+	{
+		AudioHandler * audio = AudioHandler::getInstance();
+		audio->setEffectVolume(currentEffectVolume);
+		audio->setEffect("sand_action.wav");
+		audio->playEffect(0);
+		this->effectVolume = currentEffectVolume;
+	}
+
 	stringstream ssbgvolume;
-	ssbgvolume << ((int)(100*bgVolume->calculateValue()));
+	ssbgvolume << this->musicVolume;
 	SDLBase::renderText(font, ssbgvolume.str() + "%" ,color,720,220);
+	
 	stringstream sssoundeffect;
-	sssoundeffect << ((int)(100*soundEffect->calculateValue()));
+	sssoundeffect << this->effectVolume;
 	SDLBase::renderText(font, sssoundeffect.str() + "%" ,color,720,300);
 
 

@@ -16,6 +16,11 @@ SkillDig::~SkillDig()
 
 void SkillDig::execute(Tile * origin, Tile * dest)
 {
+	AudioHandler * audio = AudioHandler::getInstance();
+	audio->setEffect("dig_action.wav");
+
+	audio->playEffect(0);
+
 	Character * character = origin->getCharacter();
 	origin->setCharacter(0);
 	character->setCurrentTile(dest);
