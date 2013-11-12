@@ -6,6 +6,7 @@
  */
 
 #include "ScenePhaseOne.h"
+#include "AudioHandler.h"
 
 ScenePhaseOne::ScenePhaseOne(string sceneName) : Scene (sceneName) {
 
@@ -18,6 +19,10 @@ ScenePhaseOne::~ScenePhaseOne() {
 
 void ScenePhaseOne::Enter()
 {
+	AudioHandler * audio = AudioHandler::getInstance();
+ 	audio->stopMusic();
+ 	audio->setMusic("intro.ogg");
+ 	audio->playMusic(1);
 	this->splashSprite = new Sprite(SDLBase::imagePath + "interface.png");
 	this->tile = new Sprite(SDLBase::imagePath + "tile.png");
 	this->block = new Sprite(SDLBase::imagePath + "areiamovedicabloco.png");

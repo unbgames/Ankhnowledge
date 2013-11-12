@@ -10,6 +10,10 @@ SceneLogo::~SceneLogo() {
 
 void SceneLogo::Enter()
 {
+	AudioHandler * audio = AudioHandler::getInstance();
+ 	audio->stopMusic();
+ 	audio->setMusic("intro.ogg");
+ 	audio->playMusic(1);
 	this->splashSprite = new Sprite(SDLBase::imagePath + "splashlogo.png");
 	string nextScene = "SceneTechnology";
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);

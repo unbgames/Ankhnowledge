@@ -182,6 +182,22 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 	{
 		bt->mousePressed(true);
 
+		if(bt == bt1)
+		{
+			Network::getInstance()->host();
+			Network::getInstance()->listening();
+			Network::getInstance()->receiveMessage();
+			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+								GameManager::fadeScreen->fadeIn(1,2);
+		}else
+
+		if(bt == bt2 && !Network::getInstance()->connected)
+		{
+			{
+				Network::getInstance()->connect("Teste");
+			}
+		}else
+
 		if(scene.compare("Quit") == 0){
 			SDL_Event quit;
 		    quit.type = SDL_QUIT;
@@ -220,7 +236,7 @@ void MainMenuButHandler::renderConnect(){
 	}
 
 	if(sendMessage)
-		SDLBase::renderText(font, "IP: " + message ,color,150,400);
+		SDLBase::renderText(font, "Mesangem Enviada IP: " + message ,color,150,400);
 	bt6->render(0,0);
 
 }
@@ -257,6 +273,12 @@ void MainMenuButHandler::updateConnect(int dt){
 		sendMessage = true;
 		bt6->setChangeSprite(1);
 		bt6->mousePressed(true);
+		if(Network::getInstance()->connected)
+		{
+			Network::getInstance()->sendMessage(message);
+			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+					GameManager::fadeScreen->fadeIn(1,2);
+		}
 	}
 
 	animation->update(dt, true,0,0);

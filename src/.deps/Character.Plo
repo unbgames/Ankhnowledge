@@ -108,20 +108,21 @@ Character.lo: Character.cpp /usr/include/c++/4.7/iostream \
  /usr/include/c++/4.7/bits/stl_vector.h \
  /usr/include/c++/4.7/bits/stl_bvector.h \
  /usr/include/c++/4.7/bits/vector.tcc ../include/AudioHandler.h \
- ../include/Network.h ../include/Shape.h ../include/FadeScreen.h \
- ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
- /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
- ../include/SceneLogo.h ../include/SplashScreen.h \
- ../include/SceneTechnology.h ../include/SceneThirdParty.h \
- ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h ../include/Button.h \
- ../include/Animation.h ../include/ScenePhaseOne.h ../include/Character.h \
- ../include/Map.h ../include/Tile.h ../include/Block.h \
- /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
- ../include/SceneGameOver.h ../include/SceneCredits.h \
- ../include/CreditsController.h ../include/SceneOptions.h \
- ../include/Slider.h ../include/OptionsController.h ../include/Skill.h \
- ../include/Skill.h
+ /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
+ ../include/Network.h /usr/include/SDL/SDL_net.h ../include/Shape.h \
+ ../include/FadeScreen.h ../include/FadeHandler.h ../include/Scene.h \
+ /usr/include/c++/4.7/list /usr/include/c++/4.7/bits/stl_list.h \
+ /usr/include/c++/4.7/bits/list.tcc ../include/SceneLogo.h \
+ ../include/SplashScreen.h ../include/SceneTechnology.h \
+ ../include/SceneThirdParty.h ../include/SceneLegal.h \
+ ../include/SceneMainMenu.h ../include/MainMenuButHandler.h \
+ ../include/Button.h ../include/Animation.h ../include/ScenePhaseOne.h \
+ ../include/Character.h ../include/Map.h ../include/Tile.h \
+ ../include/Block.h /usr/include/c++/4.7/sstream \
+ /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
+ ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/SceneOptions.h ../include/Slider.h \
+ ../include/OptionsController.h ../include/Skill.h ../include/Skill.h
 
 /usr/include/c++/4.7/iostream:
 
@@ -441,7 +442,13 @@ Character.lo: Character.cpp /usr/include/c++/4.7/iostream \
 
 ../include/AudioHandler.h:
 
+/usr/include/SDL/SDL_mixer.h:
+
+/usr/include/SDL/SDL_types.h:
+
 ../include/Network.h:
+
+/usr/include/SDL/SDL_net.h:
 
 ../include/Shape.h:
 

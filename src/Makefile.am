@@ -16,7 +16,7 @@ libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp B
 
 
 # Libraries needed to build our library
-libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf
+libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf -lSDL_net -lSDL_mixer
 
 # Program description
 Ankhnowledge_SOURCES =	main.cpp

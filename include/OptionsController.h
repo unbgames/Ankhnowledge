@@ -32,6 +32,7 @@ private:
 	Sprite *back_1,*back_2,*back_3,*splashSprite;
 	Sprite *sliderBar,*sliderButton;
 	Slider * bgVolume,*soundEffect;
+	int musicVolume, effectVolume;
 	SDL_Color color;
 	TTF_Font *font;
 };

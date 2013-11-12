@@ -279,7 +279,7 @@ libitem_la_LDFLAGS = -static
 libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp BlockSand.cpp SkillSand.cpp
 
 # Libraries needed to build our library
-libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf
+libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf -lSDL_net -lSDL_mixer
 
 # Program description
 Ankhnowledge_SOURCES = main.cpp

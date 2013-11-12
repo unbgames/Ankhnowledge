@@ -16,7 +16,10 @@ SceneMainMenu::~SceneMainMenu() {
 
 void SceneMainMenu::Enter()
 {
-
+	AudioHandler * audio = AudioHandler::getInstance();
+ 	audio->stopMusic();
+   	audio->setMusic("main_menu.ogg");
+ 	audio->playMusic(-1);
 	buttons = new MainMenuButHandler();
 	this->addGameObject(buttons);
 	GameManager::fadeScreen->fadeOut(0,2);

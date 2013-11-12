@@ -86,6 +86,7 @@ void GameManager::processEvents(){
 
 	if(input->isKeyDown(SDLK_ESCAPE)){
 		// se a tecla ESC foi pressionada, sair do programa
+		delete network;
 		SDL_Event quit;
 	    quit.type = SDL_QUIT;
 	    SDL_PushEvent( &quit );
@@ -164,8 +165,6 @@ void GameManager::run(){
 
 			/*Atualizar a tela*/
 			SDLBase::updateScreen();
-			network->sendMessage();
-			network->receiveMessage();
 			frameEnd = SDL_GetTicks();
 
 		}else{

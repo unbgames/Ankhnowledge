@@ -10,7 +10,11 @@ SceneLogo::~SceneLogo() {
 
 void SceneLogo::Enter()
 {
-	this->splashSprite = new Sprite("../Ankhnowledge/resources/images/splashlogo.png");
+	AudioHandler * audio = AudioHandler::getInstance();
+ 	audio->stopMusic();
+ 	audio->setMusic("intro.ogg");
+ 	audio->playMusic(1);
+	this->splashSprite = new Sprite(SDLBase::imagePath + "splashlogo.png");
 	string nextScene = "SceneTechnology";
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 

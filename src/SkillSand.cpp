@@ -15,6 +15,9 @@ SkillSand::~SkillSand() {}
 
 void SkillSand::execute(Tile * origin, Tile * dest)
 {
+	AudioHandler * audio = AudioHandler::getInstance();
+ 	audio->setEffect("sand_action.wav");
+ 	audio->playEffect(0);
 
 	Block *oldBlock = dest->getBlock();
 
