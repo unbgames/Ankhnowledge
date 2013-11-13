@@ -57,8 +57,7 @@ int Character::update(int dt)
 {
 	InputManager* input;
 	input = InputManager::getInstance();
-
-
+	
 	this->dt = this->dt + dt;
 
 	if(this->activatedSkill)
