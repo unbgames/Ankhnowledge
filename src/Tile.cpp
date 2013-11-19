@@ -21,7 +21,7 @@ Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y
 	this->id = id;
 	this->character = 0;
 	this->clickable = false;
-	this->clickableTile = new Sprite(SDLBase::imagePath + "whitesquare.png");
+	this->clickableTile = new Sprite(SDLBase::resourcesPath + "whitesquare.png");
 	this->clickableTile->incNumRef();
 	this->animation = new Animation(20,20,clickableTile,0);
 

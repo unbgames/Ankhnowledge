@@ -90,9 +90,9 @@ Network.lo: Network.cpp ../include/Network.h /usr/include/c++/4.7/string \
  /usr/include/c++/4.7/bits/stl_uninitialized.h \
  /usr/include/c++/4.7/bits/stl_vector.h \
  /usr/include/c++/4.7/bits/stl_bvector.h \
- /usr/include/c++/4.7/bits/vector.tcc /usr/include/c++/4.7/iostream \
- /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
- /usr/include/c++/4.7/bits/ios_base.h \
+ /usr/include/c++/4.7/bits/vector.tcc /usr/include/SDL/SDL_thread.h \
+ /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
+ /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -368,6 +368,8 @@ Network.lo: Network.cpp ../include/Network.h /usr/include/c++/4.7/string \
 /usr/include/c++/4.7/bits/stl_bvector.h:
 
 /usr/include/c++/4.7/bits/vector.tcc:
+
+/usr/include/SDL/SDL_thread.h:
 
 /usr/include/c++/4.7/iostream:
 

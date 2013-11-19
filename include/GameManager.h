@@ -51,7 +51,6 @@ private:
 
 	InputManager * input;
 	AudioHandler * audio;
-	Network * network;
 	Shape* shape;
 	std::vector<GameObject*> gameObjects;
 	float SCROLL;

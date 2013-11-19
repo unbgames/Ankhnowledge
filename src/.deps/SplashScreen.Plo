@@ -111,8 +111,9 @@ SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc /usr/include/SDL/SDL_mixer.h \
  /usr/include/SDL/SDL_types.h ../include/Network.h \
- /usr/include/SDL/SDL_net.h ../include/Shape.h ../include/FadeScreen.h \
- ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
+ /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL_thread.h \
+ ../include/Shape.h ../include/FadeScreen.h ../include/FadeHandler.h \
+ ../include/Scene.h /usr/include/c++/4.7/list \
  /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
  ../include/SceneLogo.h ../include/SplashScreen.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
@@ -450,6 +451,8 @@ SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
 ../include/Network.h:
 
 /usr/include/SDL/SDL_net.h:
+
+/usr/include/SDL/SDL_thread.h:
 
 ../include/Shape.h:
 

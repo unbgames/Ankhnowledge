@@ -10,11 +10,11 @@
 
 
 CreditsController::CreditsController():GameObject(getX(),getY()) {
-	this->back_1 = new Sprite(SDLBase::imagePath + "back_1.png");
-	this->back_2 = new Sprite(SDLBase::imagePath + "back_2.png");
-	this->back_3 = new Sprite(SDLBase::imagePath + "back_3.png");
+	this->back_1 = new Sprite(SDLBase::resourcesPath + "back_1.png");
+	this->back_2 = new Sprite(SDLBase::resourcesPath + "back_2.png");
+	this->back_3 = new Sprite(SDLBase::resourcesPath + "back_3.png");
 	this->back = new Button(back_1,back_2,back_3,500,500);
-	this->splashSprite = new Sprite(SDLBase::imagePath + "credits.png");
+	this->splashSprite = new Sprite(SDLBase::resourcesPath + "credits.png");
 	input = InputManager::getInstance();
 	
 }

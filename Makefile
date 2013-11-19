@@ -61,7 +61,10 @@ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	config/depcomp config/install-sh config/ltmain.sh \
 	config/missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
+	$(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -132,12 +135,12 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/al/Desktop/cod/Ankhnowledge/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/al/Desktop/cod/Ankhnowledge/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/al/Desktop/cod/Ankhnowledge/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/al/Desktop/cod/Ankhnowledge/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -177,7 +180,7 @@ LTLIBOBJS =
 LT_CURRENT = 0
 LT_RELEASE = 0.0.1
 LT_REVISION = 0
-MAKEINFO = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/al/Desktop/cod/Ankhnowledge/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -200,10 +203,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.0.1
-abs_builddir = /home/al/Test/Ankhnowledge
-abs_srcdir = /home/al/Test/Ankhnowledge
-abs_top_builddir = /home/al/Test/Ankhnowledge
-abs_top_srcdir = /home/al/Test/Ankhnowledge
+abs_builddir = /home/al/Desktop/cod/Ankhnowledge
+abs_srcdir = /home/al/Desktop/cod/Ankhnowledge
+abs_top_builddir = /home/al/Desktop/cod/Ankhnowledge
+abs_top_srcdir = /home/al/Desktop/cod/Ankhnowledge
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -234,7 +237,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/al/Test/Ankhnowledge/config/install-sh
+install_sh = ${SHELL} /home/al/Desktop/cod/Ankhnowledge/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale

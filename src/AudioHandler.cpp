@@ -62,7 +62,7 @@ void AudioHandler::setMusic(string song)
 	if(this->currentMusic)
 		Mix_FreeMusic(this->currentMusic);
 
-	string songPath = SDLBase::imagePath + song;
+	string songPath = SDLBase::resourcesPath + song;
 
 	this->currentMusic = Mix_LoadMUS(songPath.c_str());
 }
@@ -95,7 +95,7 @@ void AudioHandler::setEffect(string song)
 	if(this->currentEffect)
 		Mix_FreeChunk(this->currentEffect);
 
-	string songPath = SDLBase::imagePath + song;
+	string songPath = SDLBase::resourcesPath + song;
 	this->currentEffect = Mix_LoadWAV(songPath.c_str());	
 }
 

@@ -7,7 +7,7 @@ using namespace std;
 
 FadeScreen * GameManager::fadeScreen = 0;
 Scene * GameManager::currentScene = 0;
-string SDLBase::imagePath = getenv("HOME");
+string SDLBase::resourcesPath = getenv("HOME");
 
 /*
  * Construtor da Classe
@@ -16,7 +16,7 @@ string SDLBase::imagePath = getenv("HOME");
  * funcoes SDL_DisplayFormat e SDL_DisplayFormaAlpha. Funcoes estas que precisam
  */
 GameManager::GameManager() {
-	SDLBase::imagePath = SDLBase::imagePath + "/../../usr/local/Ankhnowledge/resources/images/";
+	SDLBase::resourcesPath = SDLBase::resourcesPath + "/../../usr/local/Ankhnowledge/resources/";
 	SDLBase::initializeSDL();
 	initResources();
 
@@ -66,7 +66,6 @@ void GameManager::initResources(){
 
 	input = InputManager::getInstance();
 	audio = AudioHandler::getInstance();
-	network = Network::getInstance();
 	dt = 0;
 	frameStart = 0;
 	frameEnd = 0;
@@ -86,7 +85,7 @@ void GameManager::processEvents(){
 
 	if(input->isKeyDown(SDLK_ESCAPE)){
 		// se a tecla ESC foi pressionada, sair do programa
-		delete network;
+		Network::finish();
 		SDL_Event quit;
 	    quit.type = SDL_QUIT;
 	    SDL_PushEvent( &quit );

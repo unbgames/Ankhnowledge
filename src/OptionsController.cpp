@@ -11,19 +11,19 @@
 #include <sstream>
 
 OptionsController::OptionsController():GameObject(getX(),getY()) {
-	this->back_1 = new Sprite(SDLBase::imagePath + "back_1.png");
-	this->back_2 = new Sprite(SDLBase::imagePath + "back_2.png");
-	this->back_3 = new Sprite(SDLBase::imagePath + "back_3.png");
+	this->back_1 = new Sprite(SDLBase::resourcesPath + "back_1.png");
+	this->back_2 = new Sprite(SDLBase::resourcesPath + "back_2.png");
+	this->back_3 = new Sprite(SDLBase::resourcesPath + "back_3.png");
 	this->back = new Button(back_1,back_2,back_3,500,500);
-	this->sliderBar = new Sprite(SDLBase::imagePath + "slider_bar.png");
-	this->sliderButton = new Sprite(SDLBase::imagePath + "slider_button.png");
+	this->sliderBar = new Sprite(SDLBase::resourcesPath + "slider_bar.png");
+	this->sliderButton = new Sprite(SDLBase::resourcesPath + "slider_button.png");
 	bgVolume = new Slider(sliderButton,sliderBar,400,230);
 	soundEffect = new Slider(sliderButton,sliderBar,400,310);
-	this->splashSprite = new Sprite(SDLBase::imagePath + "options.png");
+	this->splashSprite = new Sprite(SDLBase::resourcesPath + "options.png");
 	input = InputManager::getInstance();
 	SDLBase::initializeSDLTTF();
 	color = {0, 0, 0, 255};
-	string font_path = SDLBase::imagePath + "quicksandbold.ttf";
+	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
 	this->musicVolume = ((int)(100*bgVolume->calculateValue()));
 	this->effectVolume = ((int)(100*soundEffect->calculateValue()));

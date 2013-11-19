@@ -8,10 +8,20 @@
 #include "Network.h"
 #include <iostream>
 
-Network * Network::instance = 0;
+IPaddress Network::ip, * Network::receiverIp;
+int Network::rc;
+TCPsocket Network::currentSocket, Network::communicationSocket;
+char Network::buffer[512];
+vector<string> Network::messageQueue;
+SDL_Thread * Network::thread;
+bool Network::endGame, Network::connected;
+SDL_mutex *Network::mutex;
 
 Network::Network() {
 
+}
+
+void Network::init(){
 	rc = SDLNet_Init();
 
 	if(rc == -1)
@@ -22,30 +32,38 @@ Network::Network() {
 	currentSocket = 0;
 	communicationSocket = 0;
 	endGame = false;
+	mutex = NULL;
+
+}
+
+void Network::finish(){
+	if(currentSocket)
+	{
+		SDLNet_TCP_Close(currentSocket);
+	}
+
+	if(communicationSocket)
+	{
+		SDLNet_TCP_Close(communicationSocket);
+	}
+
+	messageQueue.clear();
+
+	SDLNet_Quit();
+
+	cout << "\nOk!\n" << endl;
+	SDL_KillThread(thread);
+	SDL_DestroyMutex(mutex);
 }
 
 Network::~Network() {
 
-		if(currentSocket)
-		{
-			SDLNet_TCP_Close(currentSocket);
-		}
 
-		if(communicationSocket)
-		{
-			SDLNet_TCP_Close(communicationSocket);
-		}
-
-		messageQueue.clear();
-
-		SDLNet_Quit();
-
-		cout << "\nOk!\n" << endl;
 }
 
 int Network::connect(string ipaddress){
 
-	 rc = SDLNet_ResolveHost(&ip, /*ipaddress.c_str()*/"localhost", 3000);
+	rc = SDLNet_ResolveHost(&ip, /*ipaddress.c_str()*/"localhost", 3000);
 
 	if(rc == -1)
 	{
@@ -77,9 +95,9 @@ void Network::sendMessage(string message){
 	}
 }
 
-void Network::receiveMessage(){
+int Network::receiveMessage(void *){
 
-	if(connected)
+	if((connected) && (SDL_mutexP(mutex) == 0))
 	{
 		//cout<<"trying to receive message"<<endl;
 
@@ -89,18 +107,24 @@ void Network::receiveMessage(){
 			//cout<<"recebi a msn: "<<message<<endl;
 			messageQueue.push_back(message);
 		}
+		SDL_mutexV(mutex);
 	}
 
+	return 0;
+}
 
+void Network::receiveThread(){
+	thread = SDL_CreateThread(receiveMessage, NULL);
 }
 
 string Network::readMessage()
 {
 	string message = "";
-	if(!messageQueue.empty())
+	if(!messageQueue.empty() && (SDL_mutexP(mutex) == 0))
 	{
 		message = messageQueue.at(0);
 		messageQueue.erase(messageQueue.begin());
+		SDL_mutexV(mutex);
 	}
 	return message;
 }
@@ -127,12 +151,6 @@ int Network::host()
 	cout << "Aguardando cliente ..." << endl;
 }
 
-Network* Network::getInstance(){
-
-	if(!instance) instance = new Network();
-	return instance;
-}
-
 int Network::listening()
 {
 	while(!connected)
@@ -146,3 +164,4 @@ int Network::listening()
 	}
 
 }
+

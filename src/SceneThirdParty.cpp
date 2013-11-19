@@ -16,7 +16,7 @@ SceneThirdParty::~SceneThirdParty() {
 
 void SceneThirdParty::Enter()
 {
-	this->splashSprite = new Sprite(SDLBase::imagePath + "splashthirdparty.png");
+	this->splashSprite = new Sprite(SDLBase::resourcesPath + "splashthirdparty.png");
 	string nextScene = "SceneLegal" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 	this->addGameObject(splashScreen);

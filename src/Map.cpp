@@ -30,7 +30,7 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	color.r = 255;
 	color.g = 255;
 	color.b = 255;
-	string font_path = SDLBase::imagePath + "quicksandbold.ttf";
+	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
 
 
@@ -79,19 +79,19 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
 
-	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::imagePath + "bauanimacao.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
+	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::resourcesPath + "bauanimacao.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
 	tiles.at(0)->setRightTile(tiles.at(1));
 	Skill *alanSkill = new SkillDig();
 	Skill *sutiSkill = new SkillSand();
-	player1 = new Character(new Sprite(SDLBase::imagePath + "adam_spr.png"),new Sprite(SDLBase::imagePath + "alanhud.png"), tiles.at(0), alanSkill, 1);
-	player2 = new Character(new Sprite(SDLBase::imagePath + "suti_spr.png"), new Sprite(SDLBase::imagePath + "sutihud.png"),tiles.at(columns-1), sutiSkill, 2);
+	player1 = new Character(new Sprite(SDLBase::resourcesPath + "adam_spr.png"),new Sprite(SDLBase::resourcesPath + "alanhud.png"), tiles.at(0), alanSkill, 1);
+	player2 = new Character(new Sprite(SDLBase::resourcesPath + "suti_spr.png"), new Sprite(SDLBase::resourcesPath + "sutihud.png"),tiles.at(columns-1), sutiSkill, 2);
 	currentPlayer = player1;
 	currentPlayer->setTurn(true);
 	changePlayer = false;
 	this->endButton = new Button(
-									new Sprite(SDLBase::imagePath + "endturn_2.png"),
-									new Sprite(SDLBase::imagePath + "endturn_1.png"),
-									new Sprite(SDLBase::imagePath + "endturn_3.png"),
+									new Sprite(SDLBase::resourcesPath + "endturn_2.png"),
+									new Sprite(SDLBase::resourcesPath + "endturn_1.png"),
+									new Sprite(SDLBase::resourcesPath + "endturn_3.png"),
 									660,
 									460);
 	deltaEnd = 0;

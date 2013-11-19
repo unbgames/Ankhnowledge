@@ -111,20 +111,21 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc /usr/include/SDL/SDL_mixer.h \
  /usr/include/SDL/SDL_types.h ../include/Network.h \
- /usr/include/SDL/SDL_net.h ../include/GameObject.h ../include/Shape.h \
- ../include/FadeScreen.h ../include/FadeHandler.h ../include/Scene.h \
- /usr/include/c++/4.7/list /usr/include/c++/4.7/bits/stl_list.h \
- /usr/include/c++/4.7/bits/list.tcc ../include/SceneLogo.h \
- ../include/SplashScreen.h ../include/GameManager.h \
- ../include/SceneTechnology.h ../include/SceneThirdParty.h \
- ../include/SceneLegal.h ../include/SceneMainMenu.h \
- ../include/MainMenuButHandler.h ../include/Button.h \
- ../include/Animation.h ../include/ScenePhaseOne.h ../include/Character.h \
- ../include/Tile.h ../include/Block.h ../include/Skill.h ../include/Map.h \
- /usr/include/c++/4.7/sstream /usr/include/c++/4.7/bits/sstream.tcc \
- ../include/SceneGameOver.h ../include/SceneCredits.h \
- ../include/CreditsController.h ../include/SceneOptions.h \
- ../include/Slider.h ../include/OptionsController.h
+ /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL_thread.h \
+ ../include/GameObject.h ../include/Shape.h ../include/FadeScreen.h \
+ ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
+ /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
+ ../include/SceneLogo.h ../include/SplashScreen.h \
+ ../include/GameManager.h ../include/SceneTechnology.h \
+ ../include/SceneThirdParty.h ../include/SceneLegal.h \
+ ../include/SceneMainMenu.h ../include/MainMenuButHandler.h \
+ ../include/Button.h ../include/Animation.h ../include/ScenePhaseOne.h \
+ ../include/Character.h ../include/Tile.h ../include/Block.h \
+ ../include/Skill.h ../include/Map.h /usr/include/c++/4.7/sstream \
+ /usr/include/c++/4.7/bits/sstream.tcc ../include/SceneGameOver.h \
+ ../include/SceneCredits.h ../include/CreditsController.h \
+ ../include/SceneOptions.h ../include/Slider.h \
+ ../include/OptionsController.h
 
 ../include/GameManager.h:
 
@@ -447,6 +448,8 @@ GameManager.lo: GameManager.cpp ../include/GameManager.h \
 ../include/Network.h:
 
 /usr/include/SDL/SDL_net.h:
+
+/usr/include/SDL/SDL_thread.h:
 
 ../include/GameObject.h:
 

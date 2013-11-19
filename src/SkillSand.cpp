@@ -28,7 +28,7 @@ void SkillSand::execute(Tile * origin, Tile * dest)
 	}
 	else
 	{
-		Block *newBlock = new BlockSand(new Sprite(SDLBase::imagePath + "areiamovedica.png"), dest->getX(), dest->getY());
+		Block *newBlock = new BlockSand(new Sprite(SDLBase::resourcesPath + "areiamovedica.png"), dest->getX(), dest->getY());
 		dest->setBlock(newBlock);
 	}
 }

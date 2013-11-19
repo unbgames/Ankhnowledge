@@ -21,12 +21,12 @@ void ScenePhaseOne::Enter()
 {
 	AudioHandler * audio = AudioHandler::getInstance();
 	audio->stopMusic();
-	audio->setMusic("intro.ogg");
+	audio->setMusic("fase1.ogg");
 	audio->playMusic(-1);
 
-	this->splashSprite = new Sprite(SDLBase::imagePath + "interface.png");
-	this->tile = new Sprite(SDLBase::imagePath + "tile.png");
-	this->block = new Sprite(SDLBase::imagePath + "areiamovedicabloco.png");
+	this->splashSprite = new Sprite(SDLBase::resourcesPath + "interface.png");
+	this->tile = new Sprite(SDLBase::resourcesPath + "tile.png");
+	this->block = new Sprite(SDLBase::resourcesPath + "areiamovedicabloco.png");
 	this->map = new Map(tile, block, 200, 100);
 	string nextScene = "ScenePhaseOne" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);

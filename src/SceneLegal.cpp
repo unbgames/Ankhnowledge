@@ -16,7 +16,7 @@ SceneLegal::~SceneLegal() {
 
 void SceneLegal::Enter()
 {
-	this->splashSprite = new Sprite(SDLBase::imagePath + "splashlegal.png");
+	this->splashSprite = new Sprite(SDLBase::resourcesPath + "splashlegal.png");
 	string nextScene = "SceneMainMenu" ;
 	SplashScreen * splashScreen =  new SplashScreen(splashSprite,nextScene);
 	this->addGameObject(splashScreen);

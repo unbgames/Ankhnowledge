@@ -11,8 +11,6 @@
 #include "AudioHandler.h"
 #include "Network.h"
 #include "GameObject.h"
-#include "TileSet.h"
-#include "TileMap.h"
 #include "Shape.h"
 #include "FadeScreen.h"
 #include "Scene.h"
@@ -49,6 +47,7 @@ private:
 	Scene * splashGameOver;
 	Scene * splashCredits;
 	Scene * splashOptions;
+	Scene * splashConnect;
 
 	InputManager * input;
 	AudioHandler * audio;

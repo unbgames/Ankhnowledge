@@ -11,28 +11,36 @@ using namespace std;
 #include <string>
 #include "SDL/SDL_net.h"
 #include <vector>
+#include "SDL/SDL_thread.h"
+
+using namespace std;
 
 class Network {
 public:
+	static void init();
+	static void finish();
 	virtual ~Network();
-	int connect(string ipaddress);
-	int listening();
-	void disconnect();
-	void sendMessage(string message);
-	void receiveMessage();
-	string readMessage();
-	int host();
-	static Network* getInstance();
-	bool endGame, connected;
+	static int connect(string ipaddress);
+	static int listening();
+	static void disconnect();
+	static void sendMessage(string message);
+	static int receiveMessage(void *);
+	static void receiveThread();
+	static string readMessage();
+	static int contagem(void *);
+	static int host();
+	static bool endGame, connected;
 private:
-	int rc;
-	TCPsocket currentSocket, communicationSocket;
-	IPaddress ip, *receiverIp;
-	char buffer[512];
+	static int rc;
+	static TCPsocket currentSocket, communicationSocket;
+	static IPaddress ip, *receiverIp;
+	static char buffer[512];
 	Network();
-	static Network* instance;
-	vector<string> messageQueue;
+	static vector<string> messageQueue;
+	static SDL_Thread *thread;
+	static SDL_mutex *mutex;
 
 };
 
 #endif /* NETWORK_H_ */
+

@@ -25,7 +25,7 @@ public:
 	static void drawCircle(float size, int x,int y,int r, int g, int b);
 	static void setAlpha(SDL_Surface * surface, int alpha);
 	static int getTime();
-	static string imagePath;
+	static string resourcesPath;
 	static void initializeSDLTTF();
 	static TTF_Font* loadFont(const char* fontName,int size);
 	static void renderText(TTF_Font*font,string text,SDL_Color color,float x,float y);

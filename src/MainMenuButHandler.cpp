@@ -8,41 +8,41 @@
 #include "MainMenuButHandler.h"
 
 MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
-	this->bt1_1 = new Sprite(SDLBase::imagePath + "host_1.png");
+	this->bt1_1 = new Sprite(SDLBase::resourcesPath + "host_1.png");
 	this->bt1_1->incNumRef();
-	this->bt1_2 = new Sprite(SDLBase::imagePath + "host_2.png");
+	this->bt1_2 = new Sprite(SDLBase::resourcesPath + "host_2.png");
 	this->bt1_2->incNumRef();
-	this->bt1_3 = new Sprite(SDLBase::imagePath + "host_3.png");
+	this->bt1_3 = new Sprite(SDLBase::resourcesPath + "host_3.png");
 	this->bt1_3->incNumRef();
-	this->bt2_1 = new Sprite(SDLBase::imagePath + "connect_1.png");
+	this->bt2_1 = new Sprite(SDLBase::resourcesPath + "connect_1.png");
 	this->bt2_1->incNumRef();
-	this->bt2_2 = new Sprite(SDLBase::imagePath + "connect_2.png");
+	this->bt2_2 = new Sprite(SDLBase::resourcesPath + "connect_2.png");
 	this->bt2_2->incNumRef();
-	this->bt2_3 = new Sprite(SDLBase::imagePath + "connect_3.png");
+	this->bt2_3 = new Sprite(SDLBase::resourcesPath + "connect_3.png");
 	this->bt2_3->incNumRef();
-	this->bt3_1 = new Sprite(SDLBase::imagePath + "options_1.png");
+	this->bt3_1 = new Sprite(SDLBase::resourcesPath + "options_1.png");
 	this->bt3_1->incNumRef();
-	this->bt3_2 = new Sprite(SDLBase::imagePath + "options_2.png");
+	this->bt3_2 = new Sprite(SDLBase::resourcesPath + "options_2.png");
 	this->bt3_2->incNumRef();
-	this->bt3_3 = new Sprite(SDLBase::imagePath + "options_3.png");
+	this->bt3_3 = new Sprite(SDLBase::resourcesPath + "options_3.png");
 	this->bt3_3->incNumRef();
-	this->bt4_1 = new Sprite(SDLBase::imagePath + "credits_1.png");
+	this->bt4_1 = new Sprite(SDLBase::resourcesPath + "credits_1.png");
 	this->bt4_1->incNumRef();
-	this->bt4_2 = new Sprite(SDLBase::imagePath + "credits_2.png");
+	this->bt4_2 = new Sprite(SDLBase::resourcesPath + "credits_2.png");
 	this->bt4_2->incNumRef();
-	this->bt4_3 = new Sprite(SDLBase::imagePath + "credits_3.png");
+	this->bt4_3 = new Sprite(SDLBase::resourcesPath + "credits_3.png");
 	this->bt4_3->incNumRef();
-	this->bt5_1 = new Sprite(SDLBase::imagePath + "quit_1.png");
+	this->bt5_1 = new Sprite(SDLBase::resourcesPath + "quit_1.png");
 	this->bt5_1->incNumRef();
-	this->bt5_2 = new Sprite(SDLBase::imagePath + "quit_2.png");
+	this->bt5_2 = new Sprite(SDLBase::resourcesPath + "quit_2.png");
 	this->bt5_2->incNumRef();
-	this->bt5_3 = new Sprite(SDLBase::imagePath + "quit_3.png");
+	this->bt5_3 = new Sprite(SDLBase::resourcesPath + "quit_3.png");
 	this->bt5_3->incNumRef();
-	this->bt6_1 = new Sprite(SDLBase::imagePath + "ok_1.png");
+	this->bt6_1 = new Sprite(SDLBase::resourcesPath + "ok_1.png");
 	this->bt6_1->incNumRef();
-	this->bt6_2 = new Sprite(SDLBase::imagePath + "ok_2.png");
+	this->bt6_2 = new Sprite(SDLBase::resourcesPath + "ok_2.png");
 	this->bt6_2->incNumRef();
-	this->bt6_3 = new Sprite(SDLBase::imagePath + "ok_3.png");
+	this->bt6_3 = new Sprite(SDLBase::resourcesPath + "ok_3.png");
 	this->bt6_3->incNumRef();
 
 	this->bt1 = new Button(bt1_1,bt1_2,bt1_3,500,300);
@@ -52,17 +52,17 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt5 = new Button(bt5_1,bt5_2,bt5_3,500,500);
 	this->bt6 = new Button(bt6_1,bt6_2,bt6_3,500,300);
 
-	this->splashSprite = new Sprite(SDLBase::imagePath + "titlebg.png");
+	this->splashSprite = new Sprite(SDLBase::resourcesPath + "titlebg.png");
 	this->splashSprite->incNumRef();
 	input = InputManager::getInstance();
 
-	box = new Sprite(SDLBase::imagePath + "box.png");
+	box = new Sprite(SDLBase::resourcesPath + "box.png");
 	this->box->incNumRef();
-	boxInput = new Sprite(SDLBase::imagePath + "box_input.png");
+	boxInput = new Sprite(SDLBase::resourcesPath + "box_input.png");
 	this->boxInput->incNumRef();
-	bg = new Sprite(SDLBase::imagePath + "background.png");
+	bg = new Sprite(SDLBase::resourcesPath + "background.png");
 	this->bg->incNumRef();
-	cursor = new Sprite(SDLBase::imagePath + "cursor.png");
+	cursor = new Sprite(SDLBase::resourcesPath + "cursor.png");
 	this->cursor->incNumRef();
 	this->animation = new Animation(18,45,cursor,0);
 	input = InputManager::getInstance();
@@ -74,7 +74,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	color.r = 0;
 	color.g = 0;
 	color.b = 0;
-	string font_path = SDLBase::imagePath + "quicksandbold.ttf";
+	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),25);
 	read = false;
 	tryToConnect = false;
@@ -184,17 +184,17 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 
 		if(bt == bt1)
 		{
-			Network::getInstance()->host();
-			Network::getInstance()->listening();
-			Network::getInstance()->receiveMessage();
+			Network::host();
+			Network::listening();
+			Network::receiveThread();
 			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
 								GameManager::fadeScreen->fadeIn(1,2);
 		}else
 
-		if(bt == bt2 && !Network::getInstance()->connected)
+		if(bt == bt2 && !Network::connected)
 		{
 			{
-				Network::getInstance()->connect("Teste");
+				Network::connect("Teste");
 			}
 		}else
 
@@ -273,9 +273,9 @@ void MainMenuButHandler::updateConnect(int dt){
 		sendMessage = true;
 		bt6->setChangeSprite(1);
 		bt6->mousePressed(true);
-		if(Network::getInstance()->connected)
+		if(Network::connected)
 		{
-			Network::getInstance()->sendMessage(message);
+			Network::sendMessage(message);
 			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
 					GameManager::fadeScreen->fadeIn(1,2);
 		}
