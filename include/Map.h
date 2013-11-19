@@ -19,12 +19,14 @@
 #include <sstream>
 #include <string>
 #include "Button.h"
+#include "TileMap.h"
 
 using namespace std;
 
 class Block;
 class Character;
 class Tile;
+class TileMap;
 class Map : public GameObject {
 public:
 	Map(Sprite * tile, Sprite * block, float x, float y);
@@ -34,6 +36,7 @@ public:
 	void mousePressed(Button *bt, InputManager* input);
 	void mouseOver(Button *bt, InputManager * input);
 	void changeCurrentPlayer();
+	Tile * getTileWithIndex(int index);
 
 private:
 	int columns;
@@ -46,6 +49,7 @@ private:
 	Character * player2;
 	Character * currentPlayer;
 	vector<Tile* > tiles;
+	TileMap *tileMap;
 	bool changePlayer;
 
 	bool isFirstRow(int index);

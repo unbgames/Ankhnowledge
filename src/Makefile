@@ -112,7 +112,8 @@ am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
 	SceneThirdParty.lo SceneGameOver.lo SceneCredits.lo \
 	SceneOptions.lo Shape.lo SplashScreen.lo Sprite.lo Slider.lo \
-	Skill.lo SkillDig.lo Tile.lo BlockSand.lo SkillSand.lo
+	Skill.lo SkillDig.lo Tile.lo TileMap.lo BlockSand.lo \
+	SkillSand.lo
 libitem_la_OBJECTS = $(am_libitem_la_OBJECTS)
 libitem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -279,7 +280,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp BlockSand.cpp SkillSand.cpp
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf -lSDL_net -lSDL_mixer
@@ -347,7 +348,8 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/intro.ogg \
 	../$(PACKAGE)/resources/endturn_3.png \
 	../$(PACKAGE)/resources/whitesquare.png \
 	../$(PACKAGE)/resources/fase1.ogg \
-	../$(PACKAGE)/resources/title.ogg
+	../$(PACKAGE)/resources/title.ogg \
+	../$(PACKAGE)/resources/tileMap.txt
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources
 
 # Libraries needed to build program
@@ -517,6 +519,7 @@ include ./$(DEPDIR)/Slider.Plo
 include ./$(DEPDIR)/SplashScreen.Plo
 include ./$(DEPDIR)/Sprite.Plo
 include ./$(DEPDIR)/Tile.Plo
+include ./$(DEPDIR)/TileMap.Plo
 include ./$(DEPDIR)/main.Po
 
 .cpp.o:

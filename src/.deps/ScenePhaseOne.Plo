@@ -125,7 +125,8 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/Character.h ../include/Tile.h ../include/Block.h \
  ../include/Skill.h ../include/Map.h /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc ../include/AudioHandler.h
+ /usr/include/c++/4.7/bits/sstream.tcc ../include/TileMap.h \
+ ../include/AudioHandler.h
 
 ../include/ScenePhaseOne.h:
 
@@ -514,5 +515,7 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
 /usr/include/c++/4.7/sstream:
 
 /usr/include/c++/4.7/bits/sstream.tcc:
+
+../include/TileMap.h:
 
 ../include/AudioHandler.h:

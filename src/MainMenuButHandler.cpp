@@ -191,13 +191,6 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 								GameManager::fadeScreen->fadeIn(1,2);
 		}else
 
-		if(bt == bt2 && !Network::connected)
-		{
-			{
-				Network::connect("Teste");
-			}
-		}else
-
 		if(scene.compare("Quit") == 0){
 			SDL_Event quit;
 		    quit.type = SDL_QUIT;
@@ -273,11 +266,15 @@ void MainMenuButHandler::updateConnect(int dt){
 		sendMessage = true;
 		bt6->setChangeSprite(1);
 		bt6->mousePressed(true);
-		if(Network::connected)
+		if(!Network::connected)
 		{
-			Network::sendMessage(message);
+			Network::connect(message);
+			Network::receiveThread();
 			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
-					GameManager::fadeScreen->fadeIn(1,2);
+								GameManager::fadeScreen->fadeIn(1,2);
+			/*Network::sendMessage(message);
+
+					*/
 		}
 	}
 

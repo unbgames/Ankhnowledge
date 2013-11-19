@@ -62,23 +62,23 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
  /usr/include/i386-linux-gnu/bits/pthreadtypes.h \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/atomic_word.h \
- /usr/include/c++/4.7/bits/basic_string.tcc /usr/include/stdlib.h \
- /usr/include/i386-linux-gnu/bits/waitflags.h \
- /usr/include/i386-linux-gnu/bits/waitstatus.h \
- /usr/include/i386-linux-gnu/sys/types.h \
+ /usr/include/c++/4.7/bits/basic_string.tcc ../include/Tile.h \
+ ../include/GameObject.h ../include/Sprite.h ../include/SDLBase.h \
+ /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
+ /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
+ /usr/include/SDL/SDL_platform.h /usr/include/i386-linux-gnu/sys/types.h \
  /usr/include/i386-linux-gnu/sys/select.h \
  /usr/include/i386-linux-gnu/bits/select.h \
  /usr/include/i386-linux-gnu/bits/sigset.h \
  /usr/include/i386-linux-gnu/bits/select2.h \
- /usr/include/i386-linux-gnu/sys/sysmacros.h /usr/include/alloca.h \
- /usr/include/i386-linux-gnu/bits/stdlib.h ../include/TileSet.h \
- ../include/SDLBase.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/libio.h \
+ /usr/include/i386-linux-gnu/sys/sysmacros.h /usr/include/libio.h \
  /usr/include/_G_config.h /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
  /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h /usr/include/string.h \
+ /usr/include/i386-linux-gnu/bits/stdio2.h /usr/include/stdlib.h \
+ /usr/include/i386-linux-gnu/bits/waitflags.h \
+ /usr/include/i386-linux-gnu/bits/waitstatus.h /usr/include/alloca.h \
+ /usr/include/i386-linux-gnu/bits/stdlib.h /usr/include/string.h \
  /usr/include/i386-linux-gnu/bits/string3.h /usr/include/strings.h \
  /usr/include/inttypes.h /usr/lib/gcc/i686-linux-gnu/4.7/include/stdint.h \
  /usr/include/stdint.h /usr/include/iconv.h /usr/include/SDL/begin_code.h \
@@ -92,9 +92,13 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
  /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
  /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
  /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h ../include/Sprite.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_ttf.h ../include/Character.h ../include/Network.h \
+ /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL_thread.h \
+ ../include/GameManager.h ../include/InputManager.h \
+ ../include/AudioHandler.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -107,7 +111,21 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
  /usr/include/c++/4.7/bits/locale_facets.tcc \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
- /usr/include/c++/4.7/bits/istream.tcc
+ /usr/include/c++/4.7/bits/istream.tcc /usr/include/SDL/SDL_mixer.h \
+ /usr/include/SDL/SDL_types.h ../include/Shape.h ../include/FadeScreen.h \
+ ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
+ /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
+ ../include/SceneLogo.h ../include/SplashScreen.h \
+ ../include/SceneTechnology.h ../include/SceneThirdParty.h \
+ ../include/SceneLegal.h ../include/SceneMainMenu.h \
+ ../include/MainMenuButHandler.h ../include/Button.h \
+ ../include/Animation.h ../include/ScenePhaseOne.h ../include/Map.h \
+ ../include/Block.h /usr/include/c++/4.7/sstream \
+ /usr/include/c++/4.7/bits/sstream.tcc ../include/TileMap.h \
+ ../include/SceneGameOver.h ../include/SceneCredits.h \
+ ../include/CreditsController.h ../include/SceneOptions.h \
+ ../include/Slider.h ../include/OptionsController.h ../include/Skill.h \
+ ../include/BlockMovable.h ../include/BlockTreasure.h
 
 ../include/TileMap.h:
 
@@ -269,29 +287,11 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
 
 /usr/include/c++/4.7/bits/basic_string.tcc:
 
-/usr/include/stdlib.h:
+../include/Tile.h:
 
-/usr/include/i386-linux-gnu/bits/waitflags.h:
+../include/GameObject.h:
 
-/usr/include/i386-linux-gnu/bits/waitstatus.h:
-
-/usr/include/i386-linux-gnu/sys/types.h:
-
-/usr/include/i386-linux-gnu/sys/select.h:
-
-/usr/include/i386-linux-gnu/bits/select.h:
-
-/usr/include/i386-linux-gnu/bits/sigset.h:
-
-/usr/include/i386-linux-gnu/bits/select2.h:
-
-/usr/include/i386-linux-gnu/sys/sysmacros.h:
-
-/usr/include/alloca.h:
-
-/usr/include/i386-linux-gnu/bits/stdlib.h:
-
-../include/TileSet.h:
+../include/Sprite.h:
 
 ../include/SDLBase.h:
 
@@ -305,6 +305,18 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
 
 /usr/include/SDL/SDL_platform.h:
 
+/usr/include/i386-linux-gnu/sys/types.h:
+
+/usr/include/i386-linux-gnu/sys/select.h:
+
+/usr/include/i386-linux-gnu/bits/select.h:
+
+/usr/include/i386-linux-gnu/bits/sigset.h:
+
+/usr/include/i386-linux-gnu/bits/select2.h:
+
+/usr/include/i386-linux-gnu/sys/sysmacros.h:
+
 /usr/include/libio.h:
 
 /usr/include/_G_config.h:
@@ -316,6 +328,16 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
 /usr/include/i386-linux-gnu/bits/stdio.h:
 
 /usr/include/i386-linux-gnu/bits/stdio2.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/i386-linux-gnu/bits/waitflags.h:
+
+/usr/include/i386-linux-gnu/bits/waitstatus.h:
+
+/usr/include/alloca.h:
+
+/usr/include/i386-linux-gnu/bits/stdlib.h:
 
 /usr/include/string.h:
 
@@ -377,7 +399,21 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
 
 /usr/include/SDL/SDL.h:
 
-../include/Sprite.h:
+/usr/include/SDL/SDL_ttf.h:
+
+../include/Character.h:
+
+../include/Network.h:
+
+/usr/include/SDL/SDL_net.h:
+
+/usr/include/SDL/SDL_thread.h:
+
+../include/GameManager.h:
+
+../include/InputManager.h:
+
+../include/AudioHandler.h:
 
 /usr/include/c++/4.7/iostream:
 
@@ -418,3 +454,69 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.7/vector \
 /usr/include/c++/4.7/istream:
 
 /usr/include/c++/4.7/bits/istream.tcc:
+
+/usr/include/SDL/SDL_mixer.h:
+
+/usr/include/SDL/SDL_types.h:
+
+../include/Shape.h:
+
+../include/FadeScreen.h:
+
+../include/FadeHandler.h:
+
+../include/Scene.h:
+
+/usr/include/c++/4.7/list:
+
+/usr/include/c++/4.7/bits/stl_list.h:
+
+/usr/include/c++/4.7/bits/list.tcc:
+
+../include/SceneLogo.h:
+
+../include/SplashScreen.h:
+
+../include/SceneTechnology.h:
+
+../include/SceneThirdParty.h:
+
+../include/SceneLegal.h:
+
+../include/SceneMainMenu.h:
+
+../include/MainMenuButHandler.h:
+
+../include/Button.h:
+
+../include/Animation.h:
+
+../include/ScenePhaseOne.h:
+
+../include/Map.h:
+
+../include/Block.h:
+
+/usr/include/c++/4.7/sstream:
+
+/usr/include/c++/4.7/bits/sstream.tcc:
+
+../include/TileMap.h:
+
+../include/SceneGameOver.h:
+
+../include/SceneCredits.h:
+
+../include/CreditsController.h:
+
+../include/SceneOptions.h:
+
+../include/Slider.h:
+
+../include/OptionsController.h:
+
+../include/Skill.h:
+
+../include/BlockMovable.h:
+
+../include/BlockTreasure.h:

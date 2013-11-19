@@ -12,6 +12,7 @@ using namespace std;
 #include "SDL/SDL_net.h"
 #include <vector>
 #include "SDL/SDL_thread.h"
+#include "GameManager.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ public:
 	static string readMessage();
 	static int contagem(void *);
 	static int host();
+	static int getID();
 	static bool endGame, connected;
 private:
 	static int rc;
@@ -39,6 +41,7 @@ private:
 	static vector<string> messageQueue;
 	static SDL_Thread *thread;
 	static SDL_mutex *mutex;
+	static int id;
 
 };
 

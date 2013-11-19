@@ -1,128 +1,97 @@
 #include "TileMap.h"
 #include <iostream>
+#include "BlockMovable.h"
+#include "BlockTreasure.h"
+#define MOVABLE_BLOCK 1
+#define NORMAL_TILE   0
+#define TREASURE 2
 
-TileMap::TileMap(int mapWidth, int mapHeight, int tileSize, int layers, TileSet * tileSet) {
-	this->mapWidth = mapWidth;
-	this->mapHeight = mapHeight;
-	this->mapLayers = layers;
-	this->tileSet = tileSet;
 
-	this->tileMatrix = new std::vector< std::vector< std::vector<int> > >(tileSize, std::vector< std::vector<int> >(tileSize, std::vector<int>(tileSize,-1 ) ) );
+using namespace std;
+
+//Construtor do TileMap, passando o arquivo com o mapa dos tiles, o tileset e o tilesize
+TileMap::TileMap(std::string mapa, Sprite* tile, Sprite* block, float posX, float posY)
+{
+    this->mapColumns = 0;
+    this->mapRows = 0;
+    this->tile = tile;
+    this->block = block;
+    this->posX = posX;
+    this->posY = posY;
+    //carrega o mapa
+    load(mapa);
+
 }
 
-TileMap::TileMap(std::string map, TileSet * tileSet) {
-	this->tileSet =  tileSet;
-	this->mapWidth = 0;
-	this->mapHeight = 0;
-	this->mapLayers = 0;
-
-	load(map);
-
-	/*
-	 * Metodo Load
-	 */
-}
-
-TileMap::TileMap(std::string map, int tileSize, TileSet * tileSet){
-	this->tileSet =  tileSet;
-	this->mapWidth = 0;
-	this->mapHeight = 0;
-	this->mapLayers = 0;
-	this->tileMatrix = new std::vector< std::vector< std::vector<int> > >(tileSize, std::vector< std::vector<int> >(tileSize, std::vector<int>(tileSize,-1 ) ) );
-	load(map);
-}
+void TileMap::load(std::string mapPath) {
+    //abre o arquivo indicando leitura
+    FILE* mapFile = fopen(mapPath.c_str(), "r");
+    if(mapFile == NULL) {
+        return;
+    }
+    int index = 0;
+    //pega a largura, altura e layers do mapa, indicados na primeira linha do arquivo
+    fscanf(mapFile, "%d,%d,", &mapColumns, &mapRows);
+    //pula 4 linhas para cair na posição exata dos indices dos tiles indicados no arquivo txt
+    fscanf(mapFile, "\n\n\n\n");
+    int id = 0;
+    //loop que percorre as colunas, linhas e os layers do arquivo txt
 
 
-TileMap::~TileMap() {
-	// TODO Auto-generated destructor stub
-}
+        for(int y = 0;y < mapRows;y++)
+        {
+            for(int x = 0; x < mapColumns;x++)
+            {
 
-void TileMap::load(std::string mapPath){
-	    FILE* FileHandle = fopen(mapPath.c_str(), "r");
+                fscanf(mapFile, "%d,", &index);
+                
+                if(index == NORMAL_TILE)
+                {
 
-	    if(FileHandle == NULL) {
-	        return;
-	    }
+                	tiles.push_back(new Tile(tile, 0,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)), id));
+                }
+                else if(index == MOVABLE_BLOCK)
+                {
+                	
+                	tiles.push_back(new Tile(tile
+											, new BlockMovable(block,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
+											, posX+ tile->getWidth()*((int)(id%mapColumns))
+											, posY + tile->getHeight()*((int)(id/mapColumns))
+											, id));
+                }
+                else if(index == TREASURE)
+                {
+                	
+					tiles.push_back(new Tile(tile
+											, new BlockTreasure(new Sprite(SDLBase::resourcesPath + "bauanimacao.png"),posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
+											, posX+ tile->getWidth()*((int)(id%mapColumns))
+											, posY + tile->getHeight()*((int)(id/mapColumns))
+											, id));
+                }
+                id++;
+            }
+            fscanf(mapFile, "\n");
+            fscanf(mapFile, "\n");
+        }
+    //fecha arquivo
+    fclose(mapFile);
 
-	    fscanf(FileHandle, "%d,%d,%d,", &this->mapHeight, &this->mapWidth, &this->mapLayers);
-	    fscanf(FileHandle, "\n");
-	    fscanf(FileHandle, "\n");
-	    fscanf(FileHandle, "\n");
-	    fscanf(FileHandle, "\n");
-
-	    for(int Z = 0; Z < mapLayers; Z++){
-			for(int X = 0;X < mapHeight;X++) {
-				for(int Y = 0;Y < mapWidth;Y++) {
-					int aux;
-
-					fscanf(FileHandle, "%d,", &aux);
-
-					tileMatrix->at(Z).at(X).at(Y) = aux;
-				}
-				fscanf(FileHandle, "\n");
-				fscanf(FileHandle, "\n");
-			}
-			fscanf(FileHandle, "\n");
-			fscanf(FileHandle, "\n");
-	    }
-
-	    fclose(FileHandle);
-}
-
-void TileMap::setTileSet(TileSet * tileSet){
-	this->tileSet = tileSet;
-}
-
-int& TileMap::at(int x, int y, int z){
-	return tileMatrix->at(z).at(x).at(y);
-}
-
-void TileMap::render(float cameraX, float cameraY){
-	if(!tileSet)
-		return;
-
-	for(int Z = 0; Z < mapLayers; Z++){
-		for(int X = 0; X < mapHeight; X++){
-			for(int Y = 0; Y < mapWidth; Y++){
-				std::cout<<"X"<<X<<std::endl;
-				std::cout<<"Y"<<Y<<std::endl;
-				std::cout<<"Z"<<Z<<std::endl;
-				if(tileMatrix->at(Z).at(Y).at(X) - 1 < 0)
-				{
-
-				}else{
-				tileSet->render(tileMatrix->at(Z).at(Y).at(X) - 1, ((float)X - cameraX)*tileSet->getTileWidth(), ((float)Y - cameraY)*tileSet->getTileHeight());
-				}
-			}
-		}
-	}
-}
-
-void TileMap::renderLayer(float cameraX, float cameraY, int layer){
-	if(!tileSet)
-			return;
-
-		for(int X = 0; X < mapWidth; X++){
-			for(int Y = 0; Y < mapHeight; Y++){
-				if(tileMatrix->at(layer).at(Y).at(X) - 1< 0)
-					continue;
-
-				tileSet->render(tileMatrix->at(layer).at(Y).at(X) - 1 , ((float)X - cameraX)*tileSet->getTileWidth(), ((float) Y - cameraY)*tileSet->getTileHeight());
-			}
-		}
-}
-
-int TileMap::width(){
-	return this->mapWidth;
-}
-
-int TileMap::height(){
-	return this->mapHeight;
-}
-
-int TileMap::layers(){
-	return this->mapLayers;
 }
 
 
+vector<Tile* > TileMap::getTiles(){
+	return this->tiles;
+}
 
+int TileMap::getColumns(){
+	return this->mapColumns;
+}
+
+int TileMap::getRows(){
+	return this->mapRows;
+}
+
+TileMap::~TileMap()
+{
+
+}

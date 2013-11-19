@@ -63,7 +63,7 @@ void GameManager::initResources(){
 	currentScene = splashLogo;
 	currentScene->Enter();
 
-
+	Network::init();
 	input = InputManager::getInstance();
 	audio = AudioHandler::getInstance();
 	dt = 0;

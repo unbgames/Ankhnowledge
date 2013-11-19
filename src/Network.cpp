@@ -9,7 +9,7 @@
 #include <iostream>
 
 IPaddress Network::ip, * Network::receiverIp;
-int Network::rc;
+int Network::rc, Network::id;
 TCPsocket Network::currentSocket, Network::communicationSocket;
 char Network::buffer[512];
 vector<string> Network::messageQueue;
@@ -32,7 +32,9 @@ void Network::init(){
 	currentSocket = 0;
 	communicationSocket = 0;
 	endGame = false;
-	mutex = NULL;
+	mutex = SDL_CreateMutex();
+	cout<<"mutex criado"<<endl;
+	id = -1;
 
 }
 
@@ -79,6 +81,7 @@ int Network::connect(string ipaddress){
 		return -1;
 	}
 
+	id = 2;
 	connected = true;
 	cout<<"Cliente Conectou"<<endl;
 }
@@ -97,17 +100,44 @@ void Network::sendMessage(string message){
 
 int Network::receiveMessage(void *){
 
-	if((connected) && (SDL_mutexP(mutex) == 0))
+	while((connected))
 	{
 		//cout<<"trying to receive message"<<endl;
 
 		if(SDLNet_TCP_Recv(communicationSocket, buffer, 512) > 0)
 		{
-			string message = buffer;
-			//cout<<"recebi a msn: "<<message<<endl;
-			messageQueue.push_back(message);
+			if(SDL_mutexP(mutex) == 0)
+			{
+				string message = buffer;
+				//cout<<"recebi a msn: "<<message<<endl;
+				messageQueue.push_back(message);
+				SDL_mutexV(mutex);
+			}
+			else
+			{
+				cout<<"mutex nao funcionou"<<endl;
+			}
+
+		}else
+		{
+			cout<<"Desconectou"<<endl;
+			connected = false;
+			if(GameManager::currentScene->changeScene("SceneMainMenu") == 1)
+					GameManager::fadeScreen->fadeIn(1,2);
+			if(currentSocket)
+			{
+				SDLNet_TCP_Close(currentSocket);
+			}
+
+			if(communicationSocket)
+			{
+				SDLNet_TCP_Close(communicationSocket);
+			}
+			currentSocket = NULL;
+			communicationSocket = NULL;
+			id = -1;
 		}
-		SDL_mutexV(mutex);
+
 	}
 
 	return 0;
@@ -120,11 +150,15 @@ void Network::receiveThread(){
 string Network::readMessage()
 {
 	string message = "";
-	if(!messageQueue.empty() && (SDL_mutexP(mutex) == 0))
+	if(SDL_mutexP(mutex) == 0)
 	{
-		message = messageQueue.at(0);
-		messageQueue.erase(messageQueue.begin());
-		SDL_mutexV(mutex);
+		if(!messageQueue.empty())
+		{
+			message = messageQueue.at(0);
+			messageQueue.erase(messageQueue.begin());
+
+		}
+	SDL_mutexV(mutex);
 	}
 	return message;
 }
@@ -159,9 +193,14 @@ int Network::listening()
 		if(communicationSocket = SDLNet_TCP_Accept(currentSocket))
 		{
 			connected = true;
+			id = 1;
 			//cout<<"Servidor Conectou"<<endl;
 		}
 	}
 
 }
 
+int Network::getID()
+{
+	return id;
+}

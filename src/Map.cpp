@@ -32,34 +32,11 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	color.b = 255;
 	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
+	tileMap = new TileMap(SDLBase::resourcesPath + "tileMap.txt",tile,block,getX(),getY());
+	this->tiles = tileMap->getTiles();
+	this->columns = tileMap->getColumns();
+	this->rows = tileMap->getRows();
 
-
-
-	srand(time(NULL));
-	/*
-	 * Instantioating all the tiles
-	 */
-
-	int maxBlocks = 60;
-	for(int i = 0; i < (columns*rows); i++)
-	{
-		int random = rand() % 5;
-
-		if(random < 3|| random == 2|| i == 0 || i == 19 || i == 20 || i == 39)
-			tiles.push_back(new Tile(tile, 0,getX()+ tile->getWidth()*((int)(i%20)), getY() + tile->getHeight()*((int)(i/20)), i));
-		else
-		{
-			tiles.push_back(new Tile(tile
-									, new BlockMovable(block,getX()+ tile->getWidth()*((int)(i%20)), getY() + tile->getHeight()*((int)(i/20)))
-									, getX()+ tile->getWidth()*((int)(i%20))
-									, getY() + tile->getHeight()*((int)(i/20))
-									, i));
-			maxBlocks--;
-		}
-
-
-		//tiles.push_back(new Tile(tile, 0,getX()+ tile->getWidth()*((int)(i%20)), getY() + tile->getHeight()*((int)(i/20)), i));
-	}
 
 	/*
 	 * Connecting all the tiles
@@ -79,12 +56,12 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
 
-	tiles.at(350)->setBlock(new BlockTreasure(new Sprite(SDLBase::resourcesPath + "bauanimacao.png"),tiles.at(350)->getX(), tiles.at(350)->getY()));
-	tiles.at(0)->setRightTile(tiles.at(1));
 	Skill *alanSkill = new SkillDig();
 	Skill *sutiSkill = new SkillSand();
 	player1 = new Character(new Sprite(SDLBase::resourcesPath + "adam_spr.png"),new Sprite(SDLBase::resourcesPath + "alanhud.png"), tiles.at(0), alanSkill, 1);
 	player2 = new Character(new Sprite(SDLBase::resourcesPath + "suti_spr.png"), new Sprite(SDLBase::resourcesPath + "sutihud.png"),tiles.at(columns-1), sutiSkill, 2);
+	player1->setMap(this);
+	player2->setMap(this);
 	currentPlayer = player1;
 	currentPlayer->setTurn(true);
 	changePlayer = false;
@@ -113,6 +90,7 @@ Map::~Map() {
 
 	this->block->decNumRef();
 	this->block = 0;
+	delete tileMap;
 
 
 	// TODO Auto-generated destructor stub
@@ -258,10 +236,11 @@ void Map::mousePressed(Button *bt, InputManager* input){
 	if((input->isMousePressed(1)) && (bt->insideButton()) == 1)
 	{
 		bt->mousePressed(true);
-		if(deltaEnd > 1000)
+		if(deltaEnd > 1000 &&!currentPlayer->isPerformingAction() && currentPlayer->getId() == Network::getID() && !currentPlayer->isUsingSkill())
 		{
 			deltaEnd = 0;
 			changeCurrentPlayer();
+			currentPlayer->sendMessage("EndTurn", "-1");
 		}
 
 	}
@@ -277,7 +256,7 @@ void Map::mouseOver(Button *bt, InputManager * input){
 
 void Map::changeCurrentPlayer()
 {
-	if(!currentPlayer->isPerformingAction())
+	if(!currentPlayer->isPerformingAction() && !currentPlayer->isUsingSkill())
 	{
 		changePlayer = false;
 		if(currentPlayer->getId() == 1)
@@ -290,5 +269,10 @@ void Map::changeCurrentPlayer()
 		player1->toogleTurn();
 		player2->toogleTurn();
 	}
+}
+
+Tile * Map::getTileWithIndex(int index)
+{
+	return tiles.at(index);
 }
 

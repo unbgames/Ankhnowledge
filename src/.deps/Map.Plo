@@ -88,15 +88,17 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
  /usr/include/i386-linux-gnu/bits/setjmp.h \
  /usr/include/c++/4.7/i686-linux-gnu/bits/atomic_word.h \
  /usr/include/c++/4.7/bits/basic_string.tcc ../include/Character.h \
- ../include/InputManager.h ../include/GameManager.h \
+ ../include/Network.h /usr/include/SDL/SDL_net.h \
  /usr/include/c++/4.7/vector /usr/include/c++/4.7/bits/stl_construct.h \
  /usr/include/c++/4.7/ext/alloc_traits.h \
  /usr/include/c++/4.7/bits/stl_uninitialized.h \
  /usr/include/c++/4.7/bits/stl_vector.h \
  /usr/include/c++/4.7/bits/stl_bvector.h \
- /usr/include/c++/4.7/bits/vector.tcc ../include/AudioHandler.h \
- /usr/include/c++/4.7/iostream /usr/include/c++/4.7/ostream \
- /usr/include/c++/4.7/ios /usr/include/c++/4.7/bits/ios_base.h \
+ /usr/include/c++/4.7/bits/vector.tcc /usr/include/SDL/SDL_thread.h \
+ ../include/GameManager.h ../include/InputManager.h \
+ ../include/AudioHandler.h /usr/include/c++/4.7/iostream \
+ /usr/include/c++/4.7/ostream /usr/include/c++/4.7/ios \
+ /usr/include/c++/4.7/bits/ios_base.h \
  /usr/include/c++/4.7/bits/locale_classes.h \
  /usr/include/c++/4.7/bits/locale_classes.tcc \
  /usr/include/c++/4.7/streambuf /usr/include/c++/4.7/bits/streambuf.tcc \
@@ -110,10 +112,8 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
  /usr/include/c++/4.7/bits/basic_ios.tcc \
  /usr/include/c++/4.7/bits/ostream.tcc /usr/include/c++/4.7/istream \
  /usr/include/c++/4.7/bits/istream.tcc /usr/include/SDL/SDL_mixer.h \
- /usr/include/SDL/SDL_types.h ../include/Network.h \
- /usr/include/SDL/SDL_net.h /usr/include/SDL/SDL_thread.h \
- ../include/Shape.h ../include/FadeScreen.h ../include/FadeHandler.h \
- ../include/Scene.h /usr/include/c++/4.7/list \
+ /usr/include/SDL/SDL_types.h ../include/Shape.h ../include/FadeScreen.h \
+ ../include/FadeHandler.h ../include/Scene.h /usr/include/c++/4.7/list \
  /usr/include/c++/4.7/bits/stl_list.h /usr/include/c++/4.7/bits/list.tcc \
  ../include/SceneLogo.h ../include/SplashScreen.h \
  ../include/SceneTechnology.h ../include/SceneThirdParty.h \
@@ -124,9 +124,9 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h ../include/Skill.h \
  ../include/Block.h /usr/include/c++/4.7/sstream \
- /usr/include/c++/4.7/bits/sstream.tcc ../include/BlockWater.h \
- ../include/BlockMovable.h ../include/BlockTreasure.h \
- ../include/SkillDig.h ../include/SkillSand.h
+ /usr/include/c++/4.7/bits/sstream.tcc ../include/TileMap.h \
+ ../include/BlockWater.h ../include/BlockMovable.h \
+ ../include/BlockTreasure.h ../include/SkillDig.h ../include/SkillSand.h
 
 ../include/Map.h:
 
@@ -390,9 +390,9 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 
 ../include/Character.h:
 
-../include/InputManager.h:
+../include/Network.h:
 
-../include/GameManager.h:
+/usr/include/SDL/SDL_net.h:
 
 /usr/include/c++/4.7/vector:
 
@@ -407,6 +407,12 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 /usr/include/c++/4.7/bits/stl_bvector.h:
 
 /usr/include/c++/4.7/bits/vector.tcc:
+
+/usr/include/SDL/SDL_thread.h:
+
+../include/GameManager.h:
+
+../include/InputManager.h:
 
 ../include/AudioHandler.h:
 
@@ -453,12 +459,6 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 /usr/include/SDL/SDL_mixer.h:
 
 /usr/include/SDL/SDL_types.h:
-
-../include/Network.h:
-
-/usr/include/SDL/SDL_net.h:
-
-/usr/include/SDL/SDL_thread.h:
 
 ../include/Shape.h:
 
@@ -515,6 +515,8 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 /usr/include/c++/4.7/sstream:
 
 /usr/include/c++/4.7/bits/sstream.tcc:
+
+../include/TileMap.h:
 
 ../include/BlockWater.h:
 

@@ -7,6 +7,8 @@
 
 #ifndef CHARACTER_H_
 #define CHARACTER_H_
+
+#include "Network.h"
 #include "GameObject.h"
 #include "Sprite.h"
 #include "InputManager.h"
@@ -14,9 +16,12 @@
 #include "Animation.h"
 #include "Tile.h"
 #include "Skill.h"
+#include <string>
+#include "Map.h"
 
 class Tile;
 class Skill;
+class Map;
 
 class Character:public GameObject {
 public:
@@ -27,8 +32,8 @@ public:
 	bool isUsingSkill();
 	bool isPerformingAction();
 	enum Direction { up, down, right, left, none };
-	void pushUpdate(InputManager * input);
-	void moveUpdate(InputManager * input);
+	void pushUpdate(InputManager * input, Direction dir = none);
+	void moveUpdate(InputManager * input, Direction dir = none);
 	void move(Direction dir);
 	void setSkill(Skill * skill);
 	void setSkillDestTile(Tile * tile);
@@ -48,6 +53,11 @@ public:
 	void setWin(bool win);
 	bool getTurn();
 	Sprite * getHud();
+	void activateSkill();
+	void deactivateSkill();
+	void useSkill(int tileIndex);
+	void setMap(Map * map);
+	void sendMessage(string action, string info);
 
 private:
 	Sprite* sprite, *hud;
@@ -71,6 +81,9 @@ private:
 	bool canChangeTile(Tile * tile);
 	void setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable);
 	int discountStamina;
+	void receiveMessage();
+	string intToString(int intenger);
+	Map * map;
 };
 
 #endif /* CHARACTER_H_ */
