@@ -22,7 +22,8 @@ public:
 	static void finish();
 	virtual ~Network();
 	static int connect(string ipaddress);
-	static int listening();
+	static int listening(void *);
+	static int listening2();
 	static void disconnect();
 	static void sendMessage(string message);
 	static int receiveMessage(void *);
@@ -31,7 +32,11 @@ public:
 	static int contagem(void *);
 	static int host();
 	static int getID();
+	static bool isFirstTime();
+	static bool didLost();
 	static bool endGame, connected;
+	static void listeningThread();
+
 private:
 	static int rc;
 	static TCPsocket currentSocket, communicationSocket;
@@ -39,9 +44,11 @@ private:
 	static char buffer[512];
 	Network();
 	static vector<string> messageQueue;
-	static SDL_Thread *thread;
+	static SDL_Thread *thread,*lThread;
 	static SDL_mutex *mutex;
 	static int id;
+	static bool firstTime;
+	static bool lost;
 
 };
 

@@ -36,7 +36,7 @@ void TileMap::load(std::string mapPath) {
     fscanf(mapFile, "\n\n\n\n");
     int id = 0;
     //loop que percorre as colunas, linhas e os layers do arquivo txt
-
+    	cout<<"POS X "<<posX<<" POS T "<<posY<<"\n"<<endl;
 
         for(int y = 0;y < mapRows;y++)
         {
@@ -44,15 +44,15 @@ void TileMap::load(std::string mapPath) {
             {
 
                 fscanf(mapFile, "%d,", &index);
-                
+                cout<<"Index "<<index<<endl;
                 if(index == NORMAL_TILE)
                 {
-
+                	cout<<"Entrei 1 x: "<<posX+ tile->getWidth()*x<< " y:" <<posY + tile->getHeight()*y<< "id "<<id<<"\n"<<endl;
                 	tiles.push_back(new Tile(tile, 0,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)), id));
                 }
                 else if(index == MOVABLE_BLOCK)
                 {
-                	
+                	cout<<"Entrei 2 x: "<<posX+ tile->getWidth()*x<< " y:" <<posY + tile->getHeight()*y<< "id "<<id<<"\n"<<endl;
                 	tiles.push_back(new Tile(tile
 											, new BlockMovable(block,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
 											, posX+ tile->getWidth()*((int)(id%mapColumns))
@@ -61,9 +61,9 @@ void TileMap::load(std::string mapPath) {
                 }
                 else if(index == TREASURE)
                 {
-                	
+                	cout<<"Entrei 2 x: "<<posX+ tile->getWidth()*x<< " y:" <<posY + tile->getHeight()*y<< "id "<<id<<"\n"<<endl;
 					tiles.push_back(new Tile(tile
-											, new BlockTreasure(new Sprite(SDLBase::resourcesPath + "bauanimacao.png"),posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
+											, new BlockTreasure(block,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
 											, posX+ tile->getWidth()*((int)(id%mapColumns))
 											, posY + tile->getHeight()*((int)(id/mapColumns))
 											, id));

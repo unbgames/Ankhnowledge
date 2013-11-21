@@ -47,7 +47,7 @@ private:
 	float boxInputX, boxInputY,boxX,boxY;
 	SDL_Color color;
 	TTF_Font *font;
-	bool read,tryToConnect,clickOtherButtons,sendMessage;
+	bool read,tryToConnect,clickOtherButtons,sendMessage,host, thread;
 	string message;
 };
 

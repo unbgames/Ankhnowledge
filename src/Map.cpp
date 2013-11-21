@@ -32,7 +32,7 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	color.b = 255;
 	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
-	tileMap = new TileMap(SDLBase::resourcesPath + "tileMap.txt",tile,block,getX(),getY());
+	tileMap = new TileMap(SDLBase::resourcesPath +"tileMap.txt",tile,block,getX(),getY());
 	this->tiles = tileMap->getTiles();
 	this->columns = tileMap->getColumns();
 	this->rows = tileMap->getRows();

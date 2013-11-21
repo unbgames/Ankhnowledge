@@ -81,7 +81,8 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	clickOtherButtons = true;
 	message = "";
 	sendMessage = false;
-
+	this->host = false;
+	this->thread = false;
 
 }
 
@@ -144,7 +145,8 @@ void MainMenuButHandler::render(float cameraX, float cameraY){
 
 	if(tryToConnect)
 		renderConnect();
-
+	if(this->host)
+		box->render(boxX,boxY);
 }
 
 int MainMenuButHandler::update(int dt){
@@ -166,6 +168,14 @@ int MainMenuButHandler::update(int dt){
 	this->bt5->update(dt);
 	this->bt6->update(dt);
 	updateConnect(dt);
+
+	if(Network::connected && this->thread)
+	{
+		Network::receiveThread();
+		if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
+			GameManager::fadeScreen->fadeIn(1,2);
+		this->thread = false;
+	}
 	return 0;
 }
 
@@ -184,11 +194,12 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 
 		if(bt == bt1)
 		{
-			Network::host();
-			Network::listening();
-			Network::receiveThread();
-			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
-								GameManager::fadeScreen->fadeIn(1,2);
+			if(!this->host){
+				Network::host();
+				Network::listeningThread();
+				this->host = true;
+				this->thread = true;
+			}
 		}else
 
 		if(scene.compare("Quit") == 0){
@@ -270,7 +281,7 @@ void MainMenuButHandler::updateConnect(int dt){
 		{
 			Network::connect(message);
 			Network::receiveThread();
-			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+			if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
 								GameManager::fadeScreen->fadeIn(1,2);
 			/*Network::sendMessage(message);
 
