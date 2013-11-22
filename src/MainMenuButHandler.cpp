@@ -6,6 +6,7 @@
  */
 
 #include "MainMenuButHandler.h"
+#include "SDL/SDL_thread.h"
 
 MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt1_1 = new Sprite(SDLBase::resourcesPath + "host_1.png");
@@ -67,7 +68,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	input = InputManager::getInstance();
 
 	box = new Sprite(SDLBase::resourcesPath + "box.png");
-	waiting = new Sprite(SDLBase::resourcesPath + "waiting.png");
+	waiting = new Sprite(SDLBase::resourcesPath + "disconnected.png");
 	disconnect = new Sprite(SDLBase::resourcesPath + "disconnected.png");
 	waiting->incNumRef();
 	disconnect->incNumRef();
@@ -235,7 +236,6 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 			if(!host){
 				Network::cancel = false;
 				Network::host();
-				Network::listeningThread();
 				host = true;
 				thread = true;
 				clickOtherButtons = false;
@@ -359,15 +359,27 @@ void MainMenuButHandler::updateDisconnect(int dt){
 }
 
 void MainMenuButHandler::updateWaiting(int dt){
-	if((bt8->insideButton() == 1) && (input->isMousePressed(1)))
+	if(SDL_mutexP(Network::mutex2) == 0)
 	{
-		bt8->setChangeSprite(1);
-		bt8->mousePressed(true);
-		clickOtherButtons = true;
-		host = false;
-		thread = false;
-		Network::cancel = true;
-		Network::closeConnection();
+
+
+		if((bt8->insideButton() == 1) && (input->isMousePressed(1)) && !Network::cancel)
+		{
+
+			cout<<"cancel being called"<<endl;
+
+			bt8->setChangeSprite(1);
+			bt8->mousePressed(true);
+			clickOtherButtons = true;
+			host = false;
+			thread = false;
+			Network::closeConnection();
+			Network::cancel = true;
+
+
+		}
+
+			SDL_mutexV(Network::mutex2);
 	}
 }
 

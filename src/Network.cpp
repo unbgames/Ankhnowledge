@@ -16,7 +16,7 @@ vector<string> Network::messageQueue;
 SDL_Thread * Network::thread,* Network::lThread;
 bool Network::endGame, Network::connected, Network::firstTime, Network::lost, Network::disconnected;
 bool Network::cancel;
-SDL_mutex *Network::mutex;
+SDL_mutex *Network::mutex, *Network::mutex2;
 
 Network::Network() {
 
@@ -34,6 +34,7 @@ void Network::init(){
 	communicationSocket = 0;
 	endGame = false;
 	mutex = SDL_CreateMutex();
+	mutex2 = SDL_CreateMutex();
 	cout<<"mutex criado"<<endl;
 	id = -1;
 	firstTime = false;
@@ -178,7 +179,8 @@ string Network::readMessage()
 
 int Network::host()
 {
-	rc = SDLNet_ResolveHost(&ip, NULL, 3000);
+	cout<<"Teste"<<endl;
+	rc = SDLNet_ResolveHost(&ip, NULL, 4000);
 
 	if(rc == -1)
 	{
@@ -196,22 +198,36 @@ int Network::host()
 
 	cout << "Servidor Iniciado!" << endl;
 	cout << "Aguardando cliente ..." << endl;
+	listeningThread();
 }
 
 int Network::listening(void *)
 {
-	while(!connected && !cancel)
+	while(!connected)
 	{
-		//cout<<"Escutando"<<endl;
+		if(SDL_mutexP(mutex2) == 0)
+		{
+			if(cancel)
+			{
+				SDL_mutexV(mutex2);
+				break;
+			}
+			SDL_mutexV(mutex2);
+		}
+
+		cout<<"Escutando"<<endl;
 		if(communicationSocket = SDLNet_TCP_Accept(currentSocket))
 		{
 			connected = true;
 			firstTime = true;
 			lost = false;
 			id = 1;
-			//cout<<"Servidor Conectou"<<endl;
+			cout<<"Servidor Conectou"<<endl;
 		}
+		SDL_Delay(1);
 	}
+
+	return 0;
 
 }
 

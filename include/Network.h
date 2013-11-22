@@ -36,6 +36,7 @@ public:
 	static bool didLost();
 	static bool endGame, connected, disconnected,cancel;
 	static void listeningThread();
+	static SDL_mutex *mutex2;
 
 private:
 	static int rc;
