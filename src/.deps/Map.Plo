@@ -127,9 +127,11 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h ../include/Skill.h ../include/Block.h \
- /usr/include/c++/4.6/sstream /usr/include/c++/4.6/bits/sstream.tcc \
- ../include/TileMap.h ../include/BlockWater.h ../include/BlockMovable.h \
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h ../include/Skill.h \
+ ../include/Block.h /usr/include/c++/4.6/sstream \
+ /usr/include/c++/4.6/bits/sstream.tcc ../include/TileMap.h \
+ ../include/BlockWater.h ../include/BlockMovable.h \
  ../include/BlockTreasure.h ../include/SkillDig.h ../include/SkillSand.h
 
 ../include/Map.h:
@@ -527,6 +529,10 @@ Map.lo: Map.cpp ../include/Map.h ../include/Tile.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/Skill.h:
 

@@ -130,7 +130,8 @@ SceneThirdParty.lo: SceneThirdParty.cpp ../include/SceneThirdParty.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h
 
 ../include/SceneThirdParty.h:
 
@@ -537,3 +538,7 @@ SceneThirdParty.lo: SceneThirdParty.cpp ../include/SceneThirdParty.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:

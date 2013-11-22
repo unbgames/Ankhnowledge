@@ -130,7 +130,8 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/SceneSelectMap.h \
- ../include/SelectMapController.h ../include/HoverButton.h
+ ../include/SelectMapController.h ../include/HoverButton.h \
+ ../include/SceneSelectCharacter.h ../include/SelectCharacterController.h
 
 ../include/MainMenuButHandler.h:
 
@@ -537,3 +538,7 @@ MainMenuButHandler.lo: MainMenuButHandler.cpp \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:

@@ -210,7 +210,7 @@ int MainMenuButHandler::update(int dt){
 	if(Network::connected && thread)
 	{
 		Network::receiveThread();
-		if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
+		if(GameManager::currentScene->changeScene("SceneSelectCharacter") == 1)
 			GameManager::fadeScreen->fadeIn(1,2);
 		thread = false;
 		clickOtherButtons = true;
@@ -334,7 +334,7 @@ void MainMenuButHandler::updateConnect(int dt){
 		{
 			Network::connect(message);
 			Network::receiveThread();
-			if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
+			if(GameManager::currentScene->changeScene("SceneSelectCharacter") == 1)
 								GameManager::fadeScreen->fadeIn(1,2);
 			/*Network::sendMessage(message);
 

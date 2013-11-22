@@ -131,6 +131,7 @@ OptionsController.lo: OptionsController.cpp \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/SceneSelectMap.h \
  ../include/SelectMapController.h ../include/HoverButton.h \
+ ../include/SceneSelectCharacter.h ../include/SelectCharacterController.h \
  ../include/AudioHandler.h
 
 ../include/OptionsController.h:
@@ -538,5 +539,9 @@ OptionsController.lo: OptionsController.cpp \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/AudioHandler.h:

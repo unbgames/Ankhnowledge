@@ -130,6 +130,7 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/SceneSelectMap.h \
  ../include/SelectMapController.h ../include/HoverButton.h \
+ ../include/SceneSelectCharacter.h ../include/SelectCharacterController.h \
  ../include/MainMenuButHandler.h
 
 ../include/SceneMainMenu.h:
@@ -535,5 +536,9 @@ SceneMainMenu.lo: SceneMainMenu.cpp ../include/SceneMainMenu.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/MainMenuButHandler.h:

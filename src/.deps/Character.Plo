@@ -128,7 +128,9 @@ Character.lo: Character.cpp /usr/include/c++/4.6/iostream \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h ../include/Skill.h ../include/Skill.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h ../include/Skill.h \
+ ../include/Skill.h
 
 /usr/include/c++/4.6/iostream:
 
@@ -533,6 +535,10 @@ Character.lo: Character.cpp /usr/include/c++/4.6/iostream \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/Skill.h:
 

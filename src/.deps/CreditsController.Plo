@@ -130,7 +130,8 @@ CreditsController.lo: CreditsController.cpp \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/SceneSelectMap.h \
- ../include/SelectMapController.h ../include/HoverButton.h
+ ../include/SelectMapController.h ../include/HoverButton.h \
+ ../include/SceneSelectCharacter.h ../include/SelectCharacterController.h
 
 ../include/CreditsController.h:
 
@@ -537,3 +538,7 @@ CreditsController.lo: CreditsController.cpp \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:

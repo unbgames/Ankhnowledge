@@ -180,7 +180,7 @@ string Network::readMessage()
 int Network::host()
 {
 	cout<<"Teste"<<endl;
-	rc = SDLNet_ResolveHost(&ip, NULL, 4000);
+	rc = SDLNet_ResolveHost(&ip, NULL, 3000);
 
 	if(rc == -1)
 	{

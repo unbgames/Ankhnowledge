@@ -129,7 +129,8 @@ main.o: main.cpp ../include/GameManager.h ../include/Sprite.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h
 
 ../include/GameManager.h:
 
@@ -536,3 +537,7 @@ main.o: main.cpp ../include/GameManager.h ../include/Sprite.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:

@@ -130,6 +130,7 @@ SceneCredits.lo: SceneCredits.cpp ../include/SceneCredits.h \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/SceneSelectMap.h \
  ../include/SelectMapController.h ../include/HoverButton.h \
+ ../include/SceneSelectCharacter.h ../include/SelectCharacterController.h \
  ../include/CreditsController.h
 
 ../include/SceneCredits.h:
@@ -535,5 +536,9 @@ SceneCredits.lo: SceneCredits.cpp ../include/SceneCredits.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/CreditsController.h:

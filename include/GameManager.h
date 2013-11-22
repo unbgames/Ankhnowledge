@@ -24,6 +24,7 @@
 #include "SceneCredits.h"
 #include "SceneOptions.h"
 #include "SceneSelectMap.h"
+#include "SceneSelectCharacter.h"
 
 class GameManager {
 public:
@@ -50,6 +51,7 @@ private:
 	Scene * splashOptions;
 	Scene * splashConnect;
 	Scene * splashSelectMap;
+	Scene * splashSelectCharacter;
 
 
 	InputManager * input;

@@ -128,7 +128,9 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h ../include/Skill.h ../include/SDLBase.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h ../include/Skill.h \
+ ../include/SDLBase.h
 
 ../include/Tile.h:
 
@@ -533,6 +535,10 @@ Tile.lo: Tile.cpp ../include/Tile.h ../include/GameObject.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/Skill.h:
 

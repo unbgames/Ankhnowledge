@@ -129,7 +129,8 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h ../include/Skill.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h ../include/Skill.h
 
 ../include/Block.h:
 
@@ -534,5 +535,9 @@ Block.lo: Block.cpp ../include/Block.h ../include/GameObject.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/Skill.h:

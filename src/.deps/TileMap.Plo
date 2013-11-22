@@ -130,9 +130,10 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.6/vector \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h ../include/Skill.h ../include/BlockMovable.h \
- ../include/BlockTreasure.h ../include/BlockSand.h \
- ../include/BlockWater.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h ../include/Skill.h \
+ ../include/BlockMovable.h ../include/BlockTreasure.h \
+ ../include/BlockSand.h ../include/BlockWater.h
 
 ../include/TileMap.h:
 
@@ -537,6 +538,10 @@ TileMap.lo: TileMap.cpp ../include/TileMap.h /usr/include/c++/4.6/vector \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/Skill.h:
 

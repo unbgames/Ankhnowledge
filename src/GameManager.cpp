@@ -33,6 +33,7 @@ GameManager::~GameManager() {
 	delete splashMainMenu;
 	delete splashPhaseOne;
 	delete splashSelectMap;
+	delete splashSelectCharacter;
 }
 
 //Metodo que inicializa os objetos (recursos) do jogo
@@ -48,6 +49,7 @@ void GameManager::initResources(){
 	this->splashCredits = new SceneCredits("SceneCredits");
 	this->splashOptions = new SceneOptions("SceneOptions");
 	this->splashSelectMap = new SceneSelectMap("SceneSelectMap");
+	this->splashSelectCharacter = new SceneSelectCharacter("SceneSelectCharacter");
 
 	this->splashLogo->addScenes(splashTechnology);
 	this->splashTechnology->addScenes(splashThirdParty);
@@ -56,12 +58,14 @@ void GameManager::initResources(){
 	this->splashMainMenu->addScenes(splashPhaseOne);
 	this->splashMainMenu->addScenes(splashCredits);
 	this->splashMainMenu->addScenes(splashOptions);
-	this->splashMainMenu->addScenes(splashSelectMap);
+	this->splashMainMenu->addScenes(splashSelectCharacter);
 	this->splashOptions->addScenes(splashMainMenu);
 	this->splashCredits->addScenes(splashMainMenu);
 	this->splashPhaseOne->addScenes(splashMainMenu);
 	this->splashSelectMap->addScenes(splashPhaseOne);
 	this->splashSelectMap->addScenes(splashMainMenu);
+	this->splashSelectCharacter->addScenes(splashSelectMap);
+	this->splashSelectCharacter->addScenes(splashMainMenu);
 
 	fadeScreen = new FadeScreen(SDLBase::getScreen()->w, SDLBase::getScreen()->h);
 	fadeScreen->fadeOut(0,2);

@@ -129,7 +129,8 @@ SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
  ../include/SceneCredits.h ../include/CreditsController.h \
  ../include/SceneOptions.h ../include/Slider.h \
  ../include/OptionsController.h ../include/SceneSelectMap.h \
- ../include/SelectMapController.h ../include/HoverButton.h
+ ../include/SelectMapController.h ../include/HoverButton.h \
+ ../include/SceneSelectCharacter.h ../include/SelectCharacterController.h
 
 ../include/SplashScreen.h:
 
@@ -536,3 +537,7 @@ SplashScreen.lo: SplashScreen.cpp ../include/SplashScreen.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:

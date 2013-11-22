@@ -127,8 +127,9 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h ../include/Character.h ../include/Tile.h \
- ../include/Block.h ../include/Skill.h ../include/Map.h \
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h ../include/Character.h \
+ ../include/Tile.h ../include/Block.h ../include/Skill.h ../include/Map.h \
  /usr/include/c++/4.6/sstream /usr/include/c++/4.6/bits/sstream.tcc \
  ../include/TileMap.h ../include/AudioHandler.h
 
@@ -521,6 +522,10 @@ ScenePhaseOne.lo: ScenePhaseOne.cpp ../include/ScenePhaseOne.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
 
 ../include/Character.h:
 

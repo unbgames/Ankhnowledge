@@ -130,7 +130,8 @@ SceneLegal.lo: SceneLegal.cpp ../include/SceneLegal.h ../include/Scene.h \
  ../include/CreditsController.h ../include/SceneOptions.h \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
- ../include/HoverButton.h
+ ../include/HoverButton.h ../include/SceneSelectCharacter.h \
+ ../include/SelectCharacterController.h
 
 ../include/SceneLegal.h:
 
@@ -537,3 +538,7 @@ SceneLegal.lo: SceneLegal.cpp ../include/SceneLegal.h ../include/Scene.h \
 ../include/SelectMapController.h:
 
 ../include/HoverButton.h:
+
+../include/SceneSelectCharacter.h:
+
+../include/SelectCharacterController.h:
