@@ -46,6 +46,7 @@ SelectMapController::SelectMapController():GameObject(getX(),getY()) {
 	input = InputManager::getInstance();
 	currentMap = 0;
 	locked = false;
+	changingMap = 0;
 	sendMessage("Loaded", "-1");
 }
 
