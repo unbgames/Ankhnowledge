@@ -30,6 +30,7 @@ Character::Character(Sprite* sprite, Sprite* hud, Tile* tile, Skill* skill, int 
 	this->activatedSkill = false;
 	this->performingAction = false;
 	this->stamina = 10;
+	this->initialStamina = 10;
 	this->turn = false;
 	this->id = id;
 	this->direction = 4;
@@ -236,6 +237,11 @@ void Character::interpolateMovement(float dt)
 int Character::getStamina()
 {
 	return this->stamina;
+}
+
+int Character::getInitialStamina()
+{
+	return this->initialStamina;
 }
 
 void Character::setStamina(int stamina)
@@ -511,6 +517,24 @@ void Character::moveUpdate(InputManager * input, Direction dir)
 				}
 				nextTile->setBlock(0);
 				setStamina(getStamina() - 3);
+
+				//delete block;
+			}
+			if(block->getType() == "BlockWater")
+			{
+				changeCurrentTile(nextTile);
+				if(dir != none && !performingAction)
+				{
+					move(dir);
+					if(needToSend)
+						sendMessage("Move", intToString((int)dir));
+				}
+				nextTile->setBlock(0);
+				setStamina(getStamina() + 2);
+				this->initialStamina += 2;
+				AudioHandler * audio = AudioHandler::getInstance();
+			 	audio->setEffect("sand_action.wav");
+			 	audio->playEffect(0);
 
 				//delete block;
 			}

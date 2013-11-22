@@ -42,6 +42,7 @@ public:
 	void setTurn(bool on);
 	void toogleTurn();
 	int getStamina();
+	int getInitialStamina();
 	void setStamina(int stamina);
 	int getId();
 	void setCurrentTile(Tile * tile);
@@ -71,6 +72,7 @@ private:
 	float beginX;
 	float beginY;
 	int stamina;
+	int initialStamina;
 	bool win;
 	bool turn;
 	int id;

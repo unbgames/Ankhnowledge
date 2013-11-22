@@ -264,8 +264,8 @@ void Map::changeCurrentPlayer()
 		else
 			currentPlayer = player1;
 
-		player1->setStamina(10);
-		player2->setStamina(10);
+		player1->setStamina(player1->getInitialStamina());
+		player2->setStamina(player2->getInitialStamina());
 		player1->toogleTurn();
 		player2->toogleTurn();
 	}
