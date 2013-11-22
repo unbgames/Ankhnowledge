@@ -23,18 +23,18 @@ public:
 	virtual ~Network();
 	static int connect(string ipaddress);
 	static int listening(void *);
-	static int listening2();
 	static void disconnect();
 	static void sendMessage(string message);
 	static int receiveMessage(void *);
 	static void receiveThread();
 	static string readMessage();
+	static void closeConnection();
 	static int contagem(void *);
 	static int host();
 	static int getID();
 	static bool isFirstTime();
 	static bool didLost();
-	static bool endGame, connected;
+	static bool endGame, connected, disconnected,cancel;
 	static void listeningThread();
 
 private:
@@ -53,4 +53,5 @@ private:
 };
 
 #endif /* NETWORK_H_ */
+
 

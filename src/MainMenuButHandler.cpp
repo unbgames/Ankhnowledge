@@ -44,6 +44,12 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt6_2->incNumRef();
 	this->bt6_3 = new Sprite(SDLBase::resourcesPath + "ok_3.png");
 	this->bt6_3->incNumRef();
+	this->bt8_1 = new Sprite(SDLBase::resourcesPath + "cancel_1.png");
+	this->bt8_1->incNumRef();
+	this->bt8_2 = new Sprite(SDLBase::resourcesPath + "cancel_2.png");
+	this->bt8_2->incNumRef();
+	this->bt8_3 = new Sprite(SDLBase::resourcesPath + "cancel_3.png");
+	this->bt8_3->incNumRef();
 
 	this->bt1 = new Button(bt1_1,bt1_2,bt1_3,500,300);
 	this->bt2 = new Button(bt2_1,bt2_2,bt2_3,500,350);
@@ -51,12 +57,20 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bt4 = new Button(bt4_1,bt4_2,bt4_3,500,450);
 	this->bt5 = new Button(bt5_1,bt5_2,bt5_3,500,500);
 	this->bt6 = new Button(bt6_1,bt6_2,bt6_3,500,300);
-
+	this->bt7 = new Button(bt6_1,bt6_2,bt6_3,460,280);
+	this->bt8 = new Button(bt8_1,bt8_2,bt8_3,430,280);
+	this->bt6_1->incNumRef();
+	this->bt6_2->incNumRef();
+	this->bt6_3->incNumRef();
 	this->splashSprite = new Sprite(SDLBase::resourcesPath + "titlebg.png");
 	this->splashSprite->incNumRef();
 	input = InputManager::getInstance();
 
 	box = new Sprite(SDLBase::resourcesPath + "box.png");
+	waiting = new Sprite(SDLBase::resourcesPath + "waiting.png");
+	disconnect = new Sprite(SDLBase::resourcesPath + "disconnected.png");
+	waiting->incNumRef();
+	disconnect->incNumRef();
 	this->box->incNumRef();
 	boxInput = new Sprite(SDLBase::resourcesPath + "box_input.png");
 	this->boxInput->incNumRef();
@@ -81,9 +95,9 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	clickOtherButtons = true;
 	message = "";
 	sendMessage = false;
-	this->host = false;
-	this->thread = false;
-
+	host = false;
+	thread = false;
+	Network::cancel = true;
 }
 
 MainMenuButHandler::~MainMenuButHandler() {
@@ -118,15 +132,28 @@ MainMenuButHandler::~MainMenuButHandler() {
 	this->bt5_3->decNumRef();
 	this->bt5_3 = 0;
 	this->bt6_1->decNumRef();
-	this->bt6_1 = 0;
 	this->bt6_2->decNumRef();
-	this->bt6_2 = 0;
 	this->bt6_3->decNumRef();
+	this->bt6_1->decNumRef();
+	this->bt6_2->decNumRef();
+	this->bt6_3->decNumRef();
+	this->bt6_1 = 0;
+	this->bt6_2 = 0;
 	this->bt6_3 = 0;
+	this->bt8_1->decNumRef();
+	this->bt8_1 = 0;
+	this->bt8_2->decNumRef();
+	this->bt8_2 = 0;
+	this->bt8_3->decNumRef();
+	this->bt8_3 = 0;
 	this->splashSprite->decNumRef();
 	this->splashSprite = 0;
 	this->box->decNumRef();
 	this->box = 0;
+	this->waiting->decNumRef();
+	this->waiting = 0;
+	this->disconnect->decNumRef();
+	this->disconnect = 0;
 	this->boxInput->decNumRef();
 	this->boxInput = 0;
 	this->bg->decNumRef();
@@ -145,8 +172,10 @@ void MainMenuButHandler::render(float cameraX, float cameraY){
 
 	if(tryToConnect)
 		renderConnect();
-	if(this->host)
-		box->render(boxX,boxY);
+	if(host)
+		renderWaiting();
+	if(Network::disconnected)
+		renderDisconnect();
 }
 
 int MainMenuButHandler::update(int dt){
@@ -161,20 +190,29 @@ int MainMenuButHandler::update(int dt){
 	mouseOver(bt5);
 	mousePressed(bt5,"Quit");
 	mouseOver(bt6);
+	mouseOver(bt7);
+	mouseOver(bt8);
+
 	this->bt1->update(dt);
 	this->bt2->update(dt);
 	this->bt3->update(dt);
 	this->bt4->update(dt);
 	this->bt5->update(dt);
 	this->bt6->update(dt);
-	updateConnect(dt);
+	this->bt7->update(dt);
+	this->bt8->update(dt);
 
-	if(Network::connected && this->thread)
+	updateConnect(dt);
+	updateDisconnect(dt);
+	updateWaiting(dt);
+
+	if(Network::connected && thread)
 	{
 		Network::receiveThread();
 		if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
 			GameManager::fadeScreen->fadeIn(1,2);
-		this->thread = false;
+		thread = false;
+		clickOtherButtons = true;
 	}
 	return 0;
 }
@@ -182,7 +220,7 @@ int MainMenuButHandler::update(int dt){
 void MainMenuButHandler::mouseOver(Button *bt){
 	bt->setMouseCoord(input->mousePosX(),input->mousePosY());
 	if((bt->insideButton() == 1) && (clickOtherButtons == false))
-		bt->setChangeSprite(0);
+		bt->setChangeSprite(1);
 
 }
 
@@ -194,11 +232,13 @@ void MainMenuButHandler::mousePressed(Button *bt,string scene){
 
 		if(bt == bt1)
 		{
-			if(!this->host){
+			if(!host){
+				Network::cancel = false;
 				Network::host();
 				Network::listeningThread();
-				this->host = true;
-				this->thread = true;
+				host = true;
+				thread = true;
+				clickOtherButtons = false;
 			}
 		}else
 
@@ -243,6 +283,19 @@ void MainMenuButHandler::renderConnect(){
 		SDLBase::renderText(font, "Mesangem Enviada IP: " + message ,color,150,400);
 	bt6->render(0,0);
 
+}
+
+void MainMenuButHandler::renderDisconnect(){
+	clickOtherButtons = false;
+	disconnect->render(boxX,boxY);
+	bt7->render(0,0);
+
+}
+
+void MainMenuButHandler::renderWaiting(){
+	clickOtherButtons = false;
+	waiting->render(boxX,boxY);
+	bt8->render(0,0);
 }
 
 bool MainMenuButHandler::isInsideBox(Sprite* currentSprite){
@@ -293,6 +346,31 @@ void MainMenuButHandler::updateConnect(int dt){
 
 }
 
+void MainMenuButHandler::updateDisconnect(int dt){
+
+	if((bt7->insideButton() == 1) && (input->isMousePressed(1)))
+	{
+		bt7->setChangeSprite(1);
+		bt7->mousePressed(true);
+		Network::disconnected = false;
+		clickOtherButtons = true;
+	}
+
+}
+
+void MainMenuButHandler::updateWaiting(int dt){
+	if((bt8->insideButton() == 1) && (input->isMousePressed(1)))
+	{
+		bt8->setChangeSprite(1);
+		bt8->mousePressed(true);
+		clickOtherButtons = true;
+		host = false;
+		thread = false;
+		Network::cancel = true;
+		Network::closeConnection();
+	}
+}
+
 void MainMenuButHandler::readInput(){
 	if(input->isKeyUp(SDLK_0))
 		message = message + "0";
@@ -328,3 +406,4 @@ void MainMenuButHandler::changeScene(string nextScene){
 	if(GameManager::currentScene->changeScene(nextScene) == 1)
 		GameManager::fadeScreen->fadeIn(1,0.2);
 }
+

@@ -14,7 +14,8 @@ TCPsocket Network::currentSocket, Network::communicationSocket;
 char Network::buffer[512];
 vector<string> Network::messageQueue;
 SDL_Thread * Network::thread,* Network::lThread;
-bool Network::endGame, Network::connected, Network::firstTime, Network::lost;
+bool Network::endGame, Network::connected, Network::firstTime, Network::lost, Network::disconnected;
+bool Network::cancel;
 SDL_mutex *Network::mutex;
 
 Network::Network() {
@@ -37,6 +38,8 @@ void Network::init(){
 	id = -1;
 	firstTime = false;
 	lost = false;
+	disconnected = false;
+	Network::cancel = false;
 
 }
 
@@ -57,6 +60,7 @@ void Network::finish(){
 
 	cout << "\nOk!\n" << endl;
 	SDL_KillThread(thread);
+	SDL_KillThread(lThread);
 	SDL_DestroyMutex(mutex);
 }
 
@@ -140,6 +144,7 @@ int Network::receiveMessage(void *){
 			currentSocket = NULL;
 			communicationSocket = NULL;
 			id = -1;
+			disconnected = true;
 		}
 
 	}
@@ -195,7 +200,7 @@ int Network::host()
 
 int Network::listening(void *)
 {
-	while(!connected)
+	while(!connected && !cancel)
 	{
 		//cout<<"Escutando"<<endl;
 		if(communicationSocket = SDLNet_TCP_Accept(currentSocket))
@@ -210,21 +215,16 @@ int Network::listening(void *)
 
 }
 
-int Network::listening2()
-{
-	while(!connected)
+void Network::closeConnection(){
+	if(currentSocket)
 	{
-		//cout<<"Escutando"<<endl;
-		if(communicationSocket = SDLNet_TCP_Accept(currentSocket))
-		{
-			connected = true;
-			firstTime = true;
-			lost = false;
-			id = 1;
-			//cout<<"Servidor Conectou"<<endl;
-		}
+		SDLNet_TCP_Close(currentSocket);
 	}
 
+	if(communicationSocket)
+	{
+		SDLNet_TCP_Close(communicationSocket);
+	}
 }
 
 int Network::getID()
@@ -241,3 +241,4 @@ bool Network::didLost()
 {
 	return lost;
 }
+
