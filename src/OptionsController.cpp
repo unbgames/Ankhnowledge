@@ -44,9 +44,6 @@ void OptionsController::render(float cameraX, float cameraY){
 	if(currentMusicVolume != this->musicVolume)
 	{
 		AudioHandler * audio = AudioHandler::getInstance();
-		audio->setEffectVolume(currentMusicVolume);
-		audio->setEffect("sand_action.wav");
-		audio->playEffect(0);
 		audio->setMusicVolume(currentMusicVolume);
 		this->musicVolume = currentMusicVolume;
 		//audio->setEffectVolume(this->effectVolume);

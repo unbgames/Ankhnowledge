@@ -87,7 +87,7 @@ void AudioHandler::stopMusic()
 void AudioHandler::setMusicVolume(int percent)
 {
 	int value = percent * MIX_MAX_VOLUME/100;
-	Mix_Volume(0, value);
+	Mix_VolumeMusic(value);
 }
 
 void AudioHandler::setEffect(string song)
