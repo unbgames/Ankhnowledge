@@ -12,7 +12,7 @@ bin_PROGRAMS = Ankhnowledge
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp SelectMapController.cpp SceneSelectMap.cpp HoverButton.cpp SceneSelectCharacter.cpp SelectCharacterController.cpp
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CharacterSuti.cpp CharacterAlan.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp SelectMapController.cpp SceneSelectMap.cpp HoverButton.cpp SceneSelectCharacter.cpp SelectCharacterController.cpp
 
 
 # Libraries needed to build our library

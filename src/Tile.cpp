@@ -1,10 +1,3 @@
-/*
- * Tiles.cpp
- *
- *  Created on: Oct 8, 2013
- *      Author: makoto
- */
-
 #include "Tile.h"
 #include "SDLBase.h"
 #include <sstream>
@@ -155,4 +148,68 @@ void Tile::setBlock(Block * block)
 float Tile::getWidth()
 {
 	return tile->getWidth();
+}
+
+void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable)
+{
+	int i = 1;
+	Tile *tile = origin;
+
+	if(i <= reach && tile->getUpTile())
+	{
+		tile = tile->getUpTile();
+		
+		if(!tile->getCharacter())
+		{
+			if(!(!considerBlock && tile->getBlock()))
+				tile->setClickable(clickable);
+		}
+
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
+
+	tile = origin;
+
+	if(i <= reach && tile->getDownTile())
+	{
+		tile = tile->getDownTile();
+		
+		if(!tile->getCharacter())
+		{
+			if(!(!considerBlock && tile->getBlock()))
+				tile->setClickable(clickable);
+		}
+
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
+
+	tile = origin;
+
+	if(i <= reach && tile->getLeftTile())
+	{
+		tile = tile->getLeftTile();
+		
+		if(!tile->getCharacter())
+		{
+			if(!(!considerBlock && tile->getBlock()))
+				tile->setClickable(clickable);
+		}
+
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
+
+	tile = origin;
+
+	if(i <= reach && tile->getRightTile())
+	{
+		tile = tile->getRightTile();
+		
+		if(!tile->getCharacter())
+		{
+			if(!(!considerBlock && tile->getBlock()))
+				tile->setClickable(clickable);
+		}
+
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
+	}
 }

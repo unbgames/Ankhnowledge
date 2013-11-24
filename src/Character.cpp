@@ -1,10 +1,3 @@
-/*
- * Character.cpp
- *
- *  Created on: Oct 7, 2013
- *      Author: al
- */
-
 #include <iostream>
 
 #include "Character.h"
@@ -16,21 +9,14 @@
 
 using namespace std;
 
-Character::Character(Sprite* sprite, Sprite* hud, Tile* tile, Skill* skill, int id):GameObject(tile->getX(),tile->getY()) {
-	this->sprite = sprite;
-	sprite->incNumRef();
-	this->hud = hud;
-	hud->incNumRef();
+Character::Character(Tile* tile, int id):GameObject(tile->getX(),tile->getY())
+{
 	this->currentTile = tile;
 	tile->setCharacter(this);
 	this->x = tile->getX();
 	this->y = tile->getY();
-	this->skill = skill;
-	this->currentAnimation = new Animation(20,40,sprite,0);
 	this->activatedSkill = false;
 	this->performingAction = false;
-	this->stamina = 10;
-	this->initialStamina = 10;
 	this->turn = false;
 	this->id = id;
 	this->direction = 4;
@@ -39,10 +25,11 @@ Character::Character(Sprite* sprite, Sprite* hud, Tile* tile, Skill* skill, int 
 	discountStamina = 0;
 	this->win = false;
 	this->onLoop = true;
-	map = 0;
+	this->map = 0;
 }
 
-Character::~Character() {
+Character::~Character()
+{
 	this->currentTile = 0;
 	this->sprite->decNumRef();
 	this->hud->decNumRef();
@@ -324,71 +311,6 @@ void Character::setSkillDestTile(Tile * tile)
 	this->skillDestTile = tile;
 }
 
-
-void Character::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable)
-{
-	int i = 1;
-	Tile *tile = origin;
-
-	if(i <= reach && tile->getUpTile())
-	{
-		tile = tile->getUpTile();
-		
-		if(!tile->getCharacter())
-		{
-			if(!(!considerBlock && tile->getBlock()))
-				tile->setClickable(clickable);
-		}
-
-		setClickableTiles(tile, reach-1, considerBlock, clickable);
-	}
-
-	tile = origin;
-
-	if(i <= reach && tile->getDownTile())
-	{
-		tile = tile->getDownTile();
-		
-		if(!tile->getCharacter())
-		{
-			if(!(!considerBlock && tile->getBlock()))
-				tile->setClickable(clickable);
-		}
-
-		setClickableTiles(tile, reach-1, considerBlock, clickable);
-	}
-
-	tile = origin;
-
-	if(i <= reach && tile->getLeftTile())
-	{
-		tile = tile->getLeftTile();
-		
-		if(!tile->getCharacter())
-		{
-			if(!(!considerBlock && tile->getBlock()))
-				tile->setClickable(clickable);
-		}
-
-		setClickableTiles(tile, reach-1, considerBlock, clickable);
-	}
-
-	tile = origin;
-
-	if(i <= reach && tile->getRightTile())
-	{
-		tile = tile->getRightTile();
-		
-		if(!tile->getCharacter())
-		{
-			if(!(!considerBlock && tile->getBlock()))
-				tile->setClickable(clickable);
-		}
-
-		setClickableTiles(tile, reach-1, considerBlock, clickable);
-	}
-}
-
 void Character::incrementDiscountStamina(int value)
 {
 	this->discountStamina += value;
@@ -596,19 +518,19 @@ string Character::intToString(int intenger)
 void Character::activateSkill()
 {
 	activatedSkill = true;
-	setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), true);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), true);
 }
 
 void Character::deactivateSkill()
 {
 	activatedSkill = false;
-	setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
 }
 
 void Character::useSkill(int tileIndex)
 {
 	this->stamina -= skill->getRequiredStamina();
-	setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
 	skill->execute(this->currentTile, map->getTileWithIndex(tileIndex));
 	this->activatedSkill = false;
 }

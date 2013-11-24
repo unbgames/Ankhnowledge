@@ -14,6 +14,8 @@
 #include <time.h>       /* time */
 #include "SkillDig.h"
 #include "SkillSand.h"
+#include "CharacterSuti.h"
+#include "CharacterAlan.h"
 
 
 using namespace std;
@@ -37,7 +39,6 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	this->columns = tileMap->getColumns();
 	this->rows = tileMap->getRows();
 
-
 	/*
 	 * Connecting all the tiles
 	 */
@@ -56,10 +57,8 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
 
-	Skill *alanSkill = new SkillDig();
-	Skill *sutiSkill = new SkillSand();
-	player1 = new Character(new Sprite(SDLBase::resourcesPath + "adam_spr.png"),new Sprite(SDLBase::resourcesPath + "alanhud.png"), tiles.at(0), alanSkill, 1);
-	player2 = new Character(new Sprite(SDLBase::resourcesPath + "suti_spr.png"), new Sprite(SDLBase::resourcesPath + "sutihud.png"),tiles.at(columns-1), sutiSkill, 2);
+	player1 = new CharacterAlan(tiles.at(0), 1);
+ 	player2 = new CharacterSuti(tiles.at(columns-1), 2);
 	player1->setMap(this);
 	player2->setMap(this);
 	currentPlayer = player1;

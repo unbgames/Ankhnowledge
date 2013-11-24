@@ -1,10 +1,3 @@
-/*
- * Tiles.h
- *
- *  Created on: Oct 8, 2013
- *      Author: makoto
- */
-
 #ifndef TILE_H_
 #define TILE_H_
 #include "GameObject.h"
@@ -41,6 +34,7 @@ public:
 	void animateClickableTiles(int dt);
 	void renderClickableTiles();
 	int id;
+	static void setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable);
 
 private:
 	Sprite* tile,*clickableTile;
