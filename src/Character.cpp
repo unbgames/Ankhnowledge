@@ -30,14 +30,14 @@ Character::Character(Tile* tile, int id):GameObject(tile->getX(),tile->getY())
 
 Character::~Character()
 {
-	this->currentTile = 0;
+	/*this->currentTile = 0;
 	this->sprite->decNumRef();
 	this->hud->decNumRef();
 	this->skill = 0;
 	this->skillDestTile = 0;
 	sprite = 0;
 	this->hud = 0;
-	this->map = 0;
+	this->map = 0;*/
 }
 
 void Character::render(float cameraX, float cameraY)
@@ -427,6 +427,8 @@ void Character::moveUpdate(InputManager * input, Direction dir)
 			if(block->getType() == "BlockTreasure")
 			{
 				block->reaction(this);
+				if(needToSend)
+					sendMessage("Move", intToString((int)dir));
 			}
 			if(block->getType() == "BlockSand")
 			{

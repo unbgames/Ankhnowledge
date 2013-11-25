@@ -29,7 +29,7 @@ int BlockTreasure::update(int dt)
 	if(open)
 	{
 		animation->update(dt,false,0,false);
-		if(GameManager::currentScene->changeScene("SceneMainMenu") == 1 && !activated && animation->getFinishedAnimation() == true)
+		if(GameManager::currentScene->changeScene("SceneSelectCharacter") == 1 && !activated && animation->getFinishedAnimation() == true)
 		{
 			activated = true;
 			GameManager::fadeScreen->fadeIn(1,2);

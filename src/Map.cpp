@@ -75,18 +75,15 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 
 Map::~Map() {
 
+	cout<<"sai3"<<endl;
 	for(int i = 0; i < (columns*rows); i++)
 	{
 		tiles.at(i)->cleanReferences();
 	}
-
 	delete player1;
-
 	delete player2;
-
 	this->tile->decNumRef();
 	this->tile = 0;
-
 	this->block->decNumRef();
 	this->block = 0;
 	delete tileMap;

@@ -85,9 +85,10 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libitem_la_DEPENDENCIES =
 am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
 	Button.lo Block.lo BlockMovable.lo BlockWater.lo \
-	BlockTreasure.lo Character.lo CreditsController.lo \
-	FadeHandler.lo FadeScreen.lo GameObject.lo InputManager.lo \
-	Map.lo MainMenuButHandler.lo Network.lo OptionsController.lo \
+	BlockTreasure.lo Character.lo CharacterSuti.lo \
+	CharacterAlan.lo CreditsController.lo FadeHandler.lo \
+	FadeScreen.lo GameObject.lo InputManager.lo Map.lo \
+	MainMenuButHandler.lo Network.lo OptionsController.lo \
 	SDLBase.lo Scene.lo SceneLegal.lo SceneLogo.lo \
 	SceneMainMenu.lo ScenePhaseOne.lo SceneTechnology.lo \
 	SceneThirdParty.lo SceneGameOver.lo SceneCredits.lo \
@@ -257,7 +258,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp SelectMapController.cpp SceneSelectMap.cpp HoverButton.cpp SceneSelectCharacter.cpp SelectCharacterController.cpp
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CharacterSuti.cpp CharacterAlan.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp SelectMapController.cpp SceneSelectMap.cpp HoverButton.cpp SceneSelectCharacter.cpp SelectCharacterController.cpp
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf -lSDL_net -lSDL_mixer
@@ -483,6 +484,8 @@ include ./$(DEPDIR)/BlockTreasure.Plo
 include ./$(DEPDIR)/BlockWater.Plo
 include ./$(DEPDIR)/Button.Plo
 include ./$(DEPDIR)/Character.Plo
+include ./$(DEPDIR)/CharacterAlan.Plo
+include ./$(DEPDIR)/CharacterSuti.Plo
 include ./$(DEPDIR)/CreditsController.Plo
 include ./$(DEPDIR)/FadeHandler.Plo
 include ./$(DEPDIR)/FadeScreen.Plo

@@ -62,6 +62,7 @@ void GameManager::initResources(){
 	this->splashOptions->addScenes(splashMainMenu);
 	this->splashCredits->addScenes(splashMainMenu);
 	this->splashPhaseOne->addScenes(splashMainMenu);
+	this->splashPhaseOne->addScenes(splashSelectCharacter);
 	this->splashSelectMap->addScenes(splashPhaseOne);
 	this->splashSelectMap->addScenes(splashMainMenu);
 	this->splashSelectCharacter->addScenes(splashSelectMap);

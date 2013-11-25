@@ -27,12 +27,5 @@ CharacterAlan::CharacterAlan(Tile* tile, int id):Character(tile, id)
 
 CharacterAlan::~CharacterAlan()
 {
-	this->currentTile = 0;
-	this->sprite->decNumRef();
-	this->hud->decNumRef();
-	this->skill = 0;
-	this->skillDestTile = 0;
-	sprite = 0;
-	this->hud = 0;
-	this->map = 0;
+
 }
