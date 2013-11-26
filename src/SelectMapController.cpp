@@ -105,7 +105,7 @@ int SelectMapController::update(int dt){
 				if(mapButtons.at(i)->isPressed() && currentMap == i)
 				{
 					mapselected = i;
-					cout<<"aqui"<<endl;
+					cout<<"aqui"<<i<<endl;
 				}
 
 				if(mapButtons.at(i)->isOnTop() && acumulated2 >500 && currentMap == i)
@@ -147,6 +147,7 @@ void SelectMapController::changeScene(){
 	if(mapselected == -1)
 		return;
 
+	cout<<"Mapa selecionado"<< mapselected <<endl;
 	chooseMap(mapselected);
 	sendMessage("ChoseMap", intToString(mapselected));
 	mapselected = -1;
@@ -206,22 +207,22 @@ void SelectMapController::chooseMap(int index)
 		}
 		else if(index == 1)
 		{
-			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+			if(GameManager::currentScene->changeScene("ScenePhaseTwo") == 1)
 					GameManager::fadeScreen->fadeIn(1,0.2);
 		}
 		else if(index == 2)
 		{
-			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+			if(GameManager::currentScene->changeScene("ScenePhaseThree") == 1)
 					GameManager::fadeScreen->fadeIn(1,0.2);
 		}
 		else if(index == 3)
 		{
-			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+			if(GameManager::currentScene->changeScene("ScenePhaseFour") == 1)
 					GameManager::fadeScreen->fadeIn(1,0.2);
 		}
 		else if(index == 4)
 		{
-			if(GameManager::currentScene->changeScene("ScenePhaseOne") == 1)
+			if(GameManager::currentScene->changeScene("ScenePhaseFive") == 1)
 					GameManager::fadeScreen->fadeIn(1,0.2);
 		}
 }

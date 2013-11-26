@@ -20,7 +20,7 @@
 
 using namespace std;
 
-Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
+Map::Map(Sprite * tile, Sprite * block, string mapLink, float x, float y):GameObject(x,y) {
 	this->tile = tile;
 	this->tile->incNumRef();
 	this->block = block;
@@ -34,7 +34,7 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 	color.b = 255;
 	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
-	tileMap = new TileMap(SDLBase::resourcesPath +"tileMap.txt",tile,block,getX(),getY());
+	tileMap = new TileMap(mapLink,tile,block,getX(),getY());
 	this->tiles = tileMap->getTiles();
 	this->columns = tileMap->getColumns();
 	this->rows = tileMap->getRows();
@@ -56,9 +56,9 @@ Map::Map(Sprite * tile, Sprite * block, float x, float y):GameObject(x,y) {
 		if(!isLastRow(i))
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
-
-	player1 = new CharacterAlan(tiles.at(0), 1);
- 	player2 = new CharacterSuti(tiles.at(columns-1), 2);
+	cout<<mapLink<<endl;
+	player1 = new CharacterAlan(tiles.at(tileMap->getP1Position()), 1);
+ 	player2 = new CharacterSuti(tiles.at(tileMap->getP2Position()), 2);
 	player1->setMap(this);
 	player2->setMap(this);
 	currentPlayer = player1;

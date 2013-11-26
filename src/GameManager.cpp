@@ -32,6 +32,10 @@ GameManager::~GameManager() {
 	delete splashLegal;
 	delete splashMainMenu;
 	delete splashPhaseOne;
+	delete splashPhaseTwo;
+	delete splashPhaseThree;
+	delete splashPhaseFour;
+	delete splashPhaseFive;
 	delete splashSelectMap;
 	delete splashSelectCharacter;
 }
@@ -45,6 +49,10 @@ void GameManager::initResources(){
 	this->splashLegal = new SceneLegal("SceneLegal");
 	this->splashMainMenu = new SceneMainMenu("SceneMainMenu");
 	this->splashPhaseOne = new ScenePhaseOne("ScenePhaseOne");
+	this->splashPhaseTwo = new ScenePhaseTwo("ScenePhaseTwo");
+	this->splashPhaseThree = new ScenePhaseThree("ScenePhaseThree");
+	this->splashPhaseFour = new ScenePhaseFour("ScenePhaseFour");
+	this->splashPhaseFive = new ScenePhaseFive("ScenePhaseFive");
 	this->splashGameOver = new SceneGameOver("SceneGameOver");
 	this->splashCredits = new SceneCredits("SceneCredits");
 	this->splashOptions = new SceneOptions("SceneOptions");
@@ -63,7 +71,19 @@ void GameManager::initResources(){
 	this->splashCredits->addScenes(splashMainMenu);
 	this->splashPhaseOne->addScenes(splashMainMenu);
 	this->splashPhaseOne->addScenes(splashSelectCharacter);
+	this->splashPhaseTwo->addScenes(splashMainMenu);
+	this->splashPhaseTwo->addScenes(splashSelectCharacter);
+	this->splashPhaseThree->addScenes(splashMainMenu);
+	this->splashPhaseThree->addScenes(splashSelectCharacter);
+	this->splashPhaseFour->addScenes(splashMainMenu);
+	this->splashPhaseFour->addScenes(splashSelectCharacter);
+	this->splashPhaseFive->addScenes(splashMainMenu);
+	this->splashPhaseFive->addScenes(splashSelectCharacter);
 	this->splashSelectMap->addScenes(splashPhaseOne);
+	this->splashSelectMap->addScenes(splashPhaseTwo);
+	this->splashSelectMap->addScenes(splashPhaseThree);
+	this->splashSelectMap->addScenes(splashPhaseFour);
+	this->splashSelectMap->addScenes(splashPhaseFive);
 	this->splashSelectMap->addScenes(splashMainMenu);
 	this->splashSelectCharacter->addScenes(splashSelectMap);
 	this->splashSelectCharacter->addScenes(splashMainMenu);

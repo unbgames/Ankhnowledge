@@ -29,7 +29,7 @@ class Tile;
 class TileMap;
 class Map : public GameObject {
 public:
-	Map(Sprite * tile, Sprite * block, float x, float y);
+	Map(Sprite * tile, Sprite * block, string mapLink, float x, float y);
 	void render(float cameraX, float cameraY);
 	int update(int dt);
 	virtual ~Map();

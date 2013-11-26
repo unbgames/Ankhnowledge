@@ -20,6 +20,10 @@
 #include "SceneLegal.h"
 #include "SceneMainMenu.h"
 #include "ScenePhaseOne.h"
+#include "ScenePhaseTwo.h"
+#include "ScenePhaseThree.h"
+#include "ScenePhaseFour.h"
+#include "ScenePhaseFive.h"
 #include "SceneGameOver.h"
 #include "SceneCredits.h"
 #include "SceneOptions.h"
@@ -46,6 +50,10 @@ private:
 	Scene * splashLegal;
 	Scene * splashMainMenu;
 	Scene * splashPhaseOne;
+	Scene * splashPhaseTwo;
+	Scene * splashPhaseThree;
+	Scene * splashPhaseFour;
+	Scene * splashPhaseFive;
 	Scene * splashGameOver;
 	Scene * splashCredits;
 	Scene * splashOptions;

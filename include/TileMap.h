@@ -13,6 +13,10 @@ class TileMap
         vector<Tile* > getTiles();
         int getColumns();
         int getRows();
+        int getP1Position();
+        int getP2Position();
+        float getOffsetX();
+        float getOffsetY();
         virtual ~TileMap();
 
     private:
@@ -20,6 +24,9 @@ class TileMap
         Sprite* tile, *block;
         int mapColumns, mapRows;
         float posX, posY;
+        float posXOffset, posYOffset;
+        int p1Position, p2Position;
+
 };
 
 #endif // TILEMAP_H
