@@ -95,6 +95,7 @@ void GameManager::processEvents(){
 
 	if(input->isKeyDown(SDLK_ESCAPE)){
 		// se a tecla ESC foi pressionada, sair do programa
+	
 		Network::finish();
 		SDL_Event quit;
 	    quit.type = SDL_QUIT;

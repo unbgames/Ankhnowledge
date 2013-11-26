@@ -45,24 +45,23 @@ void Network::init(){
 }
 
 void Network::finish(){
+
+	messageQueue.clear();
+
+	SDL_KillThread(thread);
+	SDL_KillThread(lThread);
+	SDL_DestroyMutex(mutex);
+
 	if(currentSocket)
 	{
 		SDLNet_TCP_Close(currentSocket);
 	}
-
+	
 	if(communicationSocket)
 	{
 		SDLNet_TCP_Close(communicationSocket);
 	}
-
-	messageQueue.clear();
-
 	SDLNet_Quit();
-
-	cout << "\nOk!\n" << endl;
-	SDL_KillThread(thread);
-	SDL_KillThread(lThread);
-	SDL_DestroyMutex(mutex);
 }
 
 Network::~Network() {

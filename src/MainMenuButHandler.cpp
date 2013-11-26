@@ -68,7 +68,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	input = InputManager::getInstance();
 
 	box = new Sprite(SDLBase::resourcesPath + "box.png");
-	waiting = new Sprite(SDLBase::resourcesPath + "disconnected.png");
+	waiting = new Sprite(SDLBase::resourcesPath + "waiting.png");
 	disconnect = new Sprite(SDLBase::resourcesPath + "disconnected.png");
 	waiting->incNumRef();
 	disconnect->incNumRef();
@@ -202,8 +202,8 @@ int MainMenuButHandler::update(int dt){
 	this->bt6->update(dt);
 	this->bt7->update(dt);
 	this->bt8->update(dt);
-
-	updateConnect(dt);
+	if(tryToConnect)
+		updateConnect(dt);
 	updateDisconnect(dt);
 	updateWaiting(dt);
 
@@ -226,6 +226,8 @@ void MainMenuButHandler::mouseOver(Button *bt){
 }
 
 void MainMenuButHandler::mousePressed(Button *bt,string scene){
+
+	
 
 	if((input->isMousePressed(1)) && (bt->insideButton()) == 1 && (clickOtherButtons == true))
 	{
@@ -361,7 +363,6 @@ void MainMenuButHandler::updateDisconnect(int dt){
 void MainMenuButHandler::updateWaiting(int dt){
 	if(SDL_mutexP(Network::mutex2) == 0)
 	{
-
 
 		if((bt8->insideButton() == 1) && (input->isMousePressed(1)) && !Network::cancel)
 		{
