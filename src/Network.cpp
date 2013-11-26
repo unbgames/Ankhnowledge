@@ -17,6 +17,7 @@ SDL_Thread * Network::thread,* Network::lThread;
 bool Network::endGame, Network::connected, Network::firstTime, Network::lost, Network::disconnected;
 bool Network::cancel;
 SDL_mutex *Network::mutex, *Network::mutex2;
+int Network::player1Selection, Network::player2Selection;
 
 Network::Network() {
 
@@ -41,6 +42,8 @@ void Network::init(){
 	lost = false;
 	disconnected = false;
 	Network::cancel = false;
+	player1Selection = 0;
+	player2Selection = 0;
 
 }
 

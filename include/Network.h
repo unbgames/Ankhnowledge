@@ -37,6 +37,8 @@ public:
 	static bool endGame, connected, disconnected,cancel;
 	static void listeningThread();
 	static SDL_mutex *mutex2;
+	static int player1Selection;
+	static int player2Selection;
 
 private:
 	static int rc;

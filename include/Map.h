@@ -20,6 +20,7 @@
 #include <string>
 #include "Button.h"
 #include "TileMap.h"
+#include "Network.h"
 
 using namespace std;
 

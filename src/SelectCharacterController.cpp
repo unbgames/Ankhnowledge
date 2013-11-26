@@ -202,6 +202,16 @@ int SelectCharacterController::update(int dt){
 	if(currentPressed != -1 && opponentPressed != -1 && !changeScene)
 	{
 		changeScene = true;
+		if(Network::getID() == 1)
+		{
+			Network::player1Selection = currentPressed;
+			Network::player2Selection = opponentPressed;
+		}
+		if(Network::getID() == 2)
+		{
+			Network::player1Selection = opponentPressed;
+			Network::player2Selection = currentPressed;
+		}
 		if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
 							GameManager::fadeScreen->fadeIn(1,2);
 	}

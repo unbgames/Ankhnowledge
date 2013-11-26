@@ -57,8 +57,17 @@ Map::Map(Sprite * tile, Sprite * block, string mapLink, float x, float y):GameOb
 			tiles.at(i)->setDownTile(tiles.at(i+columns));
 	}
 	cout<<mapLink<<endl;
-	player1 = new CharacterAlan(tiles.at(tileMap->getP1Position()), 1);
- 	player2 = new CharacterSuti(tiles.at(tileMap->getP2Position()), 2);
+
+	if(Network::player1Selection == 1)
+		player1 = new CharacterAlan(tiles.at(tileMap->getP1Position()), 1);
+	else if(Network::player1Selection == 2)
+		player1 = new CharacterSuti(tiles.at(tileMap->getP1Position()), 1);
+
+	if(Network::player2Selection == 1)
+		player2 = new CharacterAlan(tiles.at(tileMap->getP2Position()), 2);
+	else if(Network::player2Selection == 2)
+		player2 = new CharacterSuti(tiles.at(tileMap->getP2Position()), 2);
+
 	player1->setMap(this);
 	player2->setMap(this);
 	currentPlayer = player1;
