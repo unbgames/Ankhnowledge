@@ -98,6 +98,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	host = false;
 	thread = false;
 	Network::cancel = true;
+	renderConnectError = false;
 }
 
 MainMenuButHandler::~MainMenuButHandler() {
@@ -281,6 +282,9 @@ void MainMenuButHandler::renderConnect(){
 	}
 	bt6->render(0,0);
 
+	if(renderConnectError)
+		SDLBase::renderText(font, "The ip inserted is not valid. Insert again.",color,boxInputX - 65,boxInputY - 73);
+
 }
 
 void MainMenuButHandler::renderDisconnect(){
@@ -329,14 +333,17 @@ void MainMenuButHandler::updateConnect(int dt){
 		bt6->mousePressed(true);
 		if(!Network::connected)
 		{
-			cout<<"Oeeeeeeeeee"<<endl;
-			Network::connect(message);
-			Network::receiveThread();
-			if(GameManager::currentScene->changeScene("SceneSelectCharacter") == 1)
-								GameManager::fadeScreen->fadeIn(1,2);
-			/*Network::sendMessage(message);
-
-					*/
+		  	if(Network::connect(message) == 0)
+			{
+				renderConnectError = false;
+				Network::receiveThread();
+				if(GameManager::currentScene->changeScene("SceneSelectCharacter") == 1)
+				GameManager::fadeScreen->fadeIn(1,2);											  
+			}
+			else 
+			{
+				renderConnectError = true;
+			}
 		}
 	}
 

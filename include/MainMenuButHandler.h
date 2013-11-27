@@ -52,7 +52,7 @@ private:
 	float boxInputX, boxInputY,boxX,boxY;
 	SDL_Color color;
 	TTF_Font *font;
-	bool read,tryToConnect,clickOtherButtons,sendMessage,host, thread;
+	bool read,tryToConnect,clickOtherButtons,sendMessage,host, thread, renderConnectError;
 	string message;
 };
 
