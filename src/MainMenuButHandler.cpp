@@ -117,7 +117,7 @@ MainMenuButHandler::~MainMenuButHandler() {
 	this->bt3_1->decNumRef();
 	this->bt3_1 = 0;
 	this->bt3_2->decNumRef();
-	this->bt3_2;
+	this->bt3_2 = 0;
 	this->bt3_3->decNumRef();
 	this->bt3_3 = 0;
 	this->bt4_1->decNumRef();

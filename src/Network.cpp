@@ -94,7 +94,9 @@ int Network::connect(string ipaddress){
 	connected = true;
 	firstTime = true;
 	lost = false;
-	cout<<"Cliente Conectou"<<endl;
+	cout << "Cliente Conectou" << endl;
+
+	return 0;
 }
 
 void Network::disconnect(){
@@ -102,7 +104,7 @@ void Network::disconnect(){
 }
 
 void Network::sendMessage(string message){
-	if(SDLNet_TCP_Send(communicationSocket, (void *) message.c_str(), message.size()+1) < message.size())
+	if(SDLNet_TCP_Send(communicationSocket, (void *) message.c_str(), message.size()+1) < (int)message.size())
 	{
 		cout << "Erro no envio da MENSAGEM: " << SDLNet_GetError() << endl;
 		return;
@@ -201,6 +203,8 @@ int Network::host()
 	cout << "Servidor Iniciado!" << endl;
 	cout << "Aguardando cliente ..." << endl;
 	listeningThread();
+
+	return 0;
 }
 
 int Network::listening(void *)
@@ -218,7 +222,7 @@ int Network::listening(void *)
 		}
 
 		cout<<"Escutando"<<endl;
-		if(communicationSocket = SDLNet_TCP_Accept(currentSocket))
+		if((communicationSocket = SDLNet_TCP_Accept(currentSocket)))
 		{
 			connected = true;
 			firstTime = true;
