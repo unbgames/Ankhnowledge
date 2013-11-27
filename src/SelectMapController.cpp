@@ -16,19 +16,19 @@ SelectMapController::SelectMapController():GameObject(getX(),getY()) {
 	mapButtons.push_back(new HoverButton(new Sprite(SDLBase::resourcesPath + "map1mockup.png"),0,0));
 	mapButtons.push_back(new HoverButton(new Sprite(SDLBase::resourcesPath + "map1mockup.png"),0,0));
 	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map1name.png"));
-	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map1name.png"));
-	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map1name.png"));
-	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map1name.png"));
-	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map1name.png"));
+	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map2name.png"));
+	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map3name.png"));
+	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map4name.png"));
+	mapNames.push_back(new Sprite(SDLBase::resourcesPath + "map5name.png"));
 
 	for(unsigned int i = 0; i < mapNames.size(); i++)
 	{
 		mapNames.at(i)->incNumRef();
 	}
 
-	leftButton = new HoverButton(new Sprite(SDLBase::resourcesPath + "left.png"),30,250);
+	leftButton = new HoverButton(new Sprite(SDLBase::resourcesPath + "left.png"),120,250);
 	rightButton = new HoverButton(new Sprite(SDLBase::resourcesPath + "right.png"),0,0);
-	rightButton->setPosition(800 - rightButton->getSprite()->getWidth()-30,250);
+	rightButton->setPosition(800 - rightButton->getSprite()->getWidth()-120,250);
 
 	for(unsigned int i = 0; i < mapButtons.size(); i++)
 	{
@@ -76,7 +76,10 @@ void SelectMapController::render(float cameraX, float cameraY){
 	}
 	for(unsigned int i = 0; i < mapNames.size(); i++)
 	{
-		mapNames.at(i)->render(mapButtons.at(i)->getX()+60, 50);
+		if(i == 0)
+			mapNames.at(i)->render(mapButtons.at(i)->getX()+60, 50);
+		else
+			mapNames.at(i)->render(mapButtons.at(i)->getX()+95, 50);
 	}
 	this->board->render(boardX, boardY);
 	leftButton->render(0,0);
