@@ -32,7 +32,9 @@ TileMap::TileMap(std::string mapa, Sprite* tile, Sprite* block, float posX, floa
 
 }
 
-void TileMap::load(std::string mapPath) {
+void TileMap::load(std::string mapPath)
+{
+    int fscanf_return;
     //abre o arquivo indicando leitura
     FILE* mapFile = fopen(mapPath.c_str(), "r");
     if(mapFile == NULL) {
@@ -40,12 +42,19 @@ void TileMap::load(std::string mapPath) {
     }
     int index = 0;
     //pega a largura, altura e layers do mapa, indicados na primeira linha do arquivo
-    fscanf(mapFile, "%d,%d,%f,%f,%d,%d,", &mapColumns, &mapRows, &posXOffset, &posYOffset, &p1Position, &p2Position);
+    fscanf_return = fscanf(mapFile, "%d,%d,%f,%f,%d,%d,", &mapColumns, &mapRows, &posXOffset, &posYOffset, &p1Position, &p2Position);
+    
+    if(!fscanf_return)
+    {
+        cout << "Impossible to read the map file" << endl;
+        return;
+    }
+
     posX += posXOffset;
     posY += posYOffset;
 
     //pula 4 linhas para cair na posição exata dos indices dos tiles indicados no arquivo txt
-    fscanf(mapFile, "\n\n\n\n");
+    fscanf_return = fscanf(mapFile, "\n\n\n\n");
     int id = 0;
     //loop que percorre as colunas, linhas e os layers do arquivo txt
     	//cout<<"POS X "<<posX<<" POS T "<<posY<<"\n"<<endl;
@@ -55,7 +64,7 @@ void TileMap::load(std::string mapPath) {
             for(int x = 0; x < mapColumns;x++)
             {
 
-                fscanf(mapFile, "%d,", &index);
+                fscanf_return = fscanf(mapFile, "%d,", &index);
                 //cout<<"Index "<<index<<endl;
                 if(index == NORMAL_TILE)
                 {
@@ -113,8 +122,8 @@ void TileMap::load(std::string mapPath) {
                 }
                 id++;
             }
-            fscanf(mapFile, "\n");
-            fscanf(mapFile, "\n");
+            fscanf_return = fscanf(mapFile, "\n");
+            fscanf_return = fscanf(mapFile, "\n");
         }
     //fecha arquivo
     fclose(mapFile);

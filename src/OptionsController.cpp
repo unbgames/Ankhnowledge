@@ -22,7 +22,8 @@ OptionsController::OptionsController():GameObject(getX(),getY()) {
 	this->splashSprite = new Sprite(SDLBase::resourcesPath + "options.png");
 	input = InputManager::getInstance();
 	SDLBase::initializeSDLTTF();
-	color = {0, 0, 0, 255};
+	const SDL_Color temp = {0, 0, 0, 255};
+	color = temp;
 	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
 	this->musicVolume = ((int)(100*bgVolume->calculateValue()));

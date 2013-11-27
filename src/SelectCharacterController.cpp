@@ -48,7 +48,8 @@ SelectCharacterController::SelectCharacterController():GameObject(getX(),getY())
 
 	timer = 5000;
 	SDLBase::initializeSDLTTF();
-	color = {255, 255, 0, 255};
+	const SDL_Color temp = {255, 255, 0, 255};
+	color = temp;
 	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),80);
 
