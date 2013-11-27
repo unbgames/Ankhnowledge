@@ -95,7 +95,6 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	tryToConnect = false;
 	clickOtherButtons = true;
 	message = "";
-	sendMessage = false;
 	host = false;
 	thread = false;
 	Network::cancel = true;
@@ -280,9 +279,6 @@ void MainMenuButHandler::renderConnect(){
 	else if(read){
 		animation->animate(100, boxInputX + 5,boxInputY + 5);
 	}
-
-	if(sendMessage)
-		SDLBase::renderText(font, "Mesangem Enviada IP: " + message ,color,150,400);
 	bt6->render(0,0);
 
 }
@@ -329,7 +325,6 @@ void MainMenuButHandler::updateConnect(int dt){
 
 	if((bt6->insideButton() == 1) && (input->isMousePressed(1)))
 	{
-		sendMessage = true;
 		bt6->setChangeSprite(1);
 		bt6->mousePressed(true);
 		if(!Network::connected)

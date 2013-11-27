@@ -38,10 +38,6 @@ bool SkillDig::getConsiderBlocks()
 	return this->considerBlocks;
 }
 
-bool SkillDig::getConsiderSand()
-{
-	return this->considerSand;
-}
 
 int SkillDig::getReach()
 {

@@ -68,7 +68,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	input = InputManager::getInstance();
 
 	box = new Sprite(SDLBase::resourcesPath + "box.png");
-	waiting = new Sprite(SDLBase::resourcesPath + "disconnected.png");
+	waiting = new Sprite(SDLBase::resourcesPath + "waiting.png");
 	disconnect = new Sprite(SDLBase::resourcesPath + "disconnected.png");
 	waiting->incNumRef();
 	disconnect->incNumRef();
@@ -95,7 +95,6 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	tryToConnect = false;
 	clickOtherButtons = true;
 	message = "";
-	sendMessage = false;
 	host = false;
 	thread = false;
 	Network::cancel = true;
@@ -117,7 +116,7 @@ MainMenuButHandler::~MainMenuButHandler() {
 	this->bt3_1->decNumRef();
 	this->bt3_1 = 0;
 	this->bt3_2->decNumRef();
-	this->bt3_2;
+	this->bt3_2 = 0;
 	this->bt3_3->decNumRef();
 	this->bt3_3 = 0;
 	this->bt4_1->decNumRef();
@@ -280,9 +279,6 @@ void MainMenuButHandler::renderConnect(){
 	else if(read){
 		animation->animate(100, boxInputX + 5,boxInputY + 5);
 	}
-
-	if(sendMessage)
-		SDLBase::renderText(font, "Mesangem Enviada IP: " + message ,color,150,400);
 	bt6->render(0,0);
 
 }
@@ -329,11 +325,11 @@ void MainMenuButHandler::updateConnect(int dt){
 
 	if((bt6->insideButton() == 1) && (input->isMousePressed(1)))
 	{
-		sendMessage = true;
 		bt6->setChangeSprite(1);
 		bt6->mousePressed(true);
 		if(!Network::connected)
 		{
+			cout<<"Oeeeeeeeeee"<<endl;
 			Network::connect(message);
 			Network::receiveThread();
 			if(GameManager::currentScene->changeScene("SceneSelectCharacter") == 1)

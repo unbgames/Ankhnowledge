@@ -532,7 +532,7 @@ void Character::deactivateSkill()
 void Character::useSkill(int tileIndex)
 {
 	this->stamina -= skill->getRequiredStamina();
-	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), skill->getConsiderSand(),false);
 	skill->execute(this->currentTile, map->getTileWithIndex(tileIndex));
 	this->activatedSkill = false;
 }

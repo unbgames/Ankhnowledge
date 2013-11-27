@@ -74,7 +74,7 @@ Network::~Network() {
 
 int Network::connect(string ipaddress){
 
-	rc = SDLNet_ResolveHost(&ip, /*ipaddress.c_str()*/"localhost", 3000);
+	rc = SDLNet_ResolveHost(&ip, ipaddress.c_str(), 3000);
 
 	if(rc == -1)
 	{

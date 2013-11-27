@@ -44,11 +44,6 @@ bool SkillSand::getConsiderBlocks()
 	return this->considerBlocks;
 }
 
-bool SkillSand::getConsiderSand()
-{
-	return this->considerSand;
-}
-
 int SkillSand::getReach()
 {
 	return this->reach;

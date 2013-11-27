@@ -150,27 +150,37 @@ float Tile::getWidth()
 	return tile->getWidth();
 }
 
-void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool considerSand, bool clickable)
+void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable)
 {
-
-	cout<<"consider sand " << considerSand<<endl;
 	int i = 1;
 	Tile *tile = origin;
 
 	if(i <= reach && tile->getUpTile())
 	{
 		tile = tile->getUpTile();
-		
+
 		if(!tile->getCharacter())
 		{
-			if(!(!considerBlock && tile->getBlock()))
+			
+			if(!tile->getBlock())
 			{
-				if(!(!considerSand && tile->getBlock()))
-					tile->setClickable(clickable);
+				tile->setClickable(clickable);
 			}
+			else if (considerBlock)
+			{
+				if(tile->getBlock()->getType() == "BlockSand" || tile->getBlock()->getType() == "BlockWater")
+				{
+					//Do nothing
+				}
+				else 
+				{
+					tile->setClickable(clickable);
+				}
+			}
+
 		}
 
-		Tile::setClickableTiles(tile, reach-1, considerBlock, considerSand, clickable);
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
 	}
 
 	tile = origin;
@@ -181,14 +191,24 @@ void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool c
 		
 		if(!tile->getCharacter())
 		{
-			if(!(!considerBlock && tile->getBlock()))
+			if(!tile->getBlock())
 			{
-				if(!(!considerSand && tile->getBlock()))
+				tile->setClickable(clickable);
+			}
+			else if (considerBlock)
+			{
+				if(tile->getBlock()->getType() == "BlockSand" || tile->getBlock()->getType() == "BlockWater")
+				{
+					//Do nothing
+				}
+				else 
+				{
 					tile->setClickable(clickable);
+				}
 			}
 		}
 
-		Tile::setClickableTiles(tile, reach-1, considerBlock, considerSand, clickable);
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
 	}
 
 	tile = origin;
@@ -199,14 +219,24 @@ void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool c
 		
 		if(!tile->getCharacter())
 		{
-			if(!(!considerBlock && tile->getBlock()))
+			if(!tile->getBlock())
 			{
-				if(!(!considerSand && tile->getBlock()))
+				tile->setClickable(clickable);
+			}
+			else if (considerBlock)
+			{
+				if(tile->getBlock()->getType() == "BlockSand" || tile->getBlock()->getType() == "BlockWater")
+				{
+					//Do nothing
+				}
+				else 
+				{
 					tile->setClickable(clickable);
+				}
 			}
 		}
 
-		Tile::setClickableTiles(tile, reach-1, considerBlock, considerSand, clickable);
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
 	}
 
 	tile = origin;
@@ -217,13 +247,23 @@ void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool c
 		
 		if(!tile->getCharacter())
 		{  
-			if(!(!considerBlock && tile->getBlock()))
+			if(!tile->getBlock())
 			{
-				if(!(!considerSand && tile->getBlock()))
+				tile->setClickable(clickable);
+			}
+			else if (considerBlock)
+			{
+				if(tile->getBlock()->getType() == "BlockSand" || tile->getBlock()->getType() == "BlockWater")
+				{
+					//Do nothing
+				}
+				else 
+				{
 					tile->setClickable(clickable);
+				}
 			}
 		}
 
-		Tile::setClickableTiles(tile, reach-1, considerBlock, considerSand, clickable);
+		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
 	}
 }

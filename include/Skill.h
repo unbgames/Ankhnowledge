@@ -11,7 +11,6 @@ class Skill
 		virtual void execute(Tile * origin, Tile * dest) = 0; 
 		virtual int getRequiredStamina() = 0;
 		virtual bool getConsiderBlocks() = 0;
-		virtual bool getConsiderSand() = 0;
 		virtual int getReach() = 0;
 		virtual ~Skill();
 
