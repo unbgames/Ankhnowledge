@@ -21,7 +21,7 @@ void ScenePhaseThree::Enter()
 {
 	AudioHandler * audio = AudioHandler::getInstance();
 	audio->stopMusic();
-	audio->setMusic("fase1.ogg");
+	audio->setMusic("fase3.ogg");
 	audio->playMusic(-1);
 
 	this->splashSprite = new Sprite(SDLBase::resourcesPath + "interface.png");
