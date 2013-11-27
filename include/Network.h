@@ -33,7 +33,9 @@ public:
 	static int host();
 	static int getID();
 	static bool isFirstTime();
+	static void setFirstTime(bool value);
 	static bool didLost();
+	static void setLost(bool value);
 	static bool endGame, connected, disconnected,cancel;
 	static void listeningThread();
 	static SDL_mutex *mutex2;

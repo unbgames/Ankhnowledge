@@ -37,9 +37,9 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
-target_triplet = i686-pc-linux-gnu
+build_triplet = x86_64-unknown-linux-gnu
+host_triplet = x86_64-unknown-linux-gnu
+target_triplet = x86_64-unknown-linux-gnu
 bin_PROGRAMS = Ankhnowledge$(EXEEXT)
 subdir = src
 DIST_COMMON = $(dist_Ankhnowledge_DATA) $(srcdir)/Makefile.am \
@@ -85,7 +85,7 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libitem_la_DEPENDENCIES =
 am_libitem_la_OBJECTS = Animation.lo GameManager.lo AudioHandler.lo \
 	Button.lo Block.lo BlockMovable.lo BlockWater.lo \
-	BlockTreasure.lo Character.lo CharacterSuti.lo \
+	BlockTreasure.lo BlockFixed.lo Character.lo CharacterSuti.lo \
 	CharacterAlan.lo CreditsController.lo FadeHandler.lo \
 	FadeScreen.lo GameObject.lo InputManager.lo Map.lo \
 	MainMenuButHandler.lo Network.lo OptionsController.lo \
@@ -125,12 +125,12 @@ DATA = $(dist_Ankhnowledge_DATA)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/makoto/Desktop/MasterFinal/Ankhnowledge/config/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/makoto/Desktop/MasterFinal/Ankhnowledge/config/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/makoto/Desktop/MasterFinal/Ankhnowledge/config/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/makoto/Desktop/MasterFinal/Ankhnowledge/config/missing --run automake-1.11
 AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -159,7 +159,7 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld
+LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lSDL_image 
@@ -170,7 +170,7 @@ LTLIBOBJS =
 LT_CURRENT = 0
 LT_RELEASE = 0.0.1
 LT_REVISION = 0
-MAKEINFO = ${SHELL} /home/al/Test/Ankhnowledge/config/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/makoto/Desktop/MasterFinal/Ankhnowledge/config/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -193,10 +193,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = strip
 VERSION = 0.0.1
-abs_builddir = /home/al/Test/Ankhnowledge/src
-abs_srcdir = /home/al/Test/Ankhnowledge/src
-abs_top_builddir = /home/al/Test/Ankhnowledge
-abs_top_srcdir = /home/al/Test/Ankhnowledge
+abs_builddir = /home/makoto/Desktop/MasterFinal/Ankhnowledge/src
+abs_srcdir = /home/makoto/Desktop/MasterFinal/Ankhnowledge/src
+abs_top_builddir = /home/makoto/Desktop/MasterFinal/Ankhnowledge
+abs_top_srcdir = /home/makoto/Desktop/MasterFinal/Ankhnowledge
 ac_config_aux_dir = 
 ac_ct_AR = ar
 ac_ct_CC = gcc
@@ -208,26 +208,26 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = i686-pc-linux-gnu
+build = x86_64-unknown-linux-gnu
 build_alias = 
-build_cpu = i686
+build_cpu = x86_64
 build_os = linux-gnu
-build_vendor = pc
+build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = i686-pc-linux-gnu
+host = x86_64-unknown-linux-gnu
 host_alias = 
-host_cpu = i686
+host_cpu = x86_64
 host_os = linux-gnu
-host_vendor = pc
+host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/al/Test/Ankhnowledge/config/install-sh
+install_sh = ${SHELL} /home/makoto/Desktop/MasterFinal/Ankhnowledge/config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -243,11 +243,11 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target = i686-pc-linux-gnu
+target = x86_64-unknown-linux-gnu
 target_alias = 
-target_cpu = i686
+target_cpu = x86_64
 target_os = linux-gnu
-target_vendor = pc
+target_vendor = unknown
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
@@ -259,7 +259,7 @@ lib_LTLIBRARIES = libitem.la
 libitem_la_LDFLAGS = -static
 
 # Library sources
-libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp Character.cpp CharacterSuti.cpp CharacterAlan.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp SelectMapController.cpp SceneSelectMap.cpp HoverButton.cpp SceneSelectCharacter.cpp SelectCharacterController.cpp ScenePhaseTwo.cpp ScenePhaseThree.cpp ScenePhaseFour.cpp ScenePhaseFive.cpp
+libitem_la_SOURCES = Animation.cpp GameManager.cpp AudioHandler.cpp Button.cpp Block.cpp BlockMovable.cpp BlockWater.cpp BlockTreasure.cpp BlockFixed.cpp Character.cpp CharacterSuti.cpp CharacterAlan.cpp CreditsController.cpp FadeHandler.cpp FadeScreen.cpp GameObject.cpp InputManager.cpp Map.cpp MainMenuButHandler.cpp Network.cpp OptionsController.cpp SDLBase.cpp Scene.cpp SceneLegal.cpp SceneLogo.cpp SceneMainMenu.cpp ScenePhaseOne.cpp SceneTechnology.cpp SceneThirdParty.cpp SceneGameOver.cpp SceneCredits.cpp SceneOptions.cpp Shape.cpp SplashScreen.cpp Sprite.cpp Slider.cpp Skill.cpp SkillDig.cpp Tile.cpp TileMap.cpp BlockSand.cpp SkillSand.cpp SelectMapController.cpp SceneSelectMap.cpp HoverButton.cpp SceneSelectCharacter.cpp SelectCharacterController.cpp ScenePhaseTwo.cpp ScenePhaseThree.cpp ScenePhaseFour.cpp ScenePhaseFive.cpp
 
 # Libraries needed to build our library
 libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf -lSDL_net -lSDL_mixer
@@ -274,6 +274,7 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/intro.ogg \
 	../$(PACKAGE)/resources/background.png \
 	../$(PACKAGE)/resources/Black.bmp \
 	../$(PACKAGE)/resources/block.png \
+	../$(PACKAGE)/resources/blocofixocomareia.png \
 	../$(PACKAGE)/resources/splashlegal.png \
 	../$(PACKAGE)/resources/splashlogo.png \
 	../$(PACKAGE)/resources/splashmainmenu.png \
@@ -353,7 +354,9 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/intro.ogg \
 	../$(PACKAGE)/resources/tileMap2.txt \
 	../$(PACKAGE)/resources/tileMap3.txt \
 	../$(PACKAGE)/resources/tileMap4.txt \
-	../$(PACKAGE)/resources/tileMap5.txt
+	../$(PACKAGE)/resources/tileMap5.txt \
+	../$(PACKAGE)/resources/youlost.bmp \
+	../$(PACKAGE)/resources/youwon.bmp
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources
 
 # Libraries needed to build program
@@ -484,6 +487,7 @@ distclean-compile:
 include ./$(DEPDIR)/Animation.Plo
 include ./$(DEPDIR)/AudioHandler.Plo
 include ./$(DEPDIR)/Block.Plo
+include ./$(DEPDIR)/BlockFixed.Plo
 include ./$(DEPDIR)/BlockMovable.Plo
 include ./$(DEPDIR)/BlockSand.Plo
 include ./$(DEPDIR)/BlockTreasure.Plo

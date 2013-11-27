@@ -70,8 +70,24 @@ Map::Map(Sprite * tile, Sprite * block, string mapLink, float x, float y):GameOb
 
 	player1->setMap(this);
 	player2->setMap(this);
-	currentPlayer = player1;
-	currentPlayer->setTurn(true);
+	if(Network::isFirstTime())
+	{
+		currentPlayer = player1;
+		currentPlayer->setTurn(true);
+	}else
+	{
+		if((Network::getID() == 1 && Network::didLost()) || (Network::getID() == 2 && !Network::didLost()))
+		{
+			currentPlayer = player1;
+			currentPlayer->setTurn(true);
+		}
+		else
+		if((Network::getID() == 2 && Network::didLost()) || (Network::getID() == 1 && !Network::didLost()))
+		{
+			currentPlayer = player2;
+			currentPlayer->setTurn(true);
+		}
+	}
 	changePlayer = false;
 	this->endButton = new Button(
 									new Sprite(SDLBase::resourcesPath + "endturn_2.png"),
@@ -80,6 +96,15 @@ Map::Map(Sprite * tile, Sprite * block, string mapLink, float x, float y):GameOb
 									660,
 									460);
 	deltaEnd = 0;
+	splashWon = new Sprite(SDLBase::resourcesPath + "youwon.bmp");
+	splashWon->incNumRef();
+	wonHandler = new FadeHandler(splashWon);
+	splashLost = new Sprite(SDLBase::resourcesPath + "youlost.bmp");
+	splashLost->incNumRef();
+	lostHandler = new FadeHandler(splashLost);
+	wonHandler->fadeOut(0,0.1);
+	lostHandler->fadeOut(0,0.1);
+	gameEnded = false;
 }
 
 Map::~Map() {
@@ -91,11 +116,15 @@ Map::~Map() {
 	}
 	delete player1;
 	delete player2;
+	splashWon->decNumRef();
+	splashLost->decNumRef();
 	this->tile->decNumRef();
 	this->tile = 0;
 	this->block->decNumRef();
 	this->block = 0;
 	delete tileMap;
+	delete lostHandler;
+	delete wonHandler;
 
 
 	// TODO Auto-generated destructor stub
@@ -135,6 +164,8 @@ void Map::render(float cameraX, float cameraY){
 	SDLBase::renderText(font, st.str(),color,720,60);
 
 	endButton->render(0,0);
+	splashWon->render(0,0);
+	splashLost->render(0,0);
 
 }
 
@@ -180,6 +211,22 @@ int Map::update(int dt)
 		}
 	}else
 	{
+		if(!gameEnded)
+		{
+			gameEnded = true;
+			Network::setFirstTime(false);
+			if(currentPlayer->getId() == Network::getID())
+			{
+				wonHandler->fadeIn(2,0.5);
+				Network::setLost(false);
+			}
+			else
+			{
+				lostHandler->fadeIn(2,0.5);
+				Network::setLost(true);
+			}
+		}
+
 		currentPlayer->setTurn(false);
 	}
 
@@ -196,6 +243,8 @@ int Map::update(int dt)
 		}
 	}
 
+	wonHandler->update(dt);
+	lostHandler->update(dt);
 	return 0;
 }
 

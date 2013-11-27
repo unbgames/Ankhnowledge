@@ -264,3 +264,13 @@ bool Network::didLost()
 	return lost;
 }
 
+void Network::setLost(bool value)
+{
+	lost = value;
+}
+
+void Network::setFirstTime(bool value)
+{
+	firstTime = value;
+}
+

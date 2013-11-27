@@ -21,6 +21,7 @@
 #include "Button.h"
 #include "TileMap.h"
 #include "Network.h"
+#include "FadeHandler.h"
 
 using namespace std;
 
@@ -46,6 +47,10 @@ private:
 	Sprite* block;
 	Sprite* char1_spr;
 	Sprite* char2_spr;
+	Sprite* splashWon;
+	FadeHandler * wonHandler;
+	Sprite* splashLost;
+	FadeHandler * lostHandler;
 	Character * player1;
 	Character * player2;
 	Character * currentPlayer;
@@ -62,6 +67,7 @@ private:
 	TTF_Font *font;
 	Button* endButton;
 	int deltaEnd;
+	bool gameEnded;
 };
 
 #endif /* MAP_H_ */
