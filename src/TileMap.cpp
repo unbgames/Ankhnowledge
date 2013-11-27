@@ -1,14 +1,18 @@
-#include "TileMap.h"
 #include <iostream>
+
+#include "TileMap.h"
 #include "BlockMovable.h"
 #include "BlockTreasure.h"
 #include "BlockSand.h"
 #include "BlockWater.h"
+#include "BlockFixed.h"
+
 #define MOVABLE_BLOCK 1
 #define NORMAL_TILE   0
 #define TREASURE 2
 #define SAND_BLOCK 3
 #define WATER_BLOCK 4
+#define FIXED_BLOCK 5
 
 using namespace std;
 
@@ -93,6 +97,16 @@ void TileMap::load(std::string mapPath) {
                     Sprite *sprite = new Sprite(SDLBase::resourcesPath + "pote1.png");
                     tiles.push_back(new Tile(tile
                                             , new BlockWater(sprite,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
+                                            , posX+ tile->getWidth()*((int)(id%mapColumns))
+                                            , posY + tile->getHeight()*((int)(id/mapColumns))
+                                            , id));
+                }
+                else if(index == FIXED_BLOCK)
+                {
+                   // cout<<"Entrei 2 x: "<<posX+ tile->getWidth()*x<< " y:" <<posY + tile->getHeight()*y<< "id "<<id<<"\n"<<endl;
+                    Sprite *sprite = new Sprite(SDLBase::resourcesPath + "blocofixocomareia.png");
+                    tiles.push_back(new Tile(tile
+                                            , new BlockFixed(sprite,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
                                             , posX+ tile->getWidth()*((int)(id%mapColumns))
                                             , posY + tile->getHeight()*((int)(id/mapColumns))
                                             , id));
