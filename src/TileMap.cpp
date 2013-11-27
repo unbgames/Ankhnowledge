@@ -112,7 +112,7 @@ void TileMap::load(std::string mapPath)
                 }
                 else if(index == FIXED_BLOCK)
                 {
-                   // cout<<"Entrei 2 x: "<<posX+ tile->getWidth()*x<< " y:" <<posY + tile->getHeight()*y<< "id "<<id<<"\n"<<endl;
+                   
                     Sprite *sprite = new Sprite(SDLBase::resourcesPath + "blocofixocomareia.png");
                     tiles.push_back(new Tile(tile
                                             , new BlockFixed(sprite,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
