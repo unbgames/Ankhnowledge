@@ -8,6 +8,7 @@ SkillSand::SkillSand()
 {
 	this->requiredStamina = 4;
 	this->considerBlocks = true;
+	this->considerSand = false;
 	this->reach = 3;
 }
 
@@ -41,6 +42,11 @@ int SkillSand::getRequiredStamina()
 bool SkillSand::getConsiderBlocks()
 {
 	return this->considerBlocks;
+}
+
+bool SkillSand::getConsiderSand()
+{
+	return this->considerSand;
 }
 
 int SkillSand::getReach()

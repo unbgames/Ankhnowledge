@@ -13,6 +13,7 @@ class SkillDig: public Skill
 		virtual void execute(Tile * origin, Tile * dest); 
 		virtual int getRequiredStamina();
 		virtual bool getConsiderBlocks();
+		virtual bool getConsiderSand();
 		virtual int getReach();
 		virtual ~SkillDig();	
 };

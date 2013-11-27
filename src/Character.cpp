@@ -520,19 +520,19 @@ string Character::intToString(int intenger)
 void Character::activateSkill()
 {
 	activatedSkill = true;
-	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), true);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(),skill->getConsiderSand(), true);
 }
 
 void Character::deactivateSkill()
 {
 	activatedSkill = false;
-	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), skill->getConsiderSand(), false);
 }
 
 void Character::useSkill(int tileIndex)
 {
 	this->stamina -= skill->getRequiredStamina();
-	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), false);
+	Tile::setClickableTiles(currentTile, skill->getReach(), skill->getConsiderBlocks(), skill->getConsiderSand(),false);
 	skill->execute(this->currentTile, map->getTileWithIndex(tileIndex));
 	this->activatedSkill = false;
 }

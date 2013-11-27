@@ -6,6 +6,7 @@ SkillDig::SkillDig()
 {
 	this->requiredStamina = 4;
 	this->considerBlocks = false;
+	this->considerSand = false;
 	this->reach = 3;
 }
 
@@ -35,6 +36,11 @@ int SkillDig::getRequiredStamina()
 bool SkillDig::getConsiderBlocks()
 {
 	return this->considerBlocks;
+}
+
+bool SkillDig::getConsiderSand()
+{
+	return this->considerSand;
 }
 
 int SkillDig::getReach()

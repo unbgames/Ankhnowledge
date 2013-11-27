@@ -34,7 +34,7 @@ public:
 	void animateClickableTiles(int dt);
 	void renderClickableTiles();
 	int id;
-	static void setClickableTiles(Tile *origin, int reach, bool considerBlock, bool clickable);
+	static void setClickableTiles(Tile *origin, int reach, bool considerBlock,bool considerSand, bool clickable);
 
 private:
 	Sprite* tile,*clickableTile;
