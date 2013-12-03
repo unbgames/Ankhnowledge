@@ -34,6 +34,7 @@ Map::Map(Sprite * tile, Sprite * block, string mapLink, float x, float y):GameOb
 	color.b = 255;
 	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
 	font = SDLBase::loadFont(font_path.c_str(),40);
+	turn =  SDLBase::loadFont(font_path.c_str(),20);
 	tileMap = new TileMap(mapLink,tile,block,getX(),getY());
 	this->tiles = tileMap->getTiles();
 	this->columns = tileMap->getColumns();
@@ -162,6 +163,14 @@ void Map::render(float cameraX, float cameraY){
 	stringstream st;
 	st << ((int)(currentPlayer->getStamina()));
 	SDLBase::renderText(font, st.str(),color,720,60);
+
+	if(currentPlayer)
+	{
+		if(currentPlayer->getId() == Network::getID())
+		SDLBase::renderText(turn, "Your", color, 712, 140);
+		else
+		SDLBase::renderText(turn, "Opponent", color, 686, 140);
+	}
 
 	endButton->render(0,0);
 	splashWon->render(0,0);

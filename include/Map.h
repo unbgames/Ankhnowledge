@@ -65,6 +65,7 @@ private:
 	Tile * getPressedTile();
 	SDL_Color color;
 	TTF_Font *font;
+	TTF_Font *turn;
 	Button* endButton;
 	int deltaEnd;
 	bool gameEnded;
