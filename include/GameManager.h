@@ -29,6 +29,7 @@
 #include "SceneOptions.h"
 #include "SceneSelectMap.h"
 #include "SceneSelectCharacter.h"
+#include "MessageBox.h"
 
 class GameManager {
 public:
@@ -43,7 +44,7 @@ public:
 	static Scene * currentScene;
 
 private:
-	Sprite* bg/*,*charOne,*charTwo*/;
+	Sprite* bg,*box_spr;
 	Scene * splashLogo;
 	Scene * splashTechnology;
 	Scene * splashThirdParty;
@@ -60,8 +61,7 @@ private:
 	Scene * splashConnect;
 	Scene * splashSelectMap;
 	Scene * splashSelectCharacter;
-
-
+	MessageBox * mb; 
 	InputManager * input;
 	AudioHandler * audio;
 	Shape* shape;
@@ -75,6 +75,8 @@ private:
 	float cameraSpeedY;
 	float fatorParallaxScrolling;
 	int dt, frameStart, frameEnd;
+	bool quit, renderQuitBox, escPressed;
+	
 
 };
 

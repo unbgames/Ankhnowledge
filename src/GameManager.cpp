@@ -58,6 +58,8 @@ void GameManager::initResources(){
 	this->splashOptions = new SceneOptions("SceneOptions");
 	this->splashSelectMap = new SceneSelectMap("SceneSelectMap");
 	this->splashSelectCharacter = new SceneSelectCharacter("SceneSelectCharacter");
+	this->box_spr = new Sprite(SDLBase::resourcesPath + "leavethegamebox.png");
+	this->mb = new MessageBox(box_spr, "yes","no",450,280);	
 
 	this->splashLogo->addScenes(splashTechnology);
 	this->splashTechnology->addScenes(splashThirdParty);
@@ -99,6 +101,9 @@ void GameManager::initResources(){
 	dt = 0;
 	frameStart = 0;
 	frameEnd = 0;
+	quit = false;
+	renderQuitBox = false;
+	escPressed = false;
 }
 
 
@@ -113,13 +118,10 @@ void GameManager::processEvents(){
 		SDL_PushEvent( &quit );
 	}
 
-	if(input->isKeyDown(SDLK_ESCAPE)){
+	if(input->isKeyDown(SDLK_ESCAPE) && escPressed == false){	
 		// se a tecla ESC foi pressionada, sair do programa
-	
-		Network::finish();
-		SDL_Event quit;
-	    quit.type = SDL_QUIT;
-	    SDL_PushEvent( &quit );
+		renderQuitBox = true;
+		escPressed = true;
 	}
 
 
@@ -155,15 +157,42 @@ void GameManager::processEvents(){
 }
 
 void GameManager::update(int dt){
-	currentScene->update(dt);
-	fadeScreen->update(dt);
-	audio->update();
-	cameraX1 += cameraSpeedX;
-	cameraY1 += cameraSpeedY;
+	if (quit)
+	{
+		Network::finish();
+		SDL_Event quit;
+ 		quit.type = SDL_QUIT;
+    		SDL_PushEvent( &quit );
+	}
+	
+	if(renderQuitBox)
+	{
+		mb->update(dt);
+		if (mb->confirmPressed())
+		{
+			quit = true;
+		}
+		else if (mb->cancelPressed())
+		{
+			renderQuitBox = false;
+			escPressed = false;
+			mb->deactivateCancel();
+		}
+	}
+	else 
+	{
+		currentScene->update(dt);
+		fadeScreen->update(dt);
+		audio->update();
+		cameraX1 += cameraSpeedX;
+		cameraY1 += cameraSpeedY;
+	}
 }
 
 void GameManager::render(float cameraX, float cameraY){
 	currentScene->render(0,0);
+	if(renderQuitBox)		
+		mb->render(0,0);
 	fadeScreen->render(0,0);
 }
 

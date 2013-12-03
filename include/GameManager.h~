@@ -20,9 +20,15 @@
 #include "SceneLegal.h"
 #include "SceneMainMenu.h"
 #include "ScenePhaseOne.h"
+#include "ScenePhaseTwo.h"
+#include "ScenePhaseThree.h"
+#include "ScenePhaseFour.h"
+#include "ScenePhaseFive.h"
 #include "SceneGameOver.h"
 #include "SceneCredits.h"
 #include "SceneOptions.h"
+#include "SceneSelectMap.h"
+#include "SceneSelectCharacter.h"
 
 class GameManager {
 public:
@@ -44,14 +50,20 @@ private:
 	Scene * splashLegal;
 	Scene * splashMainMenu;
 	Scene * splashPhaseOne;
+	Scene * splashPhaseTwo;
+	Scene * splashPhaseThree;
+	Scene * splashPhaseFour;
+	Scene * splashPhaseFive;
 	Scene * splashGameOver;
 	Scene * splashCredits;
 	Scene * splashOptions;
 	Scene * splashConnect;
+	Scene * splashSelectMap;
+	Scene * splashSelectCharacter;
+
 
 	InputManager * input;
 	AudioHandler * audio;
-	Network * network;
 	Shape* shape;
 	std::vector<GameObject*> gameObjects;
 	float SCROLL;

@@ -32,6 +32,10 @@ GameManager::~GameManager() {
 	delete splashLegal;
 	delete splashMainMenu;
 	delete splashPhaseOne;
+	delete splashPhaseTwo;
+	delete splashPhaseThree;
+	delete splashPhaseFour;
+	delete splashPhaseFive;
 	delete splashSelectMap;
 	delete splashSelectCharacter;
 }
@@ -45,11 +49,17 @@ void GameManager::initResources(){
 	this->splashLegal = new SceneLegal("SceneLegal");
 	this->splashMainMenu = new SceneMainMenu("SceneMainMenu");
 	this->splashPhaseOne = new ScenePhaseOne("ScenePhaseOne");
+	this->splashPhaseTwo = new ScenePhaseTwo("ScenePhaseTwo");
+	this->splashPhaseThree = new ScenePhaseThree("ScenePhaseThree");
+	this->splashPhaseFour = new ScenePhaseFour("ScenePhaseFour");
+	this->splashPhaseFive = new ScenePhaseFive("ScenePhaseFive");
 	this->splashGameOver = new SceneGameOver("SceneGameOver");
 	this->splashCredits = new SceneCredits("SceneCredits");
 	this->splashOptions = new SceneOptions("SceneOptions");
 	this->splashSelectMap = new SceneSelectMap("SceneSelectMap");
 	this->splashSelectCharacter = new SceneSelectCharacter("SceneSelectCharacter");
+	this->box_spr = new Sprite(SDLBase::resourcesPath + "leavethegamebox.png");
+	this->mb = new MessageBox(box_spr, "yes","no",400,280);	
 
 	this->splashLogo->addScenes(splashTechnology);
 	this->splashTechnology->addScenes(splashThirdParty);
@@ -63,7 +73,19 @@ void GameManager::initResources(){
 	this->splashCredits->addScenes(splashMainMenu);
 	this->splashPhaseOne->addScenes(splashMainMenu);
 	this->splashPhaseOne->addScenes(splashSelectCharacter);
+	this->splashPhaseTwo->addScenes(splashMainMenu);
+	this->splashPhaseTwo->addScenes(splashSelectCharacter);
+	this->splashPhaseThree->addScenes(splashMainMenu);
+	this->splashPhaseThree->addScenes(splashSelectCharacter);
+	this->splashPhaseFour->addScenes(splashMainMenu);
+	this->splashPhaseFour->addScenes(splashSelectCharacter);
+	this->splashPhaseFive->addScenes(splashMainMenu);
+	this->splashPhaseFive->addScenes(splashSelectCharacter);
 	this->splashSelectMap->addScenes(splashPhaseOne);
+	this->splashSelectMap->addScenes(splashPhaseTwo);
+	this->splashSelectMap->addScenes(splashPhaseThree);
+	this->splashSelectMap->addScenes(splashPhaseFour);
+	this->splashSelectMap->addScenes(splashPhaseFive);
 	this->splashSelectMap->addScenes(splashMainMenu);
 	this->splashSelectCharacter->addScenes(splashSelectMap);
 	this->splashSelectCharacter->addScenes(splashMainMenu);
@@ -79,6 +101,9 @@ void GameManager::initResources(){
 	dt = 0;
 	frameStart = 0;
 	frameEnd = 0;
+	quit = false;
+	renderQuitBox = false;
+	escPressed = false;
 }
 
 
@@ -93,13 +118,10 @@ void GameManager::processEvents(){
 		SDL_PushEvent( &quit );
 	}
 
-	if(input->isKeyDown(SDLK_ESCAPE)){
+	if(input->isKeyDown(SDLK_ESCAPE) && escPressed == false){	
 		// se a tecla ESC foi pressionada, sair do programa
-		cout << "\nChamei 0\n" << endl;		
-		Network::finish();
-		SDL_Event quit;
-	    quit.type = SDL_QUIT;
-	    SDL_PushEvent( &quit );
+		renderQuitBox = true;
+		escPressed = true;
 	}
 
 
@@ -135,15 +157,42 @@ void GameManager::processEvents(){
 }
 
 void GameManager::update(int dt){
-	currentScene->update(dt);
-	fadeScreen->update(dt);
-	audio->update();
-	cameraX1 += cameraSpeedX;
-	cameraY1 += cameraSpeedY;
+	if (quit)
+	{
+		Network::finish();
+		SDL_Event quit;
+ 		quit.type = SDL_QUIT;
+    		SDL_PushEvent( &quit );
+	}
+	
+	if(renderQuitBox)
+	{
+		mb->update(dt);
+		if (mb->confirmPressed())
+		{
+			quit = true;
+		}
+		else if (mb->cancelPressed())
+		{
+			renderQuitBox = false;
+			escPressed = false;
+			mb->deactivateCancel();
+		}
+	}
+	else 
+	{
+		currentScene->update(dt);
+		fadeScreen->update(dt);
+		audio->update();
+		cameraX1 += cameraSpeedX;
+		cameraY1 += cameraSpeedY;
+	}
 }
 
 void GameManager::render(float cameraX, float cameraY){
 	currentScene->render(0,0);
+	if(renderQuitBox)		
+		mb->render(0,0);
 	fadeScreen->render(0,0);
 }
 
