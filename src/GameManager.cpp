@@ -59,7 +59,7 @@ void GameManager::initResources(){
 	this->splashSelectMap = new SceneSelectMap("SceneSelectMap");
 	this->splashSelectCharacter = new SceneSelectCharacter("SceneSelectCharacter");
 	this->box_spr = new Sprite(SDLBase::resourcesPath + "leavethegamebox.png");
-	this->mb = new MessageBox(box_spr, "yes","no",450,280);	
+	this->mb = new MessageBox(box_spr, "yes","no",250,200);	
 
 	this->splashLogo->addScenes(splashTechnology);
 	this->splashTechnology->addScenes(splashThirdParty);

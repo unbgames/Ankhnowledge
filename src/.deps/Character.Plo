@@ -116,9 +116,9 @@ Character.lo: Character.cpp /usr/include/c++/4.7/iostream \
  ../include/SplashScreen.h ../include/SceneTechnology.h \
  ../include/SceneThirdParty.h ../include/SceneLegal.h \
  ../include/SceneMainMenu.h ../include/MainMenuButHandler.h \
- ../include/Button.h ../include/Animation.h ../include/ScenePhaseOne.h \
- ../include/Character.h ../include/Map.h ../include/Tile.h \
- ../include/Block.h /usr/include/c++/4.7/sstream \
+ ../include/Button.h ../include/MessageBox.h ../include/Animation.h \
+ ../include/ScenePhaseOne.h ../include/Character.h ../include/Map.h \
+ ../include/Tile.h ../include/Block.h /usr/include/c++/4.7/sstream \
  /usr/include/c++/4.7/bits/sstream.tcc ../include/TileMap.h \
  ../include/ScenePhaseTwo.h ../include/ScenePhaseThree.h \
  ../include/ScenePhaseFour.h ../include/ScenePhaseFive.h \
@@ -127,8 +127,8 @@ Character.lo: Character.cpp /usr/include/c++/4.7/iostream \
  ../include/Slider.h ../include/OptionsController.h \
  ../include/SceneSelectMap.h ../include/SelectMapController.h \
  ../include/HoverButton.h ../include/SceneSelectCharacter.h \
- ../include/SelectCharacterController.h ../include/MessageBox.h \
- ../include/Skill.h ../include/Skill.h
+ ../include/SelectCharacterController.h ../include/Skill.h \
+ ../include/Skill.h
 
 /usr/include/c++/4.7/iostream:
 
@@ -488,6 +488,8 @@ Character.lo: Character.cpp /usr/include/c++/4.7/iostream \
 
 ../include/Button.h:
 
+../include/MessageBox.h:
+
 ../include/Animation.h:
 
 ../include/ScenePhaseOne.h:
@@ -535,8 +537,6 @@ Character.lo: Character.cpp /usr/include/c++/4.7/iostream \
 ../include/SceneSelectCharacter.h:
 
 ../include/SelectCharacterController.h:
-
-../include/MessageBox.h:
 
 ../include/Skill.h:
 

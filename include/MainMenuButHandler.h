@@ -12,6 +12,7 @@
 #include "Sprite.h"
 #include "InputManager.h"
 #include "GameManager.h"
+#include "MessageBox.h"
 #include "Animation.h"
 #include <iostream>
 #include <string>
@@ -33,12 +34,12 @@ public:
 	void updateConnect(int dt);
 	void updateDisconnect(int dt);
 	void updateWaiting(int dt);
-	bool isInsideBox(Sprite* currentSprite);
+	bool isInsideBox(MessageBox* messageBox);
 	void readInput();
 	void backspace();
 
 private:
-	Button* bt1,* bt2, *bt3, *bt4,*bt5,*bt6,*bt7,*bt8;
+	Button* hostButton,* connectButton, *optionsButton, *creditsButton,*quitButton,*bt6,*bt7,*bt8;
 	Sprite* bt1_1,*bt1_2,*bt1_3;
 	Sprite* bt2_1,*bt2_2,*bt2_3;
 	Sprite *bt3_1,*bt3_2,*bt3_3;
@@ -46,6 +47,7 @@ private:
 	Sprite *bt5_1,*bt5_2,*bt5_3,*splashSprite;
 	Sprite *bt6_1,*bt6_2,*bt6_3;
 	Sprite *bt8_1,*bt8_2,*bt8_3;
+	MessageBox *waitingBox, *connectBox,*disconnectBox;
 	InputManager* input;
 	Animation* animation;
 	Sprite* box,*boxInput,*bg,*cursor,*waiting,*disconnect;

@@ -292,6 +292,17 @@ libitem_la_LIBADD = -lSDL -lSDLmain -lSDL_image -lSDL_ttf -lSDL_net -lSDL_mixer
 # Program description
 Ankhnowledge_SOURCES = main.cpp
 dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/intro.ogg \
+	../$(PACKAGE)/resources/boost.wav \
+	../$(PACKAGE)/resources/creditos.ogg \
+	../$(PACKAGE)/resources/empurrar_bloco.wav \
+	../$(PACKAGE)/resources/menucancel.wav \
+	../$(PACKAGE)/resources/menuclick.wav \
+	../$(PACKAGE)/resources/passar_turno.ogg \
+	../$(PACKAGE)/resources/tela_de_opcoes.ogg \
+	../$(PACKAGE)/resources/tela_de_selecao_de_mapas.ogg \
+	../$(PACKAGE)/resources/tema.ogg \
+	../$(PACKAGE)/resources/youlost.ogg \
+	../$(PACKAGE)/resources/youwon.wav \
 	../$(PACKAGE)/resources/sand_action.wav \
 	../$(PACKAGE)/resources/dig_action.wav \
 	../$(PACKAGE)/resources/main_menu.ogg \
