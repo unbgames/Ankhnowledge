@@ -220,17 +220,24 @@ int Map::update(int dt)
 		}
 	}else
 	{
+		AudioHandler * audio = AudioHandler::getInstance();
 		if(!gameEnded)
 		{
 			gameEnded = true;
 			Network::setFirstTime(false);
 			if(currentPlayer->getId() == Network::getID())
-			{
+			{	
+			 	audio->setEffect("youwon.wav");
+			 	audio->playEffect(0);
+
 				wonHandler->fadeIn(2,0.5);
 				Network::setLost(false);
 			}
 			else
 			{
+				audio->setEffect("youlost.ogg");
+			 	audio->playEffect(0);
+
 				lostHandler->fadeIn(2,0.5);
 				Network::setLost(true);
 			}
@@ -321,6 +328,10 @@ void Map::changeCurrentPlayer()
 {
 	if(!currentPlayer->isPerformingAction() && !currentPlayer->isUsingSkill())
 	{
+		AudioHandler * audio = AudioHandler::getInstance();
+	 	audio->setEffect("passar_turno.ogg");
+	 	audio->playEffect(0);
+
 		changePlayer = false;
 		if(currentPlayer->getId() == 1)
 			currentPlayer = player2;
