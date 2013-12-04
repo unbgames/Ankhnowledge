@@ -6,7 +6,7 @@
 
 SkillSand::SkillSand()
 {
-	this->requiredStamina = 4;
+	this->requiredStamina = 5;
 	this->considerBlocks = true;
 	this->considerSand = false;
 	this->reach = 3;

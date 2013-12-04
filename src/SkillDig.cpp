@@ -4,7 +4,7 @@
 
 SkillDig::SkillDig()
 {
-	this->requiredStamina = 4;
+	this->requiredStamina = 6;
 	this->considerBlocks = false;
 	this->considerSand = false;
 	this->reach = 3;
