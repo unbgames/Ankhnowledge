@@ -457,7 +457,7 @@ void Character::moveUpdate(InputManager * input, Direction dir)
 				setStamina(getStamina() + 2);
 				this->initialStamina += 2;
 				AudioHandler * audio = AudioHandler::getInstance();
-			 	audio->setEffect("sand_action.wav");
+			 	audio->setEffect("boost.wav");
 			 	audio->playEffect(0);
 
 				//delete block;

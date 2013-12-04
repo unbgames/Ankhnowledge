@@ -16,6 +16,11 @@ SceneSelectCharacter::~SceneSelectCharacter() {
 
 void SceneSelectCharacter::Enter()
 {
+	AudioHandler * audio = AudioHandler::getInstance();
+ 	audio->stopMusic();
+   	audio->setMusic("tela_de_selecao_de_mapas.ogg");
+ 	audio->playMusic(-1);
+
 	cc = new SelectCharacterController();
 		this->addGameObject(cc);
 	GameManager::fadeScreen->fadeOut(0,2);

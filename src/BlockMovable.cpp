@@ -67,6 +67,10 @@ void BlockMovable::reaction(Character * character)
 	{
 		if(!nextTile->getBlock())
 		{
+			AudioHandler * audio = AudioHandler::getInstance();
+		 	audio->setEffect("empurrar_bloco.wav");
+		 	audio->playEffect(0);
+			
 			move(dir);
 			getTile()->setBlock(0);
 			setTile(nextTile);
@@ -75,6 +79,10 @@ void BlockMovable::reaction(Character * character)
 		{
 			if(((BlockMovable *)(nextTile->getBlock()))->checkNextTile(character, this))
 			{
+				AudioHandler * audio = AudioHandler::getInstance();
+			 	audio->setEffect("empurrar_bloco.wav");
+			 	audio->playEffect(0);
+
 				move(dir);
 				getTile()->setBlock(0);
 				setTile(nextTile);
