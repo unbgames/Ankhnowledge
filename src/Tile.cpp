@@ -1,6 +1,9 @@
 #include "Tile.h"
 #include "SDLBase.h"
 #include <sstream>
+#include "BlockSand.h"
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 using namespace std;
 
 Tile::Tile(Sprite * tile, Block * block,float x, float y, int id):GameObject(x,y) {
@@ -266,4 +269,25 @@ void Tile::setClickableTiles(Tile *origin, int reach, bool considerBlock, bool c
 
 		Tile::setClickableTiles(tile, reach-1, considerBlock, clickable);
 	}
+}
+
+bool Tile::generateSandBlock()
+{
+	if(block || character)
+		return false;
+
+	int random = rand()%101;
+	if(random < 2)
+	{
+		this->createSandBlock();
+		return true;
+	}
+
+	return false;
+}
+
+void Tile::createSandBlock()
+{
+	Block *newBlock = new BlockSand(new Sprite(SDLBase::resourcesPath + "areiamovedica.png"), this->getX(), this->getY());
+	this->setBlock(newBlock);
 }

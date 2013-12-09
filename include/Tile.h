@@ -35,6 +35,8 @@ public:
 	void renderClickableTiles();
 	int id;
 	static void setClickableTiles(Tile *origin, int reach, bool considerBlock,bool clickable);
+	bool generateSandBlock();
+	void createSandBlock();
 
 private:
 	Sprite* tile,*clickableTile;

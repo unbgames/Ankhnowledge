@@ -10,6 +10,7 @@
 #include "BlockMovable.h"
 #include "BlockTreasure.h"
 #include <iostream>
+#include <sstream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include "SkillDig.h"
@@ -27,7 +28,7 @@ Map::Map(Sprite * tile, Sprite * block, string mapLink, float x, float y):GameOb
 	this->block->incNumRef();
 	this->columns = 20;
 	this->rows = 20;
-
+	srand(time(0));
 	SDLBase::initializeSDLTTF();
 	color.r = 255;
 	color.g = 255;
@@ -331,6 +332,8 @@ void Map::changeCurrentPlayer()
 		AudioHandler * audio = AudioHandler::getInstance();
 	 	audio->setEffect("passar_turno.ogg");
 	 	audio->playEffect(0);
+	 	if(Network::getID()==1)
+	 		tryToSpawnSand();
 
 		changePlayer = false;
 		if(currentPlayer->getId() == 1)
@@ -343,6 +346,42 @@ void Map::changeCurrentPlayer()
 		player1->toogleTurn();
 		player2->toogleTurn();
 	}
+}
+
+void Map::tryToSpawnSand()
+{
+	string msg = "";
+	for(unsigned int i = 0; i < tiles.size(); i++)
+	{
+		if(tiles.at(i)->generateSandBlock())
+		{
+			string st;
+			ostringstream convert;
+			convert << i;
+			st = convert.str();
+			if(msg == "")
+			{
+				msg += st;
+			}else
+			{
+				msg += " ";
+				msg += st;
+			}
+		}
+	}
+
+	if(msg != "")
+	{
+		msg += " ";
+		msg += "end";
+		currentPlayer->spawnSand(msg);	
+		SDL_Delay(50);
+	}
+}
+
+void Map::spawnSand(int id)
+{
+	tiles.at(id)->createSandBlock();
 }
 
 Tile * Map::getTileWithIndex(int index)

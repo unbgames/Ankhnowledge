@@ -52,6 +52,7 @@ class Character:public GameObject {
 		void useSkill(int tileIndex);
 		void setMap(Map * map);
 		void sendMessage(string action, string info);
+		void spawnSand(string msg);
 
 	protected:
 		Sprite* sprite, *hud;

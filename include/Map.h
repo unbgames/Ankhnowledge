@@ -22,6 +22,7 @@
 #include "TileMap.h"
 #include "Network.h"
 #include "FadeHandler.h"
+#include "SDL/SDL.h"
 
 using namespace std;
 
@@ -39,6 +40,8 @@ public:
 	void mouseOver(Button *bt, InputManager * input);
 	void changeCurrentPlayer();
 	Tile * getTileWithIndex(int index);
+	void tryToSpawnSand();
+	void spawnSand(int id);
 
 private:
 	int columns;

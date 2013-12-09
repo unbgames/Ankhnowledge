@@ -542,6 +542,11 @@ void Character::setMap(Map * map)
 	this->map = map;
 }
 
+void Character::spawnSand(string msg)
+{
+	sendMessage("SpawnSand", msg);
+}
+
 void Character::receiveMessage()
 {
 	string message = Network::readMessage();
@@ -582,6 +587,24 @@ void Character::receiveMessage()
 	if(action == "EndTurn")
 	{
 		map->changeCurrentPlayer();
+	}
+	if(action == "SpawnSand")
+	{
+		map->spawnSand(atoi(info.c_str()));
+		while(true)
+		{
+			string info2;
+			iss >> info2;
+
+			if(info2 != "end")
+			{
+				map->spawnSand(atoi(info2.c_str()));
+			}
+			else
+			{
+				break;
+			}
+		}
 	}
 }
 
