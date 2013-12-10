@@ -332,7 +332,7 @@ void Map::changeCurrentPlayer()
 		AudioHandler * audio = AudioHandler::getInstance();
 	 	audio->setEffect("passar_turno.ogg");
 	 	audio->playEffect(0);
-	 	if(Network::getID()==1)
+	 	if((Network::getID()==2 && currentPlayer->getId() ==1) || (Network::getID()==1 && currentPlayer->getId() == 2))
 	 		tryToSpawnSand();
 
 		changePlayer = false;
@@ -374,7 +374,8 @@ void Map::tryToSpawnSand()
 	{
 		msg += " ";
 		msg += "end";
-		currentPlayer->spawnSand(msg);	
+		cout<<msg<<endl;
+		currentPlayer->spawnSand(msg);
 		SDL_Delay(50);
 	}
 }
