@@ -31,14 +31,13 @@ public:
 
 private:
 	Sprite* splashSprite, *p1Board, *p2Board, *board;
+	Sprite* five, *four, *three, *two, *one, *zero;
 	Sprite* alanFaceP1, *sutiFaceP1, *alanFaceP2, *sutiFaceP2;
 	HoverButton* alan, *suti;
 	int currentOnTop, opponentOnTop;
 	int currentPressed, opponentPressed;
 	float xBoard, yBoard;
 	bool locked, changeScene;
-	SDL_Color color;
-	TTF_Font *font;
 	float timer;
 };
 

@@ -21,6 +21,18 @@ SelectCharacterController::SelectCharacterController():GameObject(getX(),getY())
 	p2Board->incNumRef();
 	board = new Sprite(SDLBase::resourcesPath + "charborder.png");
 	board->incNumRef();
+	zero = new Sprite(SDLBase::resourcesPath + "0.png");
+	zero->incNumRef();
+	one = new Sprite(SDLBase::resourcesPath + "1.png");
+	one->incNumRef();
+	two = new Sprite(SDLBase::resourcesPath + "2.png");
+	two->incNumRef();
+	three = new Sprite(SDLBase::resourcesPath + "3.png");
+	three->incNumRef();
+	four = new Sprite(SDLBase::resourcesPath + "4.png");
+	four->incNumRef();
+	five = new Sprite(SDLBase::resourcesPath + "5.png");
+	five->incNumRef();
 	alanFaceP1 = new Sprite(SDLBase::resourcesPath + "alanchoose.png");
 	alanFaceP1->incNumRef();
 	sutiFaceP1 = new Sprite(SDLBase::resourcesPath + "sutichoose2.png");
@@ -47,11 +59,6 @@ SelectCharacterController::SelectCharacterController():GameObject(getX(),getY())
 	sendMessage("Loaded", "-1");
 
 	timer = 5000;
-	SDLBase::initializeSDLTTF();
-	const SDL_Color temp = {255, 255, 0, 255};
-	color = temp;
-	string font_path = SDLBase::resourcesPath + "quicksandbold.ttf";
-	font = SDLBase::loadFont(font_path.c_str(),80);
 
 }
 
@@ -64,6 +71,12 @@ SelectCharacterController::~SelectCharacterController() {
 	sutiFaceP1->decNumRef();
 	alanFaceP2->decNumRef();
 	sutiFaceP2->decNumRef();
+	zero->decNumRef();
+	one->decNumRef();
+	two->decNumRef();
+	three->decNumRef();
+	four->decNumRef();
+	five->decNumRef();
 
 	delete alan;
 	delete suti;
@@ -120,7 +133,31 @@ void SelectCharacterController::render(float cameraX, float cameraY){
 
 	stringstream sstimer;
 	sstimer << (int)this->timer/1000;
-	SDLBase::renderText(font, sstimer.str(),color,375,325);
+	if(sstimer.str() == "5")
+	{
+		five->render(375,325);
+	}
+	else if(sstimer.str() == "4")
+	{
+		four->render(375,325);
+	}
+	else if(sstimer.str() == "3")
+	{
+		three->render(375,325);
+	}
+	else if(sstimer.str() == "2")
+	{
+		two->render(375,325);
+	}
+	else if(sstimer.str() == "1")
+	{
+		one->render(375,325);
+	}
+	else if(sstimer.str() == "0")
+	{
+		zero->render(375,325);
+	}
+
 }
 
 int SelectCharacterController::update(int dt){
