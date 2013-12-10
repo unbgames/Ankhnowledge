@@ -374,55 +374,55 @@ void MainMenuButHandler::readInput(){
 	if(input->isKeyUp(SDLK_1))
 	{
 		message = message + "1";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(8.1);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_2))
 	{
 		message = message + "2";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(14);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_3))
 	{
 		message = message + "3";
-		connectBox->increaseCursor(18);		
+		connectBox->increaseCursor(15);		
 		sizeMessage++;
 	}
 	if(input->isKeyUp(SDLK_4))
 	{
 		message = message + "4";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(17);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_5))
 	{
 		message = message + "5";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(15);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_6))
 	{
 		message = message + "6";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(16);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_7))
 	{
 		message = message + "7";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(15);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_8))
 	{
 		message = message + "8";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(15);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_9))
 	{
 		message = message + "9";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(16);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_PERIOD))
@@ -450,7 +450,39 @@ void MainMenuButHandler::backspace(){
 	
 		if( lastNumber == "1")
 		{
+			connectBox->decreaseCursor(8.1);		
+		}
+		else if( lastNumber == "2")
+		{
+			connectBox->decreaseCursor(14);		
+		}
+		else if( lastNumber == "3")
+		{
 			connectBox->decreaseCursor(15);		
+		}
+		else if( lastNumber == "4")
+		{
+			connectBox->decreaseCursor(17);		
+		}
+		else if( lastNumber == "5")
+		{
+			connectBox->decreaseCursor(15);		
+		}
+		else if( lastNumber == "6")
+		{
+			connectBox->decreaseCursor(16);		
+		}
+		else if( lastNumber == "7")
+		{
+			connectBox->decreaseCursor(15);		
+		}
+		else if( lastNumber == "8")
+		{
+			connectBox->decreaseCursor(15);		
+		}
+		else if( lastNumber == "9")
+		{
+			connectBox->decreaseCursor(16);		
 		}
 		else
 		{
