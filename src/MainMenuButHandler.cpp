@@ -368,7 +368,7 @@ void MainMenuButHandler::readInput(){
 	if(input->isKeyUp(SDLK_0))
 	{
 		message = message + "0";
-		connectBox->increaseCursor(15);		
+		connectBox->increaseCursor(18);		
 		sizeMessage++;
 	}
 	if(input->isKeyUp(SDLK_1))
@@ -380,70 +380,82 @@ void MainMenuButHandler::readInput(){
 	if(input->isKeyUp(SDLK_2))
 	{
 		message = message + "2";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_3))
 	{
 		message = message + "3";
-		connectBox->increaseCursor(15);		
+		connectBox->increaseCursor(18);		
 		sizeMessage++;
 	}
 	if(input->isKeyUp(SDLK_4))
 	{
 		message = message + "4";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_5))
 	{
 		message = message + "5";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_6))
 	{
 		message = message + "6";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_7))
 	{
 		message = message + "7";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_8))
 	{
 		message = message + "8";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_9))
 	{
 		message = message + "9";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_PERIOD))
 	{
 		message = message + ".";
-		connectBox->increaseCursor(15);	
+		connectBox->increaseCursor(18);	
 		sizeMessage++;	
 	}
 	backspace();
 }
 
 void MainMenuButHandler::backspace(){
+	string lastNumber;
 	if(input->isKeyUp(SDLK_BACKSPACE) && (sizeMessage > 0 || sizeMessage == 0))
 	{
 		if(sizeMessage != 0)
 		{
+			stringstream ss;
+			char lastChar = message.at(sizeMessage - 1);
+			ss << lastChar;
+			ss >> lastNumber;
 			message = message.substr(0, message.size()-1);
 			sizeMessage--;
-			connectBox->decreaseCursor(15);	
 		}
 	
+		if( lastNumber == "1")
+		{
+			connectBox->decreaseCursor(15);		
+		}
+		else
+		{
+			connectBox->decreaseCursor(18);
+		}
 	}
 }
 

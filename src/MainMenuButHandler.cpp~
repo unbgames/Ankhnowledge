@@ -454,7 +454,7 @@ void MainMenuButHandler::backspace(){
 		}
 		else
 		{
-			connectBox->decreaseCursor(15);
+			connectBox->decreaseCursor(18);
 		}
 	}
 }
