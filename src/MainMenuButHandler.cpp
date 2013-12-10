@@ -56,7 +56,8 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 	this->bg->incNumRef();
 	cursor = new Sprite(SDLBase::resourcesPath + "cursor.png");
 	this->cursor->incNumRef();
-
+	loading = new Sprite(SDLBase::resourcesPath + "loading.png");
+	this->loading->incNumRef();
 //-------------------------------------------------------//
 
 //----------------------BUTTONS-------------------------//
@@ -70,7 +71,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 
 //----------------------POP UPS--------------------------//
 	this->animation = new Animation(18,45,cursor,0);
-	this->waitAnim = new Animation(18,45,cursor,0);
+	this->waitAnim = new Animation(50,50,loading,0);
 	this->waitingBox = new MessageBox(waiting, "cancel",250,200);
 	this->disconnectBox = new MessageBox(disconnect, "ok",250,200);
 	this->connectBox = new MessageBox(box, boxInput,"ok",animation,250,200);

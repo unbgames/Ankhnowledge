@@ -103,7 +103,7 @@ void TileMap::load(std::string mapPath)
                 else if(index == WATER_BLOCK)
                 {
                    // cout<<"Entrei 2 x: "<<posX+ tile->getWidth()*x<< " y:" <<posY + tile->getHeight()*y<< "id "<<id<<"\n"<<endl;
-                    Sprite *sprite = new Sprite(SDLBase::resourcesPath + "pote1.png");
+                    Sprite *sprite = new Sprite(SDLBase::resourcesPath + "pote_de_agua.png");
                     tiles.push_back(new Tile(tile
                                             , new BlockWater(sprite,posX+ tile->getWidth()*((int)(id%mapColumns)), posY + tile->getHeight()*((int)(id/mapColumns)))
                                             , posX+ tile->getWidth()*((int)(id%mapColumns))
