@@ -67,6 +67,10 @@ float Slider::calculateValue(){
 	return ((xButton + button->getWidth()/2 - xBar)/bar->getWidth());
 }
 
+bool Slider::getSlideButton(){
+	return this->slideButton;
+}
+
 bool Slider::onButton(){
 	return ((input->mousePosX() > this->xButton) && (input->mousePosX() < (this->xButton + this->button->getWidth())) &&
 			(input->mousePosY() > this->yButton) && (input->mousePosY() < (this->yButton + this->button->getHeight())));

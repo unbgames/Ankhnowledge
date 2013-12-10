@@ -130,11 +130,12 @@ int SelectCharacterController::update(int dt){
 	if(!locked)
 	{
 		if(currentPressed == -1 ||opponentPressed == -1)
+		{
 		if(timer > 0)
 			timer -= dt;
 		else
 			timer = 0;
-
+		}
 		if(timer == 0 && currentPressed == -1)
 		{
 			if(currentOnTop == -1)

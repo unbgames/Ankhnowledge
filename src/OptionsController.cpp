@@ -75,8 +75,14 @@ int OptionsController::update(int dt){
 	mouseOver(back);
 	mousePressed(back,"SceneMainMenu");
 	this->back->update(dt);
-	this->bgVolume->update(dt);
-	this->soundEffect->update(dt);
+	if(soundEffect->getSlideButton()== false)
+	{	
+		this->bgVolume->update(dt);
+	}
+	if(bgVolume->getSlideButton() == false)
+	{	
+		this->soundEffect->update(dt);
+	}
 	return 0;
 }
 

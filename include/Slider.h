@@ -21,6 +21,7 @@ public:
 	bool onButton();
 	void slide();
 	float calculateValue();
+	bool getSlideButton();
 private:
 	Sprite* button,*bar;
 	InputManager* input;
