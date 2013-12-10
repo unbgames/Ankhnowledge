@@ -50,7 +50,7 @@ private:
 	Sprite *bt8_1,*bt8_2,*bt8_3;
 	MessageBox *waitingBox, *connectBox,*disconnectBox;
 	InputManager* input;
-	Animation* animation;
+	Animation* animation, *waitAnim;
 	Sprite* box,*boxInput,*bg,*cursor,*waiting,*disconnect;
 	float boxInputX, boxInputY,boxX,boxY;
 	SDL_Color color;

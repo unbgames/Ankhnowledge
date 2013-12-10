@@ -70,6 +70,7 @@ MainMenuButHandler::MainMenuButHandler():GameObject(getX(),getY()) {
 
 //----------------------POP UPS--------------------------//
 	this->animation = new Animation(18,45,cursor,0);
+	this->waitAnim = new Animation(18,45,cursor,0);
 	this->waitingBox = new MessageBox(waiting, "cancel",250,200);
 	this->disconnectBox = new MessageBox(disconnect, "ok",250,200);
 	this->connectBox = new MessageBox(box, boxInput,"ok",animation,250,200);
@@ -279,6 +280,7 @@ void MainMenuButHandler::renderDisconnect(){
 void MainMenuButHandler::renderWaiting(){
 	clickOtherButtons = false;
 	waitingBox->render(0,0);
+	waitAnim->animate(100,260,260);
 }
 
 bool MainMenuButHandler::isInsideBox(MessageBox* messageBox){
@@ -345,13 +347,12 @@ void MainMenuButHandler::updateDisconnect(int dt){
 }
 
 void MainMenuButHandler::updateWaiting(int dt){
+	waitAnim->update(dt,true,0, false);
 	if(SDL_mutexP(Network::mutex2) == 0)
 	{
 		waitingBox->update(dt);
 		if(waitingBox->confirmPressed() && !Network::cancel)
 		{
-			cout<<"cancel being called"<<endl;
-
 			clickOtherButtons = true;
 			host = false;
 			thread = false;
