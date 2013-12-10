@@ -43,6 +43,7 @@ MessageBox::MessageBox(Sprite * box, string buttonName1, string buttonName2, flo
 	this->x = x;
 	this->y = y;
 	this->renderCursorAnim = false;
+	this->incCursor = 0;
 }
 
 MessageBox::MessageBox(Sprite * box, Sprite* boxInput, string buttonName, Animation* animation, float x, float y):GameObject(getX(),getY()){
@@ -80,7 +81,7 @@ void MessageBox::render(float cameraX, float cameraY){
 	if(cancel)
 		cancel->render(0,0);
 	if(renderCursorAnim)
-		this->cursor->animate(100, boxInputX + 3,boxInputY + 30);
+		this->cursor->animate(100, boxInputX + 9 + incCursor,boxInputY + 30);
 	
 }
 
@@ -161,4 +162,15 @@ bool MessageBox::confirmPressed(){
 
 bool MessageBox::cancelPressed(){
 	return this->cancelPress;
+}
+
+void MessageBox::increaseCursor(float inc){
+	incCursor += inc;
+}
+
+void MessageBox::decreaseCursor(float inc){
+	float tempInc = incCursor;	
+	incCursor -= inc;
+	if(incCursor < 0)
+		incCursor = tempInc;
 }

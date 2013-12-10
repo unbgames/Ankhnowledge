@@ -36,7 +36,6 @@ void Network::init(){
 	endGame = false;
 	mutex = SDL_CreateMutex();
 	mutex2 = SDL_CreateMutex();
-	cout<<"mutex criado"<<endl;
 	id = -1;
 	firstTime = false;
 	lost = false;
@@ -78,7 +77,6 @@ int Network::connect(string ipaddress){
 
 	if(rc == -1)
 	{
-		cout << "Erro na localizacao do HOST: " << SDLNet_GetError() << endl;
 		return -1;
 	}
 
@@ -86,7 +84,6 @@ int Network::connect(string ipaddress){
 
 	if(communicationSocket == NULL)
 	{
-		cout << "Erro na inicializacao do SOCKET: " << SDLNet_GetError() << endl;
 		return -1;
 	}
 
@@ -94,7 +91,6 @@ int Network::connect(string ipaddress){
 	connected = true;
 	firstTime = true;
 	lost = false;
-	cout << "Cliente Conectou" << endl;
 
 	return 0;
 }
@@ -133,7 +129,6 @@ int Network::receiveMessage(void *){
 
 		}else
 		{
-			cout<<"Desconectou"<<endl;
 			connected = false;
 			if(GameManager::currentScene->changeScene("SceneMainMenu") == 1)
 					GameManager::fadeScreen->fadeIn(1,2);
@@ -183,12 +178,10 @@ string Network::readMessage()
 
 int Network::host()
 {
-	cout<<"Teste"<<endl;
 	rc = SDLNet_ResolveHost(&ip, NULL, 3000);
 
 	if(rc == -1)
 	{
-		cout << "Erro na inicializacao do HOST: " << SDLNet_GetError() << endl;
 		return -1;
 	}
 
@@ -196,12 +189,9 @@ int Network::host()
 
 	if(currentSocket == NULL)
 	{
-		cout << "Erro na inicializacao do SOCKET: " << SDLNet_GetError() << endl;
 		return -1;
 	}
 
-	cout << "Servidor Iniciado!" << endl;
-	cout << "Aguardando cliente ..." << endl;
 	listeningThread();
 
 	return 0;
@@ -221,14 +211,14 @@ int Network::listening(void *)
 			SDL_mutexV(mutex2);
 		}
 
-		cout<<"Escutando"<<endl;
+		
 		if((communicationSocket = SDLNet_TCP_Accept(currentSocket)))
 		{
 			connected = true;
 			firstTime = true;
 			lost = false;
 			id = 1;
-			cout<<"Servidor Conectou"<<endl;
+			
 		}
 		SDL_Delay(1);
 	}

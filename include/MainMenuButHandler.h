@@ -16,6 +16,7 @@
 #include "Animation.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -56,6 +57,7 @@ private:
 	TTF_Font *font;
 	bool read,tryToConnect,clickOtherButtons,sendMessage,host, thread, renderConnectError;
 	string message;
+	int sizeMessage;
 };
 
 #endif /* MAINMENUBUTHANDLER_H_ */

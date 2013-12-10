@@ -33,6 +33,8 @@ public:
 	void renderCursor();
 	void deactivateCursor();
 	void activateCursor();
+	void increaseCursor(float inc);
+	void decreaseCursor(float inc);
 
 private:
 
@@ -41,7 +43,7 @@ private:
 	Animation* cursor;
 	InputManager *input;
 	bool confirmPress, cancelPress,renderCursorAnim;
-	float x,y,boxInputX,boxInputY;
+	float x,y,boxInputX,boxInputY,incCursor;
 }; 
 
 #endif /* MESSAGEBOX_H_ */
