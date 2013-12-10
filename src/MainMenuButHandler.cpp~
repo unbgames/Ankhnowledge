@@ -410,19 +410,19 @@ void MainMenuButHandler::readInput(){
 	if(input->isKeyUp(SDLK_7))
 	{
 		message = message + "7";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(15);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_8))
 	{
 		message = message + "8";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(15);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_9))
 	{
 		message = message + "9";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(16);	
 		sizeMessage++;	
 	}
 	if(input->isKeyUp(SDLK_PERIOD))
@@ -472,9 +472,21 @@ void MainMenuButHandler::backspace(){
 		{
 			connectBox->decreaseCursor(16);		
 		}
+		else if( lastNumber == "7")
+		{
+			connectBox->decreaseCursor(15);		
+		}
+		else if( lastNumber == "8")
+		{
+			connectBox->decreaseCursor(15);		
+		}
+		else if( lastNumber == "9")
+		{
+			connectBox->decreaseCursor(16);		
+		}
 		else
 		{
-			connectBox->decreaseCursor(18);
+			connectBox->decreaseCursor(6);
 		}
 	}
 }

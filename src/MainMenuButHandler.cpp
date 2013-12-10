@@ -428,7 +428,7 @@ void MainMenuButHandler::readInput(){
 	if(input->isKeyUp(SDLK_PERIOD))
 	{
 		message = message + ".";
-		connectBox->increaseCursor(18);	
+		connectBox->increaseCursor(6);	
 		sizeMessage++;	
 	}
 	backspace();
@@ -484,9 +484,13 @@ void MainMenuButHandler::backspace(){
 		{
 			connectBox->decreaseCursor(16);		
 		}
+		else if( lastNumber == "0")
+		{
+			connectBox->decreaseCursor(18);		
+		}
 		else
 		{
-			connectBox->decreaseCursor(18);
+			connectBox->decreaseCursor(6);
 		}
 	}
 }
