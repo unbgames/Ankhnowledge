@@ -22,7 +22,7 @@ void SceneSelectCharacter::Enter()
  	audio->playMusic(-1);
 
 	cc = new SelectCharacterController();
-		this->addGameObject(cc);
+	this->addGameObject(cc);
 	GameManager::fadeScreen->fadeOut(0,2);
 }
 

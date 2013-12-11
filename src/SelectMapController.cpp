@@ -40,6 +40,8 @@ SelectMapController::SelectMapController():GameObject(getX(),getY()) {
 	this->splashSprite->incNumRef();
 	this->board = new Sprite(SDLBase::resourcesPath + "mapborder.png");
 	this->board->incNumRef();
+	board->incNumRef();
+	boardAnimation = new Animation(340,460,board,0);
 	boardX = -2000;
 	boardY = -2000;
 	mapselected = -1;
@@ -81,7 +83,8 @@ void SelectMapController::render(float cameraX, float cameraY){
 		else
 			mapNames.at(i)->render(mapButtons.at(i)->getX()+95, 50);
 	}
-	this->board->render(boardX, boardY);
+
+	boardAnimation->animate(175, boardX, boardY);
 	leftButton->render(0,0);
 	rightButton->render(0,0);
 }
@@ -133,6 +136,7 @@ int SelectMapController::update(int dt){
 		}
 	}
 
+	this->boardAnimation->update(dt, true, 0, false);
 
 	changeMap(dt);
 	if(!onTopBoard)

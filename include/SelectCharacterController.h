@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include "Network.h"
+#include "Animation.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ private:
 	Sprite* splashSprite, *p1Board, *p2Board, *board;
 	Sprite* five, *four, *three, *two, *one, *zero;
 	Sprite* alanFaceP1, *sutiFaceP1, *alanFaceP2, *sutiFaceP2;
+	Animation* boardAnimation;
 	HoverButton* alan, *suti;
 	int currentOnTop, opponentOnTop;
 	int currentPressed, opponentPressed;

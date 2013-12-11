@@ -20,12 +20,16 @@ class SceneCredits : public Scene {
 public:
 	SceneCredits(string sceneName);
 	virtual ~SceneCredits();
+	virtual void render(float cameraX, float cameraY);
+	virtual int update(int dt);
 	void Enter();
 	void Exit();
 
 private:
 	Sprite * splashSprite;
 	CreditsController* cc;
+	Sprite* sprite;
+	Animation* spriteAnimation;
 };
 
 #endif /* SCENECREDITS_H_ */

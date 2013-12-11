@@ -21,6 +21,7 @@ SelectCharacterController::SelectCharacterController():GameObject(getX(),getY())
 	p2Board->incNumRef();
 	board = new Sprite(SDLBase::resourcesPath + "charborder.png");
 	board->incNumRef();
+	boardAnimation = new Animation(44,72,board,0);
 	zero = new Sprite(SDLBase::resourcesPath + "0.png");
 	zero->incNumRef();
 	one = new Sprite(SDLBase::resourcesPath + "1.png");
@@ -129,7 +130,7 @@ void SelectCharacterController::render(float cameraX, float cameraY){
 
 	alan->render(0,0);
 	suti->render(0,0);
-	board->render(xBoard,yBoard);
+	boardAnimation->animate(150, xBoard, yBoard);
 
 	stringstream sstimer;
 	sstimer << (int)this->timer/1000;
@@ -255,6 +256,8 @@ int SelectCharacterController::update(int dt){
 		if(GameManager::currentScene->changeScene("SceneSelectMap") == 1)
 							GameManager::fadeScreen->fadeIn(1,2);
 	}
+
+	this->boardAnimation->update(dt, true, 0, false);
 
 	receiveMessage();
 	return 0;

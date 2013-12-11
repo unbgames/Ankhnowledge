@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include "Network.h"
+#include "Animation.h"
 
 using namespace std;
 
@@ -37,6 +38,7 @@ private:
 	vector<HoverButton*> mapButtons;
 	vector<Sprite *> mapNames;
 	Sprite* splashSprite, *board;
+	Animation* boardAnimation;
 	HoverButton* leftButton, *rightButton;
 	int boardX, boardY;
 	bool onTopBoard;

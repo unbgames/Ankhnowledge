@@ -1,20 +1,39 @@
-/*
- * SceneCredits.cpp
- *
- *  Created on: Oct 28, 2013
- *      Author: al
- */
-
 #include "SceneCredits.h"
 
 SceneCredits::SceneCredits(string sceneName) : Scene (sceneName)  {
-	// TODO Auto-generated constructor stub
-
+	this->sprite = new Sprite(SDLBase::resourcesPath + "animacao_creditos.png");
+	this->sprite->incNumRef();
+	this->spriteAnimation = new Animation(20,40,sprite,0);
 }
 
-SceneCredits::~SceneCredits() {
-	// TODO Auto-generated destructor stub
+SceneCredits::~SceneCredits() 
+{
+	this->sprite->decNumRef();
+	this->sprite = 0;
 }
+
+void SceneCredits::render(float cameraX, float cameraY)
+{
+	for (list<GameObject *>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+	{
+		(*it)->render(cameraX, cameraY);
+	}
+
+	this->spriteAnimation->animate(100, 470, 505);
+}
+
+int SceneCredits::update(int dt)
+{
+	for (list<GameObject *>::iterator it = gameObjects.begin(); it != gameObjects.end(); it++)
+	{
+		(*it)->update(dt);
+	}
+
+	this->spriteAnimation->update(dt, true, 0, false);
+
+	return 0;
+}
+
 
 void SceneCredits::Enter()
 {
@@ -27,4 +46,5 @@ void SceneCredits::Exit()
 {
 	this->cleanGameObjects();
 }
+
 
