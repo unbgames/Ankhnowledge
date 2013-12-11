@@ -22,6 +22,9 @@ SelectCharacterController::SelectCharacterController():GameObject(getX(),getY())
 	board = new Sprite(SDLBase::resourcesPath + "charborder.png");
 	board->incNumRef();
 	boardAnimation = new Animation(44,72,board,0);
+	vs = new Sprite(SDLBase::resourcesPath + "vs.png");
+	vs->incNumRef();
+	vsAnimation = new Animation(93,60,vs,0);
 	zero = new Sprite(SDLBase::resourcesPath + "0.png");
 	zero->incNumRef();
 	one = new Sprite(SDLBase::resourcesPath + "1.png");
@@ -131,6 +134,7 @@ void SelectCharacterController::render(float cameraX, float cameraY){
 	alan->render(0,0);
 	suti->render(0,0);
 	boardAnimation->animate(150, xBoard, yBoard);
+	vsAnimation->animate(150, 360, 150);
 
 	stringstream sstimer;
 	sstimer << (int)this->timer/1000;
@@ -258,6 +262,7 @@ int SelectCharacterController::update(int dt){
 	}
 
 	this->boardAnimation->update(dt, true, 0, false);
+	this->vsAnimation->update(dt, true, 0, false);
 
 	receiveMessage();
 	return 0;

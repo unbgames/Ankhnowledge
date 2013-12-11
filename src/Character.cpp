@@ -441,6 +441,9 @@ void Character::moveUpdate(InputManager * input, Direction dir)
 				}
 				nextTile->setBlock(0);
 				setStamina(getStamina() - 3);
+				AudioHandler * audio = AudioHandler::getInstance();
+			 	audio->setEffect("areia_movedica.wav");
+			 	audio->playEffect(0);
 
 				//delete block;
 			}

@@ -31,10 +31,10 @@ public:
 	string intToString(int intenger);
 
 private:
-	Sprite* splashSprite, *p1Board, *p2Board, *board;
+	Sprite* splashSprite, *p1Board, *p2Board, *board, *vs;
 	Sprite* five, *four, *three, *two, *one, *zero;
 	Sprite* alanFaceP1, *sutiFaceP1, *alanFaceP2, *sutiFaceP2;
-	Animation* boardAnimation;
+	Animation* boardAnimation, *vsAnimation;
 	HoverButton* alan, *suti;
 	int currentOnTop, opponentOnTop;
 	int currentPressed, opponentPressed;
