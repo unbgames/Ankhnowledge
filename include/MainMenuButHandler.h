@@ -51,7 +51,7 @@ private:
 	MessageBox *waitingBox, *connectBox,*disconnectBox;
 	InputManager* input;
 	Animation* animation, *waitAnim;
-	Sprite* box,*boxInput,*bg,*cursor,*waiting,*disconnect;
+	Sprite* box,*boxInput,*bg,*cursor,*waiting,*loading,*disconnect;
 	float boxInputX, boxInputY,boxX,boxY;
 	SDL_Color color;
 	TTF_Font *font;

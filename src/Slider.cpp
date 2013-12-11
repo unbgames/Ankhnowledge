@@ -13,7 +13,7 @@ Slider::Slider(Sprite* button, Sprite* bar, float x, float y):GameObject(getX(),
 	this->x = x;
 	this->y = y;
 	this->xBar = x;
-	this->xButton = x;
+	this->xButton = x + 270;
 	this->yBar = y;
 	this->yButton = y;
 	this->slideButton = false;

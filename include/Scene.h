@@ -1,4 +1,3 @@
-
 #ifndef SCENE_H_
 #define SCENE_H_
 #define SCENE_DOESNT_EXIST -1
@@ -7,6 +6,7 @@
 #include <list>
 #include <vector>
 #include "GameObject.h"
+
 using namespace std;
 
 class Scene {
@@ -20,8 +20,8 @@ public:
 	string * getName();
 	bool shouldChangeScene();
 	list<GameObject *> getAllGameObject();
-	int update(int dt);
-	void render(float cameraX, float cameraY);
+	virtual int update(int dt);
+	virtual void render(float cameraX, float cameraY);
 	Scene * getNextScene();
 	void destroyGameObject(GameObject * gameObject);
 	void cleanDestroyedGameObjects();

@@ -1,16 +1,20 @@
-
 #ifndef BLOCKWATER_H_
 #define BLOCKWATER_H_
+
 #include "Character.h"
 #include "Block.h"
+#include "Animation.h"
 
 class BlockWater: public Block 
 {
-public:
-	BlockWater(Sprite * block, float x, float y);
-	int update(int dt);
-	virtual void reaction(Character * character);
-	virtual ~BlockWater();
+	public:
+		BlockWater(Sprite * block, float x, float y);
+		int update(int dt);
+		void render(float camerax, float cameray);
+		virtual void reaction(Character * character);
+		virtual ~BlockWater();
+	private:
+		Animation* animation;
 
 };
 
