@@ -395,7 +395,10 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/intro.ogg \
 	../$(PACKAGE)/resources/map2mock.png \
 	../$(PACKAGE)/resources/map3mock.png \
 	../$(PACKAGE)/resources/map4mock.png \
-	../$(PACKAGE)/resources/map5mock.png
+	../$(PACKAGE)/resources/map5mock.png \
+	../$(PACKAGE)/resources/lock_char.wav \
+	../$(PACKAGE)/resources/map_select.wav \
+	../$(PACKAGE)/resources/sound_test.wav
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources
 
 # Libraries needed to build program
