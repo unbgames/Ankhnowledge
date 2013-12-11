@@ -390,7 +390,12 @@ dist_Ankhnowledge_DATA = ../$(PACKAGE)/resources/intro.ogg \
 	../$(PACKAGE)/resources/4.png ../$(PACKAGE)/resources/5.png \
 	../$(PACKAGE)/resources/somred.png \
 	../$(PACKAGE)/resources/animacao_creditos.png \
-	../$(PACKAGE)/resources/vs.png
+	../$(PACKAGE)/resources/vs.png \
+	../$(PACKAGE)/resources/map1mock.png \
+	../$(PACKAGE)/resources/map2mock.png \
+	../$(PACKAGE)/resources/map3mock.png \
+	../$(PACKAGE)/resources/map4mock.png \
+	../$(PACKAGE)/resources/map5mock.png
 Ankhnowledgedir = /usr/local/$(PACKAGE)/resources
 
 # Libraries needed to build program
