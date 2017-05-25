@@ -59,16 +59,16 @@ $ cd /home/<user>/<caminho-da-pasta>/
 $ /bin/bash install-ankh.sh
 ```
 
-Aguarde o termino do processo de instalação e se estiver tudo ocorrido sem problemas agora basta executar o jogo a partir do seu terminal, executando o segundo comando:
+Aguarde o termino do processo de instalação e se estiver tudo ocorrido sem problemas agora basta executar o jogo a partir do seu terminal, executando o seguinte comando:
 
 ```sh
 $ Ankhnowledge
 ```
 
-E é só jogar agora!
+Tudo pronto! Agora é só jogar!
 
 ### Desinstalando o Jogo
-Para desinstalar o jogo também é simples, basta dentro da pasta _source_ onde os arquivos foram baixados executar o script de desinstalação:
+Para desinstalar o jogo também é simples, basta executar o script de desinstalação dentro da pasta _source_, onde os arquivos foram baixados:
 
 ```sh
 $ cd /home/<user>/<caminho-da-pasta>/
@@ -104,7 +104,7 @@ Após a entrada na sala os jogadores devem escolher entre dois exploradores, Ada
 * u + (w, s, a, d) - anda um bloco para a direção desejada e empurra tijolos para essa mesma direção
 * y + clicar em um bloco - habilidade especial do personagem.
  * Alan - ele mostra em branco blocos os quais ele pode se teleportar (_blink_).
- * Suti - ele mostram em branco blocos os quais ele pode criar areias movediças que podem atrapalhar os adversários (_quicksand_).
+ * Suti - ele mostra em branco blocos os quais ele pode criar areias movediças que podem atrapalhar os adversários (_quicksand_).
 * esc - sair do jogo em andamento.
 
 ## Outros Comandos
@@ -121,7 +121,7 @@ Os jogadores devem ter em mente algumas particularidades do jogo:
 1. Apenas os tijolos marrons são movíveis, os tijolos cinza são fixos.
 2. Não se pode mover tijolos caso tenha um jogador no lado em que se quer mover os tijolos.
 3. A quantidade de tijolos que o jogador move é somado para a subtração da sua _stamina_. Ex: Um jogador quer mover 2 tijolos para a direita, logo sua jogada irá gastar 3 de _stamina_, 1 da movimentação mais 2 da quantidade de tijolos.
-4. Potes de água adicionam 2 de _stamina_ para o jogador, esta adição é permanente até o fim do jogo. Ex: Alan The Explorer começa com um total de 10 de _stamina_, enquanto Suti The Medjay começa com um total de 12 de _stamina_, caso Alan pegue 1 pote de água para os próximos turnos Alan irá inciar com um total de 12 de _stamina_, o mesmo caso segue para Suti, caso ele pegue 1 pote de água ele irá ter para os próximos turnos um total de 14 de _stamina_.
+4. Potes de água adicionam 2 de _stamina_ para o jogador, esta adição é permanente até o fim do jogo. Ex: Alan The Explorer começa com um total de 10 de _stamina_, enquanto Suti The Medjay começa com um total de 12 de _stamina_, caso Alan pegue 1 pote de água para os próximos turnos Alan inciará com um total de 12 de _stamina_, o mesmo caso segue para Suti, caso ele pegue 1 pote de água ele terá para os próximos turnos um total de 14 de _stamina_.
 5. O uso das habilidades especiais também utiliza _stamina_, os valores diferem para Alan e Suti:
  * Alan usa 6 de _stamina_ para fazer seu teleporte (_blink_)
  * Suti usa 5 de _stamina_ para fazer sua areia movediça (_quicksand_)
