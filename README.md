@@ -104,7 +104,7 @@ Após a entrada na sala os jogadores devem escolher entre dois exploradores, Ada
 * u + (w, s, a, d) - anda um bloco para a direção desejada e empurra tijolos para essa mesma direção
 * y + clicar em um bloco - habilidade especial do personagem.
  * Alan - ele mostra em branco blocos os quais ele pode se teleportar (_blink_).
- * Suti - ele mostra em branco blocos os quais ele pode criar areias movediças que podem atrapalhar os adversários (_quicksand_).
+ * Suti - ele mostra em branco blocos os quais ele pode criar areias movediças que podem atrapalhar os adversários (_quicksand_) e ele pode também retirar blocos marrons e areias movediças para auxiliar ele.
 * esc - sair do jogo em andamento.
 
 ## Outros Comandos
