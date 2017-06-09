@@ -1,0 +1,10 @@
+sudo: required
+
+language: c++
+
+dist: trusty
+
+compiler:
+  - gcc
+
+install: ./install-ankh.sh
