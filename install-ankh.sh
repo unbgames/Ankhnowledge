@@ -10,15 +10,16 @@ sudo apt install libtool autoconf automake libsdl-image1.2 libsdl-image1.2-dev l
 
 sleep 2
 
-mv $DOCS/* .
 ./cleanup.sh
 ./bootstrap.sh
 ./configure
 
 sleep 2
 
-sudo make install
+make
 
-sudo mv AUTHORS ChangeLog COPYING description-pak INSTALL NEWS README $DOCS
+sleep 3
+
+sudo make install
 
 sleep 1

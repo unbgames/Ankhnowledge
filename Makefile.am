@@ -2,5 +2,5 @@
 # Date: 26/11/2010
 
 # Subdirs
-SUBDIRS = src include doc-pak
+SUBDIRS = src include
 ACLOCAL_AMFLAGS = -I m4
