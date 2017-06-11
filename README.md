@@ -85,7 +85,27 @@ $ /bin/bash uninstall-ankh.sh
 Basta aguardar o término da execução e pronto, o jogo estará desinstalado da sua máquina!
 
 ## Instalando pelo pacote
-O jogo Ankhnowledge ainda irá passar pelo processo de empacotamento para sistemas linux (_Debian Based_) e atualmente deve ser seguido o tutorial acima para ser instaldo e jogado.
+Para instalar Ankhnowledge pelo seu pacote (para Desktops com distribuição _Debian Based_), basta baixar por este [link](https://github.com/sconetto/Ankhnowledge/releases/download/ankhnowledge-0.5.2/ankhnowledge-0.5.2_0.5.2-1_amd64.deb) o pacote de instalação do jogo (será necessário permissões de superusuário para fazer a instalação), clicar para iniciar o processo, aguardar até que todas as depências sejam instaladas e ao termino pronto Ankhnowledge esterá instalado na sua máquina!!
+
+### Instalando pelo pacote via terminal
+Para instalar o jogo via terminal basta ir na pasta onde foi feito o download do pacote .deb e executar o seguinte comando:
+
+```sh
+$ sudo dpkg -i ankhnowledge-0.5.2_0.5.2-1_amd64.deb
+```
+
+E o pacote será instalado.
+
+__OBS__: O nome do pacote citado acima `ankhnowledge-0.5.2_0.5.2-1_amd64.deb` pode variar dependo do número da _release_, se atente ao nome do pacote quando for executar o comando.
+
+### Desinstalando o jogo
+Caso tenha instalado pelo pacote você pode desinstalar de duas maneiras:
+1. Pelo assistente de instalação de software da sua distribuição clicando em 'Remover'
+2. Pelo terminal digitando o seguinte comando:
+
+```sh
+$ sudo apt-get remove ankhnowledge
+```
 
 # Como Jogar
 
