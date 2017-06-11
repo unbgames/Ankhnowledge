@@ -1,9 +1,9 @@
 # Ankhnowledge
 
-[![GitHub release](https://img.shields.io/badge/release-v0--5-red.svg)](https://github.com/sconetto/Ankhnowledge/releases/tag/ankh_ankhnowledge_v0-5)
 [![Github All Releases](https://img.shields.io/badge/downloads-218%20total-brightgreen.svg)](https://github.com/sconetto/Ankhnowledge/releases)
-[![Language](https://img.shields.io/badge/language-C%2B%2B-blue.svg)](http://en.cppreference.com/w/cpp)
-[![License](https://img.shields.io/badge/license-GPLv2-yellow.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+[![Language](https://img.shields.io/badge/language-C%2B%2B-orange.svg)](http://en.cppreference.com/w/cpp)
+[![GitHub license](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/sconetto/Ankhnowledge/master/COPYING)
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/sconetto/Ankhnowledge)
 
 Ankhnowledge é um jogo _multiplayer_ feito em C++ com auxílio da biblioteca de multimídia livre SDL (_Simple DirectMedia Layer_) que foi produzido durante a matéria de Introdução aos Jogos Eletrônicos.
 
