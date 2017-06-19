@@ -1,0 +1,25 @@
+sudo: required
+
+language: c++
+
+dist: trusty
+
+compiler:
+  - gcc
+
+before-install: sudo apt-get install libtool autoconf automake libsdl-image1.2 libsdl-image1.2-dev libsdl-ttf2.0-0 libsdl-ttf2.0-dev libsdl-mixer1.2 libsdl-mixer1.2-dev libsdl-net1.2 libsdl-net1.2-dev -y
+
+install: ./install-ankh.sh
+
+notifications:
+  email:
+    recipients:
+      - omarfariajr@gmail.com
+      - sconetto.joao@gmail.com
+    on_success: always # default: change
+    on_failure: always # default: always
+
+# safelist
+branches:
+  only:
+  - master

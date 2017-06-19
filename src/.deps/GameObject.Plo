@@ -1,3 +1,6 @@
-GameObject.lo: GameObject.cpp ../include/GameObject.h
+GameObject.lo: GameObject.cpp /usr/include/stdc-predef.h \
+ ../include/GameObject.h
+
+/usr/include/stdc-predef.h:
 
 ../include/GameObject.h:
