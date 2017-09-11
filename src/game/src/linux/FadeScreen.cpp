@@ -18,7 +18,9 @@ int FadeScreen::update(int dt){
 	return 0;
 }
 
-void FadeScreen::render(float cameraX = 0, float cameraY = 0){
+void FadeScreen::render(float cameraX, float cameraY){
+	cameraX = 0;
+	cameraY = 0;
 	if(sprite)
 		this->sprite->render(cameraX, cameraY);
 

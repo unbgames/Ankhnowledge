@@ -23,7 +23,9 @@ CreditsController::~CreditsController() {
 	// TODO Auto-generated destructor stub
 }
 
-void CreditsController::render(float cameraX = 0, float cameraY = 0){
+void CreditsController::render(float cameraX, float cameraY){
+	cameraX = 0;
+	cameraY = 0;
 	this->splashSprite->render(cameraX, cameraY);
 	this->back->render(cameraX, cameraY);
 }

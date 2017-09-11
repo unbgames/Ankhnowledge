@@ -17,7 +17,9 @@ int BlockWater::update(int dt)
 }
 
 void BlockWater::render(float camerax, float cameray){
-	animation->animate(150, camerax, cameray);
+	camerax = this->x;
+	cameray = this->y;
+	animation->animate(150,camerax, cameray);
 }
 
 void BlockWater::reaction(Character * character)

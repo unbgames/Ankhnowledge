@@ -23,12 +23,15 @@ HoverButton::~HoverButton() {
 
 
 void HoverButton::render(float cameraX, float cameraY){
+	cameraX = x;
+	cameraY = y;
 	if(this->sprite) {
 		this->sprite->render(cameraX, cameraY);
 	}
 }
 
-int HoverButton::update(int dt = 0){
+int HoverButton::update(int dt){
+	dt = 0;
 	if(insideButton())
 		onTop = true;
 	else
@@ -40,7 +43,7 @@ int HoverButton::update(int dt = 0){
 	}else
 		pressed = false;
 
-	return 0;
+	return dt;
 }
 
 bool HoverButton::insideButton(){

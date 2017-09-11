@@ -71,8 +71,11 @@ MessageBox::~MessageBox(){
 }
 
 
-void MessageBox::render(float cameraX = 0, float cameraY = 0){
+void MessageBox::render(float cameraX, float cameraY){
 	box->render(x,y);
+
+	cameraX = 0;
+	cameraY = 0;
 	if(boxInput)
 		boxInput->render(this->boxInputX,this->boxInputY + 30);
 	if(confirm)
