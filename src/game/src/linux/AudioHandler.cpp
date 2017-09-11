@@ -63,8 +63,11 @@ void AudioHandler::setMusic(string song)
 		Mix_FreeMusic(this->currentMusic);
 
 	string songPath = SDLBase::resourcesPath + song;
+	cout << songPath << endl;
 
 	this->currentMusic = Mix_LoadMUS(songPath.c_str());
+
+	cout << "[setMusic] [" << Mix_GetError() << "]" << std::endl;
 }
 
 void AudioHandler::playMusic(int times)
@@ -76,7 +79,7 @@ void AudioHandler::playMusic(int times)
 		//Mix_HookMusicFinished(cleanMusic);
 	}
 	else
-		cout << "There is no song loaded" << endl;
+		cout << "[playMusic] There is no song loaded" << endl;
 }
 
 void AudioHandler::stopMusic()
@@ -108,7 +111,7 @@ void AudioHandler::playEffect(int times)
 		//Mix_HookMusicFinished(cleanMusic);
 	}
 	else
-		cout << "There is no song loaded" << endl;
+		cout << "[playEffect] There is no song loaded" << endl;
 }
 
 void AudioHandler::setEffectVolume(int percent)
