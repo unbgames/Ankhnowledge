@@ -1,3 +1,0 @@
-*.lo: AudioHandler.cpp ../include/AudioHandler.h
-
-../include/AudioHandler.h:
