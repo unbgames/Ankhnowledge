@@ -1,3 +1,0 @@
-GameObject.lo: GameObject.cpp ../include/GameObject.h
-
-../include/GameObject.h:

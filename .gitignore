@@ -9,5 +9,8 @@
 *.Plo
 *.plo
 *~
-
 Thumbs.db
+
+src/*_debug
+src/*_release
+bin/
