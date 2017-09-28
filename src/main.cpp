@@ -7,3 +7,7 @@ int main(){
 	delete gm;
 	return 0;
 }
+
+int WinMain(){
+	return main();
+}
