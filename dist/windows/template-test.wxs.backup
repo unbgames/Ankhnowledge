@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+	<Product //required
+		Name='%%PACKAGE_NAME%% %%PACKAGE_VERSION%%'
+		Id='8451d13c-2372-4c2d-a585-f100d39b8aa7'  //UPDATE GUID EVERY TIME THE SCRIPT RUNS!
+		UpgradeCode='e24f36e9-7cbc-4189-845c-91647f9063d7' //UPDATE GUID EVERY TIME THE SCRIPT RUNS!
+		Language='1046' //pt-br
+		Codepage='1252' //pt-br
+		Version='%%PACKAGE_VERSION%%' //major.minor.patch
+		Manufacturer='UnB Games'> //produtor do jogo
+	<Package //required
+		Id='*'
+		Keywords='Installer'
+		Description="%%MAINTAINER_NAME%%'s %%PACKAGE_NAME%% %%PACKAGE_VERSION%% Installer"
+		Comments='%%PACKAGE_NAME%% is a registered trademark of %%MAINTAINER_NAME%% Ltd.'
+		Manufacturer='UnB Games' //produtor do jogo
+		InstallerVersion='100'
+		Languages='1046' //pt-br
+		SummaryCodepage='1252' //pt-br
+		Compressed='yes'/>
+
+		<Media
+			Id='1'
+			Cabinet='%%PACKAGE_NAME%%.cab'
+			EmbedCab='yes' //make it a part of the installer
+			DiskPrompt="Disk #1" //prompt to
+		/>
+
+		<Property
+			Id='DiskPrompt'
+			Value="%%MAINTAINER_NAME%%'s %%PACKAGE_NAME%% %%PACKAGE_VERSION%% Installation [1]"
+		/>
+		/// ^^^^^^^^^^^^ Primeira parte do arquivo. Isso nao deve mudar, a nao ser com as novas versoes.
+
+		<Directory Id='TARGETDIR' Name='SourceDir'> //these are predefined
+			<Directory Id='ProgramFiles64Folder' Name='PFiles'>
+				<Directory Id='UnBGames' Name='UnB Games'> // for convension, apps should go under \Program Files\Company\Product
+					<Directory Id='INSTALLDIR' Name='%%PACKAGE_NAME%% %%PACKAGE_VERSION%%'>
+						// each component has to have an unique guid!!
+						<Component Id='MainExecutable' Guid='8b44d4f3-fc1f-4df7-83d7-900145089db2'>
+							// each file? also HAS to have a KeyPath. It will be used on uninstall/repairing
+							<File
+								Id='%%PACKAGE_NAME%%'
+								Name='%%OUTPUT_FILE%%'
+								DiskId='1'
+								Vital='yes' // tells the installer this is a vital file
+								Source='%%OUTPUT_FILE%%'
+								KeyPath='yes'
+							>
+								<Shortcut
+									Id="startMenu%%PACKAGE_NAME%%"
+									Directory="ProgramMenuDir"
+									Name="%%PACKAGE_NAME%% %%PACKAGE_VERSION%%"
+									WorkingDirectory='INSTALLDIR' // the place the shortcut POINTS TO
+									Icon="%%OUTPUT_FILE%%" // the ID of an icon
+									IconIndex="0"
+									Advertise="yes"/>
+								<Shortcut
+									Id="desktopTemplateTest10"
+									Directory="DesktopFolder"
+									Name="%%PACKAGE_NAME%% %%PACKAGE_VERSION%%"
+									WorkingDirectory='INSTALLDIR'
+									Icon="%%OUTPUT_FILE%%"
+									IconIndex="0"
+									Advertise="yes"/>
+							</File>
+						</Component>
+
+						<Component Id='SDL' Guid='e876c813-aca3-4023-98dc-25d5cea70d76'>
+							<File
+								Id='SDLDLL'
+								Name='SDL.dll'
+								DiskId='1'
+								Source='SDL.dll'
+								KeyPath='yes'
+							/>
+						</Component>
+
+						<Component Id='SDL_image' Guid='b4fda74e-a969-4690-a314-cd4496a1aa5a'>
+							<File
+								Id='SDL_imageDLL'
+								Name='SDL_image.dll'
+								DiskId='1'
+								Source='SDL_image.dll'
+								KeyPath='yes'
+							/>
+							<File
+								Id='libjpeg_8DLL'
+								Name='libjpeg-8.dll'
+								DiskId='1'
+								Source='libjpeg-8.dll'
+							/>
+							<File
+								Id='libpng15_15DLL'
+								Name='libpng15-15.dll'
+								DiskId='1'
+								Source='libpng15-15.dll'
+							/>
+							<File
+								Id='libtiff_5DLL'
+								Name='libtiff-5.dll'
+								DiskId='1'
+								Source='libtiff-5.dll'
+							/>
+							<File
+								Id='libwebp_2DLL'
+								Name='libwebp-2.dll'
+								DiskId='1'
+								Source='libwebp-2.dll'
+							/>
+							<File
+								Id='zlib1DLL'
+								Name='zlib1.dll'
+								DiskId='1'
+								Source='zlib1.dll'
+							/>
+							<File
+								Id='LICENSE.jpeg.TXT'
+								Name='LICENSE.jpeg.txt'
+								DiskId='1'
+								Source='LICENSE.jpeg.txt'
+							/>
+							<File
+								Id='LICENSE.png.TXT'
+								Name='LICENSE.png.txt'
+								DiskId='1'
+								Source='LICENSE.png.txt'
+							/>
+							<File
+								Id='LICENSE.tiff.TXT'
+								Name='LICENSE.tiff.txt'
+								DiskId='1'
+								Source='LICENSE.tiff.txt'
+							/>
+							<File
+								Id='LICENSE.webp.TXT'
+								Name='LICENSE.webp.txt'
+								DiskId='1'
+								Source='LICENSE.webp.txt'
+							/>
+							<File
+								Id='LICENSE.zlib.TXT'
+								Name='LICENSE.zlib.txt'
+								DiskId='1'
+								Source='LICENSE.zlib.txt'
+							/>
+						</Component>
+
+						<Component Id='Manual' Guid='c63e61dd-dd50-493d-9206-cc7f2a329917'>
+							<File Id='Manual'
+								Name='Manual.pdf'
+								DiskId='1'
+								Source='Manual.pdf'
+								KeyPath='yes'
+							>
+								<Shortcut
+									Id="startmenuManual"
+									Directory="ProgramMenuDir"
+									Name="Instruction Manual"
+									Advertise="yes"
+								/>
+							</File>
+						</Component>
+
+						<Directory Id='ResourcesDir' Name='resources'>
+							<Directory Id='ImagesDir' Name='images'>
+								<Component Id='Images' Guid='45ead03c-11ac-4506-b9d2-db22308c21c3'>
+									<File
+										Id='LogoImage'
+										Name='logo.png'
+										DiskId='1'
+										Source='resources/images/logo.png'
+										KeyPath='yes'
+									/>
+								</Component>
+							</Directory>
+						</Directory>
+
+					</Directory>
+				</Directory>
+			</Directory>
+
+			<Directory Id="ProgramMenuFolder" Name="Programs">
+				<Directory Id="ProgramMenuDir" Name="%%PACKAGE_NAME%% %%PACKAGE_VERSION%%">
+					<Component Id="ProgramMenuDir" Guid="e4c59053-9e6d-410f-87e7-47bf0bc9c999">
+						<RemoveFolder
+							Id='ProgramMenuDir'
+							On='uninstall'/>
+						<RegistryValue
+							Root='HKCU'
+							Key='Software\[Manufacturer]\[ProductName]'
+							Type='string'
+							Value=''
+							KeyPath='yes'/>
+					</Component>
+				</Directory>
+			</Directory>
+
+			<Directory Id="DesktopFolder" Name="Desktop" />
+		</Directory>
+		/// ^^^^^^^^^^^^ Diretorio. Todos os recursos devem ser listados aqui.
+
+		<Feature
+			Id='Complete'
+			Title='%%PACKAGE_NAME%% %%PACKAGE_VERSION%%'
+			Description='%%GAME_DESCRIPTION%%'
+			Display='expand'
+			Level='1'
+			ConfigurableDirectory='INSTALLDIR'>
+			<Feature
+				Id='MainProgram'
+				Title='%%PACKAGE_NAME%%'
+				Description='The main executable'
+				Level='1'>
+				<ComponentRef Id='MainExecutable' />
+				<ComponentRef Id='Images' />
+				<ComponentRef Id='SDL' />
+				<ComponentRef Id='SDL_image' />
+				<ComponentRef Id='ProgramMenuDir' />
+			</Feature>
+
+			<Feature
+				Id='Documentation'
+				Title='%%PACKAGE_NAME%% docs'
+				Description='The instruction manual'
+				Level='1'>
+				<ComponentRef Id='Manual' />
+			</Feature>
+		</Feature>
+
+		<Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
+
+		<Icon Id="%%OUTPUT_FILE%%" SourceFile="%%OUTPUT_FILE%%" />
+		/// ^^^^^^^^^^^^ Este arquivo tambem deve ser modificado poucas vezes.
+
+	</Product>
+</Wix>
+// ^^^^^^^^ Adicionar essa ultima parte na 'compilacao' do arquivo.

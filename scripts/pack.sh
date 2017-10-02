@@ -7,7 +7,7 @@
 platform=`scripts/util/get_platform.sh`
 
 # Run build release to check if there's a release version of the game.
-scripts/build.sh release
+# scripts/build.sh release
 
 case $platform in
     "debian")

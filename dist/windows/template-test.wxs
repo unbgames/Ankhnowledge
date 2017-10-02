@@ -30,6 +30,7 @@
 			Id='DiskPrompt'
 			Value="%%MAINTAINER_NAME%%'s %%PACKAGE_NAME%% %%PACKAGE_VERSION%% Installation [1]"
 		/>
+		/// ^^^^^^^^^^^^ Primeira parte do arquivo. Isso nao deve mudar, a nao ser com as novas versoes.
 
 		<Directory Id='TARGETDIR' Name='SourceDir'> //these are predefined
 			<Directory Id='ProgramFiles64Folder' Name='PFiles'>
@@ -197,6 +198,7 @@
 
 			<Directory Id="DesktopFolder" Name="Desktop" />
 		</Directory>
+		/// ^^^^^^^^^^^^ Diretorio. Todos os recursos devem ser listados aqui.
 
 		<Feature
 			Id='Complete'
@@ -229,6 +231,9 @@
 		<Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
 
 		<Icon Id="%%OUTPUT_FILE%%" SourceFile="%%OUTPUT_FILE%%" />
+		/// ^^^^^^^^^^^^ Este arquivo tambem deve ser modificado poucas vezes.
 
 	</Product>
 </Wix>
+
+// ^^^^^^^^ Adicionar essa ultima parte na 'compilacao' do arquivo.
