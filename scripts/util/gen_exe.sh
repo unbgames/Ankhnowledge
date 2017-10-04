@@ -1,3 +1,10 @@
+
+# if ! [ -e "$COMMON_PATH.directory" ];
+# then
+# 	gen_directory
+# fi
+
+# if ! [ -e "$COMMON_PATH.feature"];
 #!/bin/bash
 #
 # Generates .exe installer for Windows
@@ -6,16 +13,9 @@
 # Include project metadata
 . metadata.ini
 
-UUID=`uuidgen`
-
-if [ -e "dist/windows/template-test.pdf" ];
-then
-	echo "ACHOU!!"
-else
-	echo "not found"
-	echo "$UUID"
-fi
-
+COMMON_PATH="dist/windows/$PACKAGE_NAME.wxs"
+OUTPUT_FILE=$EXECUTABLE_NAME.exe
+PACKAGE_VERSION=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_RELEASE
 
 ####### PASSOS PARA GERAR O WXS:
 ## 1. Encontrar a pasta recursos (fazer executavel pra encontrar a pasta?)
@@ -23,8 +23,7 @@ fi
 ## 3. Montar parte do arquivo, com os recursos (sendo um componente pra cada)
 ## 4. Juntar arquivos
 
-# OUTPUT_FILE=$EXECUTABLE_NAME.exe
-# PACKAGE_VERSION=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_RELEASE
+scripts/util/gen_wxs.sh
 
 # function gen_exe()
 # {
