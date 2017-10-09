@@ -108,7 +108,7 @@ function append_feature_tag() {
 	ID=$1
 	cat >> $WXS_PATH <<EOF
 	<Feature
-		Id='Complete'
+		Id="$ID"
 		Title='$PACKAGE_NAME%% $PACKAGE_VERSION%%'
 		Description='$GAME_DESCRIPTION'
 		Display='expand'
@@ -190,6 +190,14 @@ function append_TEST () {
 	</Directory>
 EOF
 }
+function append_property () {
+	cat >> $WXS_PATH <<EOF
+	<UIRef Id="WixUI_InstallDir" />
+	<UIRef Id="WixUI_ErrorProgressText" />
+	<Property Id='WIXUI_INSTALLDIR' Value='INSTALLDIR' />
+EOF
+}
+
 
 function gen_directory() {
 	create_directory_file
@@ -220,19 +228,22 @@ function gen_directory() {
 	close_tag "Directory"
 
 	## Add manual!
-	append_icon_tag
 
 }
 
 function gen_feature() {
 	append_feature_tag "Complete"
+	append_feature_tag "MainExecutable"
 	for COMP_ID in $COMPONENT_IDS;
 	do
 		append_componentRef_tag $COMP_ID
 	done
 	append_componentRef_tag "ProgramMenuDir"
-
 	close_tag "Feature"
+	close_tag "Feature"
+
+	append_property
+	append_icon_tag
 
 	close_tag "Product"
 	close_tag "Wix"
