@@ -3,12 +3,12 @@
 # Generates .exe installer for Windows
 #
 
-# Include project metadata
 . metadata.ini
 
-COMMON_PATH="dist/windows/$PACKAGE_NAME.wxs"
+WXS_PATH="dist/windows/$PACKAGE_NAME.wxs"
 OUTPUT_FILE=$EXECUTABLE_NAME.exe
 PACKAGE_VERSION=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_RELEASE
+
 
 function get_uuid(){
 	UUID=`uuidgen`
@@ -19,7 +19,7 @@ function get_uuid(){
 COMPONENT_IDS="MainExecutable "
 
 function create_directory_file() {
-	cat > "$COMMON_PATH.directory" <<EOF
+	cat >> $WXS_PATH <<EOF
 		<Directory Id='TARGETDIR' Name='SourceDir'>
 			<Directory Id='ProgramFilesFolder' Name='PFiles'>
 				<Directory Id='UnBGames' Name='UnB Games'>
@@ -33,17 +33,15 @@ function create_directory_file() {
 								Source="$OUTPUT_FILE"
 								KeyPath='yes'>
 							</File>
-						</Component>
 EOF
 }
 
 function append_file_tag() {
-	WXS_COMPONENT=$1
-	FILE_NAME=$2
-	ID=${2//\//_}
-	ID=${ID//-/_}
-	ID=${ID//+/_}
-	cat >> $WXS_COMPONENT <<EOF
+	FILE_NAME=$1
+	ID=${1//\//_} # Replace backslash with underscore
+	ID=${ID//-/_} # Replace minus with underscore
+	ID=${ID//+/_} # Replace plus with underscore
+	cat >> $WXS_PATH <<EOF
 	<File
 		Id="_${ID^^}"
 		Name="${FILE_NAME##*/}"
@@ -53,41 +51,92 @@ EOF
 }
 
 function append_icon_tag() {
-	WXS_COMPONENT=$1
-	cat >> $WXS_COMPONENT <<EOF
-	<Icon Id="icon.ico" SourceFile="resources/icon.ico" />
+	ID=${ICON_FILE//\//_} # Replace backslash with underscore
+	ID=${ID//-/_} # Replace minus with underscore
+	ID=${ID//+/_} # Replace plus with underscore
+	cat >> $WXS_PATH <<EOF
+	<Icon Id="$ID" SourceFile="resources/$ICON_FILE" />
 EOF
 }
 
 
 function append_component_tag() {
-	WXS_COMPONENT=$1
-	FILE_NAME=$2
+	FILE_NAME=$1
 	ID="_${FILE_NAME^^}"
 	COMPONENT_IDS+="$ID "
-	cat >> $WXS_COMPONENT <<EOF
+	cat >> $WXS_PATH <<EOF
 	<Component Id="$ID" Guid="`get_uuid`" KeyPath='yes'>
 EOF
 }
 
 function append_directory_tag() {
-	WXS_COMPONENT=$1
-	DIR_NAME=$2
-	cat >> $WXS_COMPONENT <<EOF
+	DIR_NAME=$1
+	cat >> $WXS_PATH <<EOF
 	<Directory Id="${DIR_NAME^^}DIR" Name="$DIR_NAME">
 EOF
 }
 
 function close_tag() {
-	WXS_COMPONENT=$1
-	TAG=$2
-	cat >> $WXS_COMPONENT <<EOF
+	TAG=$1
+	cat >> $WXS_PATH <<EOF
 	</${TAG}>
 EOF
 }
 
+function append_shortcut_tag () {
+	DIRECTORY=$1
+	cat >> $WXS_PATH <<EOF
+	<Shortcut
+		Id="$DIRECTORY$PACKAGE_NAME"
+		Directory="$DIRECTORY"
+		Name="$PACKAGE_NAME $PACKAGE_VERSION"
+		WorkingDirectory='INSTALLDIR'
+		Icon="$ICON_FILE"
+		IconIndex="0"
+		Advertise="yes"/>
+EOF
+}
+
+function append_componentRef_tag() {
+	ID=$1
+	cat >> $WXS_PATH <<EOF
+	<ComponentRef Id="$ID" />
+EOF
+}
+
+function append_feature_tag() {
+	ID=$1
+	cat >> $WXS_PATH <<EOF
+	<Feature
+		Id='Complete'
+		Title='$PACKAGE_NAME%% $PACKAGE_VERSION%%'
+		Description='$GAME_DESCRIPTION'
+		Display='expand'
+		Level='1'
+		ConfigurableDirectory='INSTALLDIR'>
+EOF
+}
+
+function check_directory_for_file() {
+	BASE_DIR=$1
+
+	for FILE in $(ls $BASE_DIR);
+	do
+		FILE_PATH="$BASE_DIR/$FILE"
+		if [ -d FILE_PATH ];
+		then
+			append_directory_tag $FILE
+			check_directory_for_file $FILE_PATH
+			close_tag "Directory"
+		fi
+		append_component_tag $FILE
+		append_file_tag $FILE_PATH
+		close_tag "Component"
+	done;
+}
+
 function gen_header() {
-	cat > "$COMMON_PATH.header" <<EOF
+	cat > $WXS_PATH <<EOF
 <?xml version='1.0' encoding='windows-1252'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
 	<Product
@@ -122,105 +171,73 @@ function gen_header() {
 EOF
 }
 
-function append_componentRef_tag() {
-	WXS_COMPONENT=$1
-	ID=$2
-	cat >> $WXS_COMPONENT <<EOF
-	<ComponentRef Id="$ID" />
+function append_TEST () {
+	cat >> $WXS_PATH <<EOF
+	<Directory Id="ProgramMenuFolder" Name="Programs">
+		<Directory Id="ProgramMenuDir" Name="$PACKAGE_NAME $PACKAGE_VERSION">
+			<Component Id="ProgramMenuDir" Guid="`get_uuid`">
+				<RemoveFolder
+					Id='ProgramMenuDir'
+					On='uninstall'/>
+				<RegistryValue
+					Root='HKCU'
+					Key='Software\[Manufacturer]\[ProductName]'
+					Type='string'
+					Value=''
+					KeyPath='yes'/>
+			</Component>
+		</Directory>
+	</Directory>
 EOF
 }
 
-function append_feature_tag() {
-	WXS_COMPONENT=$1
-	ID=$2
-	cat >> $WXS_COMPONENT <<EOF
-	<Feature Id="$ID" Level='1' >
-EOF
+function gen_directory() {
+	create_directory_file
+	append_shortcut_tag "ProgramMenuDir"
+	append_shortcut_tag "DESKTOPFOLDERDIR"
+	close_tag "Component"
+
+	append_component_tag "SDL"
+	for DLL in $(ls bin/windows/ -I *.exe);
+	do
+		append_file_tag $DLL
+	done
+	close_tag "Component"
+
+	append_directory_tag "resources"
+	check_directory_for_file "resources"
+
+	append_TEST
+
+	append_directory_tag "DesktopFolder"
+	close_tag "Directory"
+
+	close_tag "Directory"
+
+	close_tag "Directory"
+	close_tag "Directory"
+	close_tag "Directory"
+	close_tag "Directory"
+
+	## Add manual!
+	append_icon_tag
+
 }
 
 function gen_feature() {
-	WXS_DIR="$COMMON_PATH.directory"
-	append_feature_tag $WXS_DIR "Complete"
+	append_feature_tag "Complete"
 	for COMP_ID in $COMPONENT_IDS;
 	do
-		append_componentRef_tag $WXS_DIR $COMP_ID
+		append_componentRef_tag $COMP_ID
 	done
-	close_tag $WXS_DIR "Feature"
+	append_componentRef_tag "ProgramMenuDir"
 
-	close_tag $WXS_DIR "Product"
-	close_tag $WXS_DIR "Wix"
+	close_tag "Feature"
+
+	close_tag "Product"
+	close_tag "Wix"
 }
 
-function check_directory_for_file() {
-	WXS_DIR="$COMMON_PATH.directory"
-	BASE_DIR=$1
-
-	for FILE in $(ls $BASE_DIR);
-	do
-		FILE_PATH="$BASE_DIR/$FILE"
-		if [ -d FILE_PATH ];
-		then
-			append_directory_tag $WXS_DIR $FILE
-			check_directory_for_file $FILE_PATH
-			close_tag $WXS_DIR "Directory"
-		fi
-		append_component_tag $WXS_DIR $FILE
-		append_file_tag $WXS_DIR $FILE_PATH
-		close_tag $WXS_DIR "Component"
-	done;
-}
-
-function gen_directory()
-{
-	WXS_DIR="$COMMON_PATH.directory"
-	create_directory_file
-
-	append_component_tag $WXS_DIR "SDL"
-	for DLL in $(ls bin/windows/ -I *.exe);
-	do
-		append_file_tag $WXS_DIR $DLL
-	done
-	close_tag $WXS_DIR "Component"
-
-	append_directory_tag $WXS_DIR "resources"
-	check_directory_for_file "resources"
-	close_tag $WXS_DIR "Directory"
-
-	close_tag $WXS_DIR "Directory"
-	close_tag $WXS_DIR "Directory"
-	close_tag $WXS_DIR "Directory"
-	close_tag $WXS_DIR "Directory"
-
-	## Add manual!
-	# append_icon_tag $WXS_DIR
-
-}
-
-if ! [ -e "$COMMON_PATH.header" ];
-then
-	gen_header
-fi
-
-if ! [ -e "$COMMON_PATH.directory" ];
-then
-	gen_directory
-	gen_feature
-fi
-
-
-mkdir -p .tmp
-cp -u src/$EXECUTABLE_NAME\_release .tmp/$OUTPUT_FILE
-cp -u bin/windows/* .tmp/
-cp -f "$COMMON_PATH.header" .tmp/$PACKAGE_NAME.wxs
-cat "$COMMON_PATH.directory" >> .tmp/$PACKAGE_NAME.wxs
-cat "$COMMON_PATH.feature" >> .tmp/$PACKAGE_NAME.wxs
-
-# cp -u dist/windows/Manual.pdf .tmp/
-cp -ur resources .tmp/
-
-cd .tmp
-
-candle.exe $PACKAGE_NAME.wxs
-light.exe -sice:ICE60 -ext WixUIExtension $PACKAGE_NAME.wixobj
-cp $PACKAGE_NAME.msi ..
-cd ..
+gen_header
+gen_directory
+gen_feature

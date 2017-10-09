@@ -1,10 +1,3 @@
-
-# if ! [ -e "$COMMON_PATH.directory" ];
-# then
-# 	gen_directory
-# fi
-
-# if ! [ -e "$COMMON_PATH.feature"];
 #!/bin/bash
 #
 # Generates .exe installer for Windows
@@ -13,42 +6,41 @@
 # Include project metadata
 . metadata.ini
 
-COMMON_PATH="dist/windows/$PACKAGE_NAME.wxs"
+WXS_PATH="dist/windows/$PACKAGE_NAME.wxs"
 OUTPUT_FILE=$EXECUTABLE_NAME.exe
 PACKAGE_VERSION=$VERSION_MAJOR.$VERSION_MINOR.$VERSION_RELEASE
 
-####### PASSOS PARA GERAR O WXS:
-## 1. Encontrar a pasta recursos (fazer executavel pra encontrar a pasta?)
-## 2. Listar recursos (recursivamente)
-## 3. Montar parte do arquivo, com os recursos (sendo um componente pra cada)
-## 4. Juntar arquivos
+function gen_exe() {
+	rm -rf bin/windows
+	mkdir -p bin/windows
 
-scripts/util/gen_wxs.sh
+	for DIR in $(ls lib);
+	do
+		cp -P lib/$DIR/windows/release/* bin/windows
+	done;
 
-# function gen_exe()
-# {
-# 	mkdir -p .tmp
-# 	cp -u src/$EXECUTABLE_NAME\_release .tmp/$OUTPUT_FILE
-# 	cp -u lib/SDL/windows/release/*.dll .tmp/
-# 	cp -u lib/SDL_image/windows/release/*.dll .tmp/
-# 	cp -u lib/SDL_image/windows/release/LICENSE* .tmp/
-# 	cp -f dist/windows/template-test.wxs .tmp/$PACKAGE_NAME.wxs
-# 	cp -u dist/windows/Manual.pdf .tmp/
-# 	cp -ur resources .tmp/
+	if ! [ -e $WXS_PATH ];
+	then
+		scripts/util/gen_wxs.sh
+	fi
 
-# 	cd .tmp
-#     sed -i -- 's/%%OUTPUT_FILE%%/'"$OUTPUT_FILE"'/g' $PACKAGE_NAME.wxs
-#     sed -i -- 's/%%PACKAGE_NAME%%/'"$PACKAGE_NAME"'/g' $PACKAGE_NAME.wxs
-#     sed -i -- 's/%%PACKAGE_VERSION%%/'"$PACKAGE_VERSION"'/g' $PACKAGE_NAME.wxs
-#     sed -i -- 's/%%MAINTAINER_NAME%%/'"$MAINTAINER_NAME"'/g' $PACKAGE_NAME.wxs
-#     sed -i -- 's/%%GAME_DESCRIPTION%%/'"$GAME_DESCRIPTION"'/g' $PACKAGE_NAME.wxs
+	mkdir -p .tmp
+	cp -u src/$EXECUTABLE_NAME\_release .tmp/$OUTPUT_FILE
 
-# 	candle.exe $PACKAGE_NAME.wxs
-# 	light.exe -sice:ICE60 -ext WixUIExtension $PACKAGE_NAME.wixobj
-# 	cp $PACKAGE_NAME.msi ..
-# 	cd ..
-# }
+	cp -u bin/windows/* .tmp/
+	cp -f $WXS_PATH .tmp/$PACKAGE_NAME.wxs
 
-# echo "Generating "$OUTPUT_FILE "..."
-# gen_exe
-# echo "Done"
+	# cp -u dist/windows/Manual.pdf .tmp/
+	cp -ur resources .tmp/
+
+	cd .tmp
+
+	candle.exe $PACKAGE_NAME.wxs
+	light.exe -sice:ICE60 -ext WixUIExtension $PACKAGE_NAME.wixobj
+	cp $PACKAGE_NAME.msi ..
+	cd ..
+}
+
+echo "Generating "$OUTPUT_FILE "..."
+gen_exe
+echo "Done"
